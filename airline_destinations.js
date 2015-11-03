@@ -21,3 +21,16 @@ scraperjs.StaticScraper.create('https://en.wikipedia.org/wiki/Category:Lists_of_
       }
     );
   });
+
+// this is intended for the destinations page
+// Only has the code to be run on the browser directly
+
+  $("#mw-content-text").map(function() {
+    return {
+      origin: $(".mw-headline").map(function() {
+        return $(this).text().replace(/Scheduled destinations from /, "")
+      }).get(),
+      destinations: $("table tbody td").text()
+      
+    };
+  })
