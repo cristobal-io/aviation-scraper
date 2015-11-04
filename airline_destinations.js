@@ -65,11 +65,12 @@ $("#mw-content-text").map(function () {
           var destinations = [];
           var $originFrom = $(".mw-headline");
           var $headers = $(this).find("th");
+          var $rows = $(this).find("tbody tr");
           var $tableContent = $(this).find("tr td");
-          for (var k = 0; k < $originFrom.length; k++) {
+          for (var l = 0; l < $originFrom.length; l++) {
+            console.log("from : " + $($originFrom[l]).text());
             
-            console.log("from : " + $($originFrom[k]).text());
-            for (var i = 0, j = 0; i < $tableContent.length; i++, j++) {
+            for (var i = 0, j = 0, k = 0; i < $tableContent.length; i++, j++) {
               console.log("headers in loop " + j);
               var textHeaders = $($headers[j]).text();
               console.log(textHeaders);
@@ -77,7 +78,15 @@ $("#mw-content-text").map(function () {
               var textTableContent = $($tableContent[i]).text()
               console.log(textTableContent);
 
-              if (j > $headers.length -2) {j = -1} ;
+              if (j > $headers.length -2) {
+                j = -1;
+                // this is intended for adding each cell to a different 
+                // position in the array
+                // rows[
+                // 1:
+                // ]
+                k++
+              } ;
             };
 
           };
