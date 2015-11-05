@@ -56,54 +56,42 @@ $("#mw-content-text").map(function () {
 
 //  This returns 
 
-$("#mw-content-text").map(function () {
-  return {
-    origin: $("h2").map(function () {
+$("#mw-content-text h2").map(function () {
+  // return {
+    // origin: $("h2").map(function () {
       return {
-        origin: $(this).text().replace(/Scheduled destinations from /, ""),
+        origin: $(this).find(".mw-headline").text().replace(/Scheduled destinations from /, ""),
         destinations: $(this).next(".wikitable").map(function (index, elem) {
           var destinations = [];
-          var $originFrom = $(".mw-headline");
           var $headers = $(this).find("th");
-          var $rows = $(this).find("tbody tr");
+          // var $rows = $(this).find("tbody tr");
           var $tableContent = $(this).find("tr td");
-          for (var l = 0; l < $originFrom.length; l++) {
-            console.log("from : " + $($originFrom[l]).text());
-            var row = [];
-            for (var i = 0, j = 0, k = 0; i < $tableContent.length; i++, j++) {
-              var textHeader = $($headers[j]).text();
-              var textTableContent = $($tableContent[i]).text()
-              // console.log("headers in loop " + j);
-              // console.log(textHeader);
-              // console.log("table content in loop");
-              // console.log(textTableContent);
-              // console.log(k);
-              console.log(row);
-              // console.log(row[k]);
-              if (row[k]=== undefined) {
-                row.push(k);
-                row[k] = {};
-              };
-              console.log(row[k]);
-              console.log("the type of row is an: " + typeof row[k]);
-
-              row[k][textHeader] = (textTableContent);
-              console.log(row[k]);
-              console.log("the type of row after is an: " + typeof row[k]);
-
-              if (j > $headers.length -2) {
-                j = -1;
-                k++
-              };
+          // for (var l = 0; l < $originFrom.length; l++) {
+          // console.log("from : " + $($originFrom[l]).text());
+          var row = [];
+          for (var i = 0, j = 0, k = 0; i < $tableContent.length; i++, j++) {
+            var textHeader = $($headers[j]).text();
+            var textTableContent = $($tableContent[i]).text()
+            if (row[k] === undefined) {
+              row.push(k);
+              row[k] = {};
             };
-              console.log(JSON.stringify(row));
+            row[k][textHeader] = (textTableContent);
+            if (j > $headers.length - 2) {
+              j = -1;
+              k++
+            };
           };
+          // console.log(row);
+          destinations.push(row);
+          // };
           return destinations;
         })
       }
-    }).get()
-  };
+    // }).get()
+  // };
 })
+
 
 
 // This returns the first city of the table, with a for loop we can iterate over all 
@@ -118,7 +106,7 @@ var headersText = [];
 var $headers = $("th");
 
 // Loop through grabbing everything
-var $rows = $(".wikitable tr").each(function (index) {
+// var $rows = $(".wikitable tr").each(function (index) {
   $cells = $(this).find("td");
   myRows[index] = {};
 
