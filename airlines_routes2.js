@@ -16,52 +16,25 @@
 var sjs = require("scraperjs");
 var fs = require("fs");
 
+var scrapers = require("./scrapers/");
 
-var log = console.log;
-var router = new sjs.Router();
+var BASE_URL = "https://en.wikipedia.org";
 
-var BASE_PATH = "https://en.wikipedia.org";
-
-var airlines = JSON.parse(fs.readFileSync("./data/destination_pages.json"));
+var airlines = require("./data/destination_pages.json");
 
 
-function create30thLinkError() {
-  var err = new Error("Page doesn't have 30th link");
-  err.code = '30THLINK';
-  return err;
+function getRoutes (options, callback) {
+  var url = BASE_URL + options.destinationsLink;
+  console.log("Getting routes for %s from %s", options.name, url);
+  sjs.StaticScraper.create(url)
+  .scrape(scrapers[options.scraper] || scrapers["default"])
+  .then(function (data) {
+    callback(null, data);
+  });
 }
 
-router
-  .on('*')
-  .createStatic()
-  .scrape(function($) {
-    var thirty = $('a')[30];
-    if (thirty) {
-      return $(thirty).attr('href');
-    } else {
-      throw create30thLinkError();
-    }
-  })
-  .then(function(thirty, utils) {
-    log("'%s' has '%s' as it's 30th link", utils.url, thirty);
-    var name = $(utils.url).text().replace(/https:\/\/en.wikipedia.org\/wiki\//,"");
-    console.log(name);
-    var filename = "./data/routes_" + name;
-    fs.writeFile(filename,
-      JSON.stringify(thirty, null, 2),
-      function (err) {
-        if (err) {
-          throw err;
-        }
-        console.log("Saved %s", filename);
-      }
-    );
-  });
+getRoutes(airlines[20],function (err, routes) {
+  if (err) {throw err};
+  console.log(routes);
+});
 
-
-
-for (var i = 0; i < airlines.length; i++) {
-  var airlineName = airlines[i]["name"];
-  var airlineLink = BASE_PATH + airlines[i]["destinationsLink"];
-  router.route(airlineLink);
-};
