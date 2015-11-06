@@ -34,7 +34,7 @@ function create30thLinkError() {
 router
   .on('*')
   .createStatic()
-  .scrape(function($, airlineName) {
+  .scrape(function($) {
     var thirty = $('a')[30];
     if (thirty) {
       return $(thirty).attr('href');
@@ -44,6 +44,18 @@ router
   })
   .then(function(thirty, utils) {
     log("'%s' has '%s' as it's 30th link", utils.url, thirty);
+    var name = $(utils.url).text().replace(/https:\/\/en.wikipedia.org\/wiki\//,"");
+    console.log(name);
+    var filename = "./data/routes_" + name;
+    fs.writeFile(filename,
+      JSON.stringify(thirty, null, 2),
+      function (err) {
+        if (err) {
+          throw err;
+        }
+        console.log("Saved %s", filename);
+      }
+    );
   });
 
 
@@ -51,5 +63,5 @@ router
 for (var i = 0; i < airlines.length; i++) {
   var airlineName = airlines[i]["name"];
   var airlineLink = BASE_PATH + airlines[i]["destinationsLink"];
-  router.route(airlineLink, airlineName);
+  router.route(airlineLink);
 };
