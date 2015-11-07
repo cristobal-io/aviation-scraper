@@ -1,8 +1,10 @@
+"use strict";
+
 var fs = require("fs");
 
-var scraperjs = require('scraperjs');
+var scraperjs = require("scraperjs");
 
-scraperjs.StaticScraper.create('https://en.wikipedia.org/wiki/Category:Lists_of_airline_destinations')
+scraperjs.StaticScraper.create("https://en.wikipedia.org/wiki/Category:Lists_of_airline_destinations")
   .scrape(function ($) {
     return $(".mw-category li a").map(function () {
       return {
@@ -13,6 +15,7 @@ scraperjs.StaticScraper.create('https://en.wikipedia.org/wiki/Category:Lists_of_
   })
   .then(function (destinationPages) {
     var filename = "./data/destination_pages.json";
+
     fs.writeFile(filename,
       JSON.stringify(destinationPages, null, 2),
       function (err) {

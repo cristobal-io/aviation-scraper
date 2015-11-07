@@ -12,8 +12,10 @@
  * To run:
  * 'node ErrorHandling.js'
  */
+"use strict";
 
 var sjs = require("scraperjs");
+
 var fs = require("fs");
 
 var scrapers = require("./scrapers/");
@@ -25,6 +27,7 @@ var airlines = require("./data/destination_pages.json");
 
 function getRoutes (options, callback) {
   var url = BASE_URL + options.destinationsLink;
+
   console.log("Getting routes for %s from %s", options.name, url);
   sjs.StaticScraper.create(url)
   .scrape(scrapers[options.scraper] || scrapers["default"])
@@ -34,7 +37,7 @@ function getRoutes (options, callback) {
 }
 
 getRoutes(airlines[20],function (err, routes) {
-  if (err) {throw err};
+  if (err) {throw err;}
   console.log(routes);
 });
 
