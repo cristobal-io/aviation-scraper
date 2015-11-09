@@ -18,18 +18,34 @@ module.exports = function ($) {
       destinations[from] = {};
     } else {
       var links = $(this).find("a");
-      var name = links[0].attribs.title;
 
-      destinations[from][name] = {
-        city: {
-          name: links[0].attribs.title, //links.get(0).textContent,
-          url: links[0].attribs.href
-        },
-        airport: {
-          name: links[1].attribs.title, //links.get(1).textContent,
-          url: links[1].attribs.href
-        }
-      };
+      if (links.length < 2) {
+        var airportName = links[1].attribs.title,
+          airportUrl = links[1].attribs.href;
+
+        destinations[from][cityName] = {
+          airport: {
+            name: airportName, //links.get(1).textContent,
+            url: airportUrl
+          }
+        };
+      } else {
+        var cityName = links[0].attribs.title,
+          cityUrl = links[0].attribs.href,
+          airportName = links[1].attribs.title,
+          airportUrl = links[1].attribs.href;
+
+        destinations[from][cityName] = {
+          city: {
+            name: cityName, //links.get(0).textContent,
+            url: cityUrl
+          },
+          airport: {
+            name: airportName, //links.get(1).textContent,
+            url: airportUrl
+          }
+        };
+      }
     }
   });
 
