@@ -35,7 +35,7 @@ function getRoutes (options, callback) {
     callback(null, data);
   });
 }
-getRoutes(airlines[10],function (err, routes) {
+getRoutes(airlines[20],function (err, routes) {
   if (err) {throw err;}
   console.log(routes);
 });
