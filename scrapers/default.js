@@ -4,8 +4,12 @@ module.exports = function ($) {
   debugger;
   var destinations = {};
   var from;
-  $(".mw-content-ltr ul li").each(function () {
 
+  $(".mw-content-ltr ul li").each(function () {
+    console.log($(this).attr('class'));
+    if ($(this).attr("class") == "toclevel-1") {
+      console.log("toclevel-1");
+      return;}
     var lines = $(this).text().split("\n");
 
     if (lines.length > 1) {

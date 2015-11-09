@@ -16,7 +16,7 @@
 
 var sjs = require("scraperjs");
 
-var fs = require("fs");
+// var fs = require("fs");
 
 var scrapers = require("./scrapers/");
 
@@ -35,8 +35,7 @@ function getRoutes (options, callback) {
     callback(null, data);
   });
 }
-
-getRoutes(airlines[8],function (err, routes) {
+getRoutes(airlines[10],function (err, routes) {
   if (err) {throw err;}
   console.log(routes);
 });
