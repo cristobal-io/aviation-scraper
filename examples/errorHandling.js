@@ -62,8 +62,12 @@ router
   });
 
 // Front page of google doesn't have a 30th link
-router.route('http://google.com');
-// This page doesn't exist
-router.route('http://wouvoogle.com');
-// Hacker new have a 30th link
-router.route('http://news.ycombinator.com');
+// router.route('http://google.com');
+// // This page doesn't exist
+// router.route('http://wouvoogle.com');
+// // Hacker new have a 30th link
+// router.route('http://news.ycombinator.com');
+pages = ['http://news.ycombinator.com','http://wouvoogle.com','http://google.com']
+for (var i = 0; i < pages.length; i++) {
+  router.route(pages[i]);
+};

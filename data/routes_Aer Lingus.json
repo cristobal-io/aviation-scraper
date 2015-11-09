@@ -1,68 +1,4 @@
 {
-  "List": [
-    {
-      "": ""
-    },
-    {
-      "": "Hub"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Summer Seasonal"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Winter Seasonal"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Served by Stobart Air as Aer Lingus Regional"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Future"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Terminated route"
-    }
-  ],
-  "Scheduled destinations": [
-    {
-      "": "Hub"
-    },
-    {
-      "": "Hub"
-    },
-    {
-      "": "*"
-    },
-    {
-      "": "Focus city (base) during the summer season"
-    },
-    {
-      "": "\n+\n"
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": "\nØ\n"
-    },
-    {
-      "": "Seasonal"
-    }
-  ],
   "Scheduled destinations from Ljubljana": [
     {
       "City": "Amsterdam",
@@ -469,6 +405,70 @@
       "IATA": "STR",
       "ICAO": "LDDS",
       "Airport": "Stuttgart Airport"
+    }
+  ],
+  "List": [
+    {
+      "": ""
+    },
+    {
+      "": "Hub"
+    },
+    {
+      "": ""
+    },
+    {
+      "": "Summer Seasonal"
+    },
+    {
+      "": ""
+    },
+    {
+      "": "Winter Seasonal"
+    },
+    {
+      "": ""
+    },
+    {
+      "": "Served by Stobart Air as Aer Lingus Regional"
+    },
+    {
+      "": ""
+    },
+    {
+      "": "Future"
+    },
+    {
+      "": ""
+    },
+    {
+      "": "Terminated route"
+    }
+  ],
+  "Scheduled destinations": [
+    {
+      "": "Hub"
+    },
+    {
+      "": "Hub"
+    },
+    {
+      "": "*"
+    },
+    {
+      "": "Focus city (base) during the summer season"
+    },
+    {
+      "": "\n+\n"
+    },
+    {
+      "": "Future destination"
+    },
+    {
+      "": "\nØ\n"
+    },
+    {
+      "": "Seasonal"
     }
   ]
 }
