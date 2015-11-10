@@ -24,6 +24,8 @@ var BASE_URL = "https://en.wikipedia.org";
 
 var airlines = require("./data/destination_pages.json");
 
+console.log(typeof airlines);
+
 
 function getRoutes (options, callback) {
   var url = BASE_URL + options.destinationsLink;
@@ -37,7 +39,8 @@ function getRoutes (options, callback) {
     callback(null, data, options);
   });
 }
-getRoutes(airlines[14],function (err, routes, options) {
+
+var writeJson = function (err, routes, options) {
   if (err) {throw err;}
   var filename = "./data/routes_" + options.name + ".json";
 
@@ -51,5 +54,11 @@ getRoutes(airlines[14],function (err, routes, options) {
       }
     );
   console.log("finished");
-});
+};
 
+getRoutes(airlines[10],writeJson);
+
+airlines.forEach(function  (index) {
+  console.log(index);
+  getRoutes(index, writeJson);
+});

@@ -1,32 +1,22 @@
 "use strict";
-var fs = require("fs");
 
-var scraperjs = require("scraperjs");
-var router = new scraperjs.Router();
+module.exports = function ($) {
+  var fs = require("fs");
 
-var BASE_PATH = "https://en.wikipedia.org";
+  var airlines = JSON.parse(fs.readFileSync("./data/destination_pages.json"));
 
-var airlines = JSON.parse(fs.readFileSync("./data/destination_pages.json"));
+  console.log(JSON.stringify(airlines));
+  //  This returns 
+  console.log(airlines.length);
 
-console.log(JSON.stringify(airlines));
-//  This returns 
-console.log(airlines.length);
+  debugger;
+  var routesObject = {};
 
-debugger;
-var routesObject = {};
-
-router
-// .create(airlineLink)
-  .on("*")
-  .createStatic()
-  .scrape(function ($) {
-    return $("#mw-content-text h2").map(function () {
-      // return {
-      // origin: $("h2").map(function () {
+  $("#mw-content-text h2").map(function () {
       var from = $(this).find(".mw-headline").text();
 
       return {
-        routes: $(this).next(".wikitable").map(function (index) {
+        routes: $(this).next(".wikitable").map(function () {
           var destinations = [];
           var $headers = $(this).find("th");
           var $tableContent = $(this).find("tr td");
@@ -51,25 +41,18 @@ router
           return destinations;
         })
       };
-    });
-  })
-  .then(function () {
-    var filename = "./data/routes_" + airlineName + ".json";
+    })
+    .then(function () {
+      var filename = "./data/routes_" + airlineName + ".json";
 
-    fs.writeFile(filename,
-      JSON.stringify(routesObject, null, 2),
-      function (err) {
-        if (err) {
-          throw err;
+      fs.writeFile(filename,
+        JSON.stringify(routesObject, null, 2),
+        function (err) {
+          if (err) {
+            throw err;
+          }
+          console.log("Saved %s", filename);
         }
-        console.log("Saved %s", filename);
-      }
-    );
-  });
-
-// for (var l = 0; l < airlines.length; l += 1) {
-//   var airlineName = airlines[l]["name"];
-//   var airlineLink = BASE_PATH + airlines[l]["destinationsLink"];
-
-//   router.route(airlineLink);
-// }
+      );
+    });
+};
