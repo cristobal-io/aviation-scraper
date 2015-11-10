@@ -7,10 +7,12 @@ module.exports = function ($) {
 
   $(".mw-content-ltr ul li").each(function () {
 
-    if ($(this).hasClass("toclevel-1")) {
-      console.log("has class toclevel-1");
+    if (/toclevel/.test($(this).attr("class"))) {
       return;
     }
+    // if ($(this).attr("class").indexOf("toclevel-") !== 1) {
+    //   return;
+    // }
     var lines = $(this).text().split("\n");
 
     if (lines.length > 1) {
@@ -18,10 +20,11 @@ module.exports = function ($) {
       destinations[from] = {};
     } else {
       var links = $(this).find("a");
+      var cityName = links[0].attribs.title;
 
       if (links.length < 2) {
-        var airportName = links[1].attribs.title,
-          airportUrl = links[1].attribs.href;
+        var airportName = links[0].attribs.title,
+          airportUrl = links[0].attribs.href;
 
         destinations[from][cityName] = {
           airport: {
@@ -30,10 +33,10 @@ module.exports = function ($) {
           }
         };
       } else {
-        var cityName = links[0].attribs.title,
-          cityUrl = links[0].attribs.href,
-          airportName = links[1].attribs.title,
-          airportUrl = links[1].attribs.href;
+        var cityUrl = links[0].attribs.href;
+
+        airportName = links[1].attribs.title;
+        airportUrl = links[1].attribs.href;
 
         destinations[from][cityName] = {
           city: {
@@ -49,7 +52,7 @@ module.exports = function ($) {
     }
   });
 
-  console.log(JSON.stringify(destinations, null, 2));
+  // console.log(JSON.stringify(destinations, null, 2));
   return destinations;
   // $(".mw-category li a").map(function () {
   //   return {

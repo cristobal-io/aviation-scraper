@@ -16,7 +16,7 @@
 
 var sjs = require("scraperjs");
 
-// var fs = require("fs");
+var fs = require("fs");
 
 var scrapers = require("./scrapers/");
 
@@ -32,11 +32,24 @@ function getRoutes (options, callback) {
   sjs.StaticScraper.create(url)
   .scrape(scrapers[options.scraper] || scrapers["default"])
   .then(function (data) {
-    callback(null, data);
+    console.log("Results for %s", options.name);
+    console.log(JSON.stringify(data, null, 2));
+    callback(null, data, options);
   });
 }
-getRoutes(airlines[10],function (err, routes) {
+getRoutes(airlines[14],function (err, routes, options) {
   if (err) {throw err;}
-  console.log(routes);
+  var filename = "./data/routes_" + options.name + ".json";
+
+  fs.writeFile(filename,
+      JSON.stringify(routes, null, 2),
+      function (err) {
+        if (err) {
+          throw err;
+        }
+        console.log("Saved %s", filename);
+      }
+    );
+  console.log("finished");
 });
 
