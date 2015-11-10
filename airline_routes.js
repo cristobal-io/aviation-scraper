@@ -1,59 +1,48 @@
+/**
+ * DISCLAIMER
+ * This is a relatively simple example, to illustrate some of the
+ *   possible functionalities and how to achieve them.
+ *   There is no guarantee that this example will provide useful
+ *   results.
+ *   Use this example with and at your own responsibility.
+ *
+ * In this example we run through some urls and try to extract their
+ *   30th link. It demonstrates how to deal with errors.
+ *
+ * To run:
+ * 'node ErrorHandling.js'
+ */
+"use strict";
+
+var sjs = require("scraperjs");
+
 var fs = require("fs");
 
-var scraperjs = require('scraperjs');
-var router = new scraperjs.Router();
+var scrapers = require("./scrapers/");
 
-var BASE_PATH = "https://en.wikipedia.org";
+var BASE_URL = "https://en.wikipedia.org";
 
-var airlines = JSON.parse(fs.readFileSync("./data/destination_pages.json"));
-console.log(JSON.stringify(airlines));
-//  This returns 
-console.log(airlines.length);
+var airlines = require("./data/destination_pages.json");
 
 
+function getRoutes (options, callback) {
+  var url = BASE_URL + options.destinationsLink;
 
-  debugger;
-  var routesObject = {}
+  console.log("Getting routes for %s from %s", options.name, url);
+  sjs.StaticScraper.create(url)
+  .scrape(scrapers[options.scraper] || scrapers["default"])
+  .then(function (data) {
+    console.log("Results for %s", options.name);
+    console.log(JSON.stringify(data, null, 2));
+    callback(null, data, options);
+  });
+}
+getRoutes(airlines[14],function (err, routes, options) {
+  if (err) {throw err;}
+  var filename = "./data/routes_" + options.name + ".json";
 
-router
-  // .create(airlineLink)
-  .on('*')
-  .createStatic()
-  .scrape(function ($) {
-    return $("#mw-content-text h2").map(function () {
-      // return {
-      // origin: $("h2").map(function () {
-      var from = $(this).find(".mw-headline").text();
-      return {
-        routes: $(this).next(".wikitable").map(function (index, elem) {
-          var destinations = [];
-          var $headers = $(this).find("th");
-          var $tableContent = $(this).find("tr td");
-          var row = [];
-          for (var i = 0, j = 0, k = 0; i < $tableContent.length; i++, j++) {
-            var textHeader = $($headers[j]).text();
-            var textTableContent = $($tableContent[i]).text()
-            if (row[k] === undefined) {
-              row.push(k);
-              row[k] = {};
-            };
-            row[k][textHeader] = (textTableContent);
-            if (j > $headers.length - 2) {
-              j = -1;
-              k++
-            };
-          };
-          destinations.push(row);
-          routesObject[from] = row;
-          return destinations;
-        })
-      }
-    })
-  })
-  .then(function () {
-    var filename = "./data/routes_" + airlineName + ".json";
-    fs.writeFile(filename,
-      JSON.stringify(routesObject, null, 2),
+  fs.writeFile(filename,
+      JSON.stringify(routes, null, 2),
       function (err) {
         if (err) {
           throw err;
@@ -61,11 +50,6 @@ router
         console.log("Saved %s", filename);
       }
     );
-  });
-
-for (var l = 0; l < airlines.length; l++) {
-  var airlineName = airlines[l]["name"];
-  var airlineLink = BASE_PATH + airlines[l]["destinationsLink"];
-  router.route(airlineLink);
-};
+  console.log("finished");
+});
 
