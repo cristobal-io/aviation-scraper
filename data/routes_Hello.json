@@ -1,81 +1,228 @@
 {
   "List": [
     {
-      "City": "Surabaya",
-      "Country": "Indonesia",
-      "IATA": "SUB",
-      "ICAO": "WARR",
-      "Airport": "Juanda International Airport"
+      "Country": "Panama",
+      "City": "Panama City",
+      "Airport": "Albrook Airport",
+      "Notes": "Hub",
+      "Refs": ""
     },
     {
-      "City": "Semarang",
-      "Country": "Indonesia",
-      "IATA": "SRG",
-      "ICAO": "WARS",
-      "Airport": "Achmad Yani International Airport"
+      "Country": "Panama",
+      "City": "David",
+      "Airport": "David Airport",
+      "Notes": "Focus city",
+      "Refs": ""
     },
     {
-      "City": "Pangkalanbun",
-      "Country": "Indonesia",
-      "IATA": "PKN",
-      "ICAO": "WAOI",
-      "Airport": "Iskandar Airport"
+      "Country": "Costa Rica",
+      "City": "San Jose",
+      "Airport": "Juan Santamaría International Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Bandung",
-      "Country": "Indonesia",
-      "IATA": "BDO",
-      "ICAO": "WICC",
-      "Airport": "Husein Sastranegara International Airport"
+      "Country": "Panama",
+      "City": "Changuinola",
+      "Airport": "Changuinola Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Batam",
-      "Country": "Indonesia",
-      "IATA": "BTH",
-      "ICAO": "WIDD",
-      "Airport": "Hang Nadim Airport"
+      "Country": "Panama",
+      "City": "Bocas del Toro",
+      "Airport": "Bocas del Toro Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Kerinci",
-      "Country": "Indonesia",
-      "IATA": "KRC",
-      "ICAO": "WIPH",
-      "Airport": "Depati Parbo Airport"
+      "Country": "Panama",
+      "City": "Panama City",
+      "Airport": "Tocumen International Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Jambi",
-      "Country": "Indonesia",
-      "IATA": "DJB",
-      "ICAO": "WIPA",
-      "Airport": "Sultan Thaha Airport"
+      "Country": "Panama",
+      "City": "Pedasi",
+      "Airport": "Pedasí Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Padang",
-      "Country": "Indonesia",
-      "IATA": "PDG",
-      "ICAO": "WIPT",
-      "Airport": "Minangkabau International Airport"
+      "Country": "Panama",
+      "City": "Playon Chico",
+      "Airport": "Playón Chico Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "City": "Pekanbaru",
-      "Country": "Indonesia",
-      "IATA": "PKU",
-      "ICAO": "WIBB",
-      "Airport": "Sultan Syarif Kasim II International Airport"
-    }
-  ],
-  "Current destinations": [
-    {
-      "": "[Hub]"
+      "Country": "Panama",
+      "City": "Isla Contadora",
+      "Airport": "Contadora Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "": "Hub"
+      "Country": "Panama",
+      "City": "El Porvenir",
+      "Airport": "El Porvenir Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "": "[Seasonal]"
+      "Country": "Panama",
+      "City": "Corazón de Jesús",
+      "Airport": "Corazón de Jesús Airport",
+      "Notes": "",
+      "Refs": ""
     },
     {
-      "": "Seasonal"
+      "Country": "Panama",
+      "City": "Achutupu",
+      "Airport": "Achutupu Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Isla Del Rey",
+      "Airport": "San Miguel Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Sambú",
+      "Airport": "Sambú Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Bahia Pinas",
+      "Airport": "Bahía Piña Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Jaqué",
+      "Airport": "Jaqué Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Rio Sidra",
+      "Airport": "Rio Sidra Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Mulatupo",
+      "Airport": "Mulatupo Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Puerto Obaldia",
+      "Airport": "Puerto Obaldia Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Garachiné",
+      "Airport": "Garachiné Airport",
+      "Notes": "",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Isla Secas",
+      "Airport": "Isla Secas Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Isla Coiba",
+      "Airport": "Isla Coiba Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Santiago",
+      "Airport": "Santiago Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Aguadulce",
+      "Airport": "Aguadulce Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Chitré",
+      "Airport": "Chitré Alonso Valderrama Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Carti",
+      "Airport": "Cartí Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Isla San Jose",
+      "Airport": "San José Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "La Palma",
+      "Airport": "Captain Ramon Xatruch Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Punta Patiño",
+      "Airport": "Punta Patiño Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "El Real",
+      "Airport": "El Real Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Colón",
+      "Airport": "Colón Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
+    },
+    {
+      "Country": "Panama",
+      "City": "Río Hato",
+      "Airport": "Río Hato Airport",
+      "Notes": "Seasonal",
+      "Refs": ""
     }
   ],
   "Scheduled destinations from Ljubljana": [
@@ -196,7 +343,14 @@
       "Country": "Sweden",
       "IATA": "ARN",
       "ICAO": "ESSA",
-      "Airport": "Stockholm Arlanda AirportSummer"
+      "Airport": "Stockholm Arlanda Airport"
+    },
+    {
+      "City": "Tallinn",
+      "Country": "Estonia",
+      "IATA": "TLL",
+      "ICAO": "EETN",
+      "Airport": "Tallinn Airport"
     },
     {
       "City": "Tel Aviv",
@@ -486,2260 +640,18 @@
       "Airport": "Stuttgart Airport"
     }
   ],
-  "Aeroméxico destinations": [
+  "Destinations": [
     {
-      "": "Hub"
+      "": ""
+    },
+    {
+      "": "Base"
+    },
+    {
+      "": ""
     },
     {
       "": "Seasonal destination"
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": "Terminated destination"
-    }
-  ],
-  "Scheduled destinations": [
-    {
-      "": "Hub"
-    },
-    {
-      "": "Hub"
-    },
-    {
-      "": "*"
-    },
-    {
-      "": "Focus city (base) during the summer season"
-    },
-    {
-      "": "\n+\n"
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": "\nØ\n"
-    },
-    {
-      "": "Seasonal"
-    }
-  ],
-  "Asiana Airlines current destinations (passenger and cargo)": [
-    {
-      "City": "Almaty",
-      "Country": "Kazakhstan",
-      "IATA": "ALA",
-      "ICAO": "UAAA",
-      "Airport": "Almaty International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Anchorage",
-      "Country": "United States",
-      "IATA": "ANC",
-      "ICAO": "PANC",
-      "Airport": "Ted Stevens Anchorage International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Asahikawa",
-      "Country": "Japan",
-      "IATA": "AKJ",
-      "ICAO": "RJEC",
-      "Airport": "Asahikawa Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Astana",
-      "Country": "Kazakhstan",
-      "IATA": "TSE",
-      "ICAO": "UACC",
-      "Airport": "Astana International Airport",
-      "Refs": "[6]"
-    },
-    {
-      "City": "Barcelona",
-      "Country": "Spain",
-      "IATA": "BCN",
-      "ICAO": "LEBL",
-      "Airport": "Barcelona-El Prat Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Bangkok",
-      "Country": "Thailand",
-      "IATA": "BKK",
-      "ICAO": "VTBS",
-      "Airport": "Suvarnabhumi Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Beijing",
-      "Country": "People's Republic of China",
-      "IATA": "PEK",
-      "ICAO": "ZBAA",
-      "Airport": "Beijing Capital International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Brussels",
-      "Country": "Belgium",
-      "IATA": "BRU",
-      "ICAO": "EBBR",
-      "Airport": "Brussels Airport",
-      "Refs": "[7]"
-    },
-    {
-      "City": "Busan",
-      "Country": "Republic of Korea",
-      "IATA": "PUS",
-      "ICAO": "RKPK",
-      "Airport": "Gimhae International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Cebu",
-      "Country": "Philippines",
-      "IATA": "CEB",
-      "ICAO": "RPVM",
-      "Airport": "Mactan-Cebu International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Changchun",
-      "Country": "People's Republic of China",
-      "IATA": "CGQ",
-      "ICAO": "ZYCC",
-      "Airport": "Changchun Longjia International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Changsha",
-      "Country": "People's Republic of China",
-      "IATA": "CSX",
-      "ICAO": "ZGHA",
-      "Airport": "Changsha Huanghua International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Chengdu",
-      "Country": "People's Republic of China",
-      "IATA": "CTU",
-      "ICAO": "ZUUU",
-      "Airport": "Chengdu Shuangliu International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Cheongju",
-      "Country": "Republic of Korea",
-      "IATA": "CJJ",
-      "ICAO": "RKTU",
-      "Airport": "Cheongju International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Chicago",
-      "Country": "United States",
-      "IATA": "ORD",
-      "ICAO": "KORD",
-      "Airport": "Chicago O'Hare International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Chongqing",
-      "Country": "People's Republic of China",
-      "IATA": "CKG",
-      "ICAO": "ZUCK",
-      "Airport": "Chongqing Jiangbei International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Clark",
-      "Country": "Philippines",
-      "IATA": "CRK",
-      "ICAO": "RPLC",
-      "Airport": "Clark International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Da Nang",
-      "Country": "Vietnam",
-      "IATA": "DAD",
-      "ICAO": "VVDN",
-      "Airport": "Da Nang International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Daegu",
-      "Country": "Republic of Korea",
-      "IATA": "TAE",
-      "ICAO": "RKTN",
-      "Airport": "Daegu International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Dalian",
-      "Country": "People's Republic of China",
-      "IATA": "DLC",
-      "ICAO": "ZYTL",
-      "Airport": "Dalian Zhoushuizi International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Dallas",
-      "Country": "United States",
-      "IATA": "DFW",
-      "ICAO": "KDFW",
-      "Airport": "Dallas/Fort Worth International Airport",
-      "Refs": "[8]"
-    },
-    {
-      "City": "Delhi",
-      "Country": "India",
-      "IATA": "DEL",
-      "ICAO": "VIDP",
-      "Airport": "Indira Gandhi International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Denpasar",
-      "Country": "Indonesia",
-      "IATA": "DPS",
-      "ICAO": "WADD",
-      "Airport": "Ngurah Rai International Airport",
-      "Refs": "[9]"
-    },
-    {
-      "City": "Fukuoka",
-      "Country": "Japan",
-      "IATA": "FUK",
-      "ICAO": "RJFF",
-      "Airport": "Fukuoka Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Frankfurt",
-      "Country": "Germany",
-      "IATA": "FRA",
-      "ICAO": "EDDF",
-      "Airport": "Frankfurt Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Guangzhou",
-      "Country": "People's Republic of China",
-      "IATA": "CAN",
-      "ICAO": "ZGGG",
-      "Airport": "Guangzhou Baiyun International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Guilin",
-      "Country": "People's Republic of China",
-      "IATA": "KWL",
-      "ICAO": "ZGKL",
-      "Airport": "Guilin Liangjiang International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Gwangju",
-      "Country": "Republic of Korea",
-      "IATA": "KWJ",
-      "ICAO": "RKJJ",
-      "Airport": "Gwangju Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Hailar",
-      "Country": "People's Republic of China",
-      "IATA": "HLD",
-      "ICAO": "ZBLA",
-      "Airport": "Hulunbuir Hailar Airport",
-      "Refs": "[10]"
-    },
-    {
-      "City": "Hangzhou",
-      "Country": "People's Republic of China",
-      "IATA": "HGH",
-      "ICAO": "ZSHC",
-      "Airport": "Hangzhou Xiaoshan International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Hanoi",
-      "Country": "Vietnam",
-      "IATA": "HAN",
-      "ICAO": "VVNB",
-      "Airport": "Noi Bai International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Harbin",
-      "Country": "People's Republic of China",
-      "IATA": "HRB",
-      "ICAO": "ZYHB",
-      "Airport": "Harbin Taiping International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Hiroshima",
-      "Country": "Japan",
-      "IATA": "HIJ",
-      "ICAO": "RJOA",
-      "Airport": "Hiroshima Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Ho Chi Minh City",
-      "Country": "Vietnam",
-      "IATA": "SGN",
-      "ICAO": "VVTS",
-      "Airport": "Tan Son Nhat International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Hong Kong",
-      "Country": "Hong Kong",
-      "IATA": "HKG",
-      "ICAO": "VHHH",
-      "Airport": "Hong Kong International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Honolulu",
-      "Country": "United States",
-      "IATA": "HNL",
-      "ICAO": "PHNL",
-      "Airport": "Honolulu International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Huangshan",
-      "Country": "People's Republic of China",
-      "IATA": "TXN",
-      "ICAO": "ZSTX",
-      "Airport": "Huangshan Tunxi International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Istanbul",
-      "Country": "Turkey",
-      "IATA": "IST",
-      "ICAO": "LTBA",
-      "Airport": "Istanbul Atatürk Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Jakarta",
-      "Country": "Indonesia",
-      "IATA": "CGK",
-      "ICAO": "WIII",
-      "Airport": "Soekarno–Hatta International Airport",
-      "Refs": "[9]"
-    },
-    {
-      "City": "Jeju",
-      "Country": "Republic of Korea",
-      "IATA": "CJU",
-      "ICAO": "RKPC",
-      "Airport": "Jeju International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Jinan",
-      "Country": "People's Republic of China",
-      "IATA": "TNA",
-      "ICAO": "ZSJN",
-      "Airport": "Jinan Yaoqiang International Airport",
-      "Refs": "[11]"
-    },
-    {
-      "City": "Jinju",
-      "Country": "Republic of Korea",
-      "IATA": "KWJ",
-      "ICAO": "RKPS",
-      "Airport": "Sacheon Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Khabarovsk",
-      "Country": "Russia",
-      "IATA": "KHV",
-      "ICAO": "UHHH",
-      "Airport": "Khabarovsk Novy Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Koror",
-      "Country": "Palau",
-      "IATA": "ROR",
-      "ICAO": "PTRO",
-      "Airport": "Roman Tmetuchl International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Kota Kinabalu",
-      "Country": "Malaysia",
-      "IATA": "BKI",
-      "ICAO": "WBKK",
-      "Airport": "Kota Kinabalu International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Kumamoto",
-      "Country": "Japan",
-      "IATA": "KMJ",
-      "ICAO": "RJFT",
-      "Airport": "Kumamoto Airport",
-      "Refs": ""
-    },
-    {
-      "City": "London",
-      "Country": "United Kingdom",
-      "IATA": "LHR",
-      "ICAO": "EGLL",
-      "Airport": "London Heathrow Airport",
-      "Refs": ""
-    },
-    {
-      "City": "London",
-      "Country": "United Kingdom",
-      "IATA": "STN",
-      "ICAO": "EGSS",
-      "Airport": "London Stansted Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Los Angeles",
-      "Country": "United States",
-      "IATA": "LAX",
-      "ICAO": "KLAX",
-      "Airport": "Los Angeles International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Manila",
-      "Country": "Philippines",
-      "IATA": "MNL",
-      "ICAO": "RPLL",
-      "Airport": "Ninoy Aquino International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Matsuyama",
-      "Country": "Japan",
-      "IATA": "MYJ",
-      "ICAO": "RJOM",
-      "Airport": "Matsuyama Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Miami",
-      "Country": "United States",
-      "IATA": "MIA",
-      "ICAO": "KMIA",
-      "Airport": "Miami International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Milan",
-      "Country": "Italy",
-      "IATA": "MXP",
-      "ICAO": "LIMC",
-      "Airport": "Malpensa Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Miyazaki",
-      "Country": "Japan",
-      "IATA": "KMI",
-      "ICAO": "RJFM",
-      "Airport": "Miyazaki Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Moscow",
-      "Country": "Russia",
-      "IATA": "DME",
-      "ICAO": "UUDD",
-      "Airport": "Domodedovo International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Muan",
-      "Country": "Republic of Korea",
-      "IATA": "MWX",
-      "ICAO": "RKJB",
-      "Airport": "Muan International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Mumbai",
-      "Country": "India",
-      "IATA": "BOM",
-      "ICAO": "VABB",
-      "Airport": "Chhatrapati Shivaji International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Nagoya",
-      "Country": "Japan",
-      "IATA": "NGO",
-      "ICAO": "RJGG",
-      "Airport": "Chūbu Centrair International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Naha",
-      "Country": "Japan",
-      "IATA": "OKA",
-      "ICAO": "ROAH",
-      "Airport": "Naha Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Nanjing",
-      "Country": "People's Republic of China",
-      "IATA": "NKG",
-      "ICAO": "ZSNJ",
-      "Airport": "Nanjing Lukou International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "New York City",
-      "Country": "United States",
-      "IATA": "JFK",
-      "ICAO": "KJFK",
-      "Airport": "John F. Kennedy International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Osaka",
-      "Country": "Japan",
-      "IATA": "KIX",
-      "ICAO": "RJBB",
-      "Airport": "Kansai International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Osaka",
-      "Country": "Japan",
-      "IATA": "ITM",
-      "ICAO": "RJOO",
-      "Airport": "Osaka International Airport",
-      "Refs": "Charter[12]"
-    },
-    {
-      "City": "Paris",
-      "Country": "France",
-      "IATA": "CDG",
-      "ICAO": "LFPG",
-      "Airport": "Paris-Charles de Gaulle Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Phnom Penh",
-      "Country": "Cambodia",
-      "IATA": "PNH",
-      "ICAO": "VDPP",
-      "Airport": "Phnom Penh International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Phuket",
-      "Country": "Thailand",
-      "IATA": "HKT",
-      "ICAO": "VTSP",
-      "Airport": "Phuket International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Qingdao",
-      "Country": "People's Republic of China",
-      "IATA": "TAO",
-      "ICAO": "ZSQD",
-      "Airport": "Qingdao Liuting International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Rome",
-      "Country": "Italy",
-      "IATA": "FCO",
-      "ICAO": "LIRF",
-      "Airport": "Leonardo da Vinci-Fiumicino Airport",
-      "Refs": "[13]"
-    },
-    {
-      "City": "Saipan",
-      "Country": "Northern Mariana Islands",
-      "IATA": "SPN",
-      "ICAO": "PGSN",
-      "Airport": "Saipan International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "San Francisco",
-      "Country": "United States",
-      "IATA": "SFO",
-      "ICAO": "KSFO",
-      "Airport": "San Francisco International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Sapporo",
-      "Country": "Japan",
-      "IATA": "CTS",
-      "ICAO": "RJCC",
-      "Airport": "New Chitose Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Seattle",
-      "Country": "United States",
-      "IATA": "SEA",
-      "ICAO": "KSEA",
-      "Airport": "Seattle-Tacoma International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Sendai",
-      "Country": "Japan",
-      "IATA": "SDJ",
-      "ICAO": "RJSS",
-      "Airport": "Sendai Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Seoul",
-      "Country": "Republic of Korea",
-      "IATA": "GMP",
-      "ICAO": "RKSS",
-      "Airport": "Gimpo International Airport [Domestic hub]",
-      "Refs": ""
-    },
-    {
-      "City": "Seoul",
-      "Country": "Republic of Korea",
-      "IATA": "ICN",
-      "ICAO": "RKSI",
-      "Airport": "Incheon International Airport [International hub]",
-      "Refs": ""
-    },
-    {
-      "City": "Shanghai",
-      "Country": "People's Republic of China",
-      "IATA": "PVG",
-      "ICAO": "ZSPD",
-      "Airport": "Shanghai Pudong International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Shanghai",
-      "Country": "People's Republic of China",
-      "IATA": "SHA",
-      "ICAO": "ZSSS",
-      "Airport": "Shanghai Hongqiao International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Shenzhen",
-      "Country": "People's Republic of China",
-      "IATA": "SZX",
-      "ICAO": "ZGSZ",
-      "Airport": "Shenzhen Bao'an International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Shizuoka",
-      "Country": "Japan",
-      "IATA": "FSZ",
-      "ICAO": "RJNS",
-      "Airport": "Shizuoka Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Siem Reap",
-      "Country": "Cambodia",
-      "IATA": "REP",
-      "ICAO": "VDSR",
-      "Airport": "Angkor International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Singapore",
-      "Country": "Singapore",
-      "IATA": "SIN",
-      "ICAO": "WSSS",
-      "Airport": "Singapore Changi Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Sydney",
-      "Country": "Australia",
-      "IATA": "SYD",
-      "ICAO": "YSSY",
-      "Airport": "Sydney Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Tianjin",
-      "Country": "People's Republic of China",
-      "IATA": "TSN",
-      "ICAO": "ZBTJ",
-      "Airport": "Binhai International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Taipei",
-      "Country": "Republic of China",
-      "IATA": "TPE",
-      "ICAO": "RCTP",
-      "Airport": "Taipei Taoyuan International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Takamatsu",
-      "Country": "Japan",
-      "IATA": "TAK",
-      "ICAO": "RJOT",
-      "Airport": "Takamatsu Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Tashkent",
-      "Country": "Uzbekistan",
-      "IATA": "TAS",
-      "ICAO": "UTTT",
-      "Airport": "Tashkent International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Tokyo",
-      "Country": "Japan",
-      "IATA": "HND",
-      "ICAO": "RJTT",
-      "Airport": "Haneda Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Tokyo",
-      "Country": "Japan",
-      "IATA": "NRT",
-      "ICAO": "RJAA",
-      "Airport": "Narita International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Toyama",
-      "Country": "Japan",
-      "IATA": "TOY",
-      "ICAO": "RJNT",
-      "Airport": "Toyama Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Ulsan",
-      "Country": "Republic of Korea",
-      "IATA": "USN",
-      "ICAO": "RKPU",
-      "Airport": "Ulsan Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Venice",
-      "Country": "Italy",
-      "IATA": "VCE",
-      "ICAO": "LIPZ",
-      "Airport": "Venice Marco Polo Airport",
-      "Refs": "Charter"
-    },
-    {
-      "City": "Vienna",
-      "Country": "Austria",
-      "IATA": "VIE",
-      "ICAO": "LOWW",
-      "Airport": "Vienna International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Vladivostok",
-      "Country": "Russia",
-      "IATA": "VVO",
-      "ICAO": "UHWW",
-      "Airport": "Vladivostok International Airport",
-      "Refs": "[14]"
-    },
-    {
-      "City": "Weihai",
-      "Country": "People's Republic of China",
-      "IATA": "WEH",
-      "ICAO": "ZSWH",
-      "Airport": "Weihai Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Xi'an",
-      "Country": "People's Republic of China",
-      "IATA": "XIY",
-      "ICAO": "ZLXY",
-      "Airport": "Xi'an Xianyang International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yancheng",
-      "Country": "People's Republic of China",
-      "IATA": "YNZ",
-      "ICAO": "ZSYN",
-      "Airport": "Yancheng Nanyang Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yangon",
-      "Country": "Myanmar",
-      "IATA": "RGN",
-      "ICAO": "VYYY",
-      "Airport": "Yangon International Airport",
-      "Refs": "[15]"
-    },
-    {
-      "City": "Yanji",
-      "Country": "People's Republic of China",
-      "IATA": "YNJ",
-      "ICAO": "ZYYJ",
-      "Airport": "Yanji Chaoyangchuan Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yantai",
-      "Country": "People's Republic of China",
-      "IATA": "YNT",
-      "ICAO": "ZSYT",
-      "Airport": "Yantai Laishan International Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yeosu",
-      "Country": "Republic of Korea",
-      "IATA": "RSU",
-      "ICAO": "RKJY",
-      "Airport": "Yeosu Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yonago",
-      "Country": "Japan",
-      "IATA": "YGJ",
-      "ICAO": "RJOH",
-      "Airport": "Miho-Yonago Airport",
-      "Refs": ""
-    },
-    {
-      "City": "Yuzhno-Sakhalinsk",
-      "Country": "Russia",
-      "IATA": "UUS",
-      "ICAO": "UHSS",
-      "Airport": "Yuzhno-Sakhalinsk Airport",
-      "Refs": ""
-    }
-  ],
-  "Terminated destinations": [
-    {
-      "City": "Ancona",
-      "Country": "Italy",
-      "IATA": "AOI",
-      "ICAO": "LIPY",
-      "Airport": "Ancona Falconara Airport [T]"
-    },
-    {
-      "City": "Arad",
-      "Country": "Romania",
-      "IATA": "ARW",
-      "ICAO": "LRAR",
-      "Airport": "Arad International Airport [T]"
-    },
-    {
-      "City": "Athens",
-      "Country": "Greece",
-      "IATA": "ATH",
-      "ICAO": "LGAV",
-      "Airport": "Athens International Airport [T]"
-    },
-    {
-      "City": "Baia Mare",
-      "Country": "Romania",
-      "IATA": "BAY",
-      "ICAO": "LRBM",
-      "Airport": "Baia Mare Airport [T]"
-    },
-    {
-      "City": "Bari",
-      "Country": "Italy",
-      "IATA": "BRI",
-      "ICAO": "LIBD",
-      "Airport": "Bari Karol Wojtyła Airport [T]"
-    },
-    {
-      "City": "Basel/Mulhouse/Freiburg",
-      "Country": "Switzerland/France/Germany",
-      "IATA": "BSL\nMLH",
-      "ICAO": "LFSB",
-      "Airport": "EuroAirport Basel–Mulhouse–Freiburg [T]"
-    },
-    {
-      "City": "Bergamo",
-      "Country": "Italy",
-      "IATA": "BGY",
-      "ICAO": "LIME",
-      "Airport": "Il Caravaggio International Airport [T]"
-    },
-    {
-      "City": "Bologna",
-      "Country": "Italy",
-      "IATA": "BLQ",
-      "ICAO": "LIPE",
-      "Airport": "Bologna Guglielmo Marconi Airport [T]"
-    },
-    {
-      "City": "Bucharest",
-      "Country": "Romania",
-      "IATA": "BBU",
-      "ICAO": "LRBS",
-      "Airport": "Aurel Vlaicu International Airport [T]"
-    },
-    {
-      "City": "Bucharest",
-      "Country": "Romania",
-      "IATA": "OTP",
-      "ICAO": "LROP",
-      "Airport": "Henri Coandă International Airport [T]"
-    },
-    {
-      "City": "Budapest",
-      "Country": "Hungary",
-      "IATA": "BUD",
-      "ICAO": "LHBP",
-      "Airport": "Budapest Ferenc Liszt International Airport [T]"
-    },
-    {
-      "City": "Chernivtsi",
-      "Country": "Ukraine",
-      "IATA": "CWC",
-      "ICAO": "UKLN",
-      "Airport": "Chernivtsi International Airport [T]"
-    },
-    {
-      "City": "Chişinău",
-      "Country": "Moldova",
-      "IATA": "KIV",
-      "ICAO": "LUKK",
-      "Airport": "Chişinău International Airport [T]"
-    },
-    {
-      "City": "Cluj-Napoca",
-      "Country": "Romania",
-      "IATA": "CLJ",
-      "ICAO": "LRCL",
-      "Airport": "Cluj Avram Iancu International Airport [T]"
-    },
-    {
-      "City": "Constanţa",
-      "Country": "Romania",
-      "IATA": "CND",
-      "ICAO": "LRCK",
-      "Airport": "Mihail Kogălniceanu International Airport [T]"
-    },
-    {
-      "City": "Copenhagen",
-      "Country": "Denmark",
-      "IATA": "CPH",
-      "ICAO": "EKCH",
-      "Airport": "Copenhagen Airport [T]"
-    },
-    {
-      "City": "Craiova",
-      "Country": "Romania",
-      "IATA": "CRA",
-      "ICAO": "LRCV",
-      "Airport": "Craiova Airport [T]"
-    },
-    {
-      "City": "Dortmund",
-      "Country": "Germany",
-      "IATA": "DTM",
-      "ICAO": "EDLW",
-      "Airport": "Dortmund Airport [T]"
-    },
-    {
-      "City": "Düsseldorf",
-      "Country": "Germany",
-      "IATA": "DUS",
-      "ICAO": "EDDL",
-      "Airport": "Düsseldorf Airport [T]"
-    },
-    {
-      "City": "Faro",
-      "Country": "Portugal",
-      "IATA": "FAO",
-      "ICAO": "LPFR",
-      "Airport": "Faro Airport [T]"
-    },
-    {
-      "City": "Florence",
-      "Country": "Italy",
-      "IATA": "FLR",
-      "ICAO": "LIRQ",
-      "Airport": "Florence Airport, Peretola [T]"
-    },
-    {
-      "City": "Frankfurt",
-      "Country": "Germany",
-      "IATA": "FRA",
-      "ICAO": "EDDF",
-      "Airport": "Frankfurt Airport [T]"
-    },
-    {
-      "City": "Iași",
-      "Country": "Romania",
-      "IATA": "IAS",
-      "ICAO": "LRIA",
-      "Airport": "Iași International Airport [T]"
-    },
-    {
-      "City": "Kyiv",
-      "Country": "Ukraine",
-      "IATA": "IEV",
-      "ICAO": "UKKK",
-      "Airport": "Kyiv International Airport (Zhuliany) [T]"
-    },
-    {
-      "City": "Ljubljana",
-      "Country": "Slovenia",
-      "IATA": "LJU",
-      "ICAO": "LJLJ",
-      "Airport": "Ljubljana Jože Pučnik Airport [T]"
-    },
-    {
-      "City": "Luqa",
-      "Country": "Malta",
-      "IATA": "MLA",
-      "ICAO": "LMML",
-      "Airport": "Malta International Airport [T]"
-    },
-    {
-      "City": "Lviv",
-      "Country": "Ukraine",
-      "IATA": "LWO",
-      "ICAO": "UKLL",
-      "Airport": "Lviv Danylo Halytskyi International Airport [T]"
-    },
-    {
-      "City": "Milan",
-      "Country": "Italy",
-      "IATA": "LIN",
-      "ICAO": "LIML",
-      "Airport": "Linate Airport [T]"
-    },
-    {
-      "City": "Munich",
-      "Country": "Germany",
-      "IATA": "MUC",
-      "ICAO": "EDDM",
-      "Airport": "Munich Airport [T]"
-    },
-    {
-      "City": "Naples",
-      "Country": "Italy",
-      "IATA": "NAP",
-      "ICAO": "LIRN",
-      "Airport": "Naples International Airport [T]"
-    },
-    {
-      "City": "Oradea",
-      "Country": "Romania",
-      "IATA": "OMR",
-      "ICAO": "LROD",
-      "Airport": "Oradea International Airport [T]"
-    },
-    {
-      "City": "Paris",
-      "Country": "France",
-      "IATA": "CDG",
-      "ICAO": "LFPG",
-      "Airport": "Charles de Gaulle Airport [T]"
-    },
-    {
-      "City": "Perugia",
-      "Country": "Italy",
-      "IATA": "PEG",
-      "ICAO": "LIRZ",
-      "Airport": "Perugia San Francesco d'Assisi – Umbria International Airport [T]"
-    },
-    {
-      "City": "Satu Mare",
-      "Country": "Romania",
-      "IATA": "SUJ",
-      "ICAO": "LRSM",
-      "Airport": "Satu Mare Airport [T]"
-    },
-    {
-      "City": "Sibiu",
-      "Country": "Romania",
-      "IATA": "SBZ",
-      "ICAO": "LRSB",
-      "Airport": "Sibiu International Airport [T]"
-    },
-    {
-      "City": "Stuttgart",
-      "Country": "Germany",
-      "IATA": "STR",
-      "ICAO": "EDDS",
-      "Airport": "Stuttgart Airport [T]"
-    },
-    {
-      "City": "Suceava",
-      "Country": "Romania",
-      "IATA": "SCV",
-      "ICAO": "LRSV",
-      "Airport": "Suceava \"Ștefan cel Mare\" Airport [T]"
-    },
-    {
-      "City": "Târgu Mures",
-      "Country": "Romania",
-      "IATA": "TGM",
-      "ICAO": "LRTM",
-      "Airport": "Târgu Mureș International Airport [T]"
-    },
-    {
-      "City": "Thessaloniki",
-      "Country": "Greece",
-      "IATA": "SKG",
-      "ICAO": "LGTS",
-      "Airport": "Thessaloniki International Airport \"Macedonia\" [T]"
-    },
-    {
-      "City": "Timișoara",
-      "Country": "Romania",
-      "IATA": "TSR",
-      "ICAO": "LRTR",
-      "Airport": "Traian Vuia International Airport [T]"
-    },
-    {
-      "City": "Treviso",
-      "Country": "Italy",
-      "IATA": "TSF",
-      "ICAO": "LIPH",
-      "Airport": "Treviso Airport [T]"
-    },
-    {
-      "City": "Tulcea",
-      "Country": "Romania",
-      "IATA": "TCE",
-      "ICAO": "LRTC",
-      "Airport": "Tulcea Danube Delta Airport [T]"
-    },
-    {
-      "City": "Turin",
-      "Country": "Italy",
-      "IATA": "TSF",
-      "ICAO": "LIPH",
-      "Airport": "Turin Airport [T]"
-    },
-    {
-      "City": "Venice",
-      "Country": "Italy",
-      "IATA": "VCE",
-      "ICAO": "LIPZ",
-      "Airport": "Venice Marco Polo Airport [T]"
-    },
-    {
-      "City": "Verona",
-      "Country": "Italy",
-      "IATA": "VRN",
-      "ICAO": "LIPX",
-      "Airport": "Verona Villafranca Airport [T]"
-    },
-    {
-      "City": "Vienna",
-      "Country": "Austria",
-      "IATA": "VIE",
-      "ICAO": "LOWW",
-      "Airport": "Vienna International Airport [T]"
-    },
-    {
-      "City": "Warsaw",
-      "Country": "Poland",
-      "IATA": "WAW",
-      "ICAO": "EPWA",
-      "Airport": "Warsaw Chopin Airport [T]"
-    },
-    {
-      "City": "Zagreb",
-      "Country": "Croatia",
-      "IATA": "ZAG",
-      "ICAO": "LDZA",
-      "Airport": "Zagreb International Airport [T]"
-    }
-  ],
-  "Destinations": [
-    {
-      "": "Hub"
-    },
-    {
-      "": "Hub"
-    },
-    {
-      "": "¤"
-    },
-    {
-      "": "Focus Cities"
-    },
-    {
-      "": "^"
-    },
-    {
-      "": "Future destinations"
-    },
-    {
-      "": "[T]"
-    },
-    {
-      "": "Terminated destinations"
-    }
-  ],
-  "Destinations list": [
-    {
-      "Country (State)": "Iran",
-      "City": "Abadan",
-      "Airport": "Abadan Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Abu Dhabi",
-      "Airport": "Abu Dhabi International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Ghana",
-      "City": "Accra",
-      "Airport": "Kotoka International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Ethiopia",
-      "City": "Addis Ababa",
-      "Airport": "Bole International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Yemen",
-      "City": "Aden",
-      "Airport": "Aden International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Al Ain",
-      "Airport": "Al Ain International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[6]"
-    },
-    {
-      "Country (State)": "Iraq",
-      "City": "Baghdad",
-      "Airport": "Saddam International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Bahrain",
-      "City": "Bahrain",
-      "Airport": "Bahrain International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Thailand",
-      "City": "Bangkok",
-      "Airport": "Suvarnabhumi Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Lebanon",
-      "City": "Beirut",
-      "Airport": "Rafic Hariri International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "United Kingdom",
-      "City": "Birmingham",
-      "Airport": "Birmingham Airport",
-      "Notes": "",
-      "Refs": "[7]"
-    },
-    {
-      "Country (State)": "Belgium",
-      "City": "Brussels",
-      "Airport": "Brussels Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Egypt",
-      "City": "Cairo",
-      "Airport": "Cairo International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Sri Lanka",
-      "City": "Colombo",
-      "Airport": "Bandaranaike International Airport",
-      "Notes": "",
-      "Refs": "[8]"
-    },
-    {
-      "Country (State)": "Syria",
-      "City": "Damascus",
-      "Airport": "Damascus International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "Saudi Arabia",
-      "City": "Dammam",
-      "Airport": "King Fahd International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Tanzania",
-      "City": "Dar es Salaam",
-      "Airport": "Julius Nyerere International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Bangladesh",
-      "City": "Dhaka",
-      "Airport": "Shahjalal International Airport",
-      "Notes": "",
-      "Refs": "[9]"
-    },
-    {
-      "Country (State)": "Qatar",
-      "City": "Doha",
-      "Airport": "Doha International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Dubai",
-      "Airport": "Dubai International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "South Africa",
-      "City": "Durban",
-      "Airport": "Durban International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[10]"
-    },
-    {
-      "Country (State)": "Germany",
-      "City": "Düsseldorf",
-      "Airport": "Düsseldorf International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "Uganda",
-      "City": "Entebbe",
-      "Airport": "Entebbe International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Germany",
-      "City": "Frankfurt",
-      "Airport": "Frankfurt Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Fujairah",
-      "Airport": "Fujairah International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[11]"
-    },
-    {
-      "Country (State)": "Switzerland",
-      "City": "Geneva",
-      "Airport": "Geneva International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Zimbabwe",
-      "City": "Harare",
-      "Airport": "Harare International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[11]"
-    },
-    {
-      "Country (State)": "Hong Kong",
-      "City": "Hong Kong",
-      "Airport": "Hong Kong International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2][12]"
-    },
-    {
-      "Country (State)": "India (Tripura)",
-      "City": "Agartala",
-      "Airport": "Agartala Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Gujarat)",
-      "City": "Ahmedabad",
-      "Airport": "Sardar Vallabhbhai Patel International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Mizoram)",
-      "City": "Aizwal",
-      "Airport": "Lengpui Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Punjab)",
-      "City": "Amritsar",
-      "Airport": "Sri Guru Ram Dass Jee International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Maharashtra)",
-      "City": "Aurangabad",
-      "Airport": "Aurangabad Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Karnataka)",
-      "City": "Bangalore",
-      "Airport": "Bengaluru International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Karnataka)",
-      "City": "Bellary",
-      "Airport": "Bellary Airport [T]",
-      "Notes": "Terminated",
-      "Refs": ""
-    },
-    {
-      "Country (State)": "India (Madhya Pradesh)",
-      "City": "Bhopal",
-      "Airport": "Bhopal Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Odisha)",
-      "City": "Bhubaneswar",
-      "Airport": "Biju Patnaik International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Chandigarh)",
-      "City": "Chandigarh",
-      "Airport": "Chandigarh Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Tamil Nadu)",
-      "City": "Chennai",
-      "Airport": "Chennai International Airport ¤",
-      "Notes": "Hub",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Tamil Nadu)",
-      "City": "Coimbatore",
-      "Airport": "Coimbatore International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (NCR)",
-      "City": "Delhi",
-      "Airport": "Indira Gandhi International Airport Hub",
-      "Notes": "Hub",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Assam)",
-      "City": "Dibrugarh",
-      "Airport": "Dibrugarh Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Nagaland)",
-      "City": "Dimapur",
-      "Airport": "Dimapur Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Daman and Diu)",
-      "City": "Diu",
-      "Airport": "Diu Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Bihar)",
-      "City": "Gaya",
-      "Airport": "Gaya Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Goa)",
-      "City": "Goa",
-      "Airport": "Dabolim Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Madhya Pradesh)",
-      "City": "Gwalior",
-      "Airport": "Gwalior Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Assam)",
-      "City": "Guwahati",
-      "Airport": "Lokpriya Gopinath Bordoloi International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Telangana)",
-      "City": "Hyderabad",
-      "Airport": "Rajiv Gandhi International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Manipur)",
-      "City": "Imphal",
-      "Airport": "Tulihal International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Madhya Pradesh)",
-      "City": "Indore",
-      "Airport": "Devi Ahilyabai Holkar Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Rajasthan)",
-      "City": "Jaipur",
-      "Airport": "Jaipur International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Jammu and Kashmir)",
-      "City": "Jammu",
-      "Airport": "Jammu Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Gujarat)",
-      "City": "Jamnagar",
-      "Airport": "Jamnagar Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Rajasthan)",
-      "City": "Jodhpur",
-      "Airport": "Jodhpur Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Madhya Pradesh)",
-      "City": "Khajuraho",
-      "Airport": "Khajuraho Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Kerala)",
-      "City": "Kochi",
-      "Airport": "Cochin International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (West Bengal)",
-      "City": "Kolkata",
-      "Airport": "Netaji Subhas Chandra Bose International Airport ¤",
-      "Notes": "Hub",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Kerala)",
-      "City": "Kozhikode",
-      "Airport": "Calicut International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Kerala)",
-      "City": "Thiruvananthapuram",
-      "Airport": "Trivandrum International Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Tamil Nadu)",
-      "City": "Tiruchirapalli",
-      "Airport": "Tiruchirapalli Airport [T]",
-      "Notes": "",
-      "Refs": ""
-    },
-    {
-      "Country (State)": "India (Andhra Pradesh)",
-      "City": "Tirupati",
-      "Airport": "Tirupati Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Rajasthan)",
-      "City": "Udaipur",
-      "Airport": "Udaipur Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Uttar Pradesh)",
-      "City": "Varanasi",
-      "Airport": "Lal Bahadur Shastri International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Andhra Pradesh)",
-      "City": "Vijayawada",
-      "Airport": "Vijayawada Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Andhra Pradesh)",
-      "City": "Visakhapatnam",
-      "Airport": "Visakhapatnam Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Karnataka)",
-      "City": "Mangalore",
-      "Airport": "Mangalore International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Jammu and Kashmir)",
-      "City": "Leh",
-      "Airport": "Leh Kushok Bakula Rimpochee Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Uttar Pradesh)",
-      "City": "Lucknow",
-      "Airport": "Amausi Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Tamil Nadu)",
-      "City": "Madurai",
-      "Airport": "Madurai Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Bihar)",
-      "City": "Patna",
-      "Airport": "Lok Nayak Jayaprakash Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Maharashtra)",
-      "City": "Mumbai",
-      "Airport": "Chhatrapati Shivaji International Airport",
-      "Notes": "Hub",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Maharashtra)",
-      "City": "Nagpur",
-      "Airport": "Dr. Babasaheb Ambedkar International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Andaman and Nicobar Islands)",
-      "City": "Port Blair",
-      "Airport": "Veer Savarkar International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Maharashtra)",
-      "City": "Pune",
-      "Airport": "Pune Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Chhattisgarh)",
-      "City": "Raipur",
-      "Airport": "Raipur Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Gujarat)",
-      "City": "Rajkot",
-      "Airport": "Rajkot Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Jharkhand)",
-      "City": "Ranchi",
-      "Airport": "Birsa Munda Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Bihar)",
-      "City": "Raxaul",
-      "Airport": "Raxaul Airport[T]",
-      "Notes": "Terminated",
-      "Refs": ""
-    },
-    {
-      "Country (State)": "India (Assam)",
-      "City": "Silchar",
-      "Airport": "Silchar Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (West Bengal)",
-      "City": "Siliguri",
-      "Airport": "Bagdogra Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Jammu and Kashmir)",
-      "City": "Srinagar",
-      "Airport": "Srinagar Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "India (Gujarat)",
-      "City": "Surat",
-      "Airport": "Surat Airport",
-      "Notes": "",
-      "Refs": "[13]"
-    },
-    {
-      "Country (State)": "Indonesia",
-      "City": "Jakarta",
-      "Airport": "Soekarno–Hatta International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "Saudi Arabia",
-      "City": "Jeddah",
-      "Airport": "King Abdul Aziz International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "South Africa",
-      "City": "Johannesburg",
-      "Airport": "OR Tambo International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[10]"
-    },
-    {
-      "Country (State)": "Afghanistan",
-      "City": "Kabul",
-      "Airport": "Kabul International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Pakistan",
-      "City": "Karachi",
-      "Airport": "Jinnah International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "Nepal",
-      "City": "Kathmandu",
-      "Airport": "Tribhuvan International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Malaysia",
-      "City": "Kuala Lumpur",
-      "Airport": "Kuala Lumpur International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Kuwait",
-      "City": "Kuwait City",
-      "Airport": "Kuwait International Airport",
-      "Notes": "",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Nigeria",
-      "City": "Lagos",
-      "Airport": "Murtala Muhammed International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "United Kingdom",
-      "City": "London",
-      "Airport": "London Heathrow Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "Los Angeles",
-      "Airport": "Los Angeles International Airport",
-      "Notes": "Terminated",
-      "Refs": ""
-    },
-    {
-      "Country (State)": "Zambia",
-      "City": "Lusaka",
-      "Airport": "Lusaka International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Seychelles",
-      "City": "Mahé",
-      "Airport": "Seychelles International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Maldives",
-      "City": "Malé",
-      "Airport": "Malé International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United Kingdom",
-      "City": "Manchester",
-      "Airport": "Manchester Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[10]"
-    },
-    {
-      "Country (State)": "Mauritius",
-      "City": "Mauritius",
-      "Airport": "Sir Seewoosagur Ramgoolam International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Australia",
-      "City": "Melbourne",
-      "Airport": "Melbourne Airport",
-      "Notes": "",
-      "Refs": "[14]"
-    },
-    {
-      "Country (State)": "Italy",
-      "City": "Milan",
-      "Airport": "Malpensa Airport",
-      "Notes": "",
-      "Refs": "[15]"
-    },
-    {
-      "Country (State)": "Canada",
-      "City": "Montreal",
-      "Airport": "Pierre Elliott Trudeau International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[11]"
-    },
-    {
-      "Country (State)": "Russia",
-      "City": "Moscow",
-      "Airport": "Sheremetyevo International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Russia",
-      "City": "Moscow",
-      "Airport": "Domodedovo International Airport",
-      "Notes": "",
-      "Refs": "[16]"
-    },
-    {
-      "Country (State)": "Oman",
-      "City": "Muscat",
-      "Airport": "Muscat International Airport",
-      "Notes": "",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Fiji",
-      "City": "Nadi",
-      "Airport": "Nadi International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Kenya",
-      "City": "Nairobi",
-      "Airport": "Jomo Kenyatta International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "Chicago",
-      "Airport": "O'Hare International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "Newark",
-      "Airport": "Newark Liberty International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "New York City",
-      "Airport": "John F. Kennedy International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "San Francisco",
-      "Airport": "San Francisco International Airport",
-      "Notes": "begins 2 December 2015",
-      "Refs": "[17]"
-    },
-    {
-      "Country (State)": "United States",
-      "City": "Washington, D.C.",
-      "Airport": "Dulles International Airport",
-      "Notes": "Terminated",
-      "Refs": "[18]"
-    },
-    {
-      "Country (State)": "Japan",
-      "City": "Osaka",
-      "Airport": "Kansai International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "France",
-      "City": "Paris",
-      "Airport": "Paris-Charles de Gaulle Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Australia",
-      "City": "Perth",
-      "Airport": "Perth Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Czech Republic",
-      "City": "Prague",
-      "Airport": "Prague Ruzyně Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Ras al Khaima",
-      "Airport": "Ras Al Khaimah International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[3]"
-    },
-    {
-      "Country (State)": "Saudi Arabia",
-      "City": "Riyadh",
-      "Airport": "King Khalid International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Italy",
-      "City": "Rome",
-      "Airport": "Leonardo da Vinci-Fiumicino Airport",
-      "Notes": "",
-      "Refs": "[15]"
-    },
-    {
-      "Country (State)": "Oman",
-      "City": "Salalah",
-      "Airport": "Salalah Airport",
-      "Notes": "Terminated",
-      "Refs": "[19]"
-    },
-    {
-      "Country (State)": "Yemen",
-      "City": "Sana'a",
-      "Airport": "Sana'a International Airport",
-      "Notes": "Terminated",
-      "Refs": "[11]"
-    },
-    {
-      "Country (State)": "Korea",
-      "City": "Seoul",
-      "Airport": "Incheon International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "People's Republic of China",
-      "City": "Shanghai",
-      "Airport": "Shanghai Pudong International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "United Arab Emirates",
-      "City": "Sharjah",
-      "Airport": "Sharjah International Airport",
-      "Notes": "",
-      "Refs": "[11]"
-    },
-    {
-      "Country (State)": "Singapore",
-      "City": "Singapore",
-      "Airport": "Singapore Changi Airport",
-      "Notes": "Focus city",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Australia",
-      "City": "Sydney",
-      "Airport": "Sydney Airport",
-      "Notes": "",
-      "Refs": "[14]"
-    },
-    {
-      "Country (State)": "Uzbekistan",
-      "City": "Tashkent",
-      "Airport": "Tashkent International Airport",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    },
-    {
-      "Country (State)": "Iran",
-      "City": "Tehran",
-      "Airport": "Mehrabad International Airport",
-      "Notes": "Terminated",
-      "Refs": "[4]"
-    },
-    {
-      "Country (State)": "Israel",
-      "City": "Tel Aviv",
-      "Airport": "Ben Gurion International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[10]"
-    },
-    {
-      "Country (State)": "Japan",
-      "City": "Tokyo",
-      "Airport": "Narita International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Canada",
-      "City": "Toronto",
-      "Airport": "Toronto Pearson International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Myanmar",
-      "City": "Yangon",
-      "Airport": "Yangon International Airport",
-      "Notes": "",
-      "Refs": "[2]"
-    },
-    {
-      "Country (State)": "Switzerland",
-      "City": "Zurich",
-      "Airport": "Zurich Airport",
-      "Notes": "Terminated",
-      "Refs": "[5]"
-    },
-    {
-      "Country (State)": "Turkey",
-      "City": "Istanbul",
-      "Airport": "Ataturk International Airport [T]",
-      "Notes": "Terminated",
-      "Refs": "[1]"
-    }
-  ],
-  "Avianca": [
-    {
-      "": ""
-    },
-    {
-      "": "HUB"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Seasonal"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Terminated destination"
-    }
-  ],
-  "Avianca El Salvador": [
-    {
-      "": ""
-    },
-    {
-      "": "HUB"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Terminated destination"
-    }
-  ],
-  "Avianca Peru": [
-    {
-      "": ""
-    },
-    {
-      "": "HUB"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Terminated destination"
-    }
-  ],
-  "Avianca Costa Rica": [
-    {
-      "": ""
-    },
-    {
-      "": "HUB"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Future destination"
-    },
-    {
-      "": ""
-    },
-    {
-      "": "Terminated destination"
-    }
-  ],
-  "Avianca Ecuador": [
-    {
-      "": ""
-    },
-    {
-      "": "HUB"
     },
     {
       "": ""

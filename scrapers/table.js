@@ -67,9 +67,9 @@ router
     );
   });
 
-for (var l = 0; l < airlines.length; l += 1) {
-  var airlineName = airlines[l]["name"];
-  var airlineLink = BASE_PATH + airlines[l]["destinationsLink"];
+// for (var l = 0; l < airlines.length; l += 1) {
+//   var airlineName = airlines[l]["name"];
+//   var airlineLink = BASE_PATH + airlines[l]["destinationsLink"];
 
-  router.route(airlineLink);
-}
+//   router.route(airlineLink);
+// }
