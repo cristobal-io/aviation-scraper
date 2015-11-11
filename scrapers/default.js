@@ -5,6 +5,8 @@ module.exports = function ($) {
   var destinations = {};
   var from;
 
+  if ($(".wikitable").hasClass("wikitable")) {console.log("wikitable");}
+
   $(".mw-content-ltr ul li").each(function () {
 
     if (/toclevel/.test($(this).attr("class"))) {
