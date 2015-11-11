@@ -9,7 +9,7 @@ module.exports = function ($) {
   //  This returns 
   console.log(airlines.length);
 
-  // debugger;
+  debugger;
   var routesObject = {};
 
   $("#mw-content-text h2").map(function () {

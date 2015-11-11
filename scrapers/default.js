@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function ($) {
-  // debugger;
+  debugger;
   var destinations = {};
   var from;
 
