@@ -18,3 +18,7 @@ destinations: lint
 routes: lint
 	echo "Retrieving routes"
 	node airline_routes.js
+
+scrapers: lint
+	echo "Setting up scrapers for each type of page..."
+	node airline_scraper.js
