@@ -16,7 +16,7 @@
 
 var sjs = require("scraperjs");
 var fs = require("fs");
-var async = require("async");
+// var async = require("async");
 var scrapers = require("./scrapers/");
 
 var BASE_URL = "https://en.wikipedia.org";

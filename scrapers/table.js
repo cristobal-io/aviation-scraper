@@ -9,7 +9,7 @@ module.exports = function ($) {
   //  This returns 
   console.log(airlines.length);
 
-  debugger;
+  // debugger;
   var routesObject = {};
 
   $("#mw-content-text h2").map(function () {
@@ -43,7 +43,7 @@ module.exports = function ($) {
       };
     })
     .then(function () {
-      var filename = "./data/routes_" + airlineName + ".json";
+      var filename = "./data/routes_"; //+ airlineName + ".json";
 
       fs.writeFile(filename,
         JSON.stringify(routesObject, null, 2),
