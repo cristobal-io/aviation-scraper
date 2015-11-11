@@ -14,3 +14,7 @@ lint:
 destinations: lint
 	echo "Generating file for airlines destinations"
 	node airline_destinations.js
+
+routes: lint
+	echo "Retrieving routes"
+	node airline_routes.js
