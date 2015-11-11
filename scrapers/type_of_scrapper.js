@@ -5,7 +5,7 @@ module.exports = function ($) {
   var scraper = "default";
 
   if ($(".wikitable").hasClass("wikitable")) {
-    console.log("wikitable");
+    // console.log("wikitable");
     scraper = "table";
   }
   return scraper;
