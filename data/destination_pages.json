@@ -1,46 +1,34 @@
-[
-  {
-    "name": "Adria Airways",
-    "destinationsLink": "/wiki/Adria_Airways_destinations"
-  },
-  {
-    "name": "Aero Lloyd",
-    "destinationsLink": "/wiki/Aero_Lloyd_destinations"
-  },
-  {
-    "name": "Aeromar",
-    "destinationsLink": "/wiki/Aeromar_destinations"
-  },
-  {
-    "name": "Aeroméxico",
-    "destinationsLink": "/wiki/Aerom%C3%A9xico_destinations"
-  },
-  {
-    "name": "Aeroperú",
-    "destinationsLink": "/wiki/Aeroper%C3%BA_destinations"
-  },
-  {
-    "name": "AeroSur",
-    "destinationsLink": "/wiki/AeroSur_destinations"
-  },
-  {
-    "name": "Afriqiyah Airways",
-    "destinationsLink": "/wiki/Afriqiyah_Airways_destinations"
-  },
-  {
-    "name": "Air Algérie",
-    "destinationsLink": "/wiki/Air_Alg%C3%A9rie_destinations"
-  },
-  {
-    "name": "Air Astana",
-    "destinationsLink": "/wiki/Air_Astana_destinations"
-  },
-  {
-    "name": "Air Bucharest",
-    "destinationsLink": "/wiki/Air_Bucharest_destinations"
-  },
-  {
-    "name": "Air Chathams",
-    "destinationsLink": "/wiki/Air_Chathams_destinations"
-  }
-]
+[{
+  "name": "Adria Airways",
+  "destinationsLink": "/wiki/Adria_Airways_destinations"
+}, {
+  "name": "Aero Lloyd",
+  "destinationsLink": "/wiki/Aero_Lloyd_destinations"
+}, {
+  "name": "Aeromar",
+  "destinationsLink": "/wiki/Aeromar_destinations"
+}, {
+  "name": "Aeroméxico",
+  "destinationsLink": "/wiki/Aerom%C3%A9xico_destinations"
+}, {
+  "name": "Aeroperú",
+  "destinationsLink": "/wiki/Aeroper%C3%BA_destinations"
+}, {
+  "name": "AeroSur",
+  "destinationsLink": "/wiki/AeroSur_destinations"
+}, {
+  "name": "Afriqiyah Airways",
+  "destinationsLink": "/wiki/Afriqiyah_Airways_destinations"
+}, {
+  "name": "Air Algérie",
+  "destinationsLink": "/wiki/Air_Alg%C3%A9rie_destinations"
+}, {
+  "name": "Air Astana",
+  "destinationsLink": "/wiki/Air_Astana_destinations"
+}, {
+  "name": "Air Bucharest",
+  "destinationsLink": "/wiki/Air_Bucharest_destinations"
+}, {
+  "name": "Air Chathams",
+  "destinationsLink": "/wiki/Air_Chathams_destinations"
+}]

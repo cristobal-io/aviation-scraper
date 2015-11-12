@@ -3,13 +3,6 @@
 module.exports = function ($) {
   var fs = require("fs");
 
-  var airlines = JSON.parse(fs.readFileSync("./data/destination_pages.json"));
-
-  console.log(JSON.stringify(airlines));
-  //  This returns 
-  console.log(airlines.length);
-
-  debugger;
   var routesObject = {};
 
   $("#mw-content-text h2").map(function () {

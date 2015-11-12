@@ -1,11 +1,8 @@
 "use strict";
 
 module.exports = function ($) {
-  debugger;
   var destinations = {};
   var from;
-
-  if ($(".wikitable").hasClass("wikitable")) {console.log("wikitable");}
 
   $(".mw-content-ltr ul li").each(function () {
 

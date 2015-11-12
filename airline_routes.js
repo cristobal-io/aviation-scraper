@@ -15,7 +15,7 @@ function getRoutes(options, callback) {
 
   console.log("Getting routes for %s from %s", options.name, url);
   sjs.StaticScraper.create(url)
-    .scrape(scrapers["default"]) //scrapers[options.scraper] ||
+    .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
       // console.log("Results for %s", options.name);
       // console.log(JSON.stringify(data, null, 2));
