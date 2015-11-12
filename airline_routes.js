@@ -40,7 +40,7 @@ var writeJson = function (err, routes, options) {
   );
 };
 
-getRoutes(airlines[4], writeJson);
+getRoutes(airlines[5], writeJson);
 
 // async.forEachOf(airlines, function (value) {
 //   getRoutes(value, writeJson);

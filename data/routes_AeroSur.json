@@ -1,0 +1,172 @@
+{
+  "Dominican Republic": {
+    "Punta Cana": {
+      "city": {
+        "name": "Punta Cana",
+        "url": "/wiki/Punta_Cana"
+      },
+      "airport": {
+        "name": "Punta Cana International Airport",
+        "url": "/wiki/Punta_Cana_International_Airport"
+      }
+    }
+  },
+  "Spain": {
+    "Madrid": {
+      "city": {
+        "name": "Madrid",
+        "url": "/wiki/Madrid"
+      },
+      "airport": {
+        "name": "Madrid Barajas Airport",
+        "url": "/wiki/Madrid_Barajas_Airport"
+      }
+    }
+  },
+  "United States": {
+    "Miami": {
+      "city": {
+        "name": "Miami",
+        "url": "/wiki/Miami"
+      },
+      "airport": {
+        "name": "Miami International Airport",
+        "url": "/wiki/Miami_International_Airport"
+      }
+    },
+    "Washington, D.C.": {
+      "city": {
+        "name": "Washington, D.C.",
+        "url": "/wiki/Washington,_D.C."
+      },
+      "airport": {
+        "name": "Washington Dulles International Airport",
+        "url": "/wiki/Washington_Dulles_International_Airport"
+      }
+    }
+  },
+  "Argentina": {
+    "Buenos Aires": {
+      "city": {
+        "name": "Buenos Aires",
+        "url": "/wiki/Buenos_Aires"
+      },
+      "airport": {
+        "name": "Ministro Pistarini International Airport",
+        "url": "/wiki/Ministro_Pistarini_International_Airport"
+      }
+    }
+  },
+  "Bolivia": {
+    "Cobija": {
+      "city": {
+        "name": "Cobija",
+        "url": "/wiki/Cobija"
+      },
+      "airport": {
+        "name": "Capitan Anibal Arab Airport",
+        "url": "/wiki/Capitan_Anibal_Arab_Airport"
+      }
+    },
+    "Cochabamba": {
+      "city": {
+        "name": "Cochabamba",
+        "url": "/wiki/Cochabamba"
+      },
+      "airport": {
+        "name": "Jorge Wilstermann International Airport",
+        "url": "/wiki/Jorge_Wilstermann_International_Airport"
+      }
+    },
+    "La Paz": {
+      "city": {
+        "name": "La Paz",
+        "url": "/wiki/La_Paz"
+      },
+      "airport": {
+        "name": "El Alto International Airport",
+        "url": "/wiki/El_Alto_International_Airport"
+      }
+    },
+    "Puerto Suárez": {
+      "city": {
+        "name": "Puerto Suárez",
+        "url": "/wiki/Puerto_Su%C3%A1rez"
+      },
+      "airport": {
+        "name": "Puerto Suárez International Airport",
+        "url": "/wiki/Puerto_Su%C3%A1rez_International_Airport"
+      }
+    }
+  },
+  "Santa Cruz de la Sierra": {
+    "Viru Viru International Airport": {
+      "airport": {
+        "name": "Viru Viru International Airport",
+        "url": "/wiki/Viru_Viru_International_Airport"
+      }
+    },
+    "El Trompillo Airport": {
+      "airport": {
+        "name": "El Trompillo Airport",
+        "url": "/wiki/El_Trompillo_Airport"
+      }
+    },
+    "Sucre": {
+      "city": {
+        "name": "Sucre",
+        "url": "/wiki/Sucre"
+      },
+      "airport": {
+        "name": "Juana Azurduy de Padilla International Airport",
+        "url": "/wiki/Juana_Azurduy_de_Padilla_International_Airport"
+      }
+    },
+    "Tarija, Bolivia": {
+      "city": {
+        "name": "Tarija, Bolivia",
+        "url": "/wiki/Tarija,_Bolivia"
+      },
+      "airport": {
+        "name": "Capitán Oriel Lea Plaza Airport",
+        "url": "/wiki/Capit%C3%A1n_Oriel_Lea_Plaza_Airport"
+      }
+    }
+  },
+  "Brazil": {
+    "São Paulo": {
+      "city": {
+        "name": "São Paulo",
+        "url": "/wiki/S%C3%A3o_Paulo"
+      },
+      "airport": {
+        "name": "São Paulo-Guarulhos International Airport",
+        "url": "/wiki/S%C3%A3o_Paulo-Guarulhos_International_Airport"
+      }
+    }
+  },
+  "Paraguay": {
+    "Asunción": {
+      "city": {
+        "name": "Asunción",
+        "url": "/wiki/Asunci%C3%B3n"
+      },
+      "airport": {
+        "name": "Silvio Pettirossi International Airport",
+        "url": "/wiki/Silvio_Pettirossi_International_Airport"
+      }
+    }
+  },
+  "Peru": {
+    "Cuzco": {
+      "city": {
+        "name": "Cuzco",
+        "url": "/wiki/Cuzco"
+      },
+      "airport": {
+        "name": "Alejandro Velasco Astete International Airport",
+        "url": "/wiki/Alejandro_Velasco_Astete_International_Airport"
+      }
+    }
+  }
+}
