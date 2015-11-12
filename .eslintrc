@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      2,
+      "double"
+    ],
+    "no-multiple-empty-lines": [2, {
+      "max": 2
+    }],
+    "newline-after-var": [2, "always"],
+    "semi": [
+      2,
+      "always"
+    ],
+    "eol-last": 2,
+    "complexity": [2, 6],
+    "max-depth": [2, 10],
+    "curly": [2],
+    "no-plusplus": [2],
+    "strict": [2, "global"],
+    "no-console": [1],
+    "no-debugger":[1]
+  },
+  "env": {
+    "browser": true,
+    "node":true
+  },
+  "extends": "eslint:recommended"
+}
