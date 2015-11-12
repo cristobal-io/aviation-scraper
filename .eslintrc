@@ -1,13 +1,7 @@
 {
   "rules": {
-    "indent": [
-      2,
-      2
-    ],
-    "quotes": [
-      2,
-      "double"
-    ],
+    "indent": [2, 2],
+    "quotes": [2, "double"],
     "no-multiple-empty-lines": [2, {
       "max": 2
     }],
@@ -23,11 +17,11 @@
     "no-plusplus": [2],
     "strict": [2, "global"],
     "no-console": [1],
-    "no-debugger":[1]
+    "no-debugger": [1]
   },
   "env": {
     "browser": true,
-    "node":true
+    "node": true
   },
   "extends": "eslint:recommended"
 }
