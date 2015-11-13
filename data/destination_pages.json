@@ -1,46 +1,57 @@
 [
   {
     "name": "Adria Airways",
-    "destinationsLink": "/wiki/Adria_Airways_destinations"
+    "destinationsLink": "/wiki/Adria_Airways_destinations",
+    "scraper": "table"
   },
   {
     "name": "Aero Lloyd",
-    "destinationsLink": "/wiki/Aero_Lloyd_destinations"
+    "destinationsLink": "/wiki/Aero_Lloyd_destinations",
+    "scraper": "table"
   },
   {
     "name": "Aeromar",
-    "destinationsLink": "/wiki/Aeromar_destinations"
+    "destinationsLink": "/wiki/Aeromar_destinations",
+    "scraper": "table"
   },
   {
     "name": "Aeroméxico",
-    "destinationsLink": "/wiki/Aerom%C3%A9xico_destinations"
+    "destinationsLink": "/wiki/Aerom%C3%A9xico_destinations",
+    "scraper": "table"
   },
   {
     "name": "Aeroperú",
-    "destinationsLink": "/wiki/Aeroper%C3%BA_destinations"
+    "destinationsLink": "/wiki/Aeroper%C3%BA_destinations",
+    "scraper": "default"
   },
   {
     "name": "AeroSur",
-    "destinationsLink": "/wiki/AeroSur_destinations"
+    "destinationsLink": "/wiki/AeroSur_destinations",
+    "scraper": "default"
   },
   {
     "name": "Afriqiyah Airways",
-    "destinationsLink": "/wiki/Afriqiyah_Airways_destinations"
+    "destinationsLink": "/wiki/Afriqiyah_Airways_destinations",
+    "scraper": "table"
   },
   {
     "name": "Air Algérie",
-    "destinationsLink": "/wiki/Air_Alg%C3%A9rie_destinations"
+    "destinationsLink": "/wiki/Air_Alg%C3%A9rie_destinations",
+    "scraper": "table"
   },
   {
     "name": "Air Astana",
-    "destinationsLink": "/wiki/Air_Astana_destinations"
+    "destinationsLink": "/wiki/Air_Astana_destinations",
+    "scraper": "table"
   },
   {
     "name": "Air Bucharest",
-    "destinationsLink": "/wiki/Air_Bucharest_destinations"
+    "destinationsLink": "/wiki/Air_Bucharest_destinations",
+    "scraper": "default"
   },
   {
     "name": "Air Chathams",
-    "destinationsLink": "/wiki/Air_Chathams_destinations"
+    "destinationsLink": "/wiki/Air_Chathams_destinations",
+    "scraper": "table"
   }
 ]

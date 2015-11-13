@@ -33,6 +33,7 @@ module.exports = function ($) {
         }
         destinations.push(row);
         routesObject[from] = row;
+        console.log(JSON.stringify(destinations), null, 2);
         return destinations;
       })
     };

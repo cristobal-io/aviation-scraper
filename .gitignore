@@ -1,11 +1,2 @@
 node_modules
-data/routes_Adria Airways.json
-data/routes_Aero Lloyd.json
-data/routes_Aeromar.json
-data/routes_Aerom\303\251xico.json
-data/routes_Aeroper\303\272.json
-data/routes_Afriqiyah Airways.json
-data/routes_Air Alg\303\251rie.json
-data/routes_Air Astana.json
-data/routes_Air Bucharest.json
-data/routes_Air Chathams.json
+data
