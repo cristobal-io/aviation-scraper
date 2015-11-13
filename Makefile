@@ -28,19 +28,20 @@ ci: lint
 	echo "1. 'make clean'"
 	echo "2. Make sure 'git status' is clean."
 	echo "3. 'git checkout -b (release-x.x.x || hotfix-x.x.x) master"
-	echo "4. 'git merge development --no-ff --log'"
+	echo "4. 'git merge dev --no-ff --log'"
 	echo "5. 'Make release'"
 
 release: lint
 	echo "1. 'git checkout master'"
 	echo "2. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
 	echo "3. 'release-it'"
-	echo "4. 'git checkout development'"
+	echo "4. 'git checkout dev'"
 	echo "5. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
 	echo "6. 'git tag tag-feature-wxyz feature-wxyz'"
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
 clean:
-	test -d data/ && rm -r data/* && echo "data content removed" || echo "no data folder found"
+	test -d data/ && rm -r data && echo "data content removed" || echo "no data folder found"
+	mkdir data
 	cp data_backup/destination_pages.json data/
 	echo "finished."
