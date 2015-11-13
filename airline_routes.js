@@ -2,7 +2,7 @@
 
 var sjs = require("scraperjs");
 var fs = require("fs");
-var async = require("async");
+// var async = require("async");
 var scrapers = require("./scrapers/");
 
 var BASE_URL = "https://en.wikipedia.org";
@@ -40,15 +40,15 @@ var writeJson = function (err, routes, options) {
   );
 };
 
-// getRoutes(airlines[5], writeJson);
+getRoutes(airlines[0], writeJson);
 
-async.forEachOf(airlines, function (value) {
-  getRoutes(value, writeJson);
-  // console.log(value);
-  // console.log(key);
-  // console.log(callback);
-}, function (err) {
-  if (err) {
-    throw err;
-  }
-});
+// async.forEachOf(airlines, function (value) {
+//   getRoutes(value, writeJson);
+//   // console.log(value);
+//   // console.log(key);
+//   // console.log(callback);
+// }, function (err) {
+//   if (err) {
+//     throw err;
+//   }
+// });
