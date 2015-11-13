@@ -9,9 +9,7 @@ module.exports = function ($) {
     if (/toclevel/.test($(this).attr("class"))) {
       return;
     }
-    // if ($(this).attr("class").indexOf("toclevel-") !== 1) {
-    //   return;
-    // }
+
     var lines = $(this).text().split("\n");
 
     if (lines.length > 1) {
