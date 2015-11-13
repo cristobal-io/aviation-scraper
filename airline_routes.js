@@ -42,11 +42,9 @@ var writeJson = function (err, routes, options) {
 
 // getRoutes(airlines[0], writeJson);
 
-async.forEachOf(airlines, function (value) {
+async.forEachOf(airlines, function (value, key, callback) {
   getRoutes(value, writeJson);
-  // console.log(value);
-  // console.log(key);
-  // console.log(callback);
+  callback();
 }, function (err) {
   if (err) {
     throw err;

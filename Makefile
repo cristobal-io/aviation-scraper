@@ -22,3 +22,8 @@ routes: lint
 scrapers: lint
 	echo "Setting up scrapers for each type of page..."
 	node airline_scraper.js
+
+clean:
+	test -d data/ && rm -r data/* && echo "data content removed" || echo "no data folder found"
+	cp data_backup/destination_pages.json data/
+	echo "finished."

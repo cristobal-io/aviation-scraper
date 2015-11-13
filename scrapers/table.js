@@ -1,16 +1,13 @@
 "use strict";
 
 module.exports = function ($) {
-  // var fs = require("fs");
 
   var routesObject = {};
 
-  console.log("called tables scraper");
   $("#mw-content-text h2").map(function () {
 
     var from = $(this).find(".mw-headline").text();
 
-    // return {
     routes: $(this).next(".wikitable").map(function () {
       var destinations = [];
       var $headers = $(this).find("th");
@@ -33,23 +30,8 @@ module.exports = function ($) {
       }
       destinations.push(row);
       routesObject[from] = row;
-      console.log(JSON.stringify(destinations, null, 2));
       return destinations;
     });
-    // };
   });
   return routesObject;
-  // .then(function () {
-  //   var filename = "./data/routes_"; //+ airlineName + ".json";
-
-  //   fs.writeFile(filename,
-  //     JSON.stringify(routesObject, null, 2),
-  //     function (err) {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       console.log("Saved %s", filename);
-  //     }
-  //   );
-  // });
 };
