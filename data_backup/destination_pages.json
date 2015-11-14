@@ -3,7 +3,8 @@
   "destinationsLink": "/wiki/Adria_Airways_destinations"
 }, {
   "name": "Aero Lloyd",
-  "destinationsLink": "/wiki/Aero_Lloyd_destinations"
+  "destinationsLink": "/wiki/Aero_Lloyd_destinations",
+  "isolate": true
 }, {
   "name": "Aeromar",
   "destinationsLink": "/wiki/Aeromar_destinations"

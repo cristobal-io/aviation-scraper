@@ -21,28 +21,6 @@
       });
   }
 
-  var writeJson = function (err, scraper, key, options, callback) {
-    // var destinationsFile = "./data/destination_pages.json";
-
-    // if (err) {
-    //   throw err;
-    // }
-    // options.scraper = scraper;
-    // airlines[key] = options;
-
-    // if (_.every(airlines, "scraper")) {
-    //   fs.writeFile(destinationsFile,
-    //     JSON.stringify(airlines, null, 2),
-    //     function (err) {
-    //       if (err) {
-    //         throw err;
-    //       }
-    //       console.log("Saved %s", destinationsFile);
-    //     }
-    //   );
-    // }
-  };
-
   // getScraperType(airlines[0], writeJson);
 
   async.map(airlines, function (options, callback) {

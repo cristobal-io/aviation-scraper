@@ -11,7 +11,9 @@ lint:
 	eslint $(LINT_DIR)
 	echo "Linting finished without errors"
 
-destinations: lint
+destinations: data/destination_pages.json
+
+data/destination_pages.json:
 	echo "Generating file for airlines destinations"
 	node airline_destinations.js
 
@@ -41,7 +43,7 @@ release: lint
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
 clean:
-	test -d data/ && rm -r data && echo "data content removed" || echo "no data folder found"
+	test -d data/ && rm -r data/* && echo "data content removed" || echo "no data folder found"
 	mkdir data
 	cp data_backup/destination_pages.json data/
 	echo "finished."
