@@ -2,8 +2,8 @@
 
 var sjs = require("scraperjs");
 var fs = require("fs");
-var async = require("async");
 var scrapers = require("./scrapers/");
+var _ = require("lodash");
 
 var BASE_URL = "https://en.wikipedia.org";
 
@@ -40,7 +40,15 @@ var writeJson = function (err, routes, options) {
   );
 };
 
-// getRoutes(airlines[0], writeJson);
+airlines = _.where(airlines, {
+  isolate: true
+}) || airlines;
+
+// console.trace(airlines);
+// process.exit();
+// getRoutes(airlines[1], writeJson);
+
+var async = require("async");
 
 async.forEachOf(airlines, function (value, key, callback) {
   getRoutes(value, writeJson);

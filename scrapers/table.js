@@ -8,7 +8,7 @@ module.exports = function ($) {
 
     var from = $(this).find(".mw-headline").text();
 
-    routes: $(this).next(".wikitable").map(function () {
+    $(this).next(".wikitable").map(function () {
       var destinations = [];
       var $headers = $(this).find("th");
       var $tableContent = $(this).find("tr td");
