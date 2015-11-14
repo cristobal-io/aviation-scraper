@@ -43,7 +43,9 @@ release: lint
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
 clean:
-	test -d data/ && rm -r data/* && echo "data content removed" || echo "no data folder found"
-	mkdir data
+	test -f data/destination_pages.json && rm -r data/* && echo "data content removed" || echo "no data folder found"
+	test -d data/ && echo "data folder exists" || mkdir data || echo "data folder created"
 	cp data_backup/destination_pages.json data/
 	echo "finished."
+
+.PHONY: data/destination_pages.json

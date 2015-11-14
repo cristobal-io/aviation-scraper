@@ -4,11 +4,10 @@ module.exports = function ($) {
   var scraper = "default";
   
   debugger;
-  if ($(".toccolours").hasClass("jquery-tablesorter")) {
-    scraper = "table";
+  if ($("[id^='Scheduled']").length) {
+    scraper = "table_with_origins";
     console.log("jquery tablesorter called");
-  }
-  if ($(".wikitable").hasClass("wikitable")) {
+  } else if ($(".wikitable").hasClass("wikitable")) {
     scraper = "table";
   }
 
