@@ -17,7 +17,7 @@ data/destination_pages.json:
 	echo "Generating file for airlines destinations"
 	node airline_destinations.js
 
-routes: lint
+routes:
 	echo "Retrieving routes"
 	node airline_routes.js
 

@@ -2,36 +2,30 @@
 
 module.exports = function ($) {
 
-  var routesObject = {};
+  var destinations = [];
 
-  $("#mw-content-text h2").map(function () {
+  $(".sortable").map(function () {
 
-    var from = $(this).find(".mw-headline").text();
+    var $headers = $(this).find("th");
+    var $tableContent = $(this).find("tr td");
+    var row = [];
 
-    $(this).next(".wikitable").map(function () {
-      var destinations = [];
-      var $headers = $(this).find("th");
-      var $tableContent = $(this).find("tr td");
-      var row = [];
+    for (var i = 0, j = 0, k = 0; i < $tableContent.length; i += 1, j += 1) {
+      var textHeader = $($headers[j]).text();
+      var textTableContent = $($tableContent[i]).text();
 
-      for (var i = 0, j = 0, k = 0; i < $tableContent.length; i += 1, j += 1) {
-        var textHeader = $($headers[j]).text();
-        var textTableContent = $($tableContent[i]).text();
-
-        if (row[k] === undefined) {
-          row.push(k);
-          row[k] = {};
-        }
-        row[k][textHeader] = (textTableContent);
-        if (j > $headers.length - 2) {
-          j = -1;
-          k += 1;
-        }
+      if (row[k] === undefined) {
+        row.push(k);
+        row[k] = {};
       }
-      destinations.push(row);
-      routesObject[from] = row;
-      return destinations;
-    });
+      row[k][textHeader] = (textTableContent);
+      if (j > $headers.length - 2) {
+        j = -1;
+        k += 1;
+      }
+    }
+    destinations.push(row);
   });
-  return routesObject;
+    
+  return destinations;
 };

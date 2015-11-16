@@ -4,10 +4,9 @@ module.exports = function ($) {
   var scraper = "default";
   
   debugger;
-  if ($("[id^='Scheduled']").length) {
+  if ($("[id^='Scheduled_destinations_from']").length) {
     scraper = "table_with_origins";
-    console.log("jquery tablesorter called");
-  } else if ($(".wikitable").hasClass("wikitable")) {
+  } else if ($(".sortable").hasClass("sortable")) {
     scraper = "table";
   }
 
