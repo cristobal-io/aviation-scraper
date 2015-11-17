@@ -5,5 +5,6 @@ module.exports = {
   "table": require("./table.js"),
   "type_of_scrapper": require("./type_of_scrapper.js"),
   "table_with_origins": require("./table_with_origins.js"),
-  "default_variant": require("./default_variant.js")
+  "default_variant": require("./default_variant.js"),
+  "default_variant_dl": require("./default_variant_dl.js")
 };

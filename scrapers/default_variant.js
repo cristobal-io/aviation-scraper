@@ -13,12 +13,6 @@ module.exports = function ($) {
 
     var links = $(this).next("ul").find("a");
 
-
-    // console.log(JSON.stringify(from.text(), null, 2));
-    // console.log(JSON.stringify(to, null, 2));
-    // console.log(JSON.stringify(links, null, 2));
-
-
     if (/toclevel/.test($(this).attr("class"))) {
       return;
     }
