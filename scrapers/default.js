@@ -51,10 +51,4 @@ module.exports = function ($) {
 
   // console.log(JSON.stringify(destinations, null, 2));
   return destinations;
-  // $(".mw-category li a").map(function () {
-  //   return {
-  //     name: $(this).text().replace(/ destinations$/, ""),
-  //     destinationsLink: $(this).attr("href")
-  //   };
-  // }).get();
 };
