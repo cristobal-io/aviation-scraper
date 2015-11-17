@@ -5,7 +5,7 @@ module.exports = function ($) {
   // var from;
 
   $(".mw-content-ltr h3").map(function () {
-    var to = $(this).next("ul").text().split("\n");
+    // var to = $(this).next("ul").text().split("\n");
 
     var from = $(this).find(".mw-headline").text();
 
@@ -63,6 +63,6 @@ module.exports = function ($) {
       }
     }
   });
-  console.log(JSON.stringify(destinations, null, 2));
+  // console.log(JSON.stringify(destinations, null, 2));
   return destinations;
 };
