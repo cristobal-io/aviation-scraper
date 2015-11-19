@@ -17,45 +17,27 @@ module.exports = function ($) {
 
     destinations[from] = {};
 
-    var origin = $(this).next("p").find("a").text();
+    var $origin = $(this).nextUntil("h2","p");
 
-    destinations[from][origin] = {};
+    for (var l = 0; l < $origin.length; l+=1) {
+      var  $originLink = $origin[l].find("a");
+      var $originName = $originLink.attribs.title;
 
-    var links = $(this).next("p").next("ul").find("a");
+      destinations[from][$originName] = {};
+      var links = $origin[l].nextUntil("p","ul").find("a");
+      // var links = $(this).next("p").next("ul").find("a");
 
-    // var cityUrl, airportName, airportUrl;
+      // var cityUrl, airportName, airportUrl;
 
-    var cityName = links[0].attribs.title;
+      var cityName = links[0].attribs.title;
 
-    if (links.length < 2) {
+      if (links.length < 2) {
 
-      var cityUrl = links[0].attribs.href,
-        airportName = links[1].attribs.title,
-        airportUrl = links[1].attribs.href;
+        var cityUrl = links[0].attribs.href,
+          airportName = links[1].attribs.title,
+          airportUrl = links[1].attribs.href;
 
-      destinations[from][cityName] = {
-        city: {
-          name: cityName, //links.get(0).textContent,
-          url: cityUrl
-        },
-        airport: {
-          name: airportName, //links.get(1).textContent,
-          url: airportUrl
-        }
-      };
-    } else {
-      for (var i = 0; i < links.length; i += 2) {
-        if (links[i].attribs.title === undefined) {
-          i += 1;
-        }
-
-        cityName = links[i].attribs.title;
-        cityUrl = links[i].attribs.href;
-
-        airportName = links[i + 1].attribs.title;
-        airportUrl = links[i + 1].attribs.href;
-
-        destinations[from][origin][cityName] = {
+        destinations[from][cityName] = {
           city: {
             name: cityName, //links.get(0).textContent,
             url: cityUrl
@@ -65,6 +47,29 @@ module.exports = function ($) {
             url: airportUrl
           }
         };
+      } else {
+        for (var i = 0; i < links.length; i += 2) {
+          if (links[i].attribs.title === undefined) {
+            i += 1;
+          }
+
+          cityName = links[i].attribs.title;
+          cityUrl = links[i].attribs.href;
+
+          airportName = links[i + 1].attribs.title;
+          airportUrl = links[i + 1].attribs.href;
+
+          destinations[from][origin][cityName] = {
+            city: {
+              name: cityName, //links.get(0).textContent,
+              url: cityUrl
+            },
+            airport: {
+              name: airportName, //links.get(1).textContent,
+              url: airportUrl
+            }
+          };
+        }
       }
     }
   });
