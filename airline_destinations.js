@@ -4,7 +4,7 @@ var fs = require("fs");
 
 var scraperjs = require("scraperjs");
 
-scraperjs.StaticScraper.create("https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=B")
+scraperjs.StaticScraper.create("https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=A")
   .scrape(function ($) {
     return $(".mw-category li a").map(function () {
       return {

@@ -6,6 +6,9 @@ module.exports = function ($) {
 
   $(".mw-content-ltr ul li").each(function () {
 
+
+    // the class name for the table of content changes, so we need 
+    // a regex instead of css selector.
     if (/toclevel/.test($(this).attr("class"))) {
       return;
     }
