@@ -31,7 +31,7 @@ scraperjs.StaticScraper.create("https://en.wikipedia.org/w/index.php?title=Categ
 // refactoring destinations to include the hole alphabet
 
 var destinationsFile = "./data/destination_pages.json";
-
+var destinationPages = {};
 // generate the array with all the links
 
 var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=";
@@ -46,7 +46,7 @@ for (var i = 65; i <= 90; i+=1) {
 
 
 function getDestinations(options, callback) {
-  var url = BASE_URL + options.destinationsLink;
+  var url = options.url;
 
   console.log("Getting scraper for %s from %s", options.name, url);
   sjs.StaticScraper.create(url)
@@ -59,3 +59,20 @@ function getDestinations(options, callback) {
     });
 
 }
+
+
+  async.map(url, function (options, callback) {
+    getDestinations(options, callback);
+  },  function (err, results) {
+    if (err) {
+      throw err;
+    }
+    airlines = _.reduce(results, function(airlines, result){
+      var index = _.findIndex(airlines,{name: result.name});
+
+      airlines[index].scraper = result.type;
+      return airlines;
+    }, airlines);
+    fs.writeFileSync(destinationsFile, JSON.stringify(airlines,null,2));
+    console.log("Saved %s", destinationsFile);
+  });
