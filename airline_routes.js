@@ -41,7 +41,7 @@ var writeJson = function (err, routes, options) {
 };
 
 airlines = _.where(airlines, {
-  scraper: "table"
+  "isolate": true
 }) || airlines;
 
 // console.trace(airlines);
