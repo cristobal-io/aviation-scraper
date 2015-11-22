@@ -50,7 +50,7 @@
   "name": "Aerosvit",
   "destinationsLink": "/wiki/Aerosvit_destinations",
   "scraper": "default_variant_dl",
-  "isolate": true,
+  "isolate": false,
   "works": false
 }, {
   "name": "Afriqiyah Airways",
@@ -82,7 +82,7 @@
   "name": "Air Austral",
   "destinationsLink": "/wiki/Air_Austral_destinations",
   "scraper": "default",
-  "isolate": false,
+  "isolate": true,
   "works": false
 }, {
   "name": "Air Berlin",
