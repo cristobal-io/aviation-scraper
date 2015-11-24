@@ -55,7 +55,7 @@
     "name": "AeroSur",
     "destinationsLink": "/wiki/AeroSur_destinations",
     "scraper": "default",
-    "isolate": false,
+    "isolate": true,
     "works": false
   },
   {
