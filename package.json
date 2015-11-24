@@ -10,7 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "async": "^1.5.0",
+    "html-md": "^3.0.2",
     "lodash": "^3.10.1",
     "scraperjs": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
   }
 }
