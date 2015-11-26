@@ -51,12 +51,9 @@ function getDestination(line) {
 }
 
 function getDestinations(makrdown) {
-  var test = makrdown;
-  debugger;
-
-  console.log(test);
   return _.reduce(makrdown.split("\n"), function (destinations, line) {
     var destination = getDestination(line);
+
     if (destination) {
       destinations.push(destination);
     }
@@ -66,3 +63,6 @@ function getDestinations(makrdown) {
 
 module.exports.getDestination = getDestination;
 module.exports.getDestinations = getDestinations;
+module.exports.hasValidLinks = hasValidLinks;
+module.exports.getLinkInfo = getLinkInfo;
+module.exports.getLinkStrings = getLinkStrings;
