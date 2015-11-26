@@ -12,15 +12,17 @@ module.exports = function ($) {
 };
 
 var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
-var linksRe = new RegExp(re, "g");
-var linksInfoRe = new RegExp(re);
 
 
 function getLinkStrings(line) {
+  var linksRe = new RegExp(re, "g");
+
   return line.match(linksRe) || [];
 }
 
 function getLinkInfo(linkString) {
+  console.log(linkString);
+  var linksInfoRe = new RegExp(re);
   var info = linkString.match(linksInfoRe) || [];
 
   if (info[2]) {
