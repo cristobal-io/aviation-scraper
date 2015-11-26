@@ -21,7 +21,6 @@ function getLinkStrings(line) {
 }
 
 function getLinkInfo(linkString) {
-  console.log(linkString);
   var linksInfoRe = new RegExp(re);
   var info = linkString.match(linksInfoRe) || [];
 

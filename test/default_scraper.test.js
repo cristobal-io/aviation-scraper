@@ -12,10 +12,15 @@ var expect = chai.expect;
 
 
 chai.use(require("chai-json-schema"));
+var result, line;
 
+beforeEach(function () {
+  line = "[Madrid](/wiki/Madrid \"Madrid\") - [Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")";
+
+  return result = getDestination(line);
+});
 
 describe("getDestination function, it: ", function () {
-  var result;
   var destinationSchema = {
     "title": "destination schema v1",
     "type": "object",
@@ -59,11 +64,6 @@ describe("getDestination function, it: ", function () {
   };
 
 
-  beforeEach(function () {
-    var line = "[Madrid](/wiki/Madrid \"Madrid\") - [Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")";
-
-    return result = getDestination(line);
-  });
   it("Should be a function", function () {
     expect(getDestinations).to.be.a("function");
   });
@@ -156,15 +156,28 @@ describe("getDestinations function, it: ", function () {
     expect(makrdownResults).to.be.an("array");
   });
 
-  it("Shouldn't be an empty array", function() {
+  it("Shouldn't be an empty array", function () {
     // console.log(makrdownResults.length);
     expect(makrdownResults.length).to.be.above(1);
   });
 });
 
-describe("getLinkStrings function, it:", function() {
-  it("Should be a function", function() {
+describe("getLinkStrings function, it:", function () {
+  var linkStringResult;
+  beforeEach(function () {
+    linkStringResult = getLinkStrings(line);
+  });
+
+  it("Should be a function", function () {
     expect(getLinkStrings).to.be.a("function");
   });
-});
 
+  it("Should return an array ", function () {
+
+    expect(linkStringResult).to.be.an("array");
+  });
+
+  it("Shouldn't return an empty array", function () {
+    expect(linkStringResult.length).to.be.above(1);
+  });
+});
