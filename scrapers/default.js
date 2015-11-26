@@ -9,59 +9,8 @@ module.exports = function ($) {
   });
 
   return getDestinations(makrdown);
-  // console.log(html);
-
-  // $(".mw-content-ltr ul li").each(function () {
-
-
-  //   // the class name for the table of content changes, so we need 
-  //   // a regex instead of css selector.
-  //   if (/toclevel/.test($(this).attr("class"))) {
-  //     return;
-  //   }
-
-  //   var lines = $(this).text().split("\n");
-
-  //   if (lines.length > 1) {
-  //     from = lines[0];
-  //     destinations[from] = {};
-  //   } else {
-  //     var links = $(this).find("a");
-  //     var cityName = links[0].attribs.title;
-
-  //     if (links.length < 2) {
-  //       var airportName = links[0].attribs.title,
-  //         airportUrl = links[0].attribs.href;
-
-  //       destinations[from][cityName] = {
-  //         airport: {
-  //           name: airportName, //links.get(1).textContent,
-  //           url: airportUrl
-  //         }
-  //       };
-  //     } else {
-  //       var cityUrl = links[0].attribs.href;
-
-  //       airportName = links[1].attribs.title;
-  //       airportUrl = links[1].attribs.href;
-
-  //       destinations[from][cityName] = {
-  //         city: {
-  //           name: cityName, //links.get(0).textContent,
-  //           url: cityUrl
-  //         },
-  //         airport: {
-  //           name: airportName, //links.get(1).textContent,
-  //           url: airportUrl
-  //         }
-  //       };
-  //     }
-  //   }
-  // });
-
-  // console.log(JSON.stringify(destinations, null, 2));
-  // return destinations;
 };
+
 var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
 var linksRe = new RegExp(re, "g");
 var linksInfoRe = new RegExp(re);
@@ -102,9 +51,12 @@ function getDestination(line) {
 }
 
 function getDestinations(makrdown) {
+  var test = makrdown;
+  debugger;
+
+  console.log(test);
   return _.reduce(makrdown.split("\n"), function (destinations, line) {
     var destination = getDestination(line);
-
     if (destination) {
       destinations.push(destination);
     }
