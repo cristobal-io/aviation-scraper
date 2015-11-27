@@ -80,47 +80,6 @@ describe("getDestination function, it: ", function () {
 
 describe("getDestinations function, it: ", function () {
   var makrdown, makrdownResults;
-  // var makrdownResultsSchema = {
-  //   "title": "destination schema v1",
-  //   "type": "array",
-  //   "required": ["city", "airport"],
-  //   "properties": {
-  //     "city": {
-  //       "type": "object",
-  //       "minItems": 1,
-  //       "uniqueItems": true,
-  //       "required": ["name", "url"],
-  //       "properties": {
-  //         "name": {
-  //           "type": "string"
-  //         },
-  //         "url": {
-  //           "type": "string"
-  //         }
-  //       },
-  //       "items": {
-  //         "type": "string"
-  //       }
-  //     },
-  //     "airport": {
-  //       "type": "object",
-  //       "minItems": 1,
-  //       "uniqueItems": true,
-  //       "required": ["name", "url"],
-  //       "properties": {
-  //         "name": {
-  //           "type": "string"
-  //         },
-  //         "url": {
-  //           "type": "string"
-  //         }
-  //       },
-  //       "items": {
-  //         "type": "string"
-  //       }
-  //     }
-  //   }
-  // };
 
   beforeEach(function () {
     makrdown = md("<h2><span class=\"mw-headline\" " +
@@ -208,16 +167,39 @@ describe("hasValidLinks function, it:", function () {
     expect(hasValidLinks).to.be.a("function");
   });
 
-  it("Shouldn't return undefined", function() {
-    console.log(hasValidLinksResult);
+  it("Shouldn't return undefined", function () {
     expect(hasValidLinksResult).to.not.be.undefined;
   });
 
-  it("Should return the last right element", function() {
+  it("Should return the last right element", function () {
     expect(hasValidLinksResult).to.match(/^\/wiki\//);
   });
-  it("Should check for all the links", function() {
-    var link_1_2_false = [
+  it("Should check for all the links", function () {
+    var link_0_1_false = [
+      [
+        "[Madrid](/wiki/Madrid \"Madrid\")",
+        "",
+        "/wiki/Madrid"
+      ],
+      [
+        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+        "Madrid Barajas Airport",
+        "/wiki/Madrid_Barajas_Airport"
+      ]
+    ];
+    var link_0_2_false = [
+      [
+        "[Madrid](/wiki/Madrid \"Madrid\")",
+        "Madrid",
+        ""
+      ],
+      [
+        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+        "Madrid Barajas Airport",
+        "/wiki/Madrid_Barajas_Airport"
+      ]
+    ];
+    var link_1_1_false = [
       [
         "[Madrid](/wiki/Madrid \"Madrid\")",
         "Madrid",
@@ -229,9 +211,25 @@ describe("hasValidLinks function, it:", function () {
         "/wiki/Madrid_Barajas_Airport"
       ]
     ];
-    var result = hasValidLinks(link_1_2_false);
+    var link_1_2_false = [
+      [
+        "[Madrid](/wiki/Madrid \"Madrid\")",
+        "Madrid",
+        "/wiki/Madrid"
+      ],
+      [
+        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+        "Madrid Barajas Airport",
+        ""
+      ]
+    ];
 
-    expect(result).not.to.be.ok;
+    expect(hasValidLinks(link_0_1_false)).not.to.be.ok;
+    expect(hasValidLinks(link_0_2_false)).not.to.be.ok;
+
+    expect(hasValidLinks(link_1_1_false)).not.to.be.ok;
+    expect(hasValidLinks(link_1_2_false)).not.to.be.ok;
+
   });
 });
 
