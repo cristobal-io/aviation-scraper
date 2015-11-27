@@ -3,6 +3,8 @@ var defaultScraper = require("../scrapers/default.js");
 var getDestination = defaultScraper.getDestination;
 var getDestinations = defaultScraper.getDestinations;
 var getLinkStrings = defaultScraper.getLinkStrings;
+var hasValidLinks = defaultScraper.hasValidLinks;
+var getLinkInfo = defaultScraper.getLinkInfo;
 
 var md = require("html-md");
 // var sjs = require("scraperjs");
@@ -180,5 +182,61 @@ describe("getLinkStrings function, it:", function () {
 
   it("Shouldn't return an empty array", function () {
     expect(linkStringResult.length).to.be.above(1);
+  });
+});
+
+describe("hasValidLinks function, it:", function () {
+  var link, hasValidLinksResult;
+
+  beforeEach(function () {
+    link = [
+      [
+        "[Madrid](/wiki/Madrid \"Madrid\")",
+        "Madrid",
+        "/wiki/Madrid"
+      ],
+      [
+        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+        "Madrid Barajas Airport",
+        "/wiki/Madrid_Barajas_Airport"
+      ]
+    ];
+    hasValidLinksResult = hasValidLinks(link);
+  });
+
+  it("Should be a function", function () {
+    expect(hasValidLinks).to.be.a("function");
+  });
+
+  it("Shouldn't return undefined", function() {
+    console.log(hasValidLinksResult);
+    expect(hasValidLinksResult).to.not.be.undefined;
+  });
+
+  it("Should return the last right element", function() {
+    expect(hasValidLinksResult).to.match(/^\/wiki\//);
+  });
+  it("Should check for all the links", function() {
+    var link_1_2_false = [
+      [
+        "[Madrid](/wiki/Madrid \"Madrid\")",
+        "Madrid",
+        "/wiki/Madrid"
+      ],
+      [
+        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+        "",
+        "/wiki/Madrid_Barajas_Airport"
+      ]
+    ];
+    var result = hasValidLinks(link_1_2_false);
+
+    expect(result).not.to.be.ok;
+  });
+});
+
+describe("getLinkInfo function, it:", function () {
+  it("Should be a function", function () {
+    expect(getLinkInfo).to.be.a("function");
   });
 });
