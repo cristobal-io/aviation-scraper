@@ -18,7 +18,6 @@ var result, line;
 
 beforeEach(function () {
   line = "[Madrid](/wiki/Madrid \"Madrid\") - [Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")";
-
   return result = getDestination(line);
 });
 
@@ -237,4 +236,23 @@ describe("getLinkInfo function, it:", function () {
   it("Should be a function", function () {
     expect(getLinkInfo).to.be.a("function");
   });
+
+  it("Should return an array", function() {
+    expect(getLinkInfo(line)).to.be.an("array");
+  });
+
+  it("Should return a length of 3", function() {
+    expect(getLinkInfo(line).length).to.be.above(2);
+  });
+  it("Should match the returned values", function() {
+    var getLinkInfoResult = getLinkInfo(line);
+    var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
+    var linksInfoRe = new RegExp(re);
+
+    expect(getLinkInfoResult[0]).to.match(linksInfoRe);
+    expect(getLinkInfoResult[2]).to.match(/^\/wiki\/\w*/);
+    expect(getLinkInfoResult[2]).not.to.match(/\/wiki\/\w*\s+"\w+"$/);
+
+  });
+
 });

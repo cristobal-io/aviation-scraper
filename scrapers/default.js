@@ -27,6 +27,7 @@ function getLinkInfo(linkString) {
   if (info[2]) {
     info[2] = info[2].substring(0, info[2].indexOf(" "));
   }
+
   return info;
 }
 
