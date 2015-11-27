@@ -25,8 +25,14 @@ scrapers: lint
 	echo "Setting up scrapers for each type of page..."
 	node airline_scraper.js
 
+test: lint
+	mocha test
+
+dev:
+	mocha test -w
+
 # Continuous Integration Test Runner
-ci: lint
+ci: lint test
 	echo "1. 'make clean'"
 	echo "2. Make sure 'git status' is clean."
 	echo "3. 'git checkout -b (release-x.x.x || hotfix-x.x.x) master"
@@ -48,4 +54,4 @@ clean:
 	cp data_backup/destination_pages.json data/
 	echo "finished."
 
-.PHONY: data/destination_pages.json
+.PHONY: data/destination_pages.json test

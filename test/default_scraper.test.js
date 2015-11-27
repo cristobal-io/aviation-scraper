@@ -164,6 +164,7 @@ describe("getDestinations function, it: ", function () {
 
 describe("getLinkStrings function, it:", function () {
   var linkStringResult;
+
   beforeEach(function () {
     linkStringResult = getLinkStrings(line);
   });
