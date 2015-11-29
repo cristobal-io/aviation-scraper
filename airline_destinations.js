@@ -30,7 +30,6 @@ function getDestinations(options, callback) {
     });
 }
 
-
 async.map(url, function (options, callback) {
   getDestinations(options, callback);
 }, function (err, results) {
