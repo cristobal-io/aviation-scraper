@@ -17,6 +17,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "chai-json-schema": "^1.2.0",
-    "mocha": "2.3.4"
+    "mocha": "2.3.4",
+    "send": "^0.13.0"
   }
 }
