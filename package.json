@@ -17,7 +17,10 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "chai-json-schema": "^1.2.0",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
     "mocha": "2.3.4",
-    "send": "^0.13.0"
+    "send": "^0.13.0",
+    "serve-static": "^1.10.0"
   }
 }
