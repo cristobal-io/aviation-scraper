@@ -54,7 +54,6 @@ describe("server", function () {
       .then(function (data) {
         expect(data).to.eql("Not found");
         done();
-        // callback(null, data, options);
       });
   });
 
