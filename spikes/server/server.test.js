@@ -19,7 +19,13 @@ describe("server", function () {
 
   app.use(serveStatic(__dirname));
   console.log("server started.");
-  app.listen(PORT);
+  isPortTaken(PORT, function (err, data) {
+    console.log(data);
+    if (!data) {
+      app.listen(PORT);
+    }
+  });
+
 
   it("Should match h1 from index.html", function (done) {
 
@@ -46,3 +52,21 @@ describe("server", function () {
   });
 
 });
+
+function isPortTaken(port, fn) {
+  var net = require("net");
+  var tester = net.createServer()
+    .once("error", function (err) {
+      if (err.code != "EADDRINUSE") {
+        return fn(err);
+      }
+      fn(null, true);
+    })
+    .once("listening", function () {
+      tester.once("close", function () {
+        fn(null, false);
+      })
+        .close();
+    })
+    .listen(port);
+}
