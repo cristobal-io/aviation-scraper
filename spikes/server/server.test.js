@@ -14,13 +14,18 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 var ERROR_PAGE = "/404.html";
+var serverStarted = false;
 
 describe("server", function () {
 
   before(function (done) {
-    app.use(serveStatic(__dirname));
-    app.listen(PORT);
-    console.log("server started.");
+    console.log(serverStarted);
+    if (!serverStarted) {
+      serverStarted = true;
+      app.use(serveStatic(__dirname));
+      console.log("server started.");
+      app.listen(PORT);
+    }
     done();
   });
 
@@ -30,6 +35,7 @@ describe("server", function () {
       console.log("STATUS after: " + res.statusCode);
     });
     console.log("Server stopped");
+    app.close();
     done();
   });
 
