@@ -11,13 +11,12 @@ var sjs = require("scraperjs");
 // constants
 var BASE_URL = "http://localhost";
 var PORT = 3000;
+var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
-var ERROR_PAGE = "/404.html";
-
 
 describe("server", function () {
 
-  app.use(serveStatic(__dirname));
+  app.use(serveStatic(__dirname + MODELS_DIR));
   console.log("server started.");
   app.listen(PORT);
 
@@ -29,18 +28,6 @@ describe("server", function () {
       })
       .then(function (data) {
         expect(data).to.eql("this is a test file");
-        done();
-      });
-  });
-
-  it("Should fetch index.html", function (done) {
-
-    sjs.StaticScraper.create(SERVER_LISTENING + ERROR_PAGE)
-      .scrape(function ($) {
-        return $("h1").text();
-      })
-      .then(function (data) {
-        expect(data).to.eql("Not found");
         done();
       });
   });
