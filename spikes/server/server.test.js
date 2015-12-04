@@ -4,50 +4,57 @@ var chai = require("chai");
 var expect = chai.expect;
 
 var http = require("http");
-
-// var server = require("./server.js");
-
 var express = require("express");
 var serveStatic = require("serve-static");
 var app = express();
-var $ = require("jquery");
+
+var sjs = require("scraperjs");
+
+var BASE_URL = "http://localhost:3000/";
+
+// var server = require("./server.js");
 
 describe("server", function () {
-
 
   before(function (done) {
     app.use(serveStatic(__dirname));
     app.listen(3000);
-
+    console.log("server started.");
     done();
   });
 
   after(function (done) {
-    http.get("http://localhost:3000/index.html", function (res) {
+    // if the server still runs, we would get the statusCode.
+    http.get(BASE_URL, function (res) {
       console.log("STATUS after: " + res.statusCode);
     });
-    console.log("stopped");
+    console.log("Server stopped");
     done();
   });
 
-  it("Should fetch index.html", function (done) {
-    http.get("http://localhost:3000/", function (res) {
+  it("Should match h1 from index.html", function (done) {
 
-
-      // res.setEncoding("utf8");
-      res.on("data", function (chunk) {
-        console.log("BODY: " + chunk);
-      });
-      res.on("data", function (body) {
-        // console.log($(body).text());
-        // 
-        console.log("body: ", body);
-        // expect(body).to.equal("test");
-      });
-      res.on("end", function () {
-        console.log("No more data in response.");
-      });
+    sjs.StaticScraper.create(BASE_URL)
+    .scrape(function ($) {
+      return $("h1").text();
+    })
+    .then(function (data) {
+      expect(data).to.eql("this is a test file");
       done();
+      // callback(null, data, options);
+    });
+  });
+
+  it("Should fetch index.html", function (done) {
+
+    sjs.StaticScraper.create(BASE_URL + "404.html")
+    .scrape(function ($) {
+      return $("h1").text();
+    })
+    .then(function (data) {
+      expect(data).to.eql("this is a test file");
+      done();
+      // callback(null, data, options);
     });
   });
 
