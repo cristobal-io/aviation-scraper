@@ -6,7 +6,6 @@ var expect = chai.expect;
 var express = require("express");
 var serveStatic = require("serve-static");
 var app = express();
-var http = require("http");
 // scraper
 var sjs = require("scraperjs");
 // constants
@@ -17,14 +16,14 @@ var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
 describe("server", function () {
 
-  debugger;
-  before("tests", function (done) {
-    // body...
-    startServer();
-    done();
+  app.use(serveStatic(__dirname + MODELS_DIR));
+  isPortTaken(PORT, function (err, data) {
+    if (!data) {
+      app.listen(PORT);
+    }
   });
 
-  it("Should match H1 from index.html", function (done) {
+  it("Confirm scraper is working with index.html", function (done) {
 
     sjs.StaticScraper.create(SERVER_LISTENING)
       .scrape(function ($) {
@@ -42,22 +41,20 @@ describe("server", function () {
 
 });
 
-function getStatusCode() {
-  var statusCode = http.get(SERVER_LISTENING, function (res) {
-    return res.statusCode ;
-  });
-
-  return statusCode;
-}
-
-function startServer() {
-
-  if (getStatusCode() !== 200) {
-    app.use(serveStatic(__dirname + MODELS_DIR));
-    console.log("server started.");
-    app.listen(PORT);
-    console.log("listening");
-  } else {
-    console.log("status code: 200");
-  }
+function isPortTaken(port, fn) {
+  var net = require("net");
+  var tester = net.createServer()
+    .once("error", function (err) {
+      if (err.code != "EADDRINUSE") {
+        return fn(err);
+      }
+      fn(null, true);
+    })
+    .once("listening", function () {
+      tester.once("close", function () {
+        fn(null, false);
+      })
+        .close();
+    })
+    .listen(port);
 }
