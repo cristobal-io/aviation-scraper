@@ -1,0 +1,41 @@
+[{
+  "title": "destination schema v1",
+  "type": "object",
+  "required": ["city", "airport"],
+  "properties": {
+    "city": {
+      "type": "object",
+      "minItems": 1,
+      "uniqueItems": true,
+      "required": ["name", "url"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "items": {
+        "type": "string"
+      }
+    },
+    "airport": {
+      "type": "object",
+      "minItems": 1,
+      "uniqueItems": true,
+      "required": ["name", "url"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}]

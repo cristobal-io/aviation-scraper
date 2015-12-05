@@ -11,58 +11,20 @@ var md = require("html-md");
 
 var chai = require("chai");
 var expect = chai.expect;
-
+var strings = require("./strings/markdown.json");
+debugger;
 
 chai.use(require("chai-json-schema"));
 var result, line;
 
 beforeEach(function () {
-  line = "[Madrid](/wiki/Madrid \"Madrid\") - [Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")";
+  // line = "[Madrid](/wiki/Madrid \"Madrid\") - [Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")";
+  line = strings["line"];
   return result = getDestination(line);
 });
 
 describe("getDestination function, it: ", function () {
-  var destinationSchema = {
-    "title": "destination schema v1",
-    "type": "object",
-    "required": ["city", "airport"],
-    "properties": {
-      "city": {
-        "type": "object",
-        "minItems": 1,
-        "uniqueItems": true,
-        "required": ["name", "url"],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          }
-        },
-        "items": {
-          "type": "string"
-        }
-      },
-      "airport": {
-        "type": "object",
-        "minItems": 1,
-        "uniqueItems": true,
-        "required": ["name", "url"],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          }
-        },
-        "items": {
-          "type": "string"
-        }
-      }
-    }
-  };
+  var destinationSchema = require("./schema/destination_schema.json");
 
 
   it("Should be a function", function () {
@@ -81,30 +43,25 @@ describe("getDestinations function, it: ", function () {
   var makrdown, makrdownResults;
 
   beforeEach(function () {
-    makrdown = md("<h2><span class=\"mw-headline\" " +
-      "id=\"North_America\">North America</span><span " +
-      "class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">" +
-      "[</span><a href=\"/w/index.php?title=AeroSur_destinations&amp;action=edit&amp;section=3\" " +
-      "title=\"Edit section: North America\">edit</a><span " +
-      "class=\"mw-editsection-bracket\">]</span></span></h2> <ul >" +
-      " <li > <b > United States </b> <ul >" +
-      "<li > <a href = \"/wiki/Miami\" title=\"Miami\">Miami</a> - " +
-      "<a href=\"/wiki/Miami_International_Airport\" " +
-      "title=\"Miami International Airport\">Miami International Airport</a>" +
-      "</li> <li > <a href = \"/wiki/Washington,_D.C.\" " +
-      "title=\"Washington, D.C.\">Washington, D.C.</a> - " +
-      "<a href=\"/wiki/Washington_Dulles_International_Airport\" " +
-      "title=\"Washington Dulles International Airport\">Washington Dulles" +
-      " International Airport</a></li> </ul> </li> </ul>", {
-        inline: true
-      });
-    // sjs.StaticScraper.create("./spec/models/Air Austral - Wikipedia, the free encyclopedia.html")
-    //   .scrape(function ($) {
-    //     makrdown = md($(".mw-content-ltr").html(), {
-    //       inline: true
-    //     });
-    //   })
-    //   .then();
+    // makrdown = md("<h2><span class=\"mw-headline\" " +
+    //   "id=\"North_America\">North America</span><span " +
+    //   "class=\"mw-editsection\"><span class=\"mw-editsection-bracket\">" +
+    //   "[</span><a href=\"/w/index.php?title=AeroSur_destinations&amp;action=edit&amp;section=3\" " +
+    //   "title=\"Edit section: North America\">edit</a><span " +
+    //   "class=\"mw-editsection-bracket\">]</span></span></h2> <ul >" +
+    //   " <li > <b > United States </b> <ul >" +
+    //   "<li > <a href = \"/wiki/Miami\" title=\"Miami\">Miami</a> - " +
+    //   "<a href=\"/wiki/Miami_International_Airport\" " +
+    //   "title=\"Miami International Airport\">Miami International Airport</a>" +
+    //   "</li> <li > <a href = \"/wiki/Washington,_D.C.\" " +
+    //   "title=\"Washington, D.C.\">Washington, D.C.</a> - " +
+    //   "<a href=\"/wiki/Washington_Dulles_International_Airport\" " +
+    //   "title=\"Washington Dulles International Airport\">Washington Dulles" +
+    //   " International Airport</a></li> </ul> </li> </ul>", {
+    //     inline: true
+    //   });
+    makrdown = md(strings.markdown, {inline:true});
+
     makrdownResults = getDestinations(makrdown);
   });
 
