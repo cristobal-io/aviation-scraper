@@ -7,7 +7,6 @@ var hasValidLinks = defaultScraper.hasValidLinks;
 var getLinkInfo = defaultScraper.getLinkInfo;
 
 var md = require("html-md");
-// var sjs = require("scraperjs");
 
 var chai = require("chai");
 var expect = chai.expect;
@@ -54,7 +53,6 @@ describe("getDestinations function, it: ", function () {
   });
 
   it("Shouldn't be an empty array", function () {
-    // console.log(makrdownResults.length);
     expect(makrdownResults.length).to.be.above(1);
   });
 });
@@ -100,54 +98,10 @@ describe("hasValidLinks function, it:", function () {
     expect(hasValidLinksResult).to.match(/^\/wiki\//);
   });
   it("Should check for all the links", function () {
-    var link_0_1_false = [
-      [
-        "[Madrid](/wiki/Madrid \"Madrid\")",
-        "",
-        "/wiki/Madrid"
-      ],
-      [
-        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
-        "Madrid Barajas Airport",
-        "/wiki/Madrid_Barajas_Airport"
-      ]
-    ];
-    var link_0_2_false = [
-      [
-        "[Madrid](/wiki/Madrid \"Madrid\")",
-        "Madrid",
-        ""
-      ],
-      [
-        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
-        "Madrid Barajas Airport",
-        "/wiki/Madrid_Barajas_Airport"
-      ]
-    ];
-    var link_1_1_false = [
-      [
-        "[Madrid](/wiki/Madrid \"Madrid\")",
-        "Madrid",
-        "/wiki/Madrid"
-      ],
-      [
-        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
-        "",
-        "/wiki/Madrid_Barajas_Airport"
-      ]
-    ];
-    var link_1_2_false = [
-      [
-        "[Madrid](/wiki/Madrid \"Madrid\")",
-        "Madrid",
-        "/wiki/Madrid"
-      ],
-      [
-        "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
-        "Madrid Barajas Airport",
-        ""
-      ]
-    ];
+    var link_0_1_false = strings.link_0_1_false;
+    var link_0_2_false = strings.link_0_2_false;
+    var link_1_1_false = strings.link_1_1_false;
+    var link_1_2_false = strings.link_1_2_false;
 
     expect(hasValidLinks(link_0_1_false)).not.to.be.ok;
     expect(hasValidLinks(link_0_2_false)).not.to.be.ok;

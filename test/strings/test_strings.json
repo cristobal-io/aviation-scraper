@@ -12,5 +12,53 @@
       "Madrid Barajas Airport",
       "/wiki/Madrid_Barajas_Airport"
     ]
+  ],
+  "link_0_1_false": [
+    [
+      "[Madrid](/wiki/Madrid \"Madrid\")",
+      "",
+      "/wiki/Madrid"
+    ],
+    [
+      "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+      "Madrid Barajas Airport",
+      "/wiki/Madrid_Barajas_Airport"
+    ]
+  ],
+  "link_0_2_false": [
+    [
+      "[Madrid](/wiki/Madrid \"Madrid\")",
+      "Madrid",
+      ""
+    ],
+    [
+      "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+      "Madrid Barajas Airport",
+      "/wiki/Madrid_Barajas_Airport"
+    ]
+  ],
+  "link_1_1_false": [
+    [
+      "[Madrid](/wiki/Madrid \"Madrid\")",
+      "Madrid",
+      "/wiki/Madrid"
+    ],
+    [
+      "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+      "",
+      "/wiki/Madrid_Barajas_Airport"
+    ]
+  ],
+  "link_1_2_false": [
+    [
+      "[Madrid](/wiki/Madrid \"Madrid\")",
+      "Madrid",
+      "/wiki/Madrid"
+    ],
+    [
+      "[Madrid Barajas Airport](/wiki/Madrid_Barajas_Airport \"Madrid Barajas Airport\")",
+      "Madrid Barajas Airport",
+      ""
+    ]
   ]
 }
