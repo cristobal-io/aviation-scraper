@@ -9,18 +9,13 @@ var async = require("async");
 
 var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=";
-var url = [];
 
-// generate the array with all the links
-
-for (var i = 65; i <= 90; i += 1) {
-  url.push(BASE_URL + String.fromCharCode(i));
-}
-
-// Array with urls generated.
+var urls = _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
+  return BASE_URL + letter;
+});
 
 function getDestinations(options, callback) {
-  var letter = options.charAt(options.length-1);
+  var letter = options.charAt(options.length - 1);
 
   console.log("Getting scraper for %s from %s", letter, options);
   scraperjs.StaticScraper.create(options)
@@ -30,7 +25,7 @@ function getDestinations(options, callback) {
     });
 }
 
-async.map(url, function (options, callback) {
+async.map(urls, function (options, callback) {
   getDestinations(options, callback);
 }, function (err, results) {
   if (err) {
