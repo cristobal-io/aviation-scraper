@@ -31,6 +31,10 @@ test: lint
 dev:
 	mocha test -w
 
+# to get all the pages we can use
+# wget -p -k http://www.example.com/
+# http://stackoverflow.com/questions/6348289/download-a-working-local-copy-of-a-webpage
+
 # Continuous Integration Test Runner
 ci: lint test
 	echo "1. 'make clean'"
