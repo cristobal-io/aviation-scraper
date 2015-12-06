@@ -2,12 +2,12 @@
 
 var sjs = require("scraperjs");
 var fs = require("fs");
-var scrapers = require("./scrapers/");
+var scrapers = require("../scrapers/");
 var _ = require("lodash");
 
 var BASE_URL = "https://en.wikipedia.org";
 
-var airlines = require("./data/destination_pages.json");
+var airlines = require("../data/destination_pages.json");
 
 function getRoutes(options, callback) {
   var url = BASE_URL + options.destinationsLink;

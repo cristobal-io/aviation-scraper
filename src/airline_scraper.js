@@ -3,9 +3,9 @@
   var sjs = require("scraperjs");
   var fs = require("fs");
   var async = require("async");
-  var scrapers = require("./scrapers/");
+  var scrapers = require("../scrapers/");
   var _ = require("lodash");
-  var destinationsFile = "./data/destination_pages.json";
+  var destinationsFile = "../data/destination_pages.json";
   var BASE_URL = "https://en.wikipedia.org";
 
   var airlines = require(destinationsFile);

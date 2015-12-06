@@ -2,11 +2,11 @@
 // var sjs = require("scraperjs");
 // var fs = require("fs");
 // var async = require("async");
-var scrapers = require("./scrapers/");
+var scrapers = require("../scrapers/");
 
 // var BASE_URL = "https://en.wikipedia.org";
 
-// var airlines = require("./data/destination_pages.json");
+// var airlines = require("../data/destination_pages.json");
 
 // var fs = require("fs");
 
@@ -37,7 +37,7 @@ scraperjs.StaticScraper.create("https://en.wikipedia.org/wiki/List_of_airports_b
 //   if (err) {
 //     throw err;
 //   }
-//   var filename = "./data/routes_" + options.name + ".json";
+//   var filename = "../data/routes_" + options.name + ".json";
 
 //   fs.writeFile(filename,
 //     JSON.stringify(routes, null, 2),
