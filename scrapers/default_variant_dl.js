@@ -1,5 +1,16 @@
 "use strict";
 
+function checkName(argument) {
+  if ((/Content/.test(argument)) ||
+    (/External/.test(argument)) ||
+    (/Terminate/.test(argument)) ||
+    (/Referenc/.test(argument))) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 module.exports = function ($) {
   var destinations = {};
   // var from;
@@ -7,24 +18,28 @@ module.exports = function ($) {
   $(".mw-content-ltr h2").map(function () {
     // var to = $(this).next("ul").text().split("\n");
 
-    if ((/Content/.test($(this).text())) ||
-      (/External/.test($(this).text())) ||
-      (/Terminate/.test($(this).text())) ||
-      (/Referenc/.test($(this).text()))) {
+
+    if (checkName($(this).text())) {
       return;
     }
+    // if ((/Content/.test($(this).text())) ||
+    //   (/External/.test($(this).text())) ||
+    //   (/Terminate/.test($(this).text())) ||
+    //   (/Referenc/.test($(this).text()))) {
+    //   return;
+    // }
     var from = $(this).find(".mw-headline").text();
 
     destinations[from] = {};
 
-    var $origin = $(this).nextUntil("h2","p");
+    var $origin = $(this).nextUntil("h2", "p");
 
-    for (var l = 0; l < $origin.length; l+=1) {
-      var  $originLink = $origin[l].find("a");
+    for (var l = 0; l < $origin.length; l += 1) {
+      var $originLink = $origin[l].find("a");
       var $originName = $originLink.attribs.title;
 
       destinations[from][$originName] = {};
-      var links = $origin[l].nextUntil("p","ul").find("a");
+      var links = $origin[l].nextUntil("p", "ul").find("a");
       // var links = $(this).next("p").next("ul").find("a");
 
       // var cityUrl, airportName, airportUrl;
@@ -59,7 +74,7 @@ module.exports = function ($) {
           airportName = links[i + 1].attribs.title;
           airportUrl = links[i + 1].attribs.href;
 
-          destinations[from][origin][cityName] = {
+          destinations[from][$origin][cityName] = {
             city: {
               name: cityName, //links.get(0).textContent,
               url: cityUrl
