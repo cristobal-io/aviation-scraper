@@ -25,8 +25,12 @@ function getScraperType(options, callback) {
 }
 
 // getScraperType(airlines[0], writeJson);
+// function not tested or run yet.
+function getScraperTypeForAll(options) {
 
-function getScraperTypeForAll() {
+  // for modularity purposes
+  destinationsFile = options.destinationsFile || destinationsFile;
+  airlines = options.airlines || airlines;
 
   async.map(airlines, function (options, callback) {
     getScraperType(options, callback);
