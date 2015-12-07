@@ -14,7 +14,7 @@ var PORT = 3000;
 var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
-describe("server", function () {
+describe("Server is on", function () {
 
   app.use(serveStatic(__dirname + MODELS_DIR));
   isPortTaken(PORT, function (err, data) {
@@ -24,7 +24,6 @@ describe("server", function () {
   });
 
   it("Confirm scraper is working with index.html", function (done) {
-
     sjs.StaticScraper.create(SERVER_LISTENING)
       .scrape(function ($) {
         return $("h1").text();
@@ -35,8 +34,30 @@ describe("server", function () {
       });
   });
 
-  it("True or false test", function () {
-    expect(true).to.be.true;
+  it("Check the page AeroSur_destinations is on", function (done) {
+    sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
+      .scrape(function ($) {
+        return $("h1").text();
+      })
+      .then(function (data) {
+        expect(data).to.eql("AeroSur destinations");
+        done();
+      });
+  });
+
+});
+
+describe("does it works outside the suite?", function() {
+
+  it("Should get the siteSub id value", function (done) {
+    sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
+      .scrape(function ($) {
+        return $("#siteSub").text();
+      })
+      .then(function (data) {
+        expect(data).to.eql("From Wikipedia, the free encyclopedia");
+        done();
+      });
   });
 
 });
