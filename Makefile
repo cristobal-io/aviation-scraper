@@ -31,9 +31,8 @@ test: lint
 dev:
 	mocha test -w
 
-# to get all the pages we can use
-# wget -p -k http://www.example.com/
-# http://stackoverflow.com/questions/6348289/download-a-working-local-copy-of-a-webpage
+update_models:
+	node test/spec/models_update.js
 
 # Continuous Integration Test Runner
 ci: lint test

@@ -24,6 +24,7 @@ var download_file_wget = function (file_url) {
   // var wget = "wget -p -k " + DOWNLOAD_DIR + " " + file_url;
   // excute wget using child_process" exec function
 
+  /*eslint-disable no-unused-vars */
   var child = exec(wget, function (err, stdout, stderr) {
     if (err) {
       throw err;
@@ -31,6 +32,7 @@ var download_file_wget = function (file_url) {
       console.log(file_name + " downloaded to " + DOWNLOAD_DIR);
     }
   });
+  /*eslint-enable no-unused-vars */
 };
 
 download_file_wget(file_url);
