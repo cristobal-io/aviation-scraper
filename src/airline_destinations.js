@@ -17,7 +17,7 @@ var urls = _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
 
-  console.log("Getting scraper for %s from %s", letter, options);
+  console.log("Getting scraper for %s from %s", letter, options);// eslint-disable-line no-console
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
     .then(function (destinations) {
@@ -34,5 +34,5 @@ async.map(urls, function (options, callback) {
   var airlines = _.flatten(results, true);
 
   fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
-  console.log("Saved %s", destinationsFile);
+  console.log("Saved %s", destinationsFile);// eslint-disable-line no-console
 });

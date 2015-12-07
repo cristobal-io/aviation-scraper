@@ -29,7 +29,7 @@ var download_file_wget = function (file_url) {
     if (err) {
       throw err;
     } else {
-      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);
+      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);// eslint-disable-line no-console
     }
   });
   /*eslint-enable no-unused-vars */

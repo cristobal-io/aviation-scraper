@@ -13,7 +13,7 @@
   function getScraperType(options, callback) {
     var url = BASE_URL + options.destinationsLink;
 
-    console.log("Getting scraper for %s from %s", options.name, url);
+    console.log("Getting scraper for %s from %s", options.name, url);// eslint-disable-line no-console
     sjs.StaticScraper.create(url)
       .scrape(scrapers["type_of_scrapper"])
       .then(function (type) {
@@ -36,5 +36,5 @@
       return airlines;
     }, airlines);
     fs.writeFileSync(destinationsFile, JSON.stringify(airlines,null,2));
-    console.log("Saved %s", destinationsFile);
+    console.log("Saved %s", destinationsFile);// eslint-disable-line no-console
   });

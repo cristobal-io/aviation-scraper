@@ -14,14 +14,17 @@ var PORT = 3000;
 var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
-describe("Server is on", function () {
-
+before("start server", function () {
   app.use(serveStatic(__dirname + MODELS_DIR));
   isPortTaken(PORT, function (err, data) {
     if (!data) {
       app.listen(PORT);
     }
   });
+});
+
+describe("Server is on", function () {
+
 
   it("Confirm scraper is working with index.html", function (done) {
     sjs.StaticScraper.create(SERVER_LISTENING)

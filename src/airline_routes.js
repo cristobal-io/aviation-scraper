@@ -12,8 +12,7 @@ var airlines = require("../data/destination_pages.json");
 function getRoutes(options, callback) {
   var url = BASE_URL + options.destinationsLink;
 
-
-  console.log("Getting routes for %s from %s", options.name, url);
+  console.log("Getting routes for %s from %s", options.name, url);// eslint-disable-line no-console
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
@@ -35,7 +34,7 @@ var writeJson = function (err, routes, options) {
       if (err) {
         throw err;
       }
-      console.log("Saved %s", filename);
+      console.log("Saved %s", filename);// eslint-disable-line no-console
     }
   );
 };

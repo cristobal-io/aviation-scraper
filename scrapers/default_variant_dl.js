@@ -88,6 +88,6 @@ module.exports = function ($) {
       }
     }
   });
-  console.log(JSON.stringify(destinations, null, 2));
+  console.log(JSON.stringify(destinations, null, 2)); // eslint-disable-line no-console
   return destinations;
 };

@@ -18,9 +18,9 @@ var ERROR_PAGE = "/404.html";
 describe("server", function () {
 
   app.use(serveStatic(__dirname));
-  console.log("server started.");
+  console.log("server started."); // eslint-disable-line no-console
   isPortTaken(PORT, function (err, data) {
-    console.log(data);
+    console.log(data); // eslint-disable-line no-console
     if (!data) {
       app.listen(PORT);
     }

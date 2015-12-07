@@ -15,7 +15,7 @@ var scraperjs = require("scraperjs");
 scraperjs.StaticScraper.create("https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_A")
   .scrape(scrapers["table"])// || scrapers["default"])
   .then(function (airports) {
-    console.log(JSON.stringify(airports, null, 2));
+    console.log(JSON.stringify(airports, null, 2));// eslint-disable-line no-console
 
   });
 
