@@ -14,53 +14,71 @@ var PORT = 3000;
 var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
-before("start server", function () {
+before("start server", function (done) {
   app.use(serveStatic(__dirname + MODELS_DIR));
   isPortTaken(PORT, function (err, data) {
     if (!data) {
       app.listen(PORT);
     }
+    done();
   });
 });
 
 describe("Server is on", function () {
 
 
-  it("Confirm scraper is working with index.html", function (done) {
+  it("Confirm scraper is working with index.html", function () {
     sjs.StaticScraper.create(SERVER_LISTENING)
       .scrape(function ($) {
         return $("h1").text();
       })
       .then(function (data) {
         expect(data).to.eql("Models");
-        done();
       });
   });
 
-  it("Check the page AeroSur_destinations is on", function (done) {
+  it("Check the page AeroSur_destinations is on", function () {
     sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
       .scrape(function ($) {
         return $("h1").text();
       })
       .then(function (data) {
         expect(data).to.eql("AeroSur destinations");
-        done();
       });
   });
 
 });
 
-describe("does it works outside the suite?", function() {
+describe("does it works outside the suite?", function () {
 
-  it("Should get the siteSub id value", function (done) {
+  it("Should get the siteSub id value", function () {
     sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
       .scrape(function ($) {
         return $("#siteSub").text();
       })
       .then(function (data) {
         expect(data).to.eql("From Wikipedia, the free encyclopedia");
-        done();
       });
+  });
+
+});
+
+var options = {
+  name: "test",
+  destinationsLink: "/AeroSur_destinations.html",
+  url: SERVER_LISTENING + "/AeroSur_destinations.html"
+};
+
+var airlineScraperType = require("../src/airline_scraper.js");
+var getScraperType = airlineScraperType.getScraperType;
+
+describe("Type of Scraper", function () {
+
+  it("Should return default scraper", function (done) {
+    getScraperType(options, function (err, results) {
+      expect(results.type).to.eql("default");
+      done();
+    });
   });
 
 });
