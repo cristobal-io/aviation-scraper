@@ -19,7 +19,7 @@ data/destination_pages.json:
 
 routes:
 	echo "Retrieving routes"
-	node airline_routes.js
+	node src/airline_routes.js
 
 scrapers:
 	echo "Setting up scrapers for each type of page..."
