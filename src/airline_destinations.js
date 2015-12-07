@@ -7,7 +7,7 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
-var destinationsFile = "../data/destination_pages.json";
+var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=";
 
 var urls = _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {

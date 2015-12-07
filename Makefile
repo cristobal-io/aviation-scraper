@@ -15,15 +15,15 @@ destinations: data/destination_pages.json
 
 data/destination_pages.json:
 	echo "Generating file for airlines destinations"
-	node airline_destinations.js
+	node src/airline_destinations.js
 
 routes:
 	echo "Retrieving routes"
 	node airline_routes.js
 
-scrapers: lint
+scrapers:
 	echo "Setting up scrapers for each type of page..."
-	node airline_scraper.js
+	node src/airline_scraper.js
 
 test: lint
 	mocha test
@@ -57,4 +57,4 @@ clean:
 	cp data_backup/destination_pages.json data/
 	echo "finished."
 
-.PHONY: data/destination_pages.json test
+.PHONY: data/destination_pages.json test scrapers
