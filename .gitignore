@@ -1,2 +1,4 @@
 node_modules
 data/routes*.json
+coverage
+.nyc_output

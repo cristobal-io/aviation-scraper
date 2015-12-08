@@ -31,6 +31,15 @@ test: lint
 dev:
 	mocha test -w
 
+test-coveralls:
+	test -d node_modules/nyc/ || npm install nyc
+	nyc mocha && nyc report --reporter=text-lcov | coveralls
+
+test-coverage-report:
+	echo "Generating coverage report, please stand by"
+	test -d node_modules/nyc/ || npm install nyc
+	nyc mocha && nyc report --reporter=html
+
 update_models:
 	node test/spec/models_update.js
 
