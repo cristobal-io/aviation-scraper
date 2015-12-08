@@ -26,12 +26,11 @@ function getScraperType(options, callback) {
 
 // getScraperType(airlines[0], writeJson);
 // function not tested or run yet.
-function getScraperTypeForAll(options) {
+function getScraperTypeForAll(options, callback) {
 
   // for modularity purposes
   destinationsFile = options.destinationsFile || destinationsFile;
   airlines = options.airlines || airlines;
-
   async.map(airlines, function (options, callback) {
     getScraperType(options, callback);
   }, function (err, results) {
@@ -48,6 +47,7 @@ function getScraperTypeForAll(options) {
     }, airlines);
     fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
     console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
+    callback(airlines);
   });
 }
 

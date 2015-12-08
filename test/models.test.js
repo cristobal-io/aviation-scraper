@@ -66,17 +66,34 @@ describe("does it works outside the suite?", function () {
 var options = {
   name: "test",
   destinationsLink: "/AeroSur_destinations.html",
-  url: SERVER_LISTENING + "/AeroSur_destinations.html"
+  url: SERVER_LISTENING + "/AeroSur_destinations.html",
+  destinationsFile: "./test/spec/data/destination_pages.json",
+  airlines: [{
+    name: "test",
+    destinationsLink: "/AeroSur_destinations.html",
+    url: SERVER_LISTENING + "/AeroSur_destinations.html"
+  }]
 };
 
 var airlineScraperType = require("../src/airline_scraper.js");
 var getScraperType = airlineScraperType.getScraperType;
+var getScraperTypeForAll = airlineScraperType.getScraperTypeForAll;
 
 describe("Type of Scraper", function () {
 
   it("Should return default scraper", function (done) {
     getScraperType(options, function (err, results) {
       expect(results.type).to.eql("default");
+      done();
+    });
+  });
+
+  it("Should return and save the type_of_scrapper for all airports", function (done) {
+
+    getScraperTypeForAll(options, function (results) {
+      console.log(results);
+      expect(results).to.be.an("array");
+      // expect(results).to.be.jsonSchema();
       done();
     });
   });

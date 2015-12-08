@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "destinationsLink": "/AeroSur_destinations.html",
+  "url": "http://localhost:3000/AeroSur_destinations.html",
+  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "airlines": [{
+    "name": "test",
+    "destinationsLink": "/AeroSur_destinations.html",
+    "url": "http://localhost:3000/AeroSur_destinations.html"
+  }]
+};
