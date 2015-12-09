@@ -1,4 +1,3 @@
-
 "use strict";
 
 // courtesy of:
@@ -7,14 +6,20 @@
 // Dependencies
 var url = require("url");
 var exec = require("child_process").exec;
+var async = require("async");
 
 // App variables
-var file_url = "https://en.wikipedia.org/wiki/AeroSur_destinations";
+var BASE_URL = "https://en.wikipedia.org/wiki/";
+var file_url = [
+  "Adria_Airways_destinations",
+  "AeroSur_destinations",
+  "Aegean_Airlines_destinations"
+];
 var DOWNLOAD_DIR = "./test/spec/models/";
 
 // Function to download file using wget
-var download_file_wget = function (file_url) {
-
+var download_file_wget = function (file_url, callback) {
+  file_url = BASE_URL + file_url;
   // extract the file name
   var file_name = url.parse(file_url).pathname.split("/").pop();
 
@@ -29,12 +34,14 @@ var download_file_wget = function (file_url) {
     if (err) {
       throw err;
     } else {
-      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);// eslint-disable-line no-console
+      console.log(file_name + " downloaded to " + DOWNLOAD_DIR); // eslint-disable-line no-console
+      callback();
     }
   });
   /*eslint-enable no-unused-vars */
-
 };
 
-download_file_wget(file_url);
-
+async.map(file_url, download_file_wget, function () {
+  console.log("Async finished");
+});
+// download_file_wget(file_url);
