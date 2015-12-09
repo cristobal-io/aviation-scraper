@@ -42,7 +42,7 @@ test-coverage-report:
 	test -d node_modules/nyc/ || npm install nyc
 	nyc mocha && nyc report --reporter=html
 
-update_models:
+update-models:
 	node test/spec/models_update.js
 
 # Continuous Integration Test Runner
