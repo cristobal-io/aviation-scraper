@@ -28,10 +28,10 @@ scrapers:
 	node src/airline_scraper.js
 
 test: lint
-	mocha test
+	NODE_ENV=test mocha test
 
 dev:
-	mocha test -w
+	NODE_ENV=test mocha test -w
 
 test-coveralls:
 	test -d node_modules/nyc/ || npm install nyc

@@ -1,7 +1,7 @@
-[{
+{
   "title": "destination schema v1",
-  "type": "object",
-  "required": ["city", "airport"],
+  "type": "string",
+  "required": ["city", "house"],
   "properties": {
     "city": {
       "type": "object",
@@ -38,4 +38,4 @@
       }
     }
   }
-}]
+}

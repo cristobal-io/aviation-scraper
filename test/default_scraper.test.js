@@ -12,16 +12,63 @@ var chai = require("chai");
 var expect = chai.expect;
 var strings = require("./strings/test_strings.json");
 
+// var tv4 = require(tv4);
+
 chai.use(require("chai-json-schema"));
 var result, line;
 
-before(function () {
+before(function (done) {
   line = strings["line"];
-  return result = getDestination(line);
+  // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
+
+  result = getDestination(line);
+  // console.log(destinationSchema);
+  done();
 });
 
 describe("getDestination function, it: ", function () {
-  var destinationSchema = require("./schema/destination_schema.json");
+  var destinationSchema = {
+    "title": "destination schema v1",
+    "type": "object",
+    "required": ["city", "airport"],
+    "properties": {
+      "city": {
+        "type": "object",
+        "minItems": 1,
+        "uniqueItems": true,
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "items": {
+          "type": "string"
+        }
+      },
+      "airport": {
+        "type": "object",
+        "minItems": 1,
+        "uniqueItems": true,
+        "required": ["name", "url"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  };
+  // require("./schema/destination_schema.json");
 
 
   it("Should be a function", function () {
@@ -40,7 +87,9 @@ describe("getDestinations function, it: ", function () {
   var makrdown, makrdownResults;
 
   before(function () {
-    makrdown = md(strings.markdown, {inline:true});
+    makrdown = md(strings.markdown, {
+      inline: true
+    });
     makrdownResults = getDestinations(makrdown);
   });
 
@@ -117,14 +166,14 @@ describe("getLinkInfo function, it:", function () {
     expect(getLinkInfo).to.be.a("function");
   });
 
-  it("Should return an array", function() {
+  it("Should return an array", function () {
     expect(getLinkInfo(line)).to.be.an("array");
   });
 
-  it("Should return a length of 3", function() {
+  it("Should return a length of 3", function () {
     expect(getLinkInfo(line).length).to.be.above(2);
   });
-  it("Should match the returned values", function() {
+  it("Should match the returned values", function () {
     var getLinkInfoResult = getLinkInfo(line);
     var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
     var linksInfoRe = new RegExp(re);

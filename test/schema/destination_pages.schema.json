@@ -1,7 +1,7 @@
-[{
+{
   "title": "destination pages schema v1",
-  "type": "object",
-  "required": ["name", "destinationsLink", "scraper"],
+  "type": "array",
+  "required": ["name", "empty", "scraper"],
   "properties": {
     "name": {
       "type": "string",
@@ -15,4 +15,4 @@
       "type": "string"
     }
   }
-}]
+}

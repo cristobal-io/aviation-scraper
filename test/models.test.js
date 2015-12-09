@@ -72,7 +72,7 @@ var options = [{
     destinationsLink: "/AeroSur_destinations.html",
     url: SERVER_LISTENING + "/AeroSur_destinations.html"
   }]
-},{
+}, {
   name: "table_with_origins",
   destinationsLink: "/Adria_Airways_destinations.html",
   url: SERVER_LISTENING + "/Adria_Airways_destinations.html",
@@ -83,7 +83,7 @@ var options = [{
     url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
   }]
 
-},{
+}, {
   name: "table",
   destinationsLink: "/Aegean_Airlines_destinations.html",
   url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html",
@@ -92,10 +92,13 @@ var options = [{
     name: "table",
     destinationsLink: "/Aegean_Airlines_destinations.html",
     url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html"
+  }, {
+    name: "table_with_origins",
+    destinationsLink: "/Adria_Airways_destinations.html",
+    url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
   }]
 
-}
-];
+}];
 
 var airlineScraperType = require("../src/airline_scraper.js");
 var getScraperType = airlineScraperType.getScraperType;
@@ -125,12 +128,32 @@ describe("Type of Scraper", function () {
   });
 
   it("Should return and save the type_of_scrapper for all airports", function (done) {
-    var destinations_pages = require("./schema/destination_pages.schema.json");
+    var destinationsPagesSchema = {
+      "title": "destination pages schema v1",
+      "type": "object",
+      "required": ["name", "destinationsLink", "scraper"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "destinationsLink": {
+          "type": "string"
+        },
+        "scraper": {
+          "type": "string"
+        }
+      }
+    };
+    //require("./schema/destination_pages.schema.json");
 
-    getScraperTypeForAll(options[0], function (results) {
+    getScraperTypeForAll(options[2], function (results) {
       // console.log(results);
       expect(results).to.be.an("array");
-      expect(results).to.be.jsonSchema(destinations_pages);
+      for (var i = 0; i < results.length; i += 1) {
+        expect(results[i]).to.be.jsonSchema(destinationsPagesSchema);
+      }
       done();
     });
   });
