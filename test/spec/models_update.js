@@ -29,8 +29,8 @@ var download_file_wget = function (file_url, callback) {
   // var wget = "wget -p -k " + DOWNLOAD_DIR + " " + file_url;
   // excute wget using child_process" exec function
 
-  /*eslint-disable no-unused-vars */
-  var child = exec(wget, function (err, stdout, stderr) {
+  
+  var child = exec(wget, function (err, stdout, stderr) {//eslint-disable-line no-unused-vars 
     if (err) {
       throw err;
     } else {
@@ -38,10 +38,9 @@ var download_file_wget = function (file_url, callback) {
       callback();
     }
   });
-  /*eslint-enable no-unused-vars */
+
 };
 
 async.map(file_url, download_file_wget, function () {
-  console.log("Async finished");
+  console.log("Async finished"); // eslint-disable-line no-console
 });
-// download_file_wget(file_url);
