@@ -39,7 +39,7 @@ describe("getDestination function, it: ", function () {
 describe("getDestinations function, it: ", function () {
   var makrdown, makrdownResults;
 
-  beforeEach(function () {
+  before(function () {
     makrdown = md(strings.markdown, {inline:true});
     makrdownResults = getDestinations(makrdown);
   });
@@ -60,7 +60,7 @@ describe("getDestinations function, it: ", function () {
 describe("getLinkStrings function, it:", function () {
   var linkStringResult;
 
-  beforeEach(function () {
+  before(function () {
     linkStringResult = getLinkStrings(line);
   });
 
@@ -81,7 +81,7 @@ describe("getLinkStrings function, it:", function () {
 describe("hasValidLinks function, it:", function () {
   var link, hasValidLinksResult;
 
-  beforeEach(function () {
+  before(function () {
     link = strings.link;
     hasValidLinksResult = hasValidLinks(link);
   });
