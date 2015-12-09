@@ -15,7 +15,7 @@ var strings = require("./strings/test_strings.json");
 chai.use(require("chai-json-schema"));
 var result, line;
 
-beforeEach(function () {
+before(function () {
   line = strings["line"];
   return result = getDestination(line);
 });

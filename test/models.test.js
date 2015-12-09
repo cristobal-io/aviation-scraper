@@ -26,7 +26,6 @@ before("start server", function (done) {
 
 describe("Server is on", function () {
 
-
   it("Confirm scraper is working with index.html", function () {
     sjs.StaticScraper.create(SERVER_LISTENING)
       .scrape(function ($) {
@@ -116,4 +115,5 @@ function isPortTaken(port, fn) {
         .close();
     })
     .listen(port);
+
 }

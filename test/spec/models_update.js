@@ -33,6 +33,7 @@ var download_file_wget = function (file_url) {
     }
   });
   /*eslint-enable no-unused-vars */
+
 };
 
 download_file_wget(file_url);
