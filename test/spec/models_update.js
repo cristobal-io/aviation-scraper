@@ -19,7 +19,7 @@ var download_file_wget = function (file_url) {
   var file_name = url.parse(file_url).pathname.split("/").pop();
 
   // compose the wget command
-  var wget = "wget -P " + DOWNLOAD_DIR + " " + file_url;
+  var wget = "wget -P " + DOWNLOAD_DIR + " " + file_url + " --no-check-certificate";
 
   // var wget = "wget -p -k " + DOWNLOAD_DIR + " " + file_url;
   // excute wget using child_process" exec function
