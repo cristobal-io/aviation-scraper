@@ -1,0 +1,18 @@
+[{
+  "title": "destination pages schema v1",
+  "type": "object",
+  "required": ["name", "destinationsLink", "scraper"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "destinationsLink": {
+      "type": "string"
+    },
+    "scraper": {
+      "type": "string"
+    }
+  }
+}]
