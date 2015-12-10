@@ -12,7 +12,7 @@ var airlines = require("../data/destination_pages.json");
 function getRoutes(options, callback) {
   var url = BASE_URL + options.destinationsLink;
 
-  console.log("Getting routes for %s from %s", options.name, url);// eslint-disable-line no-console
+  console.log("Getting routes for %s from %s", options.name, url); // eslint-disable-line no-console
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
@@ -34,7 +34,7 @@ var writeJson = function (err, routes, options) {
       if (err) {
         throw err;
       }
-      console.log("Saved %s", filename);// eslint-disable-line no-console
+      console.log("Saved %s", filename); // eslint-disable-line no-console
     }
   );
 };
@@ -49,11 +49,20 @@ airlines = _.where(airlines, {
 
 var async = require("async");
 
-async.forEachOf(airlines, function (value, key, callback) {
-  getRoutes(value, writeJson);
+// changed to use the function inside the test, not sure if the callback will 
+// work properly
+
+function getAllRoutes(airlines, callback) {
+  async.forEachOf(airlines, function (value, key, callback) {
+    getRoutes(value, writeJson);
+    callback();
+  }, function (err) {
+    if (err) {
+      throw err;
+    }
+  });
   callback();
-}, function (err) {
-  if (err) {
-    throw err;
-  }
-});
+}
+
+module.exports.getRoutes = getRoutes;
+module.exports.getAllRoutes = getAllRoutes;

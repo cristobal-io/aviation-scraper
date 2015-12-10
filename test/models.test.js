@@ -191,6 +191,19 @@ describe("Airline Destinations, it:", function() {
     expect(destinations_results).to.be.an("array");
   });
 
+// TODO: check schema integrity of returned array
+
+});
+
+var routes = require("../src/airline_routes.js");
+var getRoutes = routes.getRoutes;
+
+describe("getRoutes function", function () {
+
+  it("Should be a function", function () {
+    expect(getRoutes).to.be.a("function");
+  });
+
 });
 
 function isPortTaken(port, fn) {
