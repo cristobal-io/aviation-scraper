@@ -2,6 +2,7 @@ SHELL = /bin/bash
 MAKEFLAGS += --no-print-directory --silent
 export PATH := ./node_modules/.bin:$(PATH):./bin
 LINT_DIR = $(wildcard *.js src/*.js test/*.js scrapers/*.js spikes/*.js test/*/*.js scrapers/*/*.js spikes/*/*.js)
+export NODE_ENV=production
 
 default: setup test
 
@@ -28,7 +29,7 @@ scrapers:
 	node src/airline_scraper.js
 
 test: lint
-	NODE_ENV=test mocha test
+	mocha test
 
 dev:
 	NODE_ENV=test mocha test -w

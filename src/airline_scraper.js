@@ -13,6 +13,7 @@ var airlines = require(destinationsFile);
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
+  console.log(process.env.NODE_ENV);
   if (process.env.NODE_ENV !== "test") {
     console.log("Getting scraper for %s from %s", options.name, url); // eslint-disable-line no-console
   }
