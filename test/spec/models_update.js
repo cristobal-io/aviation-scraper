@@ -16,10 +16,14 @@ var file_url = [
   "Aegean_Airlines_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";
+var DESTINATIONS_URL = "https://en.wikipedia.org/wiki/Category:Lists_of_airline_destinations";
 
 // Function to download file using wget
 var download_file_wget = function (file_url, callback) {
-  file_url = BASE_URL + file_url;
+  if (file_url.indexOf("http") === -1) {
+    file_url = BASE_URL + file_url;
+  }
+
   // extract the file name
   var file_name = url.parse(file_url).pathname.split("/").pop();
 
@@ -29,8 +33,8 @@ var download_file_wget = function (file_url, callback) {
   // var wget = "wget -p -k " + DOWNLOAD_DIR + " " + file_url;
   // excute wget using child_process" exec function
 
-  
-  var child = exec(wget, function (err, stdout, stderr) {//eslint-disable-line no-unused-vars 
+
+  var child = exec(wget, function (err, stdout, stderr) { //eslint-disable-line no-unused-vars 
     if (err) {
       throw err;
     } else {
@@ -43,4 +47,8 @@ var download_file_wget = function (file_url, callback) {
 
 async.map(file_url, download_file_wget, function () {
   console.log("Async finished"); // eslint-disable-line no-console
+});
+
+download_file_wget(DESTINATIONS_URL, function () {
+  console.log("destinations file downloaded");//eslint-disable-line no-console
 });
