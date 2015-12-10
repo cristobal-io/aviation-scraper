@@ -192,8 +192,8 @@ function isPortTaken(port, fn) {
     })
     .once("listening", function () {
       tester.once("close", function () {
-          fn(null, false);
-        })
+        fn(null, false);
+      })
         .close();
     })
     .listen(port);

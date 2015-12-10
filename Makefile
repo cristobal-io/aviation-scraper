@@ -29,7 +29,7 @@ scrapers:
 	node src/airline_scraper.js
 
 test: lint
-	mocha test
+	NODE_ENV=test mocha test
 
 dev:
 	NODE_ENV=test mocha test -w
