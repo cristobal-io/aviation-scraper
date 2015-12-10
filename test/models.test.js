@@ -163,9 +163,22 @@ describe("Type of Scraper", function () {
 var destinationsFunctions = require("../src/airline_destinations.js");
 var getAllDestinations = destinationsFunctions.getAllDestinations;
 var getDestinations = destinationsFunctions.getDestinations;
+var destinations_results;
 
 describe("Airline Destinations, it:", function() {
-  
+  before(function (done) {
+    var destination_url = {
+      url: [SERVER_LISTENING + "/Category:Lists_of_airline_destinations.html"],
+      destinationsFile: __dirname + "/spec/models/destinations.json"
+    };
+
+    getAllDestinations(destination_url,function (err, results) {
+      destinations_results = results;
+      done();
+    });
+    
+  });
+
   it("Should be a function 'getAllDestinations'", function () {
     expect(getAllDestinations).to.be.a("function");
   });
@@ -174,9 +187,8 @@ describe("Airline Destinations, it:", function() {
     expect(getDestinations).to.be.a("function");
   });
 
-  it("getAllDestinations return ", function() {
-    // update model with destinations page.
-    expect(true).to.be.false;
+  it("getAllDestinations return an Array", function() {
+    expect(destinations_results).to.be.an("array");
   });
 
 });

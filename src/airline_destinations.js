@@ -14,7 +14,10 @@ var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_air
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
 
-  console.log("Getting scraper for %s from %s", letter, options);// eslint-disable-line no-console
+
+  if (process.env.NODE_ENV !== "test") {
+    console.log("Getting scraper for %s from %s", letter, options);// eslint-disable-line no-console
+  }
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
     .then(function (destinations) {
@@ -23,9 +26,12 @@ function getDestinations(options, callback) {
 }
 
 function getAllDestinations (options, callback) {
-  var urls = options.urls || _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
+  destinationsFile = options.destinationsFile || destinationsFile;
+
+  var urls = options.url || _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
     return BASE_URL + letter;
   });
+
 
   async.map(urls, function (options, callback) {
     getDestinations(options, callback);
@@ -36,7 +42,9 @@ function getAllDestinations (options, callback) {
     var airlines = _.flatten(results, true);
 
     fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
-    console.log("Saved %s", destinationsFile);// eslint-disable-line no-console
+    if (process.env.NODE_ENV !== "test") {
+      console.log("Saved %s", destinationsFile);// eslint-disable-line no-console
+    }
     callback(null, airlines);
   });
 
