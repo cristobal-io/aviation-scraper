@@ -18,7 +18,6 @@ chai.use(require("chai-json-schema"));
 var result, line;
 
 before(function (done) {
-  console.log("NODE_ENV: %s \n", process.env.NODE_ENV);//eslint-disable-line no-console
 
   line = strings["line"];
   // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
@@ -26,6 +25,11 @@ before(function (done) {
   result = getDestination(line);
   // console.log(destinationSchema);
   done();
+});
+
+after(function () {
+  console.log("NODE_ENV: %s \n", process.env.NODE_ENV); //eslint-disable-line no-console
+
 });
 
 describe("getDestination function, it: ", function () {
