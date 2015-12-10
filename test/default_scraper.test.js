@@ -18,6 +18,8 @@ chai.use(require("chai-json-schema"));
 var result, line;
 
 before(function (done) {
+  console.log("NODE_ENV: %s \n", process.env.NODE_ENV);
+
   line = strings["line"];
   // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
 

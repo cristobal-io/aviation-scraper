@@ -160,6 +160,27 @@ describe("Type of Scraper", function () {
 
 });
 
+var destinationsFunctions = require("../src/airline_destinations.js");
+var getAllDestinations = destinationsFunctions.getAllDestinations;
+var getDestinations = destinationsFunctions.getDestinations;
+
+describe("Airline Destinations, it:", function() {
+  
+  it("Should be a function 'getAllDestinations'", function () {
+    expect(getAllDestinations).to.be.a("function");
+  });
+
+  it("Should be a function 'getDestinations'", function () {
+    expect(getDestinations).to.be.a("function");
+  });
+
+  it("getAllDestinations return ", function() {
+    // update model with destinations page.
+    expect(true).to.be.false;
+  });
+
+});
+
 function isPortTaken(port, fn) {
   var net = require("net");
   var tester = net.createServer()
