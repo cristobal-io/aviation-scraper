@@ -16,6 +16,7 @@ var getAllRoutes = airlinesIndex.getAllRoutes;
 
 var getAllDestinations = airlinesIndex.getAllDestinations;
 var getDestinations = airlinesIndex.getDestinations;
+var options = require("./spec/data/scraper_options.json");
 
 
 describe("does the server works outside the suite?", function () {
@@ -33,7 +34,7 @@ describe("does the server works outside the suite?", function () {
 });
 
 
-describe("Airline Destinations, it:", function() {
+describe("Airline_destinations.js: \n", function() {
   var destinations_results;
 
   before(function (done) {
@@ -49,16 +50,24 @@ describe("Airline Destinations, it:", function() {
     
   });
 
-  it("Should be a function 'getAllDestinations'", function () {
-    expect(getAllDestinations).to.be.a("function");
+  describe("getAllDestinations", function() {
+    
+    it("Should be a function 'getAllDestinations'", function () {
+      expect(getAllDestinations).to.be.a("function");
+    });
+
+    it("getAllDestinations return an Array", function() {
+      expect(destinations_results).to.be.an("array");
+    });
+
   });
 
-  it("Should be a function 'getDestinations'", function () {
-    expect(getDestinations).to.be.a("function");
-  });
+  describe("getDestinations", function() {
+    
+    it("Should be a function 'getDestinations'", function () {
+      expect(getDestinations).to.be.a("function");
+    });
 
-  it("getAllDestinations return an Array", function() {
-    expect(destinations_results).to.be.an("array");
   });
 
   it("Should have the schema for destinations", function (done) {
@@ -86,21 +95,37 @@ describe("Airline Destinations, it:", function() {
   });
 
 });
+describe("airline_routes.js: \n", function() {
+  
+  describe("getRoutes function", function () {
 
-describe("getRoutes function", function () {
+    it("Should be a function", function () {
+      expect(getRoutes).to.be.a("function");
+    });
 
-  it("Should be a function", function () {
-    expect(getRoutes).to.be.a("function");
+    it("Should return an array from default scraper model", function (done) {
+      getRoutes(options[0], function (err, results) {
+        expect(results).to.be.an("array");
+        done();
+      });
+    });
+
+    it("Should return an array from table scraper model", function (done) {
+      getRoutes(options[2], function (err, results) {
+        expect(results).to.be.an("array");
+        done();
+      });
+    });
+
   });
 
-});
 
+  describe("getAllRoutes function", function () {
 
-describe("getAllRoutes function", function () {
+    it("Should be a function", function () {
+      expect(getAllRoutes).to.be.a("function");
+    });
 
-  it("Should be a function", function () {
-    expect(getAllRoutes).to.be.a("function");
   });
-
 });
 

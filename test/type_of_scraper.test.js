@@ -56,7 +56,6 @@ describe("Type of Scraper", function () {
     // BERMI: no way to get this from a json file, not working :(
 
     getScraperTypeForAll(options[2], function (results) {
-      // console.log(results);
       expect(results).to.be.an("array");
       for (var i = 0; i < results.length; i += 1) {
         expect(results[i]).to.be.jsonSchema(destinationsPagesSchema);

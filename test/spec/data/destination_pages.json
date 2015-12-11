@@ -4,11 +4,5 @@
     "destinationsLink": "/Aegean_Airlines_destinations.html",
     "url": "http://localhost:3000/Aegean_Airlines_destinations.html",
     "scraper": "table"
-  },
-  {
-    "name": "table_with_origins",
-    "destinationsLink": "/Adria_Airways_destinations.html",
-    "url": "http://localhost:3000/Adria_Airways_destinations.html",
-    "scraper": "table_with_origins"
   }
 ]

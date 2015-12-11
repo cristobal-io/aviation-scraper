@@ -10,9 +10,11 @@ var BASE_URL = "https://en.wikipedia.org";
 var airlines = require("../data/destination_pages.json");
 
 function getRoutes(options, callback) {
-  var url = BASE_URL + options.destinationsLink;
+  var url = options.url || BASE_URL + options.destinationsLink;
 
-  console.log("Getting routes for %s from %s", options.name, url); // eslint-disable-line no-console
+  if (process.env.NODE_ENV !== "test") {
+    console.log("Getting routes for %s from %s", options.name, url); // eslint-disable-line no-console
+  }
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {

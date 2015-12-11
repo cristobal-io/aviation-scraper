@@ -8,7 +8,7 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 // var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
-var scrapers = require("../scrapers/");
+// var scrapers = require("../scrapers/");
 
 describe("does it works outside the js file that creates the server?", function () {
 
