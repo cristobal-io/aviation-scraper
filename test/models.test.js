@@ -198,7 +198,29 @@ describe("Airline Destinations, it:", function() {
     expect(destinations_results).to.be.an("array");
   });
 
-// TODO: check schema integrity of returned array
+  it("Should have the schema for destinations", function (done) {
+    var destinationsSchema = {
+      "title": "destination pages schema v1",
+      "type": "object",
+      "required": ["name", "destinationsLink"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "destinationsLink": {
+          "type": "string"
+        }
+      }
+    };
+
+    for (var i = 0; i < destinations_results.length; i += 1) {
+      expect(destinations_results[i]).to.be.jsonSchema(destinationsSchema);
+    }
+    done();
+
+  });
 
 });
 
