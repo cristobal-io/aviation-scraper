@@ -2,12 +2,6 @@
 // Mocha
 var chai = require("chai");
 var expect = chai.expect;
-// constants
-var BASE_URL = "http://localhost";
-var PORT = 3000;
-// var MODELS_DIR = "/spec/models/";
-var SERVER_LISTENING = BASE_URL + ":" + PORT;
-// todo: fix the hardcoded value on json file.
 
 var airlinesIndex = require("../src/index.js");
 
