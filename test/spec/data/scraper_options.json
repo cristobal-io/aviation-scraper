@@ -1,0 +1,37 @@
+[{
+  "name": "default",
+  "destinationsLink": "/AeroSur_destinations.html",
+  "url": "http://localhost:3000/AeroSur_destinations.html",
+  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "airlines": [{
+    "name": "default",
+    "destinationsLink": "/AeroSur_destinations.html",
+    "url": "http://localhost:3000/AeroSur_destinations.html"
+  }]
+}, {
+  "name": "table_with_origins",
+  "destinationsLink": "/Adria_Airways_destinations.html",
+  "url": "http://localhost:3000/Adria_Airways_destinations.html",
+  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "airlines": [{
+    "name": "table_with_origins",
+    "destinationsLink": "/Adria_Airways_destinations.html",
+    "url": "http://localhost:3000/Adria_Airways_destinations.html"
+  }]
+
+}, {
+  "name": "table",
+  "destinationsLink": "/Aegean_Airlines_destinations.html",
+  "url": "http://localhost:3000/Aegean_Airlines_destinations.html",
+  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "airlines": [{
+    "name": "table",
+    "destinationsLink": "/Aegean_Airlines_destinations.html",
+    "url": "http://localhost:3000/Aegean_Airlines_destinations.html"
+  }, {
+    "name": "table_with_origins",
+    "destinationsLink": "/Adria_Airways_destinations.html",
+    "url": "http://localhost:3000/Adria_Airways_destinations.html"
+  }]
+
+}]

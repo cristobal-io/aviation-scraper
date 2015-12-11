@@ -17,8 +17,7 @@ var SERVER_LISTENING = BASE_URL + ":" + PORT;
 var airlinesIndex = require("../src/index.js");
 var getRoutes = airlinesIndex.getRoutes;
 var getAllRoutes = airlinesIndex.getAllRoutes;
-var getScraperType = airlinesIndex.getScraperType;
-var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
+
 var getAllDestinations = airlinesIndex.getAllDestinations;
 var getDestinations = airlinesIndex.getDestinations;
 
@@ -73,101 +72,101 @@ describe("does it works outside the suite?", function () {
 
 });
 
-var options = [{
-  name: "default",
-  destinationsLink: "/AeroSur_destinations.html",
-  url: SERVER_LISTENING + "/AeroSur_destinations.html",
-  destinationsFile: "./test/spec/data/destination_pages.json",
-  airlines: [{
-    name: "default",
-    destinationsLink: "/AeroSur_destinations.html",
-    url: SERVER_LISTENING + "/AeroSur_destinations.html"
-  }]
-}, {
-  name: "table_with_origins",
-  destinationsLink: "/Adria_Airways_destinations.html",
-  url: SERVER_LISTENING + "/Adria_Airways_destinations.html",
-  destinationsFile: "./test/spec/data/destination_pages.json",
-  airlines: [{
-    name: "table_with_origins",
-    destinationsLink: "/Adria_Airways_destinations.html",
-    url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
-  }]
+// var options = [{
+//   name: "default",
+//   destinationsLink: "/AeroSur_destinations.html",
+//   url: SERVER_LISTENING + "/AeroSur_destinations.html",
+//   destinationsFile: "./test/spec/data/destination_pages.json",
+//   airlines: [{
+//     name: "default",
+//     destinationsLink: "/AeroSur_destinations.html",
+//     url: SERVER_LISTENING + "/AeroSur_destinations.html"
+//   }]
+// }, {
+//   name: "table_with_origins",
+//   destinationsLink: "/Adria_Airways_destinations.html",
+//   url: SERVER_LISTENING + "/Adria_Airways_destinations.html",
+//   destinationsFile: "./test/spec/data/destination_pages.json",
+//   airlines: [{
+//     name: "table_with_origins",
+//     destinationsLink: "/Adria_Airways_destinations.html",
+//     url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
+//   }]
 
-}, {
-  name: "table",
-  destinationsLink: "/Aegean_Airlines_destinations.html",
-  url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html",
-  destinationsFile: "./test/spec/data/destination_pages.json",
-  airlines: [{
-    name: "table",
-    destinationsLink: "/Aegean_Airlines_destinations.html",
-    url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html"
-  }, {
-    name: "table_with_origins",
-    destinationsLink: "/Adria_Airways_destinations.html",
-    url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
-  }]
+// }, {
+//   name: "table",
+//   destinationsLink: "/Aegean_Airlines_destinations.html",
+//   url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html",
+//   destinationsFile: "./test/spec/data/destination_pages.json",
+//   airlines: [{
+//     name: "table",
+//     destinationsLink: "/Aegean_Airlines_destinations.html",
+//     url: SERVER_LISTENING + "/Aegean_Airlines_destinations.html"
+//   }, {
+//     name: "table_with_origins",
+//     destinationsLink: "/Adria_Airways_destinations.html",
+//     url: SERVER_LISTENING + "/Adria_Airways_destinations.html"
+//   }]
 
-}];
+// }];
 
 
-describe("Type of Scraper", function () {
+// describe("Type of Scraper", function () {
 
-  it("Should return default scraper", function (done) {
-    getScraperType(options[0], function (err, results) {
-      expect(results.type).to.eql("default");
-      done();
-    });
-  });
+//   it("Should return default scraper", function (done) {
+//     getScraperType(options[0], function (err, results) {
+//       expect(results.type).to.eql("default");
+//       done();
+//     });
+//   });
 
-  it("Should return table_with_origins scraper", function (done) {
-    getScraperType(options[1], function (err, results) {
-      expect(results.type).to.eql("table_with_origins");
-      done();
-    });
-  });
+//   it("Should return table_with_origins scraper", function (done) {
+//     getScraperType(options[1], function (err, results) {
+//       expect(results.type).to.eql("table_with_origins");
+//       done();
+//     });
+//   });
 
-  it("Should return table scraper", function (done) {
-    getScraperType(options[2], function (err, results) {
-      expect(results.type).to.eql("table");
-      done();
-    });
-  });
+//   it("Should return table scraper", function (done) {
+//     getScraperType(options[2], function (err, results) {
+//       expect(results.type).to.eql("table");
+//       done();
+//     });
+//   });
 
-  it("Should return and save the type_of_scrapper for all airports", function (done) {
-    var destinationsPagesSchema = {
-      "title": "destination pages schema v1",
-      "type": "object",
-      "required": ["name", "destinationsLink", "scraper"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "destinationsLink": {
-          "type": "string"
-        },
-        "scraper": {
-          "type": "string"
-        }
-      }
-    };
-    //require("./schema/destination_pages.schema.json");
-    // BERMI: no way to get this from json, not working
+//   it("Should return and save the type_of_scrapper for all airports", function (done) {
+//     var destinationsPagesSchema = {
+//       "title": "destination pages schema v1",
+//       "type": "object",
+//       "required": ["name", "destinationsLink", "scraper"],
+//       "properties": {
+//         "name": {
+//           "type": "string",
+//           "minItems": 1,
+//           "uniqueItems": true
+//         },
+//         "destinationsLink": {
+//           "type": "string"
+//         },
+//         "scraper": {
+//           "type": "string"
+//         }
+//       }
+//     };
+//     //require("./schema/destination_pages.schema.json");
+//     // BERMI: no way to get this from a json file, not working :(
 
-    getScraperTypeForAll(options[2], function (results) {
-      // console.log(results);
-      expect(results).to.be.an("array");
-      for (var i = 0; i < results.length; i += 1) {
-        expect(results[i]).to.be.jsonSchema(destinationsPagesSchema);
-      }
-      done();
-    });
-  });
+//     getScraperTypeForAll(options[2], function (results) {
+//       // console.log(results);
+//       expect(results).to.be.an("array");
+//       for (var i = 0; i < results.length; i += 1) {
+//         expect(results[i]).to.be.jsonSchema(destinationsPagesSchema);
+//       }
+//       done();
+//     });
+//   });
 
-});
+// });
 
 
 describe("Airline Destinations, it:", function() {
