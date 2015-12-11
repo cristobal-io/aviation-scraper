@@ -110,6 +110,14 @@ describe("airline_routes.js: \n", function() {
       });
     });
 
+    it("Should return an array from table_with_origins scraper model", function (done) {
+      // TODO: make it return an object and specify the schema all scrapers must follow.
+      getRoutes(options[1], function (err, results) {
+        expect(results).to.be.an("object");
+        done();
+      });
+    });
+
     it("Should return an array from table scraper model", function (done) {
       getRoutes(options[2], function (err, results) {
         expect(results).to.be.an("array");
