@@ -56,5 +56,5 @@ function getScraperTypeForAll(options, callback) {
   });
 }
 
-module.exports.getScraperTypeForAll = getScraperTypeForAll;
 module.exports.getScraperType = getScraperType;
+module.exports.getScraperTypeForAll = getScraperTypeForAll;

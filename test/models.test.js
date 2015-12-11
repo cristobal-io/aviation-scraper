@@ -14,6 +14,15 @@ var PORT = 3000;
 var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
+var airlinesIndex = require("../src/index.js");
+var getRoutes = airlinesIndex.getRoutes;
+var getAllRoutes = airlinesIndex.getAllRoutes;
+var getScraperType = airlinesIndex.getScraperType;
+var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
+var getAllDestinations = airlinesIndex.getAllDestinations;
+var getDestinations = airlinesIndex.getDestinations;
+
+
 before("start server", function (done) {
   app.use(serveStatic(__dirname + MODELS_DIR));
   isPortTaken(PORT, function (err, data) {
@@ -23,6 +32,7 @@ before("start server", function (done) {
     done();
   });
 });
+
 
 describe("Server is on", function () {
 
@@ -47,6 +57,7 @@ describe("Server is on", function () {
   });
 
 });
+
 
 describe("does it works outside the suite?", function () {
 
@@ -100,9 +111,6 @@ var options = [{
 
 }];
 
-var airlineScraperType = require("../src/airline_scraper.js");
-var getScraperType = airlineScraperType.getScraperType;
-var getScraperTypeForAll = airlineScraperType.getScraperTypeForAll;
 
 describe("Type of Scraper", function () {
 
@@ -160,12 +168,10 @@ describe("Type of Scraper", function () {
 
 });
 
-var destinationsFunctions = require("../src/airline_destinations.js");
-var getAllDestinations = destinationsFunctions.getAllDestinations;
-var getDestinations = destinationsFunctions.getDestinations;
-var destinations_results;
 
 describe("Airline Destinations, it:", function() {
+  var destinations_results;
+
   before(function (done) {
     var destination_url = {
       url: [SERVER_LISTENING + "/Category:Lists_of_airline_destinations.html"],
@@ -195,13 +201,19 @@ describe("Airline Destinations, it:", function() {
 
 });
 
-var routes = require("../src/airline_routes.js");
-var getRoutes = routes.getRoutes;
-
 describe("getRoutes function", function () {
 
   it("Should be a function", function () {
     expect(getRoutes).to.be.a("function");
+  });
+
+});
+
+
+describe("getAllRoutes function", function () {
+
+  it("Should be a function", function () {
+    expect(getAllRoutes).to.be.a("function");
   });
 
 });
