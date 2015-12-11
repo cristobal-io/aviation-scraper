@@ -28,11 +28,18 @@ scrapers:
 	echo "Setting up scrapers for each type of page..."
 	node src/airline_scraper.js
 
+# test commands
+
+update-models:
+	node test/spec/models_update.js
+
 test: lint
 	NODE_ENV=test mocha test
 
 dev:
 	NODE_ENV=test mocha test -w
+
+# Coverage reporters
 
 test-coveralls:
 	test -d node_modules/nyc/ || npm install nyc
@@ -43,8 +50,15 @@ test-coverage-report:
 	test -d node_modules/nyc/ || npm install nyc
 	nyc mocha && nyc report --reporter=html
 
-update-models:
-	node test/spec/models_update.js
+test-coverage-windows:
+	test -d node_modules/istanbul/ || npm install istanbul
+	node_modules\.bin\istanbul cover node_modules\mocha\bin\_mocha
+	start coverage\lcov-report\index.html
+
+
+clean-coverage:
+	rm -r coverage
+	rm -r .nyc_output
 
 # Continuous Integration Test Runner
 ci: lint test
