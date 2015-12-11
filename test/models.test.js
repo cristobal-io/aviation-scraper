@@ -155,6 +155,7 @@ describe("Type of Scraper", function () {
       }
     };
     //require("./schema/destination_pages.schema.json");
+    // BERMI: no way to get this from json, not working
 
     getScraperTypeForAll(options[2], function (results) {
       // console.log(results);
