@@ -1,12 +1,10 @@
 "use strict";
 
-// courtesy of:
-// http://www.hacksparrow.com/using-node-js-to-download-files.html
-
 // Dependencies
 var url = require("url");
-var exec = require("child_process").exec;
 var async = require("async");
+var fs = require("fs");
+var https = require("https");
 
 // App variables
 var BASE_URL = "https://en.wikipedia.org/wiki/";
@@ -16,39 +14,34 @@ var file_url = [
   "Aegean_Airlines_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";
-var DESTINATIONS_URL = "https://en.wikipedia.org/wiki/Category:Lists_of_airline_destinations";
 
-// Function to download file using wget
-var download_file_wget = function (file_url, callback) {
-  if (file_url.indexOf("http") === -1) {
+
+var download_file_httpsGet = function (file_url, callback) {
+  if (file_url.indexOf("https") === -1) {
     file_url = BASE_URL + file_url;
   }
+  console.log(file_url);
 
-  // extract the file name
-  var file_name = url.parse(file_url).pathname.split("/").pop();
+  var file_name = url.parse(file_url).pathname.split("/").pop() + ".html";
 
-  // compose the wget command
-  var wget = "wget -P " + DOWNLOAD_DIR + " " + file_url + " --no-check-certificate";
+  console.log("filename: " + file_name);
+  var file = fs.createWriteStream(DOWNLOAD_DIR + file_name);
 
-  // var wget = "wget -p -k " + DOWNLOAD_DIR + " " + file_url;
-  // excute wget using child_process" exec function
-
-
-  var child = exec(wget, function (err, stdout, stderr) { //eslint-disable-line no-unused-vars 
-    if (err) {
+  https.get(file_url, function (res) {
+    res.on("data", function (chunk) {
+      file.write(chunk);
+    }).on("error", function (err) {
       throw err;
-    } else {
-      console.log(file_name + " downloaded to " + DOWNLOAD_DIR); // eslint-disable-line no-console
+    }).on("end", function () {
+      file.end();
+      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);
       callback();
-    }
+    });
   });
 
 };
 
-async.map(file_url, download_file_wget, function () {
-  console.log("Async finished"); // eslint-disable-line no-console
-});
-
-download_file_wget(DESTINATIONS_URL, function () {
-  console.log("destinations file downloaded");//eslint-disable-line no-console
+async.map(file_url, download_file_httpsGet, function (err) {
+  if (err) {throw err;}
+  console.log("\nModels updated."); //eslint-disable-line no-console
 });
