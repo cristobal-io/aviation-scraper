@@ -15,7 +15,7 @@
 "use strict";
 var sjs = require("scraperjs");
 
-var log = console.log;
+var log = console.log; //eslint-disable-line no-console
 var router = new sjs.Router();
 
 function create30thLinkError() {

@@ -20,11 +20,11 @@ var download_file_httpsGet = function (file_url, callback) {
   if (file_url.indexOf("https") === -1) {
     file_url = BASE_URL + file_url;
   }
-  console.log(file_url);
+  console.log(file_url);//eslint-disable-line no-console
 
   var file_name = url.parse(file_url).pathname.split("/").pop() + ".html";
 
-  console.log("filename: " + file_name);
+  console.log("filename: " + file_name);//eslint-disable-line no-console
   var file = fs.createWriteStream(DOWNLOAD_DIR + file_name);
 
   https.get(file_url, function (res) {
@@ -34,7 +34,7 @@ var download_file_httpsGet = function (file_url, callback) {
       throw err;
     }).on("end", function () {
       file.end();
-      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);
+      console.log(file_name + " downloaded to " + DOWNLOAD_DIR);//eslint-disable-line no-console
       callback();
     });
   });
