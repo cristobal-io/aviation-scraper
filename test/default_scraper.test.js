@@ -10,7 +10,7 @@ var md = require("html-md");
 
 var chai = require("chai");
 var expect = chai.expect;
-var strings = require("./strings/test_strings.json");
+var strings = require("./fixtures/test_strings.json");
 
 // var tv4 = require(tv4);
 
