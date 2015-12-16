@@ -3,6 +3,8 @@
 // Dependencies
 var url = require("url");
 var async = require("async");
+var fs = require("fs");
+var https = require("https");
 
 // App variables
 var BASE_URL = "https://en.wikipedia.org/wiki/";
@@ -12,13 +14,8 @@ var file_url = [
   "Aegean_Airlines_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";
-// var DESTINATIONS_URL = "https://en.wikipedia.org/wiki/Category:Lists_of_airline_destinations";
 
-// Dependencies
-var fs = require("fs");
-var https = require("https");
 
-// Function to download file using HTTPs.get
 var download_file_httpsGet = function (file_url, callback) {
   if (file_url.indexOf("https") === -1) {
     file_url = BASE_URL + file_url;
@@ -45,6 +42,6 @@ var download_file_httpsGet = function (file_url, callback) {
 };
 
 async.map(file_url, download_file_httpsGet, function (err) {
-  if (err) {throw err}
+  if (err) {throw err;}
   console.log("\nModels updated."); //eslint-disable-line no-console
-} );
+});
