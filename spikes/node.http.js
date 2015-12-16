@@ -1,7 +1,7 @@
 "use strict";
-var http = require("http");
+var https = require("https");
 
-http.get("http://www.sitepoint.com", function (res) {
+https.get("https://en.wikipedia.org/wiki/Adria_Airways_destinations", function (res) {
   debugger;
   console.log("Got response: " + res.statusCode);
   // console.log("body?" + JSON.stringify(res));
