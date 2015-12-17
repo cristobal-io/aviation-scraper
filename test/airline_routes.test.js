@@ -3,33 +3,11 @@
 var chai = require("chai");
 var expect = chai.expect;
 
-// scraper
-var sjs = require("scraperjs");
-// constants
-var BASE_URL = "http://localhost";
-var PORT = 3000;
-var SERVER_LISTENING = BASE_URL + ":" + PORT;
-
 var airlinesIndex = require("../src/index.js");
 var getRoutes = airlinesIndex.getRoutes;
 var getAllRoutes = airlinesIndex.getAllRoutes;
 
 var options = require("./fixtures/scraper_options.json");
-
-
-describe("does the server works outside the suite?", function () {
-
-  it("Should get the siteSub id value", function () {
-    sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
-      .scrape(function ($) {
-        return $("#siteSub").text();
-      })
-      .then(function (data) {
-        expect(data).to.eql("From Wikipedia, the free encyclopedia");
-      });
-  });
-
-});
 
 
 describe("airline_routes.js: \n", function() {
