@@ -15,7 +15,7 @@ if (report.errors.length === 0) {
 } else {
   console.log(report.errors[0].message);
 }
-env = JSV.createEnvironment();
+// env = JSV.createEnvironment();
 
 var example2 = env.validate({
   a: 1
@@ -29,7 +29,7 @@ var example2 = env.validate({
 });
 
 console.log("example2 errors: %s", JSON.stringify(example2.errors, null, 2));
-env = JSV.createEnvironment();
+// env = JSV.createEnvironment();
 
 console.log(exampleJSON);
 var exampleReport = env.validate(json, exampleJSON);
@@ -37,5 +37,5 @@ var exampleReport = env.validate(json, exampleJSON);
 if (exampleReport.errors.length === 0) {
   console.log("validation passed");
 } else {
-  console.log(exampleReport.errors[0]);
+  console.log("exampleJSON : ", JSON.stringify(exampleReport.errors, null, 2));
 }
