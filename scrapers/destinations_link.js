@@ -6,7 +6,7 @@ module.exports = function ($) {
   $("#toc").find("a").map(function () {
     var destinationLink = $(this).attr("href");
 
-    destinations.push(destinationLink);
+    destinations.push("https:" + destinationLink);
   });
   destinations.shift();
   return destinations;

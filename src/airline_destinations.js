@@ -8,7 +8,7 @@ var _ = require("lodash");
 var async = require("async");
 
 var destinationsFile = "./data/destination_pages.json";
-var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations";//&from=";
+var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations";
 
 
 function getDestinations(options, callback) {
@@ -16,7 +16,7 @@ function getDestinations(options, callback) {
 
 
   if (process.env.NODE_ENV !== "test") {
-    console.log("Getting scraper for %s from %s", letter, options);// eslint-disable-line no-console
+    console.log("Getting scraper for %s from %s", letter, options); // eslint-disable-line no-console
   }
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
@@ -31,38 +31,48 @@ function getAllLinks(options, callback) {
   scraperjs.StaticScraper.create(url)
     .scrape(scrapers["destinations_link"])
     .then(function (destinations) {
-      // console.log(destinations);
       callback(null, destinations);
     });
 }
 
-function getAllDestinations (options, callback) {
-  destinationsFile = options.destinationsFile || destinationsFile;
-  
-  var urls = [options.url || getAllLinks(BASE_URL, function (err, urls) {
-    return urls;
-  })];
+function getAllDestinations(options, callback) {
+  var urls;
 
-  // var urls = [options.url || _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
-  //   return BASE_URL + letter;
-  // })];
+  if (options) {
+    destinationsFile = options.destinationsFile;
+    urls = [options.url];
+    mapUrl(urls);
+  } else {
+    urls = getAllLinks(BASE_URL, function (err, urls) {
+      console.log(urls);
+      mapUrl(urls);
+    });
 
-  async.map(urls, function (options, callback) {
-    getDestinations(options, callback);
-  }, function (err, results) {
-    if (err) {
-      throw err;
-    }
-    var airlines = _.flatten(results, true);
+  }
 
-    fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
-    if (process.env.NODE_ENV !== "test") {
-      console.log("Saved %s", destinationsFile);// eslint-disable-line no-console
-    }
-    callback(null, airlines);
-  });
 
+  function mapUrl(urls) {
+    async.map(urls, function (options, callback) {
+      getDestinations(options, callback);
+    }, function (err, results) {
+      if (err) {
+        throw err;
+      }
+      var airlines = _.flatten(results, true);
+
+      fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
+      if (process.env.NODE_ENV !== "test") {
+        console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
+      }
+      callback(null, airlines); 
+    });
+
+  }
 }
+
+// getAllDestinations("", function () {
+//   console.log("finished callback");
+// });
 
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;

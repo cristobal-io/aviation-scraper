@@ -15,178 +15,183 @@ var strings = require("./fixtures/test_strings.json");
 // var tv4 = require(tv4);
 
 chai.use(require("chai-json-schema"));
-var result, line;
 
-before(function (done) {
-  line = strings["line"];
-  // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
+describe("Default Scraper: \n", function () {
 
-  result = getDestination(line);
-  // console.log(destinationSchema);
-  done();
-});
 
-after(function () {
-  console.log("NODE_ENV: %s \n", process.env.NODE_ENV); //eslint-disable-line no-console
+  var result, line;
 
-});
+  before(function (done) {
+    line = strings["line"];
+    // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
 
-describe("getDestination function, it: ", function () {
-  var destinationSchema = {
-    "title": "destination schema v1",
-    "type": "object",
-    "required": ["city", "airport"],
-    "properties": {
-      "city": {
-        "type": "object",
-        "minItems": 1,
-        "uniqueItems": true,
-        "required": ["name", "url"],
-        "properties": {
-          "name": {
-            "type": "string"
+    result = getDestination(line);
+    // console.log(destinationSchema);
+    done();
+  });
+
+  after(function () {
+    console.log("NODE_ENV: %s \n", process.env.NODE_ENV); //eslint-disable-line no-console
+
+  });
+
+  describe("getDestination function, it: ", function () {
+    var destinationSchema = {
+      "title": "destination schema v1",
+      "type": "object",
+      "required": ["city", "airport"],
+      "properties": {
+        "city": {
+          "type": "object",
+          "minItems": 1,
+          "uniqueItems": true,
+          "required": ["name", "url"],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
           },
-          "url": {
+          "items": {
             "type": "string"
           }
         },
-        "items": {
-          "type": "string"
-        }
-      },
-      "airport": {
-        "type": "object",
-        "minItems": 1,
-        "uniqueItems": true,
-        "required": ["name", "url"],
-        "properties": {
-          "name": {
-            "type": "string"
+        "airport": {
+          "type": "object",
+          "minItems": 1,
+          "uniqueItems": true,
+          "required": ["name", "url"],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
           },
-          "url": {
+          "items": {
             "type": "string"
           }
-        },
-        "items": {
-          "type": "string"
         }
       }
-    }
-  };
-  // require("./schema/destination_schema.json");
+    };
+    // require("./schema/destination_schema.json");
 
 
-  it("Should be a function", function () {
-    expect(getDestinations).to.be.a("function");
-  });
-  it("Should return an object", function () {
-    expect(result).to.be.an("object");
-  });
-
-  it("Should verify the object's structure", function () {
-    expect(result).to.be.jsonSchema(destinationSchema);
-  });
-});
-
-describe("getDestinations function, it: ", function () {
-  var makrdown, makrdownResults;
-
-  before(function () {
-    makrdown = md(strings.markdown, {
-      inline: true
+    it("Should be a function", function () {
+      expect(getDestinations).to.be.a("function");
     });
-    makrdownResults = getDestinations(makrdown);
+    it("Should return an object", function () {
+      expect(result).to.be.an("object");
+    });
+
+    it("Should verify the object's structure", function () {
+      expect(result).to.be.jsonSchema(destinationSchema);
+    });
   });
 
-  it("Should be a function", function () {
-    expect(getDestinations).to.be.a("function");
+  describe("getDestinations function, it: ", function () {
+    var makrdown, makrdownResults;
+
+    before(function () {
+      makrdown = md(strings.markdown, {
+        inline: true
+      });
+      makrdownResults = getDestinations(makrdown);
+    });
+
+    it("Should be a function", function () {
+      expect(getDestinations).to.be.a("function");
+    });
+
+    it("should return an Array", function () {
+      expect(makrdownResults).to.be.an("array");
+    });
+
+    it("Shouldn't be an empty array", function () {
+      expect(makrdownResults.length).to.be.above(1);
+    });
   });
 
-  it("should return an Array", function () {
-    expect(makrdownResults).to.be.an("array");
+  describe("getLinkStrings function, it:", function () {
+    var linkStringResult;
+
+    before(function () {
+      linkStringResult = getLinkStrings(line);
+    });
+
+    it("Should be a function", function () {
+      expect(getLinkStrings).to.be.a("function");
+    });
+
+    it("Should return an array ", function () {
+
+      expect(linkStringResult).to.be.an("array");
+    });
+
+    it("Shouldn't return an empty array", function () {
+      expect(linkStringResult.length).to.be.above(1);
+    });
   });
 
-  it("Shouldn't be an empty array", function () {
-    expect(makrdownResults.length).to.be.above(1);
-  });
-});
+  describe("hasValidLinks function, it:", function () {
+    var link, hasValidLinksResult;
 
-describe("getLinkStrings function, it:", function () {
-  var linkStringResult;
+    before(function () {
+      link = strings.link;
+      hasValidLinksResult = hasValidLinks(link);
+    });
 
-  before(function () {
-    linkStringResult = getLinkStrings(line);
-  });
+    it("Should be a function", function () {
+      expect(hasValidLinks).to.be.a("function");
+    });
 
-  it("Should be a function", function () {
-    expect(getLinkStrings).to.be.a("function");
-  });
+    it("Shouldn't return undefined", function () {
+      expect(hasValidLinksResult).to.not.be.undefined;
+    });
 
-  it("Should return an array ", function () {
+    it("Should return the last right element", function () {
+      expect(hasValidLinksResult).to.match(/^\/wiki\//);
+    });
+    it("Should check for all the links", function () {
+      var link_0_1_false = strings.link_0_1_false;
+      var link_0_2_false = strings.link_0_2_false;
+      var link_1_1_false = strings.link_1_1_false;
+      var link_1_2_false = strings.link_1_2_false;
 
-    expect(linkStringResult).to.be.an("array");
-  });
+      expect(hasValidLinks(link_0_1_false)).not.to.be.ok;
+      expect(hasValidLinks(link_0_2_false)).not.to.be.ok;
 
-  it("Shouldn't return an empty array", function () {
-    expect(linkStringResult.length).to.be.above(1);
-  });
-});
+      expect(hasValidLinks(link_1_1_false)).not.to.be.ok;
+      expect(hasValidLinks(link_1_2_false)).not.to.be.ok;
 
-describe("hasValidLinks function, it:", function () {
-  var link, hasValidLinksResult;
-
-  before(function () {
-    link = strings.link;
-    hasValidLinksResult = hasValidLinks(link);
-  });
-
-  it("Should be a function", function () {
-    expect(hasValidLinks).to.be.a("function");
+    });
   });
 
-  it("Shouldn't return undefined", function () {
-    expect(hasValidLinksResult).to.not.be.undefined;
-  });
+  describe("getLinkInfo function, it:", function () {
+    it("Should be a function", function () {
+      expect(getLinkInfo).to.be.a("function");
+    });
 
-  it("Should return the last right element", function () {
-    expect(hasValidLinksResult).to.match(/^\/wiki\//);
-  });
-  it("Should check for all the links", function () {
-    var link_0_1_false = strings.link_0_1_false;
-    var link_0_2_false = strings.link_0_2_false;
-    var link_1_1_false = strings.link_1_1_false;
-    var link_1_2_false = strings.link_1_2_false;
+    it("Should return an array", function () {
+      expect(getLinkInfo(line)).to.be.an("array");
+    });
 
-    expect(hasValidLinks(link_0_1_false)).not.to.be.ok;
-    expect(hasValidLinks(link_0_2_false)).not.to.be.ok;
+    it("Should return a length of 3", function () {
+      expect(getLinkInfo(line).length).to.be.above(2);
+    });
+    it("Should match the returned values", function () {
+      var getLinkInfoResult = getLinkInfo(line);
+      var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
+      var linksInfoRe = new RegExp(re);
 
-    expect(hasValidLinks(link_1_1_false)).not.to.be.ok;
-    expect(hasValidLinks(link_1_2_false)).not.to.be.ok;
+      expect(getLinkInfoResult[0]).to.match(linksInfoRe);
+      expect(getLinkInfoResult[2]).to.match(/^\/wiki\/\w*/);
+      expect(getLinkInfoResult[2]).not.to.match(/\/wiki\/\w*\s+"\w+"$/);
 
-  });
-});
-
-describe("getLinkInfo function, it:", function () {
-  it("Should be a function", function () {
-    expect(getLinkInfo).to.be.a("function");
-  });
-
-  it("Should return an array", function () {
-    expect(getLinkInfo(line)).to.be.an("array");
-  });
-
-  it("Should return a length of 3", function () {
-    expect(getLinkInfo(line).length).to.be.above(2);
-  });
-  it("Should match the returned values", function () {
-    var getLinkInfoResult = getLinkInfo(line);
-    var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
-    var linksInfoRe = new RegExp(re);
-
-    expect(getLinkInfoResult[0]).to.match(linksInfoRe);
-    expect(getLinkInfoResult[2]).to.match(/^\/wiki\/\w*/);
-    expect(getLinkInfoResult[2]).not.to.match(/\/wiki\/\w*\s+"\w+"$/);
+    });
 
   });
-
 });

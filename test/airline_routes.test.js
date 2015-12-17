@@ -10,7 +10,7 @@ var getAllRoutes = airlinesIndex.getAllRoutes;
 var options = require("./fixtures/scraper_options.json");
 
 
-describe("airline_routes.js: \n", function() {
+describe("Airline_routes.js: \n", function() {
   
   describe("getRoutes function", function () {
 
