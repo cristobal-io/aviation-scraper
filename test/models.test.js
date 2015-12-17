@@ -16,7 +16,7 @@ var getAllRoutes = airlinesIndex.getAllRoutes;
 
 var getAllDestinations = airlinesIndex.getAllDestinations;
 var getDestinations = airlinesIndex.getDestinations;
-var options = require("./spec/data/scraper_options.json");
+var options = require("./fixtures/scraper_options.json");
 
 
 describe("does the server works outside the suite?", function () {

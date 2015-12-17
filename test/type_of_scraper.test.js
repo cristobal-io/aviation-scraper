@@ -8,7 +8,7 @@ var airlinesIndex = require("../src/index.js");
 var getScraperType = airlinesIndex.getScraperType;
 var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
 
-var options = require("./spec/data/scraper_options.json");
+var options = require("./fixtures/scraper_options.json");
 
 describe("Type of Scraper", function () {
 
