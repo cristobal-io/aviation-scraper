@@ -8,7 +8,7 @@ var _ = require("lodash");
 var async = require("async");
 
 var destinationsFile = "./data/destination_pages.json";
-var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations&from=";
+var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations";//&from=";
 
 
 function getDestinations(options, callback) {
@@ -25,13 +25,27 @@ function getDestinations(options, callback) {
     });
 }
 
+function getAllLinks(options, callback) {
+  var url = options.url || BASE_URL;
+
+  scraperjs.StaticScraper.create(url)
+    .scrape(scrapers["destinations_link"])
+    .then(function (destinations) {
+      // console.log(destinations);
+      callback(null, destinations);
+    });
+}
+
 function getAllDestinations (options, callback) {
   destinationsFile = options.destinationsFile || destinationsFile;
+  
+  var urls = [options.url || getAllLinks(BASE_URL, function (err, urls) {
+    return urls;
+  })];
 
-  var urls = options.url || _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
-    return BASE_URL + letter;
-  });
-
+  // var urls = [options.url || _.map("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""), function (letter) {
+  //   return BASE_URL + letter;
+  // })];
 
   async.map(urls, function (options, callback) {
     getDestinations(options, callback);
@@ -52,3 +66,4 @@ function getAllDestinations (options, callback) {
 
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
+module.exports.getAllLinks = getAllLinks;
