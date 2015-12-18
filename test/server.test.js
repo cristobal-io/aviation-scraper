@@ -25,26 +25,20 @@ before("start server", function (done) {
   });
 });
 
+after(function () {
+  console.log("NODE_ENV: %s \n", process.env.NODE_ENV); //eslint-disable-line no-console
 
-describe("Server is on", function () {
+});
 
-  it("Confirm scraper is working with index.html", function () {
+describe("Server is on \n", function () {
+
+  it("Confirm server & scraper are working with index.html", function () {
     sjs.StaticScraper.create(SERVER_LISTENING)
       .scrape(function ($) {
         return $("h1").text();
       })
       .then(function (data) {
         expect(data).to.eql("Models");
-      });
-  });
-
-  it("Check the page AeroSur_destinations is on", function () {
-    sjs.StaticScraper.create(SERVER_LISTENING + "/AeroSur_destinations.html")
-      .scrape(function ($) {
-        return $("h1").text();
-      })
-      .then(function (data) {
-        expect(data).to.eql("AeroSur destinations");
       });
   });
 

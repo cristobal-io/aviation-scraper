@@ -10,7 +10,7 @@ var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
 
 var options = require("./fixtures/scraper_options.json");
 
-describe("Type of Scraper", function () {
+describe("Type of Scraper\n", function () {
 
   it("Should return default scraper", function (done) {
     getScraperType(options[0], function (err, results) {

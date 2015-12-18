@@ -30,10 +30,6 @@ describe("Default Scraper: \n", function () {
     done();
   });
 
-  after(function () {
-    console.log("NODE_ENV: %s \n", process.env.NODE_ENV); //eslint-disable-line no-console
-
-  });
 
   describe("getDestination function, it: ", function () {
     var destinationSchema = {
