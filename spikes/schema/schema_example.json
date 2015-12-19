@@ -1,7 +1,7 @@
 {
  "description": "A person",
  "type": "object",
- "maxProperties": 2,
+ "maxProperties": 3,
  "properties": {
    "name": {
      "type": "string",
