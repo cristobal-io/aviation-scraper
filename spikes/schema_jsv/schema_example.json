@@ -1,6 +1,6 @@
 {
  "description": "A person",
- "type": "object",
+ "type": "string",
 
  "properties": {
    "name": {
