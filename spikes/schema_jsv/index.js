@@ -3,7 +3,7 @@
 var JSV = require("JSV").JSV;
 
 var exampleJson = require("./example.json");
-var exampleSchema = require("./schema_example.json");
+var exampleSchema = require("./schema_example.org.json");
 var env = JSV.createEnvironment();
 
 console.log("exampleJson : ", JSON.stringify(exampleJson, null, 2));
