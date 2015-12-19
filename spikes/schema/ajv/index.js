@@ -9,7 +9,10 @@ console.log("schema: ", JSON.stringify(schema, null, 2));
 var Ajv = require("ajv");
 var ajv = Ajv(); 
 
+console.log("schema compiling..")
 var validate = ajv.compile(schema);
+
+console.log("shcmea compiled");
 var valid = validate(data);
 
 if (!valid) {console.log(validate.errors);}
