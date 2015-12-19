@@ -14,8 +14,10 @@ var exampleReport = env.validate(exampleJson, exampleSchema);
 if (exampleReport.errors.length === 0) {
   console.log("validation passed");
 } else {
-  // console.log("exampleSchema  errors: ", JSON.stringify(exampleReport.errors, null, 2));
-  console.log("exampleSchema  errors: ", exampleReport);
+  console.log("exampleSchema  errors: ", JSON.stringify(exampleReport.errors, null, 2));
+
+  console.log("property error:", exampleReport.errors[0].uri.split("/").pop());
+  // console.log("exampleSchema  errors: ", exampleReport);
 
 }
 

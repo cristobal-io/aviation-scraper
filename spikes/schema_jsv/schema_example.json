@@ -5,10 +5,12 @@
  "properties": {
    "name": {
      "type": "string",
+     "description": "name of the person",
      "required": true
    },
    "age": {
      "type": "integer",
+     "description": "age of the person",
      "maximum": 125,
      "required": true
    }
