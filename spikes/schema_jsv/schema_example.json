@@ -1,14 +1,16 @@
 {
  "description": "A person",
- "type": "string",
+ "type": "object",
 
  "properties": {
    "name": {
-     "type": "string"
+     "type": "string",
+     "required": true
    },
    "age": {
      "type": "integer",
-     "maximum": 125
+     "maximum": 125,
+     "required": true
    }
  }
 }
