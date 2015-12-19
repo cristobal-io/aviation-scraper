@@ -1,17 +1,20 @@
 {
   "description": "A person",
-  "type": "object",
-  "maxProperties": 2,
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "name of the person"
-    },
-    "age": {
-      "type": "integer",
-      "description": "age of the person",
-      "maximum": 125
+  "items": {
+    "type": "object",
+    "required": ["name", "age"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "name of the person"
+      },
+      "age": {
+        "type": "integer",
+        "description": "age of the person",
+        "maximum": 125
+      }
     }
   },
-  "required": ["name", "age"]
+  "type": "array",
+  "maxProperties": 2
 }

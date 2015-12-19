@@ -1,5 +1,9 @@
-{
+[{
   "name": "hello world",
-  "age": 12,
+  "age": 126,
   "weight": 70
-}
+}, {
+  "name": "hello world",
+  "age":130,
+  "weight": 70
+}]
