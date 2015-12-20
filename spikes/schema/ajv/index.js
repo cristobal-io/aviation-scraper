@@ -18,3 +18,20 @@ var valid = validate(data);
 if (!valid) {console.log(validate.errors);}
 
 console.log(valid);
+
+// starting validation of second schema with different json values.
+
+var schemaOrg = require("../schema_example.org.json");
+
+console.log("schemaOrg: ", schemaOrg);
+var exampleName = require("../example_name.json");
+
+console.log("exampleName: ", exampleName);
+
+var nameSchema = ajv.compile(schemaOrg);
+
+var validExampleName = nameSchema(exampleName);
+
+if (!validExampleName) {console.log(nameSchema.errors);}
+
+console.log(validExampleName);

@@ -1,0 +1,8 @@
+{
+  "firstName": "hello world",
+  "age": 12,
+  "weight": 70,
+  "lastName": "Gomez"
+}, {
+  "firstName": "fail"
+}

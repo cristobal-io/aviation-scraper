@@ -13,8 +13,9 @@
         "description": "age of the person",
         "maximum": 125
       }
-    }
+    },
+    "maxProperties": 2
   },
   "type": "array",
-  "maxProperties": 2
+  "maxItems": 3
 }
