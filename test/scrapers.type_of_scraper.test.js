@@ -3,6 +3,8 @@
 var chai = require("chai");
 var expect = chai.expect;
 
+chai.use(require("chai-json-schema"));
+
 var airlinesIndex = require("../src/index.js");
 
 var getScraperType = airlinesIndex.getScraperType;
@@ -10,7 +12,17 @@ var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
 
 var options = require("./fixtures/scraper_options.json");
 
+var Ajv = require("ajv");
+var ajv = Ajv();
+
 describe("Type of Scraper\n", function () {
+  var validateDestPagSchema;
+
+  before(function () {
+    var destinationsPagesSchema = require("../schema/destination_pages.schema.json");
+
+    validateDestPagSchema = ajv.compile(destinationsPagesSchema);
+  });
 
   it("Should return default scraper", function (done) {
     getScraperType(options[0], function (err, results) {
@@ -33,33 +45,36 @@ describe("Type of Scraper\n", function () {
     });
   });
 
-  it("Should return and save the type_of_scrapper for all airports", function (done) {
-    var destinationsPagesSchema = {
-      "title": "destination pages schema v1",
-      "type": "object",
-      "required": ["name", "destinationsLink", "scraper"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "destinationsLink": {
-          "type": "string"
-        },
-        "scraper": {
-          "type": "string"
-        }
-      }
-    };
-    //require("./schema/destination_pages.schema.json");
-    // BERMI: no way to get this from a json file, not working :(
+  it("Should return an array that passes the schema validation (AJV)", function (done) {
 
     getScraperTypeForAll(options[2], function (results) {
-      expect(results).to.be.an("array");
-      for (var i = 0; i < results.length; i += 1) {
-        expect(results[i]).to.be.jsonSchema(destinationsPagesSchema);
+      var validDestPagSchema = validateDestPagSchema(results);
+
+      if (!validDestPagSchema) {
+        console.log(validateDestPagSchema.errors);
       }
+      expect(validDestPagSchema).to.be.true;
+
+      done();
+    });
+  });
+
+  it("Should return an array that passes the schema validation (TV4)", function (done) {
+
+    var destinationsPagesSchema = require("../schema/destination_pages.schema.json");
+
+    // console.log("destinationsPagesSchema: \n", JSON.stringify(destinationsPagesSchema, null, 2));
+
+
+    getScraperTypeForAll(options[2], function (results) {
+      var valid = chai.tv4.validate(results, destinationsPagesSchema);
+
+      if (!valid) {
+        console.log("error: ", chai.tv4.error.message);
+      }
+      expect(results).to.be.jsonSchema(valid);
+
+      chai.tv4.dropSchemas();
       done();
     });
   });

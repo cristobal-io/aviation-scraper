@@ -1,18 +1,20 @@
 {
-  "title": "destination pages schema v1",
-  "type": "array",
-  "required": ["name", "empty", "scraper"],
-  "properties": {
-    "name": {
-      "type": "string",
-      "minItems": 1,
-      "uniqueItems": true
-    },
-    "destinationsLink": {
-      "type": "string"
-    },
-    "scraper": {
-      "type": "string"
+  "description": "Destination Pages",
+  "items": {
+    "type": "object",
+    "required": ["name", "destinationsLink", "scraper"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "name of the airline"
+      },
+      "destinationsLink": {
+        "type": "string"
+      },
+      "scraper": {
+        "type": "string"
+      }
     }
-  }
+  },
+  "type": "array"
 }
