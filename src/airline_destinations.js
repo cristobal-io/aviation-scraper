@@ -44,7 +44,7 @@ function getAllDestinations(options, callback) {
     mapUrl(urls);
   } else {
     urls = getAllLinks(BASE_URL, function (err, urls) {
-      console.log(urls);
+      // console.log(urls);
       mapUrl(urls);
     });
 

@@ -40,9 +40,9 @@ describe("Table Scraper: \n", function () {
     var validTableSchema = validateTableSchema(results);
 
     if (!validTableSchema) {
-      console.log(validateTableSchema.errors);
+      console.log(validateTableSchema.errors);// eslint-disable-line no-console
     }
-
+    // bermi: how to send a log error message custome when the assertion fails.
     expect(validTableSchema).to.be.true;
     // assert.ok(true, console.log(validateTableSchema.errors));
   });

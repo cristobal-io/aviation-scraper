@@ -51,7 +51,7 @@ describe("Type of Scraper\n", function () {
       var validDestPagSchema = validateDestPagSchema(results);
 
       if (!validDestPagSchema) {
-        console.log(validateDestPagSchema.errors);
+        console.log(validateDestPagSchema.errors);// eslint-disable-line no-console
       }
       expect(validDestPagSchema).to.be.true;
 
@@ -70,7 +70,7 @@ describe("Type of Scraper\n", function () {
       var valid = chai.tv4.validate(results, destinationsPagesSchema);
 
       if (!valid) {
-        console.log("error: ", chai.tv4.error.message);
+        console.log("error: ", chai.tv4.error.message);// eslint-disable-line no-console
       }
       expect(results).to.be.jsonSchema(valid);
 
