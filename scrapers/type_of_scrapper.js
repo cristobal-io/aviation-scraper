@@ -9,10 +9,7 @@ module.exports = function ($) {
     scraper = "table";
   } else if ($("center .wikitable").length) {
     scraper = "table_center";
-  } else if (($(".mw-content-ltr dl")).length) {
-    scraper = "default_variant_dl";
-  } 
-  else if (($(".mw-content-ltr h3")).length) {
+  } else if (($(".mw-content-ltr h3")).length) {
     scraper = "default_variant";
   }
 
