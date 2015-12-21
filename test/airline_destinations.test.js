@@ -80,13 +80,11 @@ describe("Airline_destinations.js: \n", function() {
 
   it("Should return the list of links", function (done) {
     getAllLinks(destination_url, function (err, data) {
-      var letters = [];
+      var letters = _.reduce(data, function (letters, url) {
+        return letters + url.substr(url.length-1);
+      }, "");
 
-      _.map(data, function (url) {
-        letters.push(url.substr(url.length-1));
-      });
-      expect(letters).to.eql("0ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""));
-      // Bermi: do you think this is the right way of test this?
+      expect(letters).to.eql("0ABCDEFGHIJKLMNOPQRSTUVWXYZ");
       done();
     });
 

@@ -36,10 +36,6 @@ function getAllLinks(options, callback) {
 function getAllDestinations(options, callback) {
   var urls;
 
-  // bermi: I don't like this trick that modifies the src code 
-  // so I am able to use it easily on my test.
-  // is it a normal practice to modify this kind of process?
-  // I know that with debug can be cooler, but I would have to 
   if (process.env.NODE_ENV === "test") {
     urls = [options.urls];
     mapUrl(urls);

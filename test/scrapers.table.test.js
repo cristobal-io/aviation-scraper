@@ -14,6 +14,8 @@ var SERVER_LISTENING = BASE_URL + ":" + PORT;
 var Ajv = require("ajv");
 var ajv = Ajv();
 
+var _ = require("lodash");
+
 // chai.config.includeStack = true;
 
 describe("Table Scraper: \n", function () {
@@ -35,16 +37,9 @@ describe("Table Scraper: \n", function () {
 
     validateTableSchema = ajv.compile(tableDestSchema);
 
-    // console.log(JSON.stringify(results, null, 2));
-    // console.log(JSON.stringify(tableDestSchema, null, 2));
     var validTableSchema = validateTableSchema(results);
 
-    if (!validTableSchema) {
-      console.log(validateTableSchema.errors);// eslint-disable-line no-console
-    }
-    // bermi: how to send a log error message custome when the assertion fails.
-    expect(validTableSchema).to.be.true;
-    // assert.ok(true, console.log(validateTableSchema.errors));
+    expect(validTableSchema, _.get(validateTableSchema, "errors[0].message")).to.be.true;
   });
 
 });
