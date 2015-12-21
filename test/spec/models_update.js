@@ -13,6 +13,7 @@ var file_url = [
   "AeroSur_destinations",
   "Aegean_Airlines_destinations",
   "Air_Austral_destinations",
+  "Air_Nippon_destinations",
   "Category:Lists_of_airline_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";

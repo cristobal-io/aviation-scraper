@@ -31,9 +31,9 @@ describe("Type of Scraper\n", function () {
     });
   });
 
-  it("Should return table_with_origins scraper", function (done) {
-    getScraperType(options[1], function (err, results) {
-      expect(results.type).to.eql("table_with_origins");
+  it("Should return default_variant scraper", function (done) {
+    getScraperType(options[4], function (err, results) {
+      expect(results.type).to.eql("default_variant");
       done();
     });
   });
@@ -51,6 +51,14 @@ describe("Type of Scraper\n", function () {
       done();
     });
   });
+
+  it("Should return table_with_origins scraper", function (done) {
+    getScraperType(options[1], function (err, results) {
+      expect(results.type).to.eql("table_with_origins");
+      done();
+    });
+  });
+
 
   it("Should return an array that passes the schema validation (AJV)", function (done) {
 
