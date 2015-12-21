@@ -36,15 +36,15 @@ function getAllLinks(options, callback) {
 function getAllDestinations(options, callback) {
   var urls;
 
-  console.log(options);
-
   // bermi: I don't like this trick that modifies the src code 
   // so I am able to use it easily on my test.
-  if (typeof options.urls === "string") {
+  // is it a normal practice to modify this kind of process?
+  // I know that with debug can be cooler, but I would have to 
+  if (process.env.NODE_ENV === "test") {
     urls = [options.urls];
     mapUrl(urls);
   } else {
-    urls = getAllLinks(options.urls, function (err, urls) {
+    urls = getAllLinks(options, function (err, urls) {
       console.log(urls);
       mapUrl(urls);
     });

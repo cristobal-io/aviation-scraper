@@ -16,7 +16,7 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
-describe.only("Airline_destinations.js: \n", function() {
+describe("Airline_destinations.js: \n", function() {
   var destinations_results,destination_url = {};
 
   before(function (done) {
