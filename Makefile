@@ -48,7 +48,8 @@ test-coveralls:
 test-coverage-report:
 	echo "Generating coverage report, please stand by"
 	test -d node_modules/nyc/ || npm install nyc
-	nyc mocha && nyc report --reporter=html
+	NODE_ENV=test nyc mocha && nyc report --reporter=html
+	open coverage/index.html
 
 test-coverage-windows:
 	test -d node_modules/istanbul/ || npm install istanbul
