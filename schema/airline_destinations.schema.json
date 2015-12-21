@@ -1,0 +1,17 @@
+{
+  "description": "Destination Pages",
+  "items": {
+    "type": "object",
+    "required": ["name", "destinationsLink"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "name of the airline"
+      },
+      "destinationsLink": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "array"
+}

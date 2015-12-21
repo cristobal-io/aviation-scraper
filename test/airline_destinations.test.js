@@ -16,10 +16,21 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
+var Ajv = require("ajv");
+var ajv = Ajv();
+
 describe("Airline_destinations.js: \n", function() {
   var destinations_results,destination_url = {};
 
+  var validateDestPagSchema;
+
+
   before(function (done) {
+  
+    var destinationsPagesSchema = require("../schema/airline_destinations.schema.json");
+
+    validateDestPagSchema = ajv.compile(destinationsPagesSchema);
+  
     var url = SERVER_LISTENING + "/Lists_of_airline_destinations.html";
 
     // console.log(url);
@@ -56,26 +67,14 @@ describe("Airline_destinations.js: \n", function() {
 
   });
 
-  it("Should have the schema for destinations", function (done) {
-    var destinationsSchema = {
-      "title": "destination pages schema v1",
-      "type": "object",
-      "required": ["name", "destinationsLink"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "destinationsLink": {
-          "type": "string"
-        }
-      }
-    };
+  it("Should meet the schema for airline destinations", function (done) {
 
-    for (var i = 0; i < destinations_results.length; i += 1) {
-      expect(destinations_results[i]).to.be.jsonSchema(destinationsSchema);
+    var validDestPagSchema = validateDestPagSchema(destinations_results);
+
+    if (!validDestPagSchema) {
+      console.log(validateDestPagSchema.errors);// eslint-disable-line no-console
     }
+    expect(validDestPagSchema).to.be.true;
     done();
   });
 
