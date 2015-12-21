@@ -12,6 +12,7 @@ var file_url = [
   "Adria_Airways_destinations",
   "AeroSur_destinations",
   "Aegean_Airlines_destinations",
+  "Air_Austral_destinations",
   "Category:Lists_of_airline_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";

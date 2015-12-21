@@ -45,6 +45,13 @@ describe("Type of Scraper\n", function () {
     });
   });
 
+  it("Should return table_center scraper", function (done) {
+    getScraperType(options[3], function (err, results) {
+      expect(results.type).to.eql("table_center");
+      done();
+    });
+  });
+
   it("Should return an array that passes the schema validation (AJV)", function (done) {
 
     getScraperTypeForAll(options[2], function (results) {
