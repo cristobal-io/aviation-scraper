@@ -2,7 +2,7 @@ SHELL = /bin/bash
 MAKEFLAGS += --no-print-directory --silent
 export PATH := ./node_modules/.bin:$(PATH):./bin
 LINT_DIR = $(wildcard *.js src/*.js test/*.js scrapers/*.js spikes/*.js test/*/*.js scrapers/*/*.js spikes/*/*.js)
-export NODE_ENV=production
+# export NODE_ENV=production
 
 default: setup test
 
@@ -52,7 +52,7 @@ test-coverage-report:
 
 test-coverage-windows:
 	test -d node_modules/istanbul/ || npm install istanbul
-	node_modules\.bin\istanbul cover node_modules\mocha\bin\_mocha
+	NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha
 	start coverage\lcov-report\index.html
 
 
