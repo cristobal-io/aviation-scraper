@@ -16,7 +16,7 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
-describe("Airline_destinations.js: \n", function() {
+describe.only("Airline_destinations.js: \n", function() {
   var destinations_results,destination_url = {};
 
   before(function (done) {
@@ -25,7 +25,7 @@ describe("Airline_destinations.js: \n", function() {
     // console.log(url);
 
     destination_url = {
-      url: url,
+      urls: url,
       destinationsFile: __dirname + "/spec/models/destinations.json"
     };
     // console.log(destination_url);
@@ -80,7 +80,6 @@ describe("Airline_destinations.js: \n", function() {
   });
 
   it("Should return the list of links", function (done) {
-
     getAllLinks(destination_url, function (err, data) {
       var letters = [];
 

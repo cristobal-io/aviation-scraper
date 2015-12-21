@@ -7,9 +7,6 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
-var destinationsFile = "./data/destination_pages.json";
-var BASE_URL = "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations";
-
 
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
@@ -26,11 +23,12 @@ function getDestinations(options, callback) {
 }
 
 function getAllLinks(options, callback) {
-  var url = options.url || BASE_URL;
+  var url = options.urls;
 
   scraperjs.StaticScraper.create(url)
     .scrape(scrapers["destinations_link"])
     .then(function (destinations) {
+      // console.log(destinations);
       callback(null, destinations);
     });
 }
@@ -38,20 +36,23 @@ function getAllLinks(options, callback) {
 function getAllDestinations(options, callback) {
   var urls;
 
-  if (options) {
-    destinationsFile = options.destinationsFile;
-    urls = [options.url];
+  console.log(options);
+
+  // bermi: I don't like this trick that modifies the src code 
+  // so I am able to use it easily on my test.
+  if (typeof options.urls === "string") {
+    urls = [options.urls];
     mapUrl(urls);
   } else {
-    urls = getAllLinks(BASE_URL, function (err, urls) {
-      // console.log(urls);
+    urls = getAllLinks(options.urls, function (err, urls) {
+      console.log(urls);
       mapUrl(urls);
     });
-
   }
 
-
   function mapUrl(urls) {
+    var destinationsFile = options.destinationsFile;
+
     async.map(urls, function (options, callback) {
       getDestinations(options, callback);
     }, function (err, results) {
@@ -64,10 +65,10 @@ function getAllDestinations(options, callback) {
       if (process.env.NODE_ENV !== "test") {
         console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
       }
-      callback(null, airlines); 
+      callback(null, airlines);
     });
-
   }
+
 }
 
 // getAllDestinations("", function () {
