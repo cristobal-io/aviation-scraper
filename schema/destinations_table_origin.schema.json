@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "definitions": {
+    "destination": {
+      "type": "object",
+      "properties": {
+        "City": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "IATA": {
+          "type": "string"
+        },
+        "ICAO": {
+          "type": "string"
+        },
+        "Airport": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "City",
+        "Country",
+        "IATA",
+        "ICAO",
+        "Airport"
+      ]
+    }
+  },
+  "properties": {
+    "Scheduled destinations from Ljubljana": {
+      "type": "array",
+      "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Scheduled destinations from Pristina": {
+      "type": "array",
+      "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Scheduled destinations from Tirana": {
+      "type": "array",
+      "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Scheduled destinations from Łódź": {
+      "type": "array",
+      "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Charter destinations from Ljubljana": {
+      "type": "array",
+      "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Charter destinations from Maribor": {
+      "type": "array",
+            "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    },
+    "Charter destinations from Pristina": {
+      "type": "array",
+            "items": [{
+        "$ref": "#/definitions/destination"
+      }]
+    }
+  },
+  "required": [
+    "Scheduled destinations from Ljubljana",
+    "Scheduled destinations from Pristina",
+    "Scheduled destinations from Tirana",
+    "Scheduled destinations from Łódź",
+    "Charter destinations from Ljubljana",
+    "Charter destinations from Maribor",
+    "Charter destinations from Pristina"
+  ]
+}
