@@ -66,9 +66,6 @@ function getAllDestinations(options, callback) {
 
 }
 
-// getAllDestinations("", function () {
-//   console.log("finished callback");
-// });
 
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
