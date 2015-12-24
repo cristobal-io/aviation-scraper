@@ -12,10 +12,12 @@
           "type": "string"
         },
         "IATA": {
-          "type": "string"
+          "type": "string",
+          "pattern":"^[a-zA-Z0-9_]{3}$"
         },
         "ICAO": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_]{4}$"
         },
         "Airport": {
           "type": "string"
@@ -31,43 +33,43 @@
     }
   },
   "properties": {
-    "Scheduled destinations from Ljubljana": {
+    "Ljubljana": {
       "type": "array",
       "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Scheduled destinations from Pristina": {
+    "Pristina": {
       "type": "array",
       "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Scheduled destinations from Tirana": {
+    "Tirana": {
       "type": "array",
       "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Scheduled destinations from Łódź": {
+    "Łódź": {
       "type": "array",
       "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Charter destinations from Ljubljana": {
+    "Ljubljana": {
       "type": "array",
       "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Charter destinations from Maribor": {
+    "Maribor": {
       "type": "array",
             "items": [{
         "$ref": "#/definitions/destination"
       }]
     },
-    "Charter destinations from Pristina": {
+    "Pristina": {
       "type": "array",
             "items": [{
         "$ref": "#/definitions/destination"
@@ -75,12 +77,10 @@
     }
   },
   "required": [
-    "Scheduled destinations from Ljubljana",
-    "Scheduled destinations from Pristina",
-    "Scheduled destinations from Tirana",
-    "Scheduled destinations from Łódź",
-    "Charter destinations from Ljubljana",
-    "Charter destinations from Maribor",
-    "Charter destinations from Pristina"
+    "Ljubljana",
+    "Pristina",
+    "Tirana",
+    "Łódź",
+    "Maribor"
   ]
 }
