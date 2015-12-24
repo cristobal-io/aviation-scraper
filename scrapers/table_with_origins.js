@@ -8,6 +8,8 @@ module.exports = function ($) {
 
     var from = $(this).find(".mw-headline").text();
 
+    from = from.slice(from.search("from")+5);
+
     $(this).next(".wikitable").map(function () {
       var destinations = [];
       var $headers = $(this).find("th");
