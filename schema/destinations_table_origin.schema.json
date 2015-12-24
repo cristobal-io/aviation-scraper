@@ -33,12 +33,6 @@
     }
   },
   "properties": {
-    "Ljubljana": {
-      "type": "array",
-      "items": [{
-        "$ref": "#/definitions/destination"
-      }]
-    },
     "Pristina": {
       "type": "array",
       "items": [{
@@ -64,12 +58,6 @@
       }]
     },
     "Maribor": {
-      "type": "array",
-            "items": [{
-        "$ref": "#/definitions/destination"
-      }]
-    },
-    "Pristina": {
       "type": "array",
             "items": [{
         "$ref": "#/definitions/destination"

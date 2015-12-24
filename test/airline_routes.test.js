@@ -42,7 +42,7 @@ describe("Airline_routes.js: \n", function () {
       // TODO: make it return an object and specify the schema all scrapers must follow.
       getRoutes(options[1], function (err, results) {
 
-        // console.log(results);
+        console.log(results);
         var valid = validateScraperTableSchema(results);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message") ).to.be.true;

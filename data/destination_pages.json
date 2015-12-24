@@ -2,7 +2,8 @@
   {
     "name": "Adria Airways",
     "destinationsLink": "/wiki/Adria_Airways_destinations",
-    "scraper": "table_with_origins"
+    "scraper": "table_with_origins",
+    "isolate": true
   },
   {
     "name": "Aegean Airlines",
@@ -18,7 +19,7 @@
     "name": "Aero California",
     "destinationsLink": "/wiki/Aero_California_destinations",
     "scraper": "default_variant",
-    "isolate": false,
+    "isolate": true,
     "works": true
   },
   {
