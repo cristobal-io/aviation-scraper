@@ -11,7 +11,7 @@ var BASE_URL = "https://en.wikipedia.org";
 var airlines = require("../data/destination_pages.json");
 
 function getRoutes(options, callback) {
-  console.log("options: ", options);
+  // console.log("options: ", options);
   var url = options.url || BASE_URL + options.destinationsLink;
 
   if (process.env.NODE_ENV !== "test") {
@@ -20,13 +20,14 @@ function getRoutes(options, callback) {
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
-      console.log("Results for %s", options.name);
-      console.log(JSON.stringify(data, null, 2));
-      callback(null, data, options);
+      // console.log("Results for %s", options.name);
+      // console.log(JSON.stringify(data, null, 2));
+      writeJson(null, data, options, callback);
+      // callback(null, data, options);
     });
 }
 
-var writeJson = function (err, routes, options) {
+var writeJson = function (err, routes, options, callback) {
   if (err) {
     throw err;
   }
@@ -39,6 +40,7 @@ var writeJson = function (err, routes, options) {
         throw err;
       }
       console.log("Saved %s", filename); // eslint-disable-line no-console
+      callback();
     }
   );
 };
@@ -59,17 +61,17 @@ getAllRoutes(airlines, function () {
 // work properly
 
 function getAllRoutes(airlines, callback) {
-  console.log(airlines);
-  async.forEachOf(airlines, function (value, key, callback) {
-    getRoutes(value, writeJson);
-    callback();
+  // console.log(airlines);
+  async.map(airlines, function (options, callback) {
+    // console.log(options);
+    getRoutes(options, callback);
+    // callback();
   }, function (err) {
     if (err) {
       throw err;
     }
+    callback();
   });
-  // todo: this callback is not really working when called among process.
-  callback();
 }
 
 module.exports.getRoutes = getRoutes;
