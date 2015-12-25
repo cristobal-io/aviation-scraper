@@ -33,17 +33,17 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from default scraper model", function (done) {
       getRoutes(options[0], function (err, results) {
-        expect(results).to.be.an("array");
+        expect(results.routes).to.be.an("array");
         done();
       });
     });
 
-    it.only("Should return an array from table_with_origins scraper model", function (done) {
+    it("Should return an array from table_with_origins scraper model", function (done) {
       // TODO: make it return an object and specify the schema all scrapers must follow.
       getRoutes(options[1], function (err, results) {
 
-        console.log(results);
-        var valid = validateScraperTableSchema(results);
+        // console.log(results);
+        var valid = validateScraperTableSchema(results.routes);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message") ).to.be.true;
         // expect(results).to.be.an("object");
@@ -53,7 +53,7 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from table scraper model", function (done) {
       getRoutes(options[2], function (err, results) {
-        expect(results).to.be.an("array");
+        expect(results.routes).to.be.an("array");
         done();
       });
     });

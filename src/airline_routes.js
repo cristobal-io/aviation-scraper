@@ -11,7 +11,6 @@ var BASE_URL = "https://en.wikipedia.org";
 var airlines = require("../data/destination_pages.json");
 
 function getRoutes(options, callback) {
-  // console.log("options: ", options);
   var url = options.url || BASE_URL + options.destinationsLink;
 
   if (process.env.NODE_ENV !== "test") {
@@ -20,27 +19,27 @@ function getRoutes(options, callback) {
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
-      // console.log("Results for %s", options.name);
-      // console.log(JSON.stringify(data, null, 2));
-      writeJson(null, data, options, callback);
-      // callback(null, data, options);
+      options.routes = data;
+      writeJson(null, options, callback);
     });
 }
 
-var writeJson = function (err, routes, options, callback) {
+var writeJson = function (err, options, callback) {
   if (err) {
     throw err;
   }
-  var filename = "./data/routes_" + options.name + ".json";
+  var filename = options.destinationsFile || "./data/routes_" + options.name + ".json";
 
   fs.writeFile(filename,
-    JSON.stringify(routes, null, 2),
+    JSON.stringify(options.routes, null, 2),
     function (err) {
       if (err) {
         throw err;
       }
-      console.log("Saved %s", filename); // eslint-disable-line no-console
-      callback();
+      if (process.env.NODE_ENV !== "test") {
+        console.log("Saved %s", filename); // eslint-disable-line no-console
+      }
+      callback(null, options);
     }
   );
 };
@@ -52,25 +51,19 @@ airlines = _.where(airlines, {
 // process.exit();
 // getRoutes(airlines[1], writeJson);
 
-getAllRoutes(airlines, function () {
-  console.log("callback finished");
-});
+// getAllRoutes(airlines, function () {
+//   console.log("callback finished");
+// });
 
-
-// changed to use the function inside the test, not sure if the callback will 
-// work properly
 
 function getAllRoutes(airlines, callback) {
-  // console.log(airlines);
   async.map(airlines, function (options, callback) {
-    // console.log(options);
     getRoutes(options, callback);
-    // callback();
-  }, function (err) {
+  }, function (err, options) {
     if (err) {
       throw err;
     }
-    callback();
+    callback(null, options);
   });
 }
 
