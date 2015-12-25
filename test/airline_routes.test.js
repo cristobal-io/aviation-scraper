@@ -15,13 +15,15 @@ var ajv = Ajv();
 var options = require("./fixtures/scraper_options.json");
 
 
-describe("Airline_routes.js: \n", function () {
-  var validateScraperTableSchema;
+describe.only("Airline_routes.js: \n", function () {
+  var validateScraperTableSchema, validateOptionalSchema;
 
   before(function (done) {
+    var optionalSchemaTable = require("../schema/routes.table_w_origins.schema.json");
     var scraperTableOriginSchema = require("../schema/destinations_table_origin.schema.json");
 
     validateScraperTableSchema = ajv.compile(scraperTableOriginSchema);
+    validateOptionalSchema = ajv.compile(optionalSchemaTable);
     done();
   });
 
@@ -33,20 +35,25 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from default scraper model", function (done) {
       getRoutes(options[0], function (err, results) {
+        // console.log(results.routes);
         expect(results.routes).to.be.an("array");
         done();
       });
     });
 
     it("Should return an array from table_with_origins scraper model", function (done) {
-      // TODO: make it return an object and specify the schema all scrapers must follow.
+
       getRoutes(options[1], function (err, results) {
 
-        // console.log(results);
         var valid = validateScraperTableSchema(results.routes);
 
-        expect(valid, _.get(validateScraperTableSchema, "errors[0].message") ).to.be.true;
-        // expect(results).to.be.an("object");
+        expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
+        // bermi: do I have to use always anywere I can map over forEach to avoid side effects?
+        _.map(results.routes, function (results) {
+          var validOptionalSchema = validateOptionalSchema(results);
+
+          expect(validOptionalSchema, _.get(validateOptionalSchema, "errors[0].message")).to.be.ok;
+        });
         done();
       });
     });

@@ -19,6 +19,7 @@ function getRoutes(options, callback) {
   sjs.StaticScraper.create(url)
     .scrape(scrapers[options.scraper] || scrapers["default"])
     .then(function (data) {
+      // bermi: is this a good practice?
       options.routes = data;
       writeJson(null, options, callback);
     });
