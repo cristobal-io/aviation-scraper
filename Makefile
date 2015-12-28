@@ -30,11 +30,11 @@ scrapers:
 
 # Models update needed at least once before runing tests.
 # bermi: how to automatically create the folder?
-test/spec/models/index.html:
-	mkdir test/spec/models
-	test/fixtures/index.html > $@
+test/spec/models/:
+	mkdir test/spec/models/
+	cp test/fixtures/index.html $@
 
-update-models: test/spec/models/index.html
+update-models: test/spec/models/
 	node test/spec/models_update.js
 
 # test commands
@@ -45,7 +45,7 @@ checking:
 
 # todo: create some sort of registry that advises when running our test that our files are too old
 test: lint
-	test -f MODELS_INDEX && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
+	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
 
 dev:
 	test -f MODELS_INDEX && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
