@@ -41,18 +41,14 @@ update-models: test/spec/models/index.html
 MODELS_INDEX = $(test/spec/models/index.html)
 
 checking:
-	ifdef MODELS_INDEX
-	echo "files exist"
-	else
-	echo "file doesn't exist"
-	endif
+	test -f MODELS_INDEX && echo "files exist" || echo "file not"
+
 # todo: create some sort of registry that advises when running our test that our files are too old
-# todo: check before running tests if the models update has been run
 test: lint
-	NODE_ENV=test mocha test
+	test -f MODELS_INDEX && NODE_ENV=test mocha test || echo "Please run update-models before tests"
 
 dev:
-	NODE_ENV=test mocha test -w
+	test -f MODELS_INDEX && NODE_ENV=test mocha test -w || echo "Please run update-models before tests"
 
 # Coverage reporters
 
