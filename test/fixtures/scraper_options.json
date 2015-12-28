@@ -2,7 +2,7 @@
   "name": "default",
   "destinationsLink": "/AeroSur_destinations.html",
   "url": "http://localhost:3000/AeroSur_destinations.html",
-  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "destinationsFile": "./test/fixtures/destination_pages.json",
   "scraper": "default",
   "airlines": [{
     "name": "default",
@@ -13,7 +13,7 @@
   "name": "table_with_origins",
   "destinationsLink": "/Adria_Airways_destinations.html",
   "url": "http://localhost:3000/Adria_Airways_destinations.html",
-  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "destinationsFile": "./test/fixtures/destination_pages.json",
   "scraper": "table_with_origins",
   "airlines": [{
     "name": "table_with_origins",
@@ -25,7 +25,7 @@
   "name": "table",
   "destinationsLink": "/Aegean_Airlines_destinations.html",
   "url": "http://localhost:3000/Aegean_Airlines_destinations.html",
-  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "destinationsFile": "./test/fixtures/destination_pages.json",
   "scraper": "table",
   "airlines": [{
     "name": "table",
@@ -36,7 +36,7 @@
   "name": "table_center",
   "destinationsLink": "/Air_Austral_destinations",
   "url": "http://localhost:3000/Air_Austral_destinations.html",
-  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "destinationsFile": "./test/fixtures/destination_pages.json",
   "scraper": "table_center",
   "airlines": [{
     "name": "table_center",
@@ -47,7 +47,7 @@
   "name": "default_variant",
   "destinationsLink": "/Air_Nippon_destinations",
   "url": "http://localhost:3000/Air_Nippon_destinations.html",
-  "destinationsFile": "./test/spec/data/destination_pages.json",
+  "destinationsFile": "./test/fixtures/destination_pages.json",
   "scraper": "default_variant",
   "airlines": [{
     "name": "default_variant",

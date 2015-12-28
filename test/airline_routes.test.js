@@ -13,7 +13,7 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 var fs = require("fs");
 
-describe.only("Airline_routes.js: \n", function () {
+describe("Airline_routes.js: \n", function () {
   var options = require("./fixtures/airline_routes.options.json");
   var validateScraperTableSchema, validateOptionalSchema;
 
@@ -87,8 +87,8 @@ describe.only("Airline_routes.js: \n", function () {
           // Bermi: since we are testing the schema integrity in other test, this I think it should test that is 
           // returning the proper object. Do you think this is a valid way of testing it?
           expect(_.has(options[i], "routes")).to.be.true;
-          console.log(options[i].destinationsFile);
-          fs.fs.unlinkSync(options[i].destinationsFile);
+          // bermi: is it a good way of deleting files created for this test.
+          fs.unlinkSync(options[i].destinationsFile);
         }
         done();
       });
