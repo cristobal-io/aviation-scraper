@@ -29,9 +29,10 @@ scrapers:
 	node src/airline_scraper.js
 
 # Models update needed at least once before runing tests.
-
+# bermi: how to automatically create the folder?
 test/spec/models/index.html:
-	cp test/fixtures/index.html $@
+	mkdir test/spec/models
+	test/fixtures/index.html > $@
 
 update-models: test/spec/models/index.html
 	node test/spec/models_update.js
