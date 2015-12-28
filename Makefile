@@ -45,10 +45,10 @@ checking:
 
 # todo: create some sort of registry that advises when running our test that our files are too old
 test: lint
-	test -f MODELS_INDEX && NODE_ENV=test mocha test || echo "Please run update-models before tests"
+	test -f MODELS_INDEX && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
 
 dev:
-	test -f MODELS_INDEX && NODE_ENV=test mocha test -w || echo "Please run update-models before tests"
+	test -f MODELS_INDEX && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
 
 # Coverage reporters
 
