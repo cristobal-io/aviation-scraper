@@ -28,10 +28,15 @@ scrapers:
 	echo "Setting up scrapers for each type of page..."
 	node src/airline_scraper.js
 
-# test commands
+# Models update needed at least once before runing tests.
 
-update-models:
+test/spec/models/index.html:
+	cp test/fixtures/index.html $@
+
+update-models: test/spec/models/index.html
 	node test/spec/models_update.js
+
+# test commands
 
 test: lint
 	NODE_ENV=test mocha test
