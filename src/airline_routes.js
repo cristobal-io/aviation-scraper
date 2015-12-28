@@ -58,7 +58,9 @@ airlines = _.where(airlines, {
 
 
 function getAllRoutes(airlines, callback) {
+  // console.log(airlines);
   async.map(airlines, function (options, callback) {
+    // console.log(options);
     getRoutes(options, callback);
   }, function (err, options) {
     if (err) {

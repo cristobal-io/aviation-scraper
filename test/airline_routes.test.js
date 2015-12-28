@@ -12,10 +12,9 @@ var getAllRoutes = airlinesIndex.getAllRoutes;
 var Ajv = require("ajv");
 var ajv = Ajv();
 
-var options = require("./fixtures/scraper_options.json");
 
-
-describe.only("Airline_routes.js: \n", function () {
+describe("Airline_routes.js: \n", function () {
+  var options = require("./fixtures/airline_routes.options.json");
   var validateScraperTableSchema, validateOptionalSchema;
 
   before(function (done) {
@@ -34,6 +33,8 @@ describe.only("Airline_routes.js: \n", function () {
     });
 
     it("Should return an array from default scraper model", function (done) {
+      // todo: complete the test with json ajv
+
       getRoutes(options[0], function (err, results) {
         // console.log(results.routes);
         expect(results.routes).to.be.an("array");
@@ -59,6 +60,8 @@ describe.only("Airline_routes.js: \n", function () {
     });
 
     it("Should return an array from table scraper model", function (done) {
+      // todo: complete the test with json ajv
+
       getRoutes(options[2], function (err, results) {
         expect(results.routes).to.be.an("array");
         done();
@@ -72,6 +75,21 @@ describe.only("Airline_routes.js: \n", function () {
 
     it("Should be a function", function () {
       expect(getAllRoutes).to.be.a("function");
+    });
+
+    it("Should return and save the file", function (done) {
+      // bermi: this test takes really long and we need increase the timeout
+      this.timeout(5000);
+      // bermi: when calling this function, I am creating side effects, I am adding routes to options object.
+      // Should I avoid it or it is ok in test cases?
+      getAllRoutes(options, function (err, options) {
+        for (var i = 0; i < options.length; i+=1) {
+          // Bermi: since we are testing the schema integrity in other test, this I think it should test that is 
+          // returning the proper object. Do you think this is a valid way of testing it?
+          expect(_.has(options[i], "routes")).to.be.true;
+        }
+        done();
+      });
     });
 
   });
