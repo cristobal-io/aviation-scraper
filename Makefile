@@ -38,7 +38,16 @@ update-models: test/spec/models/index.html
 	node test/spec/models_update.js
 
 # test commands
+MODELS_INDEX = $(test/spec/models/index.html)
 
+checking:
+	ifdef MODELS_INDEX
+	echo "files exist"
+	else
+	echo "file doesn't exist"
+	endif
+# todo: create some sort of registry that advises when running our test that our files are too old
+# todo: check before running tests if the models update has been run
 test: lint
 	NODE_ENV=test mocha test
 
