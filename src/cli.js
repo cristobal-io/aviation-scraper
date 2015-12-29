@@ -7,7 +7,7 @@ var airlineScrapers = require("./index.js");
  */
 
 var getAllDestinations = airlineScrapers.getAllDestinations;
-
+var getScraperTypeForAll = airlineScrapers.getScraperTypeForAll;
 
 var options = {
   "urls" : "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
@@ -16,4 +16,7 @@ var options = {
 
 getAllDestinations(options, function () {
   console.log("Destinations File Created");// eslint-disable-line no-console
+  getScraperTypeForAll(options, function () {
+    console.log("scrapers finished");
+  });
 });
