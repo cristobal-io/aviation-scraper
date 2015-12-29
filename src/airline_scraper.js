@@ -5,10 +5,10 @@ var fs = require("fs");
 var async = require("async");
 var scrapers = require("../scrapers/");
 var _ = require("lodash");
-var destinationsFile = "../data/destination_pages.json";
+var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org";
 
-var airlines = require(destinationsFile);
+var airlines = require("../data/destination_pages.json");
 
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
@@ -17,6 +17,14 @@ function getScraperType(options, callback) {
     console.log("Getting scraper for %s from %s", options.name, url); // eslint-disable-line no-console
   }
   sjs.StaticScraper.create(url)
+    .catch(function (err, utils) {
+      if (err) {
+        console.log("error from %s is %s",options.name, err);// eslint-disable-line no-console
+        // callback(err, utils);
+      } else {
+        console.log(utils);// eslint-disable-line no-console
+      }
+    })
     .scrape(scrapers["type_of_scrapper"])
     .then(function (type) {
       callback(null, {
@@ -26,8 +34,6 @@ function getScraperType(options, callback) {
     });
 }
 
-// getScraperType(airlines[0], writeJson);
-// function not tested or run yet.
 function getScraperTypeForAll(options, callback) {
 
   // for modularity purposes
@@ -37,7 +43,7 @@ function getScraperTypeForAll(options, callback) {
     getScraperType(options, callback);
   }, function (err, results) {
     if (err) {
-      throw err;
+      console.log( err);// eslint-disable-line no-console
     }
     airlines = _.reduce(results, function (airlines, result) {
       var index = _.findIndex(airlines, {
@@ -58,3 +64,8 @@ function getScraperTypeForAll(options, callback) {
 
 module.exports.getScraperType = getScraperType;
 module.exports.getScraperTypeForAll = getScraperTypeForAll;
+
+
+// getScraperTypeForAll({destinationsFile: "./data/destination_pages.json"}, function () {
+//   console.log("called scraper");
+// });

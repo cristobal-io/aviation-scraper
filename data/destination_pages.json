@@ -2,8 +2,7 @@
   {
     "name": "Adria Airways",
     "destinationsLink": "/wiki/Adria_Airways_destinations",
-    "scraper": "table_with_origins",
-    "isolate": true
+    "scraper": "table_with_origins"
   },
   {
     "name": "Aegean Airlines",
@@ -18,9 +17,7 @@
   {
     "name": "Aero California",
     "destinationsLink": "/wiki/Aero_California_destinations",
-    "scraper": "default_variant",
-    "isolate": true,
-    "works": true
+    "scraper": "default_variant"
   },
   {
     "name": "Aero Lloyd",
@@ -55,16 +52,12 @@
   {
     "name": "AeroSur",
     "destinationsLink": "/wiki/AeroSur_destinations",
-    "scraper": "default",
-    "isolate": true,
-    "works": false
+    "scraper": "default"
   },
   {
     "name": "Aerosvit",
     "destinationsLink": "/wiki/Aerosvit_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Afriqiyah Airways",
@@ -74,9 +67,7 @@
   {
     "name": "Aigle Azur",
     "destinationsLink": "/wiki/Aigle_Azur_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Air Algérie",
@@ -101,23 +92,17 @@
   {
     "name": "Air Austral",
     "destinationsLink": "/wiki/Air_Austral_destinations",
-    "scraper": "table_center",
-    "isolate": false,
-    "works": false
+    "scraper": "table_center"
   },
   {
     "name": "Air Berlin",
     "destinationsLink": "/wiki/Air_Berlin_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Air Bucharest",
     "destinationsLink": "/wiki/Air_Bucharest_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air Canada",
@@ -162,9 +147,7 @@
   {
     "name": "Air Iceland",
     "destinationsLink": "/wiki/Air_Iceland_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default"
   },
   {
     "name": "Air India",
@@ -184,16 +167,12 @@
   {
     "name": "Air Italy",
     "destinationsLink": "/wiki/Air_Italy_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Air Ivoire",
     "destinationsLink": "/wiki/Air_Ivoire_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "Air Koryo",
@@ -213,9 +192,7 @@
   {
     "name": "Air Mali",
     "destinationsLink": "/wiki/Air_Mali_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air Malta",
@@ -230,23 +207,17 @@
   {
     "name": "Air Méditerranée",
     "destinationsLink": "/wiki/Air_M%C3%A9diterran%C3%A9e_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": true
+    "scraper": "default_variant"
   },
   {
     "name": "Air Midwest",
     "destinationsLink": "/wiki/Air_Midwest_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "Air Moldova",
     "destinationsLink": "/wiki/Air_Moldova_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Air Namibia",
@@ -266,16 +237,12 @@
   {
     "name": "Air Nippon",
     "destinationsLink": "/wiki/Air_Nippon_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": true
+    "scraper": "default_variant"
   },
   {
     "name": "Air Niugini",
     "destinationsLink": "/wiki/Air_Niugini_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air Nostrum",
@@ -290,9 +257,7 @@
   {
     "name": "Fiji Airways",
     "destinationsLink": "/wiki/Fiji_Airways_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Air Panama",
@@ -327,30 +292,22 @@
   {
     "name": "Air Uganda",
     "destinationsLink": "/wiki/Air_Uganda_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air VIA",
     "destinationsLink": "/wiki/Air_VIA_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air Wales",
     "destinationsLink": "/wiki/Air_Wales_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Air Wisconsin",
     "destinationsLink": "/wiki/Air_Wisconsin_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "AirAsia Group",
@@ -365,9 +322,7 @@
   {
     "name": "Airphil Express",
     "destinationsLink": "/wiki/Airphil_Express_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "AirTran Airways",
@@ -377,9 +332,7 @@
   {
     "name": "Airways International Cymru",
     "destinationsLink": "/wiki/Airways_International_Cymru_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Alaska Airlines",
@@ -389,9 +342,7 @@
   {
     "name": "Albanian Airlines",
     "destinationsLink": "/wiki/Albanian_Airlines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Alitalia",
@@ -411,30 +362,22 @@
   {
     "name": "Allegiant Air",
     "destinationsLink": "/wiki/Allegiant_Air_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "ALMA de México",
     "destinationsLink": "/wiki/ALMA_de_M%C3%A9xico_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": true
+    "scraper": "default_variant"
   },
   {
     "name": "America West Airlines",
     "destinationsLink": "/wiki/America_West_Airlines_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "America West Express",
     "destinationsLink": "/wiki/America_West_Express_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "American Airlines",
@@ -444,16 +387,12 @@
   {
     "name": "American Eagle Airlines",
     "destinationsLink": "/wiki/American_Eagle_Airlines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Envoy Air",
     "destinationsLink": "/wiki/Envoy_Air_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "AnadoluJet",
@@ -463,9 +402,7 @@
   {
     "name": "Ándalus Líneas Aéreas",
     "destinationsLink": "/wiki/%C3%81ndalus_L%C3%ADneas_A%C3%A9reas_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Ariana Afghan Airlines",
@@ -475,20 +412,16 @@
   {
     "name": "Arik Air",
     "destinationsLink": "/wiki/Arik_Air_destinations",
-    "scraper": "table_center",
-    "isolate": false,
-    "works": false
+    "scraper": "table_center"
   },
   {
     "name": "TUI Airlines Netherlands",
     "destinationsLink": "/wiki/TUI_Airlines_Netherlands_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
-    "name": "Arkia Israel Airlines",
-    "destinationsLink": "/wiki/Arkia_Israel_Airlines_destinations",
+    "name": "Arkia",
+    "destinationsLink": "/wiki/Arkia_destinations",
     "scraper": "table"
   },
   {
@@ -504,23 +437,17 @@
   {
     "name": "ASL Airlines France",
     "destinationsLink": "/wiki/ASL_Airlines_France_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Astraeus",
     "destinationsLink": "/wiki/Astraeus_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   },
   {
     "name": "Aurora Airlines",
     "destinationsLink": "/wiki/Aurora_Airlines_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Austral Líneas Aéreas",
@@ -535,9 +462,7 @@
   {
     "name": "Aviacsa",
     "destinationsLink": "/wiki/Aviacsa_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Avianca Brazil",
@@ -557,9 +482,7 @@
   {
     "name": "Avolar",
     "destinationsLink": "/wiki/Avolar_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "Azerbaijan Airlines",
@@ -574,23 +497,17 @@
   {
     "name": "BA CityFlyer",
     "destinationsLink": "/wiki/BA_CityFlyer_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default"
   },
   {
     "name": "Baboo",
     "destinationsLink": "/wiki/Baboo_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Bahamasair",
     "destinationsLink": "/wiki/Bahamasair_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Bahrain Air",
@@ -600,9 +517,7 @@
   {
     "name": "Balkan Bulgarian Airlines",
     "destinationsLink": "/wiki/Balkan_Bulgarian_Airlines_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "Bangkok Airways",
@@ -612,30 +527,22 @@
   {
     "name": "Batavia Air",
     "destinationsLink": "/wiki/Batavia_Air_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default_variant"
   },
   {
     "name": "Belavia",
     "destinationsLink": "/wiki/Belavia_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default_variant"
   },
   {
     "name": "Belle Air",
     "destinationsLink": "/wiki/Belle_Air_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default"
   },
   {
     "name": "BH Air",
     "destinationsLink": "/wiki/BH_Air_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
+    "scraper": "default"
   },
   {
     "name": "Biman Bangladesh Airlines",
@@ -665,527 +572,11 @@
   {
     "name": "BMI Regional",
     "destinationsLink": "/wiki/BMI_Regional_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
+    "scraper": "default"
   },
   {
     "name": "Bmibaby",
     "destinationsLink": "/wiki/Bmibaby_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Braniff International Airways",
-    "destinationsLink": "/wiki/Braniff_International_Airways_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Brit Air",
-    "destinationsLink": "/wiki/Brit_Air_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "British Airways",
-    "destinationsLink": "/wiki/British_Airways_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "British Airways franchise",
-    "destinationsLink": "/wiki/British_Airways_franchise_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Brussels Airlines",
-    "destinationsLink": "/wiki/Brussels_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Bulgaria Air charter",
-    "destinationsLink": "/wiki/Bulgaria_Air_charter_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Bulgaria Air",
-    "destinationsLink": "/wiki/Bulgaria_Air_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Bulgarian Air Charter",
-    "destinationsLink": "/wiki/Bulgarian_Air_Charter_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Canadian Airlines",
-    "destinationsLink": "/wiki/Canadian_Airlines_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Canadian Pacific Air Lines",
-    "destinationsLink": "/wiki/Canadian_Pacific_Air_Lines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "CanJet",
-    "destinationsLink": "/wiki/CanJet_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Cape Air",
-    "destinationsLink": "/wiki/Cape_Air_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Cargolux",
-    "destinationsLink": "/wiki/Cargolux_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Caribair",
-    "destinationsLink": "/wiki/Caribair_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Caribbean Airlines",
-    "destinationsLink": "/wiki/Caribbean_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Carpatair",
-    "destinationsLink": "/wiki/Carpatair_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cathay Pacific",
-    "destinationsLink": "/wiki/Cathay_Pacific_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cayman Airways",
-    "destinationsLink": "/wiki/Cayman_Airways_destinations",
-    "scraper": "table_center",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Cebu Pacific",
-    "destinationsLink": "/wiki/Cebu_Pacific_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Centralwings",
-    "destinationsLink": "/wiki/Centralwings_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Centre-South",
-    "destinationsLink": "/wiki/Centre-South_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "China Airlines",
-    "destinationsLink": "/wiki/China_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "China Cargo Airlines",
-    "destinationsLink": "/wiki/China_Cargo_Airlines_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "China Eastern Airlines",
-    "destinationsLink": "/wiki/China_Eastern_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "China Southern Airlines",
-    "destinationsLink": "/wiki/China_Southern_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cimber Sterling",
-    "destinationsLink": "/wiki/Cimber_Sterling_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "City Airline",
-    "destinationsLink": "/wiki/City_Airline_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "CityJet",
-    "destinationsLink": "/wiki/CityJet_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Clickair",
-    "destinationsLink": "/wiki/Clickair_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Condor Flugdienst",
-    "destinationsLink": "/wiki/Condor_Flugdienst_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Continental Airlines",
-    "destinationsLink": "/wiki/Continental_Airlines_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Continental Express",
-    "destinationsLink": "/wiki/Continental_Express_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Continental Micronesia",
-    "destinationsLink": "/wiki/Continental_Micronesia_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Copa Airlines Colombia",
-    "destinationsLink": "/wiki/Copa_Airlines_Colombia_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Copa Airlines",
-    "destinationsLink": "/wiki/Copa_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Corsair International",
-    "destinationsLink": "/wiki/Corsair_International_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Croatia Airlines",
-    "destinationsLink": "/wiki/Croatia_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cubana de Aviación",
-    "destinationsLink": "/wiki/Cubana_de_Aviaci%C3%B3n_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cyprus Airways",
-    "destinationsLink": "/wiki/Cyprus_Airways_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Cyprus Turkish Airlines",
-    "destinationsLink": "/wiki/Cyprus_Turkish_Airlines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Czech Airlines",
-    "destinationsLink": "/wiki/Czech_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Danube Wings",
-    "destinationsLink": "/wiki/Danube_Wings_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Delta Air Lines",
-    "destinationsLink": "/wiki/Delta_Air_Lines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Delta Connection",
-    "destinationsLink": "/wiki/Delta_Connection_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Delta Express",
-    "destinationsLink": "/wiki/Delta_Express_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Pacific Royale Airways",
-    "destinationsLink": "/wiki/Pacific_Royale_Airways_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Dniproavia",
-    "destinationsLink": "/wiki/Dniproavia_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "East African Airways",
-    "destinationsLink": "/wiki/East_African_Airways_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Eastern Air Lines",
-    "destinationsLink": "/wiki/Eastern_Air_Lines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Eastern Airways",
-    "destinationsLink": "/wiki/Eastern_Airways_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "EasyJet",
-    "destinationsLink": "/wiki/EasyJet_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "EasyJet Switzerland",
-    "destinationsLink": "/wiki/EasyJet_Switzerland_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Edelweiss Air",
-    "destinationsLink": "/wiki/Edelweiss_Air_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "EgyptAir",
-    "destinationsLink": "/wiki/EgyptAir_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "El Al",
-    "destinationsLink": "/wiki/El_Al_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Emirates",
-    "destinationsLink": "/wiki/Emirates_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Emirates SkyCargo",
-    "destinationsLink": "/wiki/Emirates_SkyCargo_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Estonian Air",
-    "destinationsLink": "/wiki/Estonian_Air_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Ethiopian Airlines",
-    "destinationsLink": "/wiki/Ethiopian_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Etihad Airways",
-    "destinationsLink": "/wiki/Etihad_Airways_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Eurocypria Airlines",
-    "destinationsLink": "/wiki/Eurocypria_Airlines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Eurowings",
-    "destinationsLink": "/wiki/Eurowings_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "EVA Air",
-    "destinationsLink": "/wiki/EVA_Air_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "ExpressJet Airlines",
-    "destinationsLink": "/wiki/ExpressJet_Airlines_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "not working"
-  },
-  {
-    "name": "Finnair",
-    "destinationsLink": "/wiki/Finnair_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "First Choice Airways",
-    "destinationsLink": "/wiki/First_Choice_Airways_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Fly Hellas",
-    "destinationsLink": "/wiki/Fly_Hellas_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Flybe",
-    "destinationsLink": "/wiki/Flybe_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Flybe franchise and codeshare",
-    "destinationsLink": "/wiki/Flybe_franchise_and_codeshare_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Flydubai",
-    "destinationsLink": "/wiki/Flydubai_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Flyglobespan",
-    "destinationsLink": "/wiki/Flyglobespan_destinations",
-    "scraper": "default_variant",
-    "isolate": false,
-    "works": "partially"
-  },
-  {
-    "name": "Freedom Air (New Zealand)",
-    "destinationsLink": "/wiki/Freedom_Air_(New_Zealand)_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
-  },
-  {
-    "name": "Frontier Airlines",
-    "destinationsLink": "/wiki/Frontier_Airlines_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Garuda Indonesia",
-    "destinationsLink": "/wiki/Garuda_Indonesia_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Georgian Airways",
-    "destinationsLink": "/wiki/Georgian_Airways_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Germania",
-    "destinationsLink": "/wiki/Germania_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Germanwings",
-    "destinationsLink": "/wiki/Germanwings_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Gol Transportes Aéreos",
-    "destinationsLink": "/wiki/Gol_Transportes_A%C3%A9reos_destinations",
-    "scraper": "default_variant_dl",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Gorkha Airlines",
-    "destinationsLink": "/wiki/Gorkha_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Great Lakes Airlines",
-    "destinationsLink": "/wiki/Great_Lakes_Airlines_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": false
-  },
-  {
-    "name": "Gulf Air",
-    "destinationsLink": "/wiki/Gulf_Air_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Hainan Airlines",
-    "destinationsLink": "/wiki/Hainan_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Hawaiian Airlines",
-    "destinationsLink": "/wiki/Hawaiian_Airlines_destinations",
-    "scraper": "table"
-  },
-  {
-    "name": "Hello",
-    "destinationsLink": "/wiki/Hello_destinations",
-    "scraper": "default",
-    "isolate": false,
-    "works": true
+    "scraper": "default"
   }
 ]

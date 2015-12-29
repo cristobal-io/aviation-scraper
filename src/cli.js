@@ -16,6 +16,7 @@ var options = {
 
 getAllDestinations(options, function () {
   console.log("Destinations File Created");// eslint-disable-line no-console
+  
   getScraperTypeForAll(options, function () {
     console.log("scrapers finished");
   });
