@@ -38,17 +38,13 @@ update-models: test/spec/models/
 	node test/spec/models_update.js
 
 # test commands
-MODELS_INDEX = $(test/spec/models/index.html)
-
-checking:
-	test -f MODELS_INDEX && echo "files exist" || echo "file not"
 
 # todo: create some sort of registry that advises when running our test that our files are too old
 test: lint
 	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
 
 dev:
-	test -f MODELS_INDEX && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
+	test -f test/spec/models/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
 
 # Coverage reporters
 
