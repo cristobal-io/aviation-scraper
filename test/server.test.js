@@ -13,7 +13,6 @@ var BASE_URL = "http://localhost";
 var PORT = 3000;
 var MODELS_DIR = "/spec/models/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
-// todo: fix the hardcoded value on json file.
 
 before("start server", function (done) {
   app.use(serveStatic(__dirname + MODELS_DIR));
