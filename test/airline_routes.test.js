@@ -15,14 +15,19 @@ var fs = require("fs");
 
 describe("Airline_routes.js: \n", function () {
   var options = require("./fixtures/airline_routes.options.json");
-  var validateScraperTableSchema, validateOptionalSchema;
+  var validateScraperTableSchema, validateOptionalSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
     var optionalSchemaTable = require("../schema/routes.table_w_origins.schema.json");
     var scraperTableOriginSchema = require("../schema/destinations_table_origin.schema.json");
+    var defaultSchema = require("../schema/scraper.default.schema.json");
+    var tableSchema = require("../schema/scraper.table.schema.json");
+
 
     validateScraperTableSchema = ajv.compile(scraperTableOriginSchema);
     validateOptionalSchema = ajv.compile(optionalSchemaTable);
+    validateDefaultSchema = ajv.compile(defaultSchema);
+    validateTableSchema = ajv.compile(tableSchema);
     done();
   });
 
@@ -33,11 +38,11 @@ describe("Airline_routes.js: \n", function () {
     });
 
     it("Should return an array from default scraper model", function (done) {
-      // todo: complete the test with json ajv
 
       getRoutes(options[0], function (err, results) {
-        // console.log(results.routes);
-        expect(results.routes).to.be.an("array");
+        var valid = validateDefaultSchema(results.routes);
+
+        expect(valid, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
         done();
       });
     });
@@ -60,10 +65,11 @@ describe("Airline_routes.js: \n", function () {
     });
 
     it("Should return an array from table scraper model", function (done) {
-      // todo: complete the test with json ajv
 
       getRoutes(options[2], function (err, results) {
-        expect(results.routes).to.be.an("array");
+        var valid = validateTableSchema(results.routes);
+
+        expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
         done();
       });
     });
@@ -83,7 +89,7 @@ describe("Airline_routes.js: \n", function () {
       // bermi: when calling this function, I am creating side effects, I am adding routes to options object.
       // Should I avoid it or it is ok in test cases?
       getAllRoutes(options, function (err, options) {
-        for (var i = 0; i < options.length; i+=1) {
+        for (var i = 0; i < options.length; i += 1) {
           // Bermi: since we are testing the schema integrity in other test, this I think it should test that is 
           // returning the proper object. Do you think this is a valid way of testing it?
           expect(_.has(options[i], "routes")).to.be.true;
