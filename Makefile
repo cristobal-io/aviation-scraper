@@ -76,7 +76,7 @@ release: lint
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
 clean:	clean-coverage
-	test -f data/destination_pages.json && rm -r data/ && echo "data content removed" || echo "no data folder found"
+	test -d data/ && rm -r data/ && echo "data content removed" || echo "no data folder found"
 	echo "finished."
 
 .PHONY: data/destination_pages.json test scrapers

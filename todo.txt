@@ -4,6 +4,3 @@ routes with problems
   - Vietjet Air 
   - Valujet
   - https://en.wikipedia.org/wiki/Aerosvit_destinations
-
-
-  
