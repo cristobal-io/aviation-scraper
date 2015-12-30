@@ -20,7 +20,7 @@ function getScraperType(options, callback) {
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log("error from %s is %s, %j, %s", options.name, err, utils, url); // eslint-disable-line no-console
+        console.log("error from %s is %s, %s", options.name, err, url); // eslint-disable-line no-console
         callback(err, utils);
       }
     })

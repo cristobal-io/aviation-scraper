@@ -19,9 +19,8 @@ function getRoutes(airline, callback) {
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log("error from %s is %s", airline.name, err); // eslint-disable-line no-console
-        // callback(err, utils);
-        console.log(utils); // eslint-disable-line no-console
+        console.log("\nerror from %s is %s, %s \n", airline.name, err, url); // eslint-disable-line no-console
+        callback(err, utils);
       }
     })
     .scrape(scrapers[airline.scraper] || scrapers["default"])
@@ -54,12 +53,14 @@ var writeJson = function (err, airline, callback) {
 function getAllRoutes(airlines, callback) {
   // console.log(airlines);
 
-  async.map(_.clone(airlines,true), function (airline, callback) {
+  async.mapLimit(_.clone(airlines,true), 20, function (airline, callback) {
     // console.log(airline);
-    getRoutes(airline, callback);
+    async.retry(3, function (callback) {
+      getRoutes(airline, callback);
+    }, callback);
   }, function (err, airlines) {
     if (err) {
-      throw err;
+      console.log("\ngetAllRoutes found an error %s",err) ;
     }
     callback(null, airlines);
   });

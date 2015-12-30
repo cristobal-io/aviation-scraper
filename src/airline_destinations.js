@@ -48,6 +48,13 @@ function getAllDestinations(options, callback) {
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
 
+    fs.access(destinationsFile, function (err) {
+      if (err) {
+        fs.mkdir("./data/", function () {
+          console.log("created data dir");
+        });
+      }
+    });
     async.map(urls, function (options, callback) {
       getDestinations(options, callback);
     }, function (err, results) {
@@ -56,7 +63,12 @@ function getAllDestinations(options, callback) {
       }
       var airlines = _.uniq(_.flatten(results, true), "name");
 
-      fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
+
+      fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
+        if (err) {
+          throw (err);
+        }
+      });
       if (process.env.NODE_ENV !== "test") {
         console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
       }
