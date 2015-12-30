@@ -14,19 +14,8 @@ lint:
 	eslint $(LINT_DIR)
 	echo "Linting finished without errors"
 
-destinations: data/destination_pages.json
-
-data/destination_pages.json:
-	echo "Generating file for airlines destinations"
-	node src/airline_destinations.js
-
-routes:
-	echo "Retrieving routes"
-	node src/airline_routes.js
-
-scrapers:
-	echo "Setting up scrapers for each type of page..."
-	node src/airline_scraper.js
+data:
+	node src/cli.js
 
 # Models update needed at least once before runing tests.
 # bermi: how to automatically create the folder?
@@ -65,8 +54,9 @@ test-coverage-windows:
 
 
 clean-coverage:
-	rm -r coverage
-	rm -r .nyc_output
+	test -d coverage/ && rm -r coverage/ && echo "coverage content removed" || echo "no coverage folder found"
+	test -d .nyc_output && rm -r .nyc_output && echo "nyc_output content removed" || echo "no nyc_output folder found"
+
 
 # Continuous Integration Test Runner
 ci: lint test
@@ -85,10 +75,8 @@ release: lint
 	echo "6. 'git tag tag-feature-wxyz feature-wxyz'"
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
-clean:
-	test -f data/destination_pages.json && rm -r data/* && echo "data content removed" || echo "no data folder found"
-	test -d data/ && echo "data folder exists" || mkdir data || echo "data folder created"
-	cp spikes/data_backup/destination_pages.json data/
+clean:	clean-coverage
+	test -f data/destination_pages.json && rm -r data/ && echo "data content removed" || echo "no data folder found"
 	echo "finished."
 
 .PHONY: data/destination_pages.json test scrapers
