@@ -14,10 +14,10 @@ var options = {
   "destinationsFile" : "./data/destination_pages.json"
 };
 
-getAllDestinations(options, function () {
+getAllDestinations(options, function (err, airlines) {
   console.log("Destinations File Created");// eslint-disable-line no-console
   
-  getScraperTypeForAll(options, function () {
+  getScraperTypeForAll({"airlines": airlines}, function () {
     console.log("scrapers finished");
   });
 });
