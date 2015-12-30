@@ -10,7 +10,7 @@ module.exports = function ($) {
   } else if ($("center .wikitable").length) {
     scraper = "table_center";
   } else if (($(".mw-content-ltr h3")).length) {
-    scraper = "default_variant";
+    scraper = "default";
   }
 
   return scraper;

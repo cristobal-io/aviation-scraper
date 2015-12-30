@@ -25,7 +25,8 @@ getAllDestinations(options, function (err, airlines) {
 
     console.log("scrapers finished");
 
-    getAllRoutes(airlineScrapers, function () {
+    getAllRoutes(airlineScrapers, function (err) {
+      if (err) {throw err;}
       console.log("Routes Files Generated");
     });
 

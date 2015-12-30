@@ -8,7 +8,6 @@ var async = require("async");
 var BASE_URL = "https://en.wikipedia.org";
 
 var _ = require("lodash");
-// var airlines = require("../data/destination_pages.json");
 
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
@@ -55,27 +54,19 @@ function getAllRoutes(airlines, callback) {
 
   async.mapLimit(_.clone(airlines,true), 20, function (airline, callback) {
     // console.log(airline);
-    async.retry(3, function (callback) {
+    async.retry(5, function (callback) {
       getRoutes(airline, callback);
     }, callback);
+
   }, function (err, airlines) {
     if (err) {
       console.log("\ngetAllRoutes found an error %s",err) ;
     }
-    callback(null, airlines);
+    callback(err, airlines);
+    
   });
 }
 
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
-// airlines = _.where(airlines, {
-//   "isolate": true
-// }) || airlines;
-// console.trace(airlines);
-// process.exit();
-// getRoutes(airlines[1], writeJson);
-
-// getAllRoutes(airlines, function () {
-//   console.log("callback finished");
-// });
