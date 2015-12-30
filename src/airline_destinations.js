@@ -54,7 +54,7 @@ function getAllDestinations(options, callback) {
       if (err) {
         throw err;
       }
-      var airlines = _.flatten(results, true);
+      var airlines = _.uniq(_.flatten(results, true), "name");
 
       fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
       if (process.env.NODE_ENV !== "test") {
@@ -70,3 +70,14 @@ function getAllDestinations(options, callback) {
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
 module.exports.getAllLinks = getAllLinks;
+
+
+// getAllDestinations({
+//   "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
+//   "destinationsFile": "./data/destination_pages.json"
+// }, function (err) {
+//   if (err) {throw err;}
+
+//   console.log("Destinations File Created"); // eslint-disable-line no-console
+
+// });

@@ -4,6 +4,7 @@ var chai = require("chai");
 var expect = chai.expect;
 // dependencies
 var _ = require("lodash");
+var async = require("async");
 
 var airlinesIndex = require("../src/index.js");
 var getRoutes = airlinesIndex.getRoutes;
@@ -14,7 +15,7 @@ var ajv = Ajv();
 var fs = require("fs");
 
 describe("Airline_routes.js: \n", function () {
-  var options = require("./fixtures/airline_routes.options.json");
+  var airports = require("./fixtures/airline_routes.options.json");
   var validateScraperTableSchema, validateOptionalSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
@@ -39,7 +40,7 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from default scraper model", function (done) {
 
-      getRoutes(options[0], function (err, results) {
+      getRoutes(airports[0], function (err, results) {
         var valid = validateDefaultSchema(results.routes);
 
         expect(valid, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
@@ -49,13 +50,12 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from table_with_origins scraper model", function (done) {
 
-      getRoutes(options[1], function (err, results) {
+      getRoutes(airports[1], function (err, results) {
 
         var valid = validateScraperTableSchema(results.routes);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
-        // bermi: do I have to use always anywere I can map over forEach to avoid side effects?
-        _.map(results.routes, function (results) {
+        _.each(results.routes, function (results) {
           var validOptionalSchema = validateOptionalSchema(results);
 
           expect(validOptionalSchema, _.get(validateOptionalSchema, "errors[0].message")).to.be.ok;
@@ -66,7 +66,7 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return an array from table scraper model", function (done) {
 
-      getRoutes(options[2], function (err, results) {
+      getRoutes(airports[2], function (err, results) {
         var valid = validateTableSchema(results.routes);
 
         expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
@@ -79,24 +79,19 @@ describe("Airline_routes.js: \n", function () {
 
   describe("getAllRoutes function", function () {
 
+
     it("Should be a function", function () {
       expect(getAllRoutes).to.be.a("function");
     });
 
     it("Should return and save the file", function (done) {
-      // bermi: this test takes really long and we need increase the timeout
-      this.timeout(5000);
-      // bermi: when calling this function, I am creating side effects, I am adding routes to options object.
-      // Should I avoid it or it is ok in test cases?
-      getAllRoutes(options, function (err, options) {
-        for (var i = 0; i < options.length; i += 1) {
-          // Bermi: since we are testing the schema integrity in other test, this I think it should test that is 
-          // returning the proper object. Do you think this is a valid way of testing it?
-          expect(_.has(options[i], "routes")).to.be.true;
-          // bermi: is it a good way of deleting files created for this test.
-          fs.unlinkSync(options[i].destinationsFile);
-        }
-        done();
+      this.timeout(15000);
+      getAllRoutes(airports, function (err, airports) {
+        async.each(airports, function (airport, callback) {
+          // The structure of .routes is being validated in other test.
+          expect(_.has(airport, "routes")).to.be.true;
+          fs.unlink(airport.destinationsFile, callback);
+        }, done);
       });
     });
 

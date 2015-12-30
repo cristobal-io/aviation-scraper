@@ -7,8 +7,9 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org";
+// todo: check for the file if it exist. 
+// try catch
 
-var airlines = require("../data/destination_pages.json");
 
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
@@ -19,14 +20,13 @@ function getScraperType(options, callback) {
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log("error from %s is %s",options.name, err);// eslint-disable-line no-console
-        // callback(err, utils);
-      } else {
-        console.log(utils);// eslint-disable-line no-console
+        console.log("error from %s is %s, %j, %s", options.name, err, utils, url); // eslint-disable-line no-console
+        callback(err, utils);
       }
     })
     .scrape(scrapers["type_of_scrapper"])
     .then(function (type) {
+      console.log("found %s from %s",type, url);
       callback(null, {
         type: type,
         name: options.name
@@ -38,17 +38,24 @@ function getScraperTypeForAll(options, callback) {
 
   // for modularity purposes
   destinationsFile = options.destinationsFile || destinationsFile;
-  airlines = options.airlines || airlines;
-  async.map(airlines, function (options, callback) {
-    getScraperType(options, callback);
+  var airlines = options.airlines || airlines;
+
+  async.mapLimit(airlines, 20, function (options, callback) {
+    async.retry(3, function (callback) {
+      getScraperType(options, callback);
+    }, callback);
   }, function (err, results) {
     if (err) {
-      console.log( err);// eslint-disable-line no-console
+      // console.log(err); // eslint-disable-line no-console
+      return callback(err);
     }
+    console.log("got %d results", results.length);
     airlines = _.reduce(results, function (airlines, result) {
       var index = _.findIndex(airlines, {
         name: result.name
       });
+
+      console.log("airline %s found at position %d", result.name, index );
 
       airlines[index].scraper = result.type;
       return airlines;
@@ -58,14 +65,10 @@ function getScraperTypeForAll(options, callback) {
     if (process.env.NODE_ENV !== "test") {
       console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
     }
-    callback(airlines);
+    callback(null, airlines);
   });
 }
 
 module.exports.getScraperType = getScraperType;
 module.exports.getScraperTypeForAll = getScraperTypeForAll;
 
-
-// getScraperTypeForAll({destinationsFile: "./data/destination_pages.json"}, function () {
-//   console.log("called scraper");
-// });

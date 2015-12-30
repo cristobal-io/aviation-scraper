@@ -62,7 +62,9 @@ describe("Type of Scraper\n", function () {
 
   it("Should return an array that passes the schema validation (AJV)", function (done) {
 
-    getScraperTypeForAll(options[2], function (results) {
+    getScraperTypeForAll(options[2], function (err, results) {
+      if (err) {throw err;}
+
       var validDestPagSchema = validateDestPagSchema(results);
 
       if (!validDestPagSchema) {
@@ -81,7 +83,9 @@ describe("Type of Scraper\n", function () {
     // console.log("destinationsPagesSchema: \n", JSON.stringify(destinationsPagesSchema, null, 2));
 
 
-    getScraperTypeForAll(options[2], function (results) {
+    getScraperTypeForAll(options[2], function (err, results) {
+      if (err) {throw err;}
+
       var valid = chai.tv4.validate(results, destinationsPagesSchema);
 
       if (!valid) {
