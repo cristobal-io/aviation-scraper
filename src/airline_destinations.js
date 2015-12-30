@@ -48,10 +48,14 @@ function getAllDestinations(options, callback) {
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
 
+    // Bermi: here we have a racing condition situation.
+    // for better understanding of the code, I would take it together with 
+    // fs.write, but it's not working properly if we do it that way.
+    // is it ok to keep it this way?
     fs.access(destinationsFile, function (err) {
       if (err) {
         fs.mkdir("./data/", function () {
-          console.log("created data dir");
+          console.log("created data directory");// eslint-disable-line no-console
         });
       }
     });
@@ -82,14 +86,3 @@ function getAllDestinations(options, callback) {
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
 module.exports.getAllLinks = getAllLinks;
-
-
-// getAllDestinations({
-//   "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
-//   "destinationsFile": "./data/destination_pages.json"
-// }, function (err) {
-//   if (err) {throw err;}
-
-//   console.log("Destinations File Created"); // eslint-disable-line no-console
-
-// });

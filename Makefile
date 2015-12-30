@@ -18,7 +18,6 @@ data:
 	node src/cli.js
 
 # Models update needed at least once before runing tests.
-# bermi: how to automatically create the folder?
 test/spec/models/:
 	mkdir test/spec/models/
 	cp test/fixtures/index.html $@
@@ -29,6 +28,7 @@ update-models: test/spec/models/
 # test commands
 
 # todo: create some sort of registry that advises when running our test that our files are too old
+# maybe we can use "tldr find"
 test: lint
 	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
 
@@ -79,4 +79,4 @@ clean:	clean-coverage
 	test -d data/ && rm -r data/ && echo "data content removed" || echo "no data folder found"
 	echo "finished."
 
-.PHONY: data/destination_pages.json test scrapers
+.PHONY: test scrapers

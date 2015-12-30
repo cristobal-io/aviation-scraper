@@ -1,6 +1,13 @@
-routes with problems
-  - Virgin Sun Airlines
-  - Viking Airlines
-  - Vietjet Air 
-  - Valujet
-  - https://en.wikipedia.org/wiki/Aerosvit_destinations
+# WIP
+*  add a verification for schema on returned objects
+
+
+# TODO
+
+-  routes with problems
+    + Virgin Sun Airlines
+    + Viking Airlines
+    + Vietjet Air 
+    + Valujet
+    + https://en.wikipedia.org/wiki/Aerosvit_destinations
+
