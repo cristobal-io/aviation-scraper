@@ -30,7 +30,7 @@ describe("Default Scraper: \n", function () {
     done();
   });
 
-
+// todo: modify the test so it uses AJV
   describe("getDestination function, it: ", function () {
     var destinationSchema = {
       "title": "destination schema v1",

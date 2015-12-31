@@ -1,13 +1,19 @@
 # WIP
-*  add a verification for schema on returned objects
-
+- make all the scrapers meet the default schema.
 
 # TODO
 
--  routes with problems
-    + Virgin Sun Airlines
-    + Viking Airlines
-    + Vietjet Air 
-    + Valujet
-    + https://en.wikipedia.org/wiki/Aerosvit_destinations
+- Uncomment type of scraper test
+- Add links to table scraper
+- filter table results to only add city and airport so we can meet only the default schema.
+- the schema should be required, if the object is empty, the schema is passing.
 
+# Next Features
+
+- Download all the airports, they have to include:
+  + ICAO
+  + IATA
+  + RWY 36/18
+  + RWY length.
+  + COORD
+  + freq if available?

@@ -9,6 +9,9 @@ var BASE_URL = "https://en.wikipedia.org";
 
 var _ = require("lodash");
 
+var Ajv = require("ajv");
+var ajv = Ajv();
+
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
@@ -18,7 +21,9 @@ function getRoutes(airline, callback) {
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log("\nerror from %s is %s, %s \n", airline.name, err, url); // eslint-disable-line no-console
+        if (process.env.NODE_ENV !== "test") {
+          console.log("\nerror from %s is %s, %s \n", airline.name, err, url); // eslint-disable-line no-console
+        }
         callback(err, utils);
       }
     })
@@ -29,11 +34,25 @@ function getRoutes(airline, callback) {
     });
 }
 
+function getFilename(airline) {
+  var defaultRoute = require("../schema/scraper.default.schema.json");
+  var validateDefaultRoute = ajv.compile(defaultRoute);
+  var validDefaultRoute = validateDefaultRoute(airline.routes);
+
+  if (validDefaultRoute) {
+    return airline.destinationsFile || "./data/routes_" + airline.name + ".json";
+  } else {
+    // console.log(airline);
+
+    return "./data/error_" + airline.name + ".json";
+  }
+}
+
 var writeJson = function (err, airline, callback) {
   if (err) {
     throw err;
   }
-  var filename = airline.destinationsFile || "./data/routes_" + airline.name + ".json";
+  var filename = getFilename(airline);
 
   fs.writeFile(filename,
     JSON.stringify(airline.routes, null, 2),
@@ -52,7 +71,7 @@ var writeJson = function (err, airline, callback) {
 function getAllRoutes(airlines, callback) {
   // console.log(airlines);
 
-  async.mapLimit(_.clone(airlines,true), 20, function (airline, callback) {
+  async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
     // console.log(airline);
     async.retry(5, function (callback) {
       getRoutes(airline, callback);
@@ -60,13 +79,26 @@ function getAllRoutes(airlines, callback) {
 
   }, function (err, airlines) {
     if (err) {
-      console.log("\ngetAllRoutes found an error %s",err) ;
+      console.log("\ngetAllRoutes found an error %s", err);
     }
     callback(err, airlines);
-    
+
   });
 }
 
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
+
+// getAllRoutes([{
+//   "name": "Aegean Airlines",
+//   "destinationsLink": "/wiki/Aegean_Airlines_destinations",
+//   "scraper": "table"
+// }, {
+//   "name": "Aer Lingus",
+//   "destinationsLink": "/wiki/Aer_Lingus_destinations",
+//   "scraper": "table"
+// }], function (err) {
+//   if (err) {throw err;}
+//   console.log("files saved");
+// });
 
