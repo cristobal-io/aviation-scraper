@@ -83,7 +83,7 @@ function getAllRoutes(airlines, callback) {
 
   }, function (err, airlines) {
     if (err) {
-      console.log("\ngetAllRoutes found an error %s", err);
+      console.log(chalk.red.bgWhite("\ngetAllRoutes found an error %s"), err);// eslint-disable-line no-console
     }
     callback(err, airlines);
 
