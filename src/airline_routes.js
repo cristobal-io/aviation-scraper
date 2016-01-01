@@ -62,9 +62,9 @@ var writeJson = function (err, airline, callback) {
       }
       if (process.env.NODE_ENV !== "test") {
         if (errorRegEx.test(filename)) {
-          console.log(chalk.red("Saved ", filename)); // eslint-disable-line no-console
+          console.log(chalk.red("Saved %s"), filename); // eslint-disable-line no-console
         } else {
-          console.log(chalk.green("Saved ", filename)); // eslint-disable-line no-console
+          console.log(chalk.green("Saved %s"), filename); // eslint-disable-line no-console
         }
       }
       callback(null, airline);
