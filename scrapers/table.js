@@ -2,7 +2,6 @@
 
 module.exports = function ($) {
 
-  // var destinations = [];
   var row = [];
 
   $(".sortable").map(function () {
@@ -31,7 +30,6 @@ module.exports = function ($) {
         k += 1;
       }
     }
-    // destinations.push(row);
   });
 
   return row;

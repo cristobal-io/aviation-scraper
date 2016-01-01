@@ -24,7 +24,7 @@ function getRoutes(airline, callback) {
     .catch(function (err, utils) {
       if (err) {
         if (process.env.NODE_ENV !== "test") {
-          chalk.red("\nerror from %s is %s, %s \n", airline.name, err, url);
+          console.log(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url); // eslint-disable-line no-console
         }
         callback(err, utils);
       }
@@ -73,10 +73,8 @@ var writeJson = function (err, airline, callback) {
 };
 
 function getAllRoutes(airlines, callback) {
-  // console.log(airlines);
 
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
-    // console.log(airline);
     async.retry(5, function (callback) {
       getRoutes(airline, callback);
     }, callback);

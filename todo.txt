@@ -4,9 +4,6 @@
 # TODO
 
 - Uncomment type of scraper test
-- Add links to table scraper
-- filter table results to only add city and airport so we can meet only the default schema.
-- the schema should be required, if the object is empty, the schema is passing.
 
 # Next Features
 

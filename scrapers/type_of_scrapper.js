@@ -8,7 +8,7 @@ module.exports = function ($) {
   } else if ($(".sortable").hasClass("sortable")) {
     scraper = "table";
   } else if ($("center .wikitable").length) {
-    scraper = "table_center";
+    scraper = "table";
   } else if (($(".mw-content-ltr h3")).length) {
     scraper = "default";
   }
