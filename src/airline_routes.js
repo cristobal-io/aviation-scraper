@@ -12,6 +12,8 @@ var _ = require("lodash");
 var Ajv = require("ajv");
 var ajv = Ajv();
 
+var chalk = require("chalk");
+
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
@@ -22,7 +24,7 @@ function getRoutes(airline, callback) {
     .catch(function (err, utils) {
       if (err) {
         if (process.env.NODE_ENV !== "test") {
-          console.log("\nerror from %s is %s, %s \n", airline.name, err, url); // eslint-disable-line no-console
+          chalk.red("\nerror from %s is %s, %s \n", airline.name, err, url);
         }
         callback(err, utils);
       }
@@ -42,17 +44,15 @@ function getFilename(airline) {
   if (validDefaultRoute) {
     return airline.destinationsFile || "./data/routes_" + airline.name + ".json";
   } else {
-    // console.log(airline);
-
     return "./data/error_" + airline.name + ".json";
   }
 }
-
 var writeJson = function (err, airline, callback) {
   if (err) {
     throw err;
   }
   var filename = getFilename(airline);
+  var errorRegEx = /error/;
 
   fs.writeFile(filename,
     JSON.stringify(airline.routes, null, 2),
@@ -61,7 +61,11 @@ var writeJson = function (err, airline, callback) {
         throw err;
       }
       if (process.env.NODE_ENV !== "test") {
-        console.log("Saved %s", filename); // eslint-disable-line no-console
+        if (errorRegEx.test(filename)) {
+          console.log(chalk.red("Saved ", filename)); // eslint-disable-line no-console
+        } else {
+          console.log(chalk.green("Saved ", filename)); // eslint-disable-line no-console
+        }
       }
       callback(null, airline);
     }
