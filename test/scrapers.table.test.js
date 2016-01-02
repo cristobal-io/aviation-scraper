@@ -33,7 +33,7 @@ describe("Table Scraper: \n", function () {
   });
 
   it("Should return and Array that passes the table schema validation", function () {
-    var tableDestSchema = require("../schema/destinations_table.schema.json");
+    var tableDestSchema = require("../schema/scraper.default.schema.json");
 
     validateTableSchema = ajv.compile(tableDestSchema);
 

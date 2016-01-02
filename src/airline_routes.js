@@ -41,30 +41,33 @@ function getFilename(airline) {
   var validateDefaultRoute = ajv.compile(defaultRoute);
   var validDefaultRoute = validateDefaultRoute(airline.routes);
 
+  // todo: test this function
   if (validDefaultRoute) {
-    return airline.destinationsFile || "./data/routes_" + airline.name + ".json";
+    airline.fileName = "./data/routes_" + airline.name + ".json";
   } else {
-    return "./data/error_" + airline.name + ".json";
+    airline.fileName = "./data/error_" + airline.name + ".json";
   }
+  return airline;
 }
+
 var writeJson = function (err, airline, callback) {
   if (err) {
     throw err;
   }
-  var filename = getFilename(airline);
+  airline = getFilename(airline);
   var errorRegEx = /error/;
 
-  fs.writeFile(filename,
+  fs.writeFile(airline.fileName,
     JSON.stringify(airline.routes, null, 2),
     function (err) {
       if (err) {
         throw err;
       }
       if (process.env.NODE_ENV !== "test") {
-        if (errorRegEx.test(filename)) {
-          console.log(chalk.red("Saved %s"), filename); // eslint-disable-line no-console
+        if (errorRegEx.test(airline.fileName)) {
+          console.log(chalk.red("Saved %s"), airline.fileName); // eslint-disable-line no-console
         } else {
-          console.log(chalk.green("Saved %s"), filename); // eslint-disable-line no-console
+          console.log(chalk.green("Saved %s"), airline.fileName); // eslint-disable-line no-console
         }
       }
       callback(null, airline);

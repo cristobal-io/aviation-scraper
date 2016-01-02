@@ -47,7 +47,7 @@ describe("Type of Scraper\n", function () {
 
   it("Should return table_center scraper", function (done) {
     getScraperType(options[3], function (err, results) {
-      expect(results.type).to.eql("table_center");
+      expect(results.type).to.eql("table");
       done();
     });
   });

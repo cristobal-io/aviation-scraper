@@ -26,7 +26,9 @@ function getScraperType(options, callback) {
     })
     .scrape(scrapers["type_of_scrapper"])
     .then(function (type) {
-      console.log("found %s from %s",type, url); // eslint-disable-line no-console
+      if (process.env.NODE_ENV !== "test") {
+        console.log("found %s from %s",type, url); // eslint-disable-line no-console
+      }
       callback(null, {
         type: type,
         name: options.name
@@ -49,7 +51,9 @@ function getScraperTypeForAll(options, callback) {
       // console.log(err); // eslint-disable-line no-console
       return callback(err);
     }
-    console.log("got %d results", results.length); // eslint-disable-line no-console
+    if (process.env.NODE_ENV !== "test") {
+      console.log("got %d results", results.length); // eslint-disable-line no-console
+    }
     airlines = _.reduce(results, function (airlines, result) {
       var index = _.findIndex(airlines, {
         name: result.name

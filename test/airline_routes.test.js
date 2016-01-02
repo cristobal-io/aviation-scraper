@@ -22,13 +22,12 @@ describe("Airline_routes.js: \n", function () {
     var optionalSchemaTable = require("../schema/routes.table_w_origins.schema.json");
     var scraperTableOriginSchema = require("../schema/destinations_table_origin.schema.json");
     var defaultSchema = require("../schema/scraper.default.schema.json");
-    var tableSchema = require("../schema/scraper.table.schema.json");
 
 
     validateScraperTableSchema = ajv.compile(scraperTableOriginSchema);
     validateOptionalSchema = ajv.compile(optionalSchemaTable);
     validateDefaultSchema = ajv.compile(defaultSchema);
-    validateTableSchema = ajv.compile(tableSchema);
+    validateTableSchema = ajv.compile(defaultSchema);
     done();
   });
 
@@ -90,7 +89,11 @@ describe("Airline_routes.js: \n", function () {
         async.each(airports, function (airport, callback) {
           // The structure of .routes is being validated in other test.
           expect(_.has(airport, "routes")).to.be.true;
-          fs.unlink(airport.destinationsFile, callback);
+          fs.unlink(airport.fileName, function (err) {
+            if (err) {console.log(err);}//eslint-disable-line no-console
+            callback();
+          });
+          // callback();
         }, done);
       });
     });
