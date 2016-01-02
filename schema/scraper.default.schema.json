@@ -20,8 +20,7 @@
           }
         },
         "required": [
-          "name",
-          "url"
+          "name"
         ]
       },
       "airport": {
