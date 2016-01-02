@@ -29,6 +29,7 @@ module.exports = function ($) {
             lenghtRow = $rowTableContent.length + numberMissingCells;
             sharedAirport -=1;
           } else if (sharedAirport === 1){
+            // cleaning the default values and counters to avoid side-effects.
             defaultName = "", defaultLink = "";
             sharedAirport = 0, numberMissingCells = 0;
           }
