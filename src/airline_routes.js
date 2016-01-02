@@ -35,16 +35,21 @@ function getRoutes(airline, callback) {
       writeJson(null, airline, callback);
     });
 }
+var errors = 0,
+  routes = 0;
 
+// todo: test this function
 function getFilename(airline) {
   var defaultRoute = require("../schema/scraper.default.schema.json");
   var validateDefaultRoute = ajv.compile(defaultRoute);
   var validDefaultRoute = validateDefaultRoute(airline.routes);
 
-  // todo: test this function
   if (validDefaultRoute) {
+    routes += 1;
     airline.fileName = "./data/routes_" + airline.name + ".json";
   } else {
+    // console.log(validateDefaultRoute, _.get(validateDefaultRoute, "errors[0].message"));
+    errors += 1;
     airline.fileName = "./data/error_" + airline.name + ".json";
   }
   return airline;
@@ -84,8 +89,9 @@ function getAllRoutes(airlines, callback) {
 
   }, function (err, airlines) {
     if (err) {
-      console.log(chalk.red.bgWhite("\ngetAllRoutes found an error %s"), err);// eslint-disable-line no-console
+      console.log(chalk.red.bgWhite("\ngetAllRoutes found an error %s"), err); // eslint-disable-line no-console
     }
+    console.log("You got %s routes and %s errors", routes, errors);
     callback(err, airlines);
 
   });
@@ -95,15 +101,16 @@ module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
 // getAllRoutes([{
-//   "name": "Aegean Airlines",
-//   "destinationsLink": "/wiki/Aegean_Airlines_destinations",
-//   "scraper": "table"
+//   "name": "Aero California",
+//   "destinationsLink": "/wiki/Aero_California_destinations",
+//   "scraper": "default"
 // }, {
 //   "name": "Aer Lingus",
 //   "destinationsLink": "/wiki/Aer_Lingus_destinations",
 //   "scraper": "table"
 // }], function (err) {
-//   if (err) {throw err;}
+//   if (err) {
+//     throw err;
+//   }
 //   console.log("files saved");
 // });
-
