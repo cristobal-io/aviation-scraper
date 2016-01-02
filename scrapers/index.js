@@ -7,5 +7,6 @@ module.exports = {
   "table_with_origins": require("./table_with_origins.js"),
   "default_variant": require("./default_variant.js"),
   "destinations": require("./destinations.js"),
-  "destinations_link": require("./destinations_link.js")
+  "destinations_link": require("./destinations_link.js"),
+  "table_toccolours": require("./table_toccolours.js")
 };

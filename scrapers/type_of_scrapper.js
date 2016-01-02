@@ -11,6 +11,8 @@ module.exports = function ($) {
     scraper = "table";
   } else if (($(".mw-content-ltr h3")).length) {
     scraper = "default";
+  } else if (($(".toccolours")).length) {
+    scraper = "table_toccolours";
   }
 
   return scraper;
