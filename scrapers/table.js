@@ -7,29 +7,36 @@ module.exports = function ($) {
   $(".sortable").map(function () {
 
     var $headers = $(this).find("th");
-    var $tableContent = $(this).find("tr td");
+    var $rowtable = $(this).find("tr");
 
-    for (var i = 0, j = 0, k = 0; i < $tableContent.length; i += 1, j += 1) {
-      var textHeader = $($headers[j]).text().toLowerCase();
-      var textTableContent = $($tableContent[i]).text();
-      var linkTableContent = $($tableContent[i]).find("a[href^='/']").attr("href");
+    for (var l = 1; l < $rowtable.length; l += 1) {
+      var $rowTableContent = $($rowtable[l]).find("td");
 
-      if (textHeader === "airport" || textHeader === "city") {
+      for (var m = 0; m < $rowTableContent.length; m += 1) {
+        var textHeader = $($headers[m]).text().toLowerCase();
+        var textTableContent = $($rowTableContent[m]).text();
+        var linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href");
 
-        if (row[k] === undefined) {
-          row.push(k);
-          row[k] = {};
+        if (textHeader === "airport" || textHeader === "city") {
+          var rowNumber = l-1;
+
+          if (row[rowNumber] === undefined) {
+            row.push(rowNumber);
+            row[rowNumber] = {};
+          }
+          row[rowNumber][textHeader] = {
+            "name": (textTableContent),
+            // bermi: here for some citys without links its nor adding the url, so
+            // I make it optional instead of required at the schema.
+            // do you think it is ok?
+            "url": (linkTableContent)
+          };
         }
-        row[k][textHeader] = {
-          "name": (textTableContent),
-          "url": (linkTableContent)
-        };
+
       }
-      if (j > $headers.length - 2) {
-        j = -1;
-        k += 1;
-      }
+
     }
+
   });
 
   return row;
