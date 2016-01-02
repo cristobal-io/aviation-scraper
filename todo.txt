@@ -1,9 +1,11 @@
 # WIP
-- make all the scrapers meet the default schema.
+- make all the scrapers meet the default schema. (only 21 errors now)
 
 # TODO
 
 - Uncomment type of scraper test
+- eliminate should be a function basic test
+
 
 # Next Features
 

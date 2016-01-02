@@ -48,7 +48,7 @@ function getFilename(airline) {
     routes += 1;
     airline.fileName = "./data/routes_" + airline.name + ".json";
   } else {
-    // console.log(validateDefaultRoute, _.get(validateDefaultRoute, "errors[0].message"));
+    console.log(validateDefaultRoute, _.get(validateDefaultRoute, "errors[0].message"));
     errors += 1;
     airline.fileName = "./data/error_" + airline.name + ".json";
   }
@@ -101,12 +101,12 @@ module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
 // getAllRoutes([{
-//   "name": "Aero California",
-//   "destinationsLink": "/wiki/Aero_California_destinations",
-//   "scraper": "default"
+//   "name": "Aeroflot",
+//   "destinationsLink": "/wiki/Aeroflot_destinations",
+//   "scraper": "table"
 // }, {
-//   "name": "Aer Lingus",
-//   "destinationsLink": "/wiki/Aer_Lingus_destinations",
+//   "name": "Air Arabia Maroc",
+//   "destinationsLink": "/wiki/Air_Arabia_Maroc_destinations",
 //   "scraper": "table"
 // }], function (err) {
 //   if (err) {
