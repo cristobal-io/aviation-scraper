@@ -9,7 +9,7 @@
   "destinationsLink": "/Adria_Airways_destinations.html",
   "url": "http://localhost:3000/Adria_Airways_destinations.html",
   "destinationsFile": "./test/spec/Adria_Airways_destinations.json",
-  "scraper": "table_with_origins"
+  "scraper": "table"
 
 }, {
   "name": "table",

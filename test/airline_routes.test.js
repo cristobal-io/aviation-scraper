@@ -17,14 +17,13 @@ var fs = require("fs");
 var airports = require("./fixtures/airline_routes.options.json");
 
 describe("Airline_routes.js: \n", function () {
-  var validateScraperTableSchema, validateOptionalSchema, validateDefaultSchema, validateTableSchema;
+  var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
     var defaultSchema = require("../schema/scraper.default.schema.json");
 
 
     validateScraperTableSchema = ajv.compile(defaultSchema);
-    validateOptionalSchema = ajv.compile(defaultSchema);
     validateDefaultSchema = ajv.compile(defaultSchema);
     validateTableSchema = ajv.compile(defaultSchema);
     done();
@@ -46,18 +45,12 @@ describe("Airline_routes.js: \n", function () {
       });
     });
 
-    it("Should return an array from table_with_origins scraper model", function (done) {
+    it("Should return an array from table scraper model", function (done) {
 
       getRoutes(airports[1], function (err, results) {
-
         var valid = validateScraperTableSchema(results.routes);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
-        _.each(results.routes, function (results) {
-          var validOptionalSchema = validateOptionalSchema(results);
-
-          expect(validOptionalSchema, _.get(validateOptionalSchema, "errors[0].message")).to.be.ok;
-        });
         done();
       });
     });

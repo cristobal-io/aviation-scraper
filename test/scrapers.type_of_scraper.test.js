@@ -52,9 +52,9 @@ describe("Type of Scraper\n", function () {
     });
   });
 
-  it("Should return table_with_origins scraper", function (done) {
+  it("Should return table scraper", function (done) {
     getScraperType(options[1], function (err, results) {
-      expect(results.type).to.eql("table_with_origins");
+      expect(results.type).to.eql("table");
       done();
     });
   });
