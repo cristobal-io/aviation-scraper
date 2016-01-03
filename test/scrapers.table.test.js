@@ -16,6 +16,8 @@ var ajv = Ajv();
 
 var _ = require("lodash");
 
+var defaultSchema = require("../schema/scraper.default.schema.json");
+
 // chai.config.includeStack = true;
 
 describe("Table Scraper: \n", function () {
@@ -40,6 +42,19 @@ describe("Table Scraper: \n", function () {
     var validTableSchema = validateTableSchema(results);
 
     expect(validTableSchema, _.get(validateTableSchema, "errors[0].message")).to.be.true;
+  });
+
+  it("should check special case where an airport is shared between rows", function (done) {
+    var validateDefaultSchema = ajv.compile(defaultSchema);
+
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Arabia_Maroc_destinations.html")
+      .scrape(scrapers.table)
+      .then(function (data) {
+        var validDefaultSchema = validateDefaultSchema(data);
+
+        expect(validDefaultSchema, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
+        done();
+      });
   });
 
 });

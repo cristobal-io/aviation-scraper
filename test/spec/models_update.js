@@ -14,6 +14,7 @@ var file_url = [
   "Aegean_Airlines_destinations",
   "Air_Austral_destinations",
   "Air_Nippon_destinations",
+  "Air_Arabia_Maroc_destinations",
   "Category:Lists_of_airline_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";
