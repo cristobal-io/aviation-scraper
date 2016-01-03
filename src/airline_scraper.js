@@ -7,6 +7,7 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org";
+var debug = require("debug")("airlineData:scrapers");
 // todo: check for the file if it exist. 
 // try catch
 
@@ -14,21 +15,17 @@ var BASE_URL = "https://en.wikipedia.org";
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
-  if (process.env.NODE_ENV !== "test") {
-    console.log("Getting scraper for %s from %s", options.name, url); // eslint-disable-line no-console
-  }
+  debug("Getting scraper for %s from %s", options.name, url); 
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log("error from %s is %s, %s", options.name, err, url); // eslint-disable-line no-console
+        debug("error from %s is %s, %s", options.name, err, url);
         callback(err, utils);
       }
     })
     .scrape(scrapers["type_of_scrapper"])
     .then(function (type) {
-      if (process.env.NODE_ENV !== "test") {
-        console.log("found %s from %s",type, url); // eslint-disable-line no-console
-      }
+      debug("found %s from %s",type, url);
       callback(null, {
         type: type,
         name: options.name
@@ -48,12 +45,9 @@ function getScraperTypeForAll(options, callback) {
     }, callback);
   }, function (err, results) {
     if (err) {
-      // console.log(err); // eslint-disable-line no-console
       return callback(err);
     }
-    if (process.env.NODE_ENV !== "test") {
-      console.log("got %d results", results.length); // eslint-disable-line no-console
-    }
+    debug("got %d results", results.length);
     airlines = _.reduce(results, function (airlines, result) {
       var index = _.findIndex(airlines, {
         name: result.name
@@ -66,9 +60,7 @@ function getScraperTypeForAll(options, callback) {
     }, airlines);
     fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
 
-    if (process.env.NODE_ENV !== "test") {
-      console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
-    }
+    debug("Saved %s", destinationsFile);
     callback(null, airlines);
   });
 }

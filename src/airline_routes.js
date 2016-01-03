@@ -13,19 +13,16 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var chalk = require("chalk");
+var debug = require("debug")("airlineData:routes");
 
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
-  if (process.env.NODE_ENV !== "test") {
-    console.log("Getting routes for %s from %s", airline.name, url); // eslint-disable-line no-console
-  }
+  debug("Getting routes for %s from %s", airline.name, url); // eslint-disable-line no-console
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        if (process.env.NODE_ENV !== "test") {
-          console.log(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url); // eslint-disable-line no-console
-        }
+        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url); // eslint-disable-line no-console
         callback(err, utils);
       }
     })
@@ -36,7 +33,7 @@ function getRoutes(airline, callback) {
     });
 }
 var errors = 0,
-  routes = 0;
+  routesSaved = 0;
 
 // todo: test this function
 function getFilename(airline) {
@@ -45,12 +42,13 @@ function getFilename(airline) {
   var validDefaultRoute = validateDefaultRoute(airline.routes);
 
   if (validDefaultRoute) {
-    routes += 1;
+    routesSaved += 1;
     airline.fileName = "./data/routes_" + airline.name + ".json";
   } else {
-    console.log("Airline %s got the error %s", airline.name,  _.get(validateDefaultRoute, "errors[0].message"));
+    debug("Airline %s got the error %s", airline.name, _.get(validateDefaultRoute, "errors[0].message"));
     errors += 1;
     airline.fileName = "./data/error_" + airline.name + ".json";
+    airline.errorMessage = "Airline " + airline.name + " got the error " + _.get(validateDefaultRoute, "errors[0].message");
   }
   return airline;
 }
@@ -68,12 +66,10 @@ var writeJson = function (err, airline, callback) {
       if (err) {
         throw err;
       }
-      if (process.env.NODE_ENV !== "test") {
-        if (errorRegEx.test(airline.fileName)) {
-          console.log(chalk.red("Saved %s"), airline.fileName); // eslint-disable-line no-console
-        } else {
-          console.log(chalk.green("Saved %s"), airline.fileName); // eslint-disable-line no-console
-        }
+      if (errorRegEx.test(airline.fileName)) {
+        debug(chalk.red("Saved %s"), airline.fileName); // eslint-disable-line no-console
+      } else {
+        debug(chalk.green("Saved %s"), airline.fileName); // eslint-disable-line no-console
       }
       callback(null, airline);
     }
@@ -91,7 +87,9 @@ function getAllRoutes(airlines, callback) {
     if (err) {
       console.log(chalk.red.bgWhite("\ngetAllRoutes found an error %s"), err); // eslint-disable-line no-console
     }
-    console.log("You got %s routes and %s errors", routes, errors);
+    airlines.routesSaved = routesSaved;
+    airlines.errors = errors;
+    debug("You got %s routes and %s errors", routesSaved, errors);
     callback(err, airlines);
 
   });

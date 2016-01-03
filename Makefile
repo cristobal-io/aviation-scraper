@@ -15,7 +15,7 @@ lint:
 	echo "Linting finished without errors"
 
 data:
-	node src/cli.js
+	DEBUG=airlineData* node src/cli.js
 
 # Models update needed at least once before runing tests.
 test/spec/models/:

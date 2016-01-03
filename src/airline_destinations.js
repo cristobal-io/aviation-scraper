@@ -7,14 +7,13 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
+var debug = require("debug")("airlineData:destinations");
 
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
 
 
-  if (process.env.NODE_ENV !== "test") {
-    console.log("Getting scraper for %s from %s", letter, options); // eslint-disable-line no-console
-  }
+  debug("Getting scraper for %s from %s", letter, options); // eslint-disable-line no-console
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
     .then(function (destinations) {
@@ -55,7 +54,7 @@ function getAllDestinations(options, callback) {
     fs.access(destinationsFile, function (err) {
       if (err) {
         fs.mkdir("./data/", function () {
-          console.log("created data directory");// eslint-disable-line no-console
+          debug("created data directory");// eslint-disable-line no-console
         });
       }
     });
@@ -73,9 +72,7 @@ function getAllDestinations(options, callback) {
           throw (err);
         }
       });
-      if (process.env.NODE_ENV !== "test") {
-        console.log("Saved %s", destinationsFile); // eslint-disable-line no-console
-      }
+      debug("Saved %s", destinationsFile); // eslint-disable-line no-console
       callback(null, airlines);
     });
   }
