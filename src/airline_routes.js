@@ -100,8 +100,8 @@ module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
 // getAllRoutes([{
-//   "name": "Air Austral",
-//   "destinationsLink": "/wiki/Air_Austral_destinations",
+//   "name": "Adria Airways",
+//   "destinationsLink": "/wiki/Adria_Airways_destinations",
 //   "scraper": "table"
 // }, {
 //   "name": "Air Chathams",
