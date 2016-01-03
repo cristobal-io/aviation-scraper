@@ -19,6 +19,10 @@ module.exports = function ($) {
         var textTableContent = $($rowTableContent[m]).text() || defaultName;
         var linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || defaultLink;
 
+        if (textHeader === "destination") {
+          textHeader = "city";
+        }
+
         if($($rowTableContent[m]).attr("rowspan")){
           numberMissingCells +=1;
         }

@@ -15,6 +15,7 @@ var file_url = [
   "Air_Austral_destinations",
   "Air_Nippon_destinations",
   "Air_Arabia_Maroc_destinations",
+  "Air_Chathams_destinations",
   "Category:Lists_of_airline_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";

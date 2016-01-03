@@ -15,6 +15,9 @@ var ajv = Ajv();
 var chalk = require("chalk");
 var debug = require("debug")("airlineData:routes");
 
+var errors = 0,
+  routesSaved = 0;
+
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
@@ -32,8 +35,6 @@ function getRoutes(airline, callback) {
       writeJson(null, airline, callback);
     });
 }
-var errors = 0,
-  routesSaved = 0;
 
 // todo: test this function
 function getFilename(airline) {

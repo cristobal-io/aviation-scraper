@@ -57,4 +57,18 @@ describe("Table Scraper: \n", function () {
       });
   });
 
+  it("Should check special Case where there is no City and instead it says Destination", function (done) {
+    // body...Air_Chathams_destinations
+    var validateDefaultSchema = ajv.compile(defaultSchema);
+
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Chathams_destinations.html")
+      .scrape(scrapers.table)
+      .then(function (data) {
+        var validDefaultSchema = validateDefaultSchema(data);
+
+        expect(validDefaultSchema, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
+        done();
+      });
+  });
+
 });
