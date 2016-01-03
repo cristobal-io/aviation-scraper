@@ -8,62 +8,93 @@ module.exports = function ($) {
 
     var $headers = $(this).find("th");
     var $rowtable = $(this).find("tr");
-    var defaultName = "", defaultLink = "";
-    var sharedAirport = 0, numberMissingCells = 0;
+    var options = {
+      "defaultName": "",
+      "defaultLink": "",
+      "sharedAirport": 0,
+      "numberMissingCells": 0,
+      "rowSpanAttribute": 0,
+      "lenghtRow": 0
+    };
 
     for (var l = 1; l < $rowtable.length; l += 1) {
       var $rowTableContent = $($rowtable[l]).find("td");
 
-      for (var m = 0, lenghtRow = $rowTableContent.length; m < lenghtRow ; m += 1) {
-        var textHeader = $($headers[m]).text().toLowerCase();
-        var textTableContent = $($rowTableContent[m]).text() || defaultName;
-        var linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || defaultLink;
+      options.lenghtRow = $rowTableContent.length;
 
-        if (textHeader === "destination") {
-          textHeader = "city";
-        }
+      for (var m = 0; m < options.lenghtRow; m += 1) {
+        options.textHeader = $($headers[m]).text().toLowerCase();
 
-        if($($rowTableContent[m]).attr("rowspan")){
-          numberMissingCells +=1;
-        }
+        options.textTableContent = $($rowTableContent[m]).text() || options.defaultName;
+        options.linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || options.defaultLink;
 
-        if (textHeader === "airport" || textHeader === "city") {
+        options.textHeader = filterTextHeader(options);
+        options.rowSpanAttribute = $($rowTableContent[m]).attr("rowspan");
 
-          if (sharedAirport > 1 && textHeader === "city") {
-            lenghtRow = $rowTableContent.length + numberMissingCells;
-            sharedAirport -=1;
-          } else if (sharedAirport === 1){
-            // cleaning the default values and counters to avoid side-effects.
-            defaultName = "", defaultLink = "";
-            sharedAirport = 0, numberMissingCells = 0;
-          }
+        options.rowNumber = l - 1;
 
-          if($($rowTableContent[m]).attr("rowspan")){
-            defaultName = textTableContent;
-            defaultLink = linkTableContent;
-            sharedAirport = $($rowTableContent[m]).attr("rowspan");
-          }
+        checkRowSpan(options);
 
-          var rowNumber = l-1;
-
-          if (row[rowNumber] === undefined) {
-            row.push(rowNumber);
-            row[rowNumber] = {};
-          }
-          row[rowNumber][textHeader] = {
-            "name": textTableContent,
-            // bermi: here for some citys without links its nor adding the url, so
-            // I make it optional instead of required at the schema.
-            // do you think it is ok?
-            "url": linkTableContent
-          };
-        }
-
+        addAirport(options, row);
       }
-
     }
-
   });
-
   return row;
 };
+
+function filterTextHeader(options) {
+  if (options.textHeader === "destination") {
+    return "city";
+  } else {
+    return options.textHeader;
+  }
+}
+
+function checkRowSpan(options) {
+  if (options.rowSpanAttribute) {
+    options.numberMissingCells += 1;
+  }
+  return options;
+}
+
+function addAirport(options, row) {
+  if (options.textHeader === "airport" || options.textHeader === "city") {
+    addMissingHeader(options);
+    assignDefaultValues(options);
+
+    assignRow(row, options);
+  }
+}
+
+function addMissingHeader(options) {
+  if (options.sharedAirport > 1 && options.textHeader === "city") {
+    options.lenghtRow = options.lenghtRow + options.numberMissingCells;
+    options.sharedAirport -= 1;
+  } else if (options.sharedAirport === 1) {
+    // cleaning the default values and counters to avoid side-effects.
+    options.defaultName = "", options.defaultLink = "";
+    options.sharedAirport = 0, options.numberMissingCells = 0;
+  }
+  return options;
+}
+
+function assignDefaultValues(options) {
+  if (options.rowSpanAttribute) {
+    options.defaultName = options.textTableContent;
+    options.defaultLink = options.linkTableContent;
+    options.sharedAirport = options.rowSpanAttribute;
+  }
+  return options;
+}
+
+function assignRow(row, options) {
+  if (row[options.rowNumber] === undefined) {
+    row.push(options.rowNumber);
+    row[options.rowNumber] = {};
+  }
+  row[options.rowNumber][options.textHeader] = {
+    "name": options.textTableContent,
+    "url": options.linkTableContent
+  };
+  return row;
+}
