@@ -14,18 +14,17 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 var fs = require("fs");
 
+var airports = require("./fixtures/airline_routes.options.json");
+
 describe("Airline_routes.js: \n", function () {
-  var airports = require("./fixtures/airline_routes.options.json");
   var validateScraperTableSchema, validateOptionalSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
-    var optionalSchemaTable = require("../schema/routes.table_w_origins.schema.json");
-    var scraperTableOriginSchema = require("../schema/destinations_table_origin.schema.json");
     var defaultSchema = require("../schema/scraper.default.schema.json");
 
 
-    validateScraperTableSchema = ajv.compile(scraperTableOriginSchema);
-    validateOptionalSchema = ajv.compile(optionalSchemaTable);
+    validateScraperTableSchema = ajv.compile(defaultSchema);
+    validateOptionalSchema = ajv.compile(defaultSchema);
     validateDefaultSchema = ajv.compile(defaultSchema);
     validateTableSchema = ajv.compile(defaultSchema);
     done();
@@ -77,26 +76,34 @@ describe("Airline_routes.js: \n", function () {
 
 
   describe("getAllRoutes function", function () {
+    var airportsResult = {};
 
-
-    it("Should be a function", function () {
-      expect(getAllRoutes).to.be.a("function");
-    });
-
-    it("Should return and save the file", function (done) {
+    before(function (done) {
       this.timeout(15000);
       getAllRoutes(airports, function (err, airports) {
-        async.each(airports, function (airport, callback) {
-          // The structure of .routes is being validated in other test.
-          expect(_.has(airport, "routes")).to.be.true;
-          fs.unlink(airport.fileName, function (err) {
-            if (err) {console.log(err);}//eslint-disable-line no-console
-            callback();
-          });
-          // callback();
-        }, done);
+        airportsResult = airports;
+        done();
       });
     });
 
+    it("Should return and save the file", function (done) {
+      async.each(airportsResult, function (airport, callback) {
+        // The structure of .routes is being validated in other test.
+        expect(_.has(airport, "routes")).to.be.true;
+        fs.unlink(airport.fileName, function (err) {
+          if (err) {
+            console.log(err);
+          } //eslint-disable-line no-console
+          callback();
+        });
+        // callback();
+      }, done);
+    });
+
+    it("should have 0 errors returning from getAllRoutes", function () {
+      expect(airportsResult.errors).to.eql(0);
+    });
+
   });
+
 });

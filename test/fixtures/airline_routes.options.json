@@ -29,4 +29,10 @@
   "url": "http://localhost:3000/Air_Nippon_destinations.html",
   "destinationsFile": "./test/spec/Air_Nippon_destinations.json",
   "scraper": "default_variant"
+}, {
+  "name": "Air_Arabia_Maroc_destinations",
+  "destinationsLink": "/Air_Arabia_Maroc_destinations.html",
+  "url": "http://localhost:3000/Air_Arabia_Maroc_destinations.html",
+  "destinationsFile": "./test/spec/Air_Arabia_Maroc_destinations.json",
+  "scraper": "table"
 }]
