@@ -5,6 +5,7 @@
 
 - Uncomment type of scraper test
 - eliminate should be a function basic test
+- rename files, we are not getting routes, we are getting destinations
 
 
 # Next Features
