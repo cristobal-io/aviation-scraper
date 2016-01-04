@@ -45,6 +45,8 @@ module.exports = function ($) {
 function filterTextHeader(options) {
   if (options.textHeader === "destination") {
     return "city";
+  } else if (/airport/.test(options.textHeader)) {
+    return "airport";
   } else {
     return options.textHeader;
   }

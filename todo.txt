@@ -19,6 +19,7 @@
   "scraper": "default_variant"
 },
 
+- use node-progress to show a bar and only display on screen the errors.
 
 # Next Features
 
