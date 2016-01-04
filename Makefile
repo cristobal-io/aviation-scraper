@@ -35,6 +35,11 @@ test: lint
 dev:
 	test -f test/spec/models/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
 
+node-inspector:
+	node-inspector
+
+debug-test:
+	test -f test/spec/models/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-models' before tests"
 # Coverage reporters
 
 test-coveralls:
