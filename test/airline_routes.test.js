@@ -31,10 +31,6 @@ describe("Airline_routes.js: \n", function () {
 
   describe("getRoutes function", function () {
 
-    it("Should be a function", function () {
-      expect(getRoutes).to.be.a("function");
-    });
-
     it("Should return an array from default scraper model", function (done) {
 
       getRoutes(airports[0], function (err, results) {

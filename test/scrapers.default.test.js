@@ -76,9 +76,6 @@ describe("Default Scraper: \n", function () {
     // require("./schema/destination_schema.json");
 
 
-    it("Should be a function", function () {
-      expect(getDestinations).to.be.a("function");
-    });
     it("Should return an object", function () {
       expect(result).to.be.an("object");
     });
@@ -98,9 +95,6 @@ describe("Default Scraper: \n", function () {
       makrdownResults = getDestinations(makrdown);
     });
 
-    it("Should be a function", function () {
-      expect(getDestinations).to.be.a("function");
-    });
 
     it("should return an Array", function () {
       expect(makrdownResults).to.be.an("array");
@@ -118,9 +112,6 @@ describe("Default Scraper: \n", function () {
       linkStringResult = getLinkStrings(line);
     });
 
-    it("Should be a function", function () {
-      expect(getLinkStrings).to.be.a("function");
-    });
 
     it("Should return an array ", function () {
 
@@ -140,9 +131,6 @@ describe("Default Scraper: \n", function () {
       hasValidLinksResult = hasValidLinks(link);
     });
 
-    it("Should be a function", function () {
-      expect(hasValidLinks).to.be.a("function");
-    });
 
     it("Shouldn't return undefined", function () {
       expect(hasValidLinksResult).to.not.be.undefined;
@@ -167,9 +155,6 @@ describe("Default Scraper: \n", function () {
   });
 
   describe("getLinkInfo function, it:", function () {
-    it("Should be a function", function () {
-      expect(getLinkInfo).to.be.a("function");
-    });
 
     it("Should return an array", function () {
       expect(getLinkInfo(line)).to.be.an("array");

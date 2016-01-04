@@ -48,10 +48,6 @@ describe("Airline_destinations.js: \n", function() {
   });
 
   describe("getAllDestinations", function() {
-    
-    it("Should be a function 'getAllDestinations'", function () {
-      expect(getAllDestinations).to.be.a("function");
-    });
 
     it("getAllDestinations return an Array", function() {
       expect(destinations_results).to.be.an("array");
@@ -60,7 +56,7 @@ describe("Airline_destinations.js: \n", function() {
   });
 
   describe("getDestinations", function() {
-    
+    // todo: complete tests for this specific function
     it("Should be a function 'getDestinations'", function () {
       expect(getDestinations).to.be.a("function");
     });
