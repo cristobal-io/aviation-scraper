@@ -1,38 +1,38 @@
 [{
-  "name": "default",
+  "name": "AeroSur_destinations",
   "destinationsLink": "/AeroSur_destinations.html",
   "url": "http://localhost:3000/AeroSur_destinations.html",
   "destinationsFile": "./test/spec/AeroSur_destinations.json",
   "scraper": "default"
 }, {
-  "name": "table_with_origins",
+  "name": "Adria_Airways_destinations",
   "destinationsLink": "/Adria_Airways_destinations.html",
   "url": "http://localhost:3000/Adria_Airways_destinations.html",
   "destinationsFile": "./test/spec/Adria_Airways_destinations.json",
   "scraper": "table"
 
 }, {
-  "name": "table",
+  "name": "Aegean_Airlines_destinations",
   "destinationsLink": "/Aegean_Airlines_destinations.html",
   "url": "http://localhost:3000/Aegean_Airlines_destinations.html",
   "destinationsFile": "./test/spec/Aegean_Airlines_destinations.json",
   "scraper": "table"
 }, {
-  "name": "table_center",
+  "name": "Air_Austral_destinations",
   "destinationsLink": "/Air_Austral_destinations",
   "url": "http://localhost:3000/Air_Austral_destinations.html",
   "destinationsFile": "./test/spec/Air_Austral_destinations.json",
   "scraper": "table_center"
-}, {
-  "name": "default_variant",
-  "destinationsLink": "/Air_Nippon_destinations",
-  "url": "http://localhost:3000/Air_Nippon_destinations.html",
-  "destinationsFile": "./test/spec/Air_Nippon_destinations.json",
-  "scraper": "default_variant"
 }, {
   "name": "Air_Arabia_Maroc_destinations",
   "destinationsLink": "/Air_Arabia_Maroc_destinations.html",
   "url": "http://localhost:3000/Air_Arabia_Maroc_destinations.html",
   "destinationsFile": "./test/spec/Air_Arabia_Maroc_destinations.json",
   "scraper": "table"
+}, {
+  "name": "VietJet_Air_destinations",
+  "destinationsLink": "/VietJet_Air_destinations.html",
+  "url": "http://localhost:3000/VietJet_Air_destinations.html",
+  "destinationsFile": "./test/spec/VietJet_Air_destinations.json",
+  "scraper": "table_toccolours"
 }]

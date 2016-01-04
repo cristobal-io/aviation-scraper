@@ -7,6 +7,17 @@
 - eliminate should be a function basic test
 - rename files, we are not getting routes, we are getting destinations
 - Add a check so the destinations on routes are not duplicated.
+- Eliminate Scraper fase and join it with the routes to avoid extra connections.
+
+
+- incorporate again default variant
+  +  {
+  "name": "default_variant",
+  "destinationsLink": "/Air_Nippon_destinations",
+  "url": "http://localhost:3000/Air_Nippon_destinations.html",
+  "destinationsFile": "./test/spec/Air_Nippon_destinations.json",
+  "scraper": "default_variant"
+},
 
 
 # Next Features
