@@ -1,5 +1,5 @@
 # WIP
-- make all the scrapers meet the default schema. (only 19 errors now)
+- make all the scrapers meet the default schema. (only 18 errors now)
 
 # TODO
 
@@ -10,7 +10,7 @@
 - Eliminate Scraper fase and join it with the routes to avoid extra connections.
 
 
-- incorporate again default variant
+- incorporate again default variant if needed or erase the default variant scraper
   +  {
   "name": "default_variant",
   "destinationsLink": "/Air_Nippon_destinations",
