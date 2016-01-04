@@ -90,7 +90,16 @@ describe("Airline_routes.js: \n", function () {
     });
 
     it("should have 0 errors returning from getAllRoutes", function () {
-      expect(airportsResult.errors).to.eql(0);
+      var errorMessages = [];
+
+      _.forEach(airportsResult,function (airport) {
+        var errorMessage = _.get(airport, "errorMessage");
+        
+        if (errorMessage){
+          errorMessages.push(errorMessage);
+        }
+      });
+      expect(airportsResult.errors, errorMessages[0]).to.eql(0);
     });
 
   });
