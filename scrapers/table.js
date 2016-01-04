@@ -43,7 +43,7 @@ module.exports = function ($) {
 };
 
 function filterTextHeader(options) {
-  if (options.textHeader === "destination") {
+  if (/destination/.test(options.textHeader)) {
     return "city";
   } else if (/airport/.test(options.textHeader)) {
     return "airport";

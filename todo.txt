@@ -1,5 +1,5 @@
 # WIP
-- make all the scrapers meet the default schema. (only 18 errors now)
+- make all the scrapers meet the default schema. (only 17 errors now)
 
 # TODO
 
