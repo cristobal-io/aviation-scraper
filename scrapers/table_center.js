@@ -35,7 +35,32 @@ module.exports = function ($) {
   }, []);
   console.log("destinationsMarkdown: %o",destinationsMarkdown);
   // possible use match method stringmd.match(\[(\w*\s*\w*)*\])
+  // var txt='[Saint Denis](/wiki/Saint-Denis,_RÃ©union "Saint-Denis, Réunion")';
+
+  // var re1='(\\[.*?\\])';  // Square Braces 1
+
+  // var p = new RegExp(re1,["i"]);
+  // var m = p.exec(txt);
+  // if (m != null)
+  // {
+  //     var sbraces1=m[1];
+  //     document.write("("+sbraces1.replace(/</,"&lt;")+")"+"\n");
+  // }
   // $("center .wikitable").map(function () {
+  // var txt='[Saint Denis](/wiki/Saint-Denis,_RÃ©union "Saint-Denis, Réunion")';
+  // This is for the link
+  // var re1='.*?';  // Non-greedy match on filler
+  // var re2='((?:\\/[\\w\\.\\-]+)+)'; // Unix Path 1
+  // var re3='(.)';  // Any Single Character 1
+
+  // var p = new RegExp(re1+re2+re3,["i"]);
+  // var m = p.exec(txt);
+  // if (m != null)
+  // {
+  //     var unixpath1=m[1];
+  //     var c1=m[2];
+  //     document.write("("+unixpath1.replace(/</,"&lt;")+")"+"("+c1.replace(/</,"&lt;")+")"+"\n");
+  // }
 
   //   var $headers = $(this).find("th");
   //   var $rowtable = $(this).find("tr");
