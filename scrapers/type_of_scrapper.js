@@ -11,6 +11,8 @@ module.exports = function ($) {
     scraper = "default";
   } else if (($(".toccolours")).length) {
     scraper = "table_toccolours";
+  } else if ($("center .wikitable").length) {
+    scraper = "table_center";
   }
 
   return scraper;

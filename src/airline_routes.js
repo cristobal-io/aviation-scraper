@@ -99,15 +99,16 @@ function getAllRoutes(airlines, callback) {
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
-// getAllRoutes([{
-//   "name": "Arik Air",
-//   "destinationsLink": "/wiki/Arik_Air_destinations",
-//   "scraper": "table"
-// }, {
-//   "name": "Air Austral",
-//   "destinationsLink": "/wiki/Air_Austral_destinations",
-//   "scraper": "table_center"
-// }, {
+getAllRoutes([{
+  "name": "Arik Air",
+  "destinationsLink": "/wiki/Arik_Air_destinations",
+  "scraper": "table"
+}, {
+  "name": "Air Austral",
+  "destinationsLink": "/wiki/Air_Austral_destinations",
+  "scraper": "table_center"
+}
+// , {
 //   "name": "Bulgaria Air charter",
 //   "destinationsLink": "/wiki/Bulgaria_Air_charter_destinations",
 //   "scraper": "default"
@@ -139,9 +140,10 @@ module.exports.getAllRoutes = getAllRoutes;
 //   "name": "Flybe",
 //   "destinationsLink": "/wiki/Flybe_destinations",
 //   "scraper": "default"
-// }], function (err) {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log("files saved");
-// });
+// }
+], function (err) {
+  if (err) {
+    throw err;
+  }
+  console.log("files saved");
+});
