@@ -28,80 +28,36 @@ module.exports = function ($) {
         if (linksRe.test(line)) {
           destinations.push(line);
         }
-        getLinkStrings(line);
       });
     }
     return destinations;
   }, []);
-  console.log("destinationsMarkdown: %o",destinationsMarkdown);
-  // possible use match method stringmd.match(\[(\w*\s*\w*)*\])
-  // var txt='[Saint Denis](/wiki/Saint-Denis,_RÃ©union "Saint-Denis, Réunion")';
 
-  // var re1='(\\[.*?\\])';  // Square Braces 1
 
-  // var p = new RegExp(re1,["i"]);
-  // var m = p.exec(txt);
-  // if (m != null)
-  // {
-  //     var sbraces1=m[1];
-  //     document.write("("+sbraces1.replace(/</,"&lt;")+")"+"\n");
-  // }
-  // $("center .wikitable").map(function () {
-  // var txt='[Saint Denis](/wiki/Saint-Denis,_RÃ©union "Saint-Denis, Réunion")';
-  // This is for the link
-  // var re1='.*?';  // Non-greedy match on filler
-  // var re2='((?:\\/[\\w\\.\\-]+)+)'; // Unix Path 1
-  // var re3='(.)';  // Any Single Character 1
+  for (var i = 0; i < destinationsMarkdown.length; i += 2) {
+    var city = destinationsMarkdown[i].split("\(");
+    var cityName = city[0].slice(1, city[0].length - 1);
+    var cityLink = city[1].split(",");
 
-  // var p = new RegExp(re1+re2+re3,["i"]);
-  // var m = p.exec(txt);
-  // if (m != null)
-  // {
-  //     var unixpath1=m[1];
-  //     var c1=m[2];
-  //     document.write("("+unixpath1.replace(/</,"&lt;")+")"+"("+c1.replace(/</,"&lt;")+")"+"\n");
-  // }
+    cityLink = cityLink[0].split(" ");
+    cityLink = cityLink[0];
 
-  //   var $headers = $(this).find("th");
-  //   var $rowtable = $(this).find("tr");
-  //   var options = {
-  //     "defaultName": "",
-  //     "defaultLink": "",
-  //     "sharedAirport": 0,
-  //     "numberMissingCells": 0,
-  //     "rowSpanAttribute": 0,
-  //     "lenghtRow": 0
-  //   };
+    var airport = destinationsMarkdown[i+1].split("\(");
+    var airportName = airport[0].slice(1, airport[0].length - 1);
+    var airportLink = airport[1].split(",");
 
-  //   for (var l = 1; l < $rowtable.length; l += 1) {
-  //     var $rowTableContent = $($rowtable[l]).find("td");
+    airportLink = airportLink[0].split(" ");
+    airportLink = airportLink[0];
 
-  //     options.lenghtRow = $rowTableContent.length;
-  //     if (options.lenghtRow < 2) {continue;}
-  //     for (var m = 0; m < options.lenghtRow; m += 1) {
-  //       options.textHeader = $($headers[m]).text().toLowerCase();
+    row.push({
+      city: {name: cityName, url: cityLink},
+      airport: {name: airportName, url: airportLink}
+    });
 
-  //       options.textTableContent = $($rowTableContent[m]).text() || options.defaultName;
-  //       options.linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || options.defaultLink;
+  }
 
-  //       options.textHeader = filterTextHeader(options);
-  //       options.rowSpanAttribute = $($rowTableContent[m]).attr("rowspan");
-
-  //       options.rowNumber = row.length;
-
-  //       checkRowSpan(options);
-
-  //       addAirport(options, row);
-  //     }
-  //   }
-  // });
   return row;
 };
-function getLinkStrings(line) {
-  var linksRe = new RegExp(re, "g");
-
-  return line.match(linksRe) || [];
-}
 
 function generateHeaders(headers, options, $) {
   headers.each(function (index, value) {
@@ -111,100 +67,4 @@ function generateHeaders(headers, options, $) {
     }
   });
   return options;
-}
-
-function getLinkInfo(linkString) {
-  var linksInfoRe = new RegExp(re);
-  var info = linkString.match(linksInfoRe) || [];
-
-  if (info[2]) {
-    info[2] = info[2].substring(0, info[2].indexOf(" "));
-  }
-
-  return info;
-}
-
-function hasValidLinks(links) {
-  return links.length === 2 && links[0][1] && links[0][2] && links[1][1] && links[1][2];
-}
-
-function getDestination(line) {
-  var links = getLinkStrings(line).map(getLinkInfo);
-
-  if (hasValidLinks(links)) {
-    return {
-      city: {
-        name: links[0][1],
-        url: links[0][2]
-      },
-      airport: {
-        name: links[1][1],
-        url: links[1][2]
-      }
-    };
-  }
-}
-
-function filterTextHeader(options) {
-  options.textTableContent = options.textHeader.toLowerCase();
-  if (/destination/.test(options.textHeader)) {
-    return "city";
-  } else if (/city/.test(options.textHeader)) {
-    return "city";
-  } else if (/airport/.test(options.textHeader)) {
-    return "airport";
-  } else if (/airport/.test(options.textTableContent)) {
-    return "airport";
-  } else {
-    return options.textHeader;
-  }
-}
-
-function checkRowSpan(options) {
-  if (options.rowSpanAttribute) {
-    options.numberMissingCells += 1;
-  }
-  return options;
-}
-
-function addAirport(options, row) {
-  if (options.textHeader === "airport" || options.textHeader === "city") {
-    addMissingHeader(options);
-    assignDefaultValues(options);
-
-    assignRow(row, options);
-  }
-}
-
-function addMissingHeader(options) {
-  if (options.sharedAirport > 1 && options.textHeader === "city") {
-    options.lenghtRow = options.lenghtRow + options.numberMissingCells;
-    options.sharedAirport -= 1;
-  } else if (options.sharedAirport === 1) {
-    // cleaning the default values and counters to avoid side-effects.
-    options.defaultName = "", options.defaultLink = "";
-    options.sharedAirport = 0, options.numberMissingCells = 0;
-  }
-  return options;
-}
-
-function assignDefaultValues(options) {
-  if (options.rowSpanAttribute) {
-    options.defaultName = options.textTableContent;
-    options.defaultLink = options.linkTableContent;
-    options.sharedAirport = options.rowSpanAttribute;
-  }
-  return options;
-}
-
-function assignRow(row, options) {
-  if (row[options.rowNumber] === undefined) {
-    row.push(options.rowNumber);
-    row[options.rowNumber] = {};
-  }
-  row[options.rowNumber][options.textHeader] = {
-    "name": options.textTableContent,
-    "url": options.linkTableContent
-  };
-  return row;
 }
