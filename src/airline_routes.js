@@ -13,7 +13,7 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var chalk = require("chalk");
-var debug = require("debug")("airlineData:links");
+var debug = require("debug")("airlineData:destinations");
 
 var errors = 0,
   routesSaved = 0;

@@ -7,7 +7,7 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
-var debug = require("debug")("airlineData:destinations");
+var debug = require("debug")("airlineData:links");
 
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
