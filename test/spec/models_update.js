@@ -21,7 +21,14 @@ var file_url = [
   "Category:Lists_of_airline_destinations"
 ];
 var DOWNLOAD_DIR = "./test/spec/models/";
+var fixtures = require("../fixtures/airline_routes.options.json");
+var exampleFile = [
+  "Category:Lists_of_airline_destinations"
+];
 
+for (var i = 0; i < fixtures.length; i+=1) {
+  exampleFile.push(fixtures[i].name);
+}
 
 var download_file_httpsGet = function (file_url, callback) {
   if (file_url.indexOf("https") === -1) {
