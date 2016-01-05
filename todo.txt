@@ -14,6 +14,7 @@
 - Eliminate Scraper fase and join it with the routes to avoid extra connections.
 - cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
 - add the update-models to get the names from the fixtures json file, so there is no missing case and they are all in one place.
+- change name of models, this is only used for models of products or else.
 
 
 - incorporate again default variant if needed or erase the default variant scraper
