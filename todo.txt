@@ -3,7 +3,7 @@
   + apply the default scraper to Air_Austral, the returned value is valid but it is not in reality.
 
 # WIP
-- make all the scrapers meet the default schema. (only 17 errors now)
+- make all the scrapers meet the default schema. (only 14 errors now)
 
 # TODO
 
