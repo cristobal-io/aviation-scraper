@@ -99,49 +99,11 @@ function getAllRoutes(airlines, callback) {
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
-// getAllRoutes([{
-//   "name": "Arik Air",
-//   "destinationsLink": "/wiki/Arik_Air_destinations",
+// getAllRoutes([ {
+//   "name": "JetBlue",
+//   "destinationsLink": "/wiki/JetBlue_destinations",
 //   "scraper": "table"
-// }, {
-//   "name": "Air Austral",
-//   "destinationsLink": "/wiki/Air_Austral_destinations",
-//   "scraper": "table_center"
-// }
-// , {
-//   "name": "Bulgaria Air charter",
-//   "destinationsLink": "/wiki/Bulgaria_Air_charter_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Cape Air",
-//   "destinationsLink": "/wiki/Cape_Air_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Cargolux",
-//   "destinationsLink": "/wiki/Cargolux_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Caribair",
-//   "destinationsLink": "/wiki/Caribair_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Cayman Airways",
-//   "destinationsLink": "/wiki/Cayman_Airways_destinations",
-//   "scraper": "table"
-// }, {
-//   "name": "Eastern Air Lines",
-//   "destinationsLink": "/wiki/Eastern_Air_Lines_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Fiji Airways",
-//   "destinationsLink": "/wiki/Fiji_Airways_destinations",
-//   "scraper": "default"
-// }, {
-//   "name": "Flybe",
-//   "destinationsLink": "/wiki/Flybe_destinations",
-//   "scraper": "default"
-// }
-// ], function (err) {
+// }], function (err) {
 //   if (err) {
 //     throw err;
 //   }
