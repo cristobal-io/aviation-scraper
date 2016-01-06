@@ -8,26 +8,15 @@ var https = require("https");
 
 // App variables
 var BASE_URL = "https://en.wikipedia.org/wiki/";
-var file_url = [
-  "Adria_Airways_destinations",
-  "AeroSur_destinations",
-  "Aegean_Airlines_destinations",
-  "Air_Austral_destinations",
-  "Air_Nippon_destinations",
-  "Air_Arabia_Maroc_destinations",
-  "Air_Chathams_destinations",
-  "VietJet_Air_destinations",
-  "Aeroper%C3%BA_destinations",
-  "Category:Lists_of_airline_destinations"
-];
+
 var DOWNLOAD_DIR = "./test/spec/models/";
 var fixtures = require("../fixtures/airline_routes.options.json");
-var exampleFile = [
+var file_url = [
   "Category:Lists_of_airline_destinations"
 ];
 
 for (var i = 0; i < fixtures.length; i+=1) {
-  exampleFile.push(fixtures[i].name);
+  file_url.push(fixtures[i].name);
 }
 
 var download_file_httpsGet = function (file_url, callback) {

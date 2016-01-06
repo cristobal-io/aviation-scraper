@@ -41,4 +41,19 @@
   "url": "http://localhost:3000/Gorkha_Airlines.html",
   "destinationsFile": "./test/spec/Gorkha_Airlines.json",
   "scraper": "table"
+}, {
+  "name": "Air_Nippon_destinations",
+  "destinationsLink": "/Air_Nippon_destinations.html",
+  "url": "http://localhost:3000/Air_Nippon_destinations.html",
+  "destinationsFile": "./test/spec/Air_Nippon_destinations.json"
+}, {
+  "name": "Air_Chathams_destinations",
+  "destinationsLink": "/Air_Chathams_destinations.html",
+  "url": "http://localhost:3000/Air_Chathams_destinations.html",
+  "destinationsFile": "./test/spec/Air_Chathams_destinations.json"
+}, {
+  "name": "Aeroper%C3%BA_destinations",
+  "destinationsLink": "/Aeroper%C3%BA_destinations.html",
+  "url": "http://localhost:3000/Aeroper%C3%BA_destinations.html",
+  "destinationsFile": "./test/spec/Aeroper%C3%BA_destinations.json"
 }]
