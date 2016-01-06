@@ -30,7 +30,7 @@ function getLinkInfo(linkString) {
 
   return info;
 }
-
+// todo: the default scraper doesn't ge tthe links of the cities if they don't have link.
 function hasValidLinks(links) {
   return links.length === 2 && links[0][1] && links[0][2] && links[1][1] && links[1][2];
 }
