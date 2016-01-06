@@ -31,7 +31,7 @@ module.exports = function ($) {
         options.textHeader = filterTextHeader(options);
         options.rowSpanAttribute = $($rowTableContent[m]).attr("rowspan");
 
-        options.rowNumber = l - 1;
+        options.rowNumber = row.length;
 
         checkRowSpan(options);
 
@@ -47,6 +47,8 @@ function filterTextHeader(options) {
     return "city";
   } else if (/airport/.test(options.textHeader)) {
     return "airport";
+  } else if (/location/.test(options.textHeader)) {
+    return "city";
   } else {
     return options.textHeader;
   }
@@ -90,13 +92,21 @@ function assignDefaultValues(options) {
 }
 
 function assignRow(row, options) {
-  if (row[options.rowNumber] === undefined) {
+  if (options.textHeader === "airport") {
+    if (row[options.rowNumber-1] === undefined) {return;}
+    // we are in the same row
+    row[options.rowNumber - 1][options.textHeader] = {
+      "name": options.textTableContent,
+      "url": options.linkTableContent
+    };
+  } else {
+    // we create a new row and add the city
     row.push(options.rowNumber);
     row[options.rowNumber] = {};
+    row[options.rowNumber][options.textHeader] = {
+      "name": options.textTableContent,
+      "url": options.linkTableContent
+    };
   }
-  row[options.rowNumber][options.textHeader] = {
-    "name": options.textTableContent,
-    "url": options.linkTableContent
-  };
   return row;
 }
