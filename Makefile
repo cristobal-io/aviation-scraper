@@ -30,16 +30,16 @@ update-local-pages: test/spec/models/
 # todo: create some sort of registry that advises when running our test that our files are too old
 # maybe we can use "tldr find"
 test: lint
-	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-models' before tests"
+	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-local-pages' before tests"
 
 dev:
-	test -f test/spec/models/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-models' before tests"
+	test -f test/spec/models/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-local-pages' before tests"
 
 node-inspector:
 	node-inspector
 
 debug-test:
-	test -f test/spec/models/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-models' before tests"
+	test -f test/spec/models/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-local-pages' before tests"
 # Coverage reporters
 
 test-coveralls:
