@@ -22,8 +22,8 @@ test/spec/models/:
 	mkdir test/spec/models/
 	cp test/fixtures/index.html $@
 
-update-models: test/spec/models/
-	node test/spec/models_update.js
+update-local-pages: test/spec/models/
+	node test/spec/update_local_pages.js
 
 # test commands
 
