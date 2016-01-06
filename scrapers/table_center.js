@@ -13,6 +13,7 @@ module.exports = function ($) {
   var markdownSplit = markdown.split("\n\n");
   var $headers = $("center .wikitable").find("tr").first().find("th");
 
+  markdownSplit.shift();
   options.rowHeaders = [];
   generateHeaders($headers, options, $);
 
