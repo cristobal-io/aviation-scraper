@@ -1,3 +1,5 @@
+// todo: add big explanation with all the cases we are trying to solve due to
+// inconsistencies of the data.
 "use strict";
 
 module.exports = function ($) {
@@ -16,9 +18,12 @@ module.exports = function ($) {
       "rowSpanAttribute": 0,
       "lenghtRow": 0
     };
+    var $rowTableContent;
 
     for (var l = 1; l < $rowtable.length; l += 1) {
-      var $rowTableContent = $($rowtable[l]).find("td");
+      // todo: no var inside for loop
+      // check eslint to capture this.
+      $rowTableContent = $($rowtable[l]).find("td");
 
       options.lenghtRow = $rowTableContent.length;
 
@@ -28,10 +33,10 @@ module.exports = function ($) {
         options.textTableContent = $($rowTableContent[m]).text() || options.defaultName;
         options.linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || options.defaultLink;
 
-        options.textHeader = filterTextHeader(options);
+        options.textHeader = getTextHeader(options);
         options.rowSpanAttribute = $($rowTableContent[m]).attr("rowspan");
 
-        options.rowNumber = row.length;
+        options.rowPosition = row.length;
 
         checkRowSpan(options);
 
@@ -42,13 +47,11 @@ module.exports = function ($) {
   return row;
 };
 
-function filterTextHeader(options) {
-  if (/destination/.test(options.textHeader)) {
+function getTextHeader(options) {
+  if (/destination|location/.test(options.textHeader)) {
     return "city";
   } else if (/airport/.test(options.textHeader)) {
     return "airport";
-  } else if (/location/.test(options.textHeader)) {
-    return "city";
   } else {
     return options.textHeader;
   }
@@ -93,17 +96,17 @@ function assignDefaultValues(options) {
 
 function assignRow(row, options) {
   if (options.textHeader === "airport") {
-    if (row[options.rowNumber-1] === undefined) {return;}
+    if (row[options.rowPosition-1] === undefined) {return;}
     // we are in the same row
-    row[options.rowNumber - 1][options.textHeader] = {
+    row[options.rowPosition - 1][options.textHeader] = {
       "name": options.textTableContent,
       "url": options.linkTableContent
     };
   } else {
     // we create a new row and add the city
-    row.push(options.rowNumber);
-    row[options.rowNumber] = {};
-    row[options.rowNumber][options.textHeader] = {
+    row.push(options.rowPosition);
+    row[options.rowPosition] = {};
+    row[options.rowPosition][options.textHeader] = {
       "name": options.textTableContent,
       "url": options.linkTableContent
     };

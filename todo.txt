@@ -8,7 +8,7 @@
 - make all the scrapers meet the default schema. (only 14 errors now)
 
 # TODO
-
+- add comments to all the code to explain why I am doing everything.
 - Uncomment type of scraper test
 - eliminate should be a function basic test
 - rename files, we are not getting routes, we are getting destinations
