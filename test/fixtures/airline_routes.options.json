@@ -35,4 +35,10 @@
   "url": "http://localhost:3000/VietJet_Air_destinations.html",
   "destinationsFile": "./test/spec/VietJet_Air_destinations.json",
   "scraper": "table_toccolours"
+}, {
+  "name": "Gorkha_Airlines",
+  "destinationsLink": "/Gorkha_Airlines.html",
+  "url": "http://localhost:3000/Gorkha_Airlines.html",
+  "destinationsFile": "./test/spec/Gorkha_Airlines.json",
+  "scraper": "table"
 }]
