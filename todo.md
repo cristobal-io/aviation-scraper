@@ -1,13 +1,16 @@
 # IMPORTANT
+
 - I am worried about the integrity of the default values returned. Example:
   + apply the default scraper to Air_Austral, the returned value is valid but it is not in reality.
 - The table_center and the table_toccolours have risk of letting city without link outside the results with the error.
 
 
 # WIP
+
 - make all the scrapers meet the default schema. (only 14 errors now)
 
 # TODO
+
 - add comments to all the code to explain why I am doing everything.
 - Uncomment type of scraper test
 - eliminate should be a function basic test
@@ -26,7 +29,7 @@
   "scraper": "default_variant"
 },
 
-- use node-progress to show a bar and only display on screen the errors.
+- ~~use node-progress to show a bar and only display on screen the errors.~~
 
 # Next Features
 
