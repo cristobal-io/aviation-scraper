@@ -18,16 +18,17 @@ module.exports = function ($) {
       "rowSpanAttribute": 0,
       "lenghtRow": 0
     };
-    var $rowTableContent;
+    // bermi: is this the way of not having the var inside loops?
+    var $rowTableContent, l, m;
 
-    for (var l = 1; l < $rowtable.length; l += 1) {
+    for (l = 1; l < $rowtable.length; l += 1) {
       // todo: no var inside for loop
       // check eslint to capture this.
       $rowTableContent = $($rowtable[l]).find("td");
 
       options.lenghtRow = $rowTableContent.length;
 
-      for (var m = 0; m < options.lenghtRow; m += 1) {
+      for (m = 0; m < options.lenghtRow; m += 1) {
         options.textHeader = $($headers[m]).text().toLowerCase();
 
         options.textTableContent = $($rowTableContent[m]).text() || options.defaultName;
