@@ -99,13 +99,13 @@ function getAllRoutes(airlines, callback) {
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
-// getAllRoutes([ {
-//   "name": "JetBlue",
-//   "destinationsLink": "/wiki/JetBlue_destinations",
-//   "scraper": "table"
-// }], function (err) {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log("files saved");
-// });
+getAllRoutes([{
+  "name": "Balkan Bulgarian Airlines",
+  "destinationsLink": "/wiki/Balkan_Bulgarian_Airlines_destinations",
+  "scraper": "default"
+}], function (err) {
+  if (err) {
+    throw err;
+  }
+  console.log("files saved");
+});
