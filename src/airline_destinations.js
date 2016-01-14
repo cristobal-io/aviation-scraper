@@ -35,29 +35,35 @@ function getAllLinks(options, callback) {
 function getAllDestinations(options, callback) {
   var urls;
 
-  if (process.env.NODE_ENV === "test") {
-    urls = [options.urls];
-    mapUrl(urls);
-  } else {
-    urls = getAllLinks(options, function (err, urls) {
+  ensureDirectoryExist(function () {
+    // body...
+    if (process.env.NODE_ENV === "test") {
+      urls = [options.urls];
       mapUrl(urls);
+    } else {
+      urls = getAllLinks(options, function (err, urls) {
+        mapUrl(urls);
+      });
+    }
+  });
+
+  function ensureDirectoryExist( callback) {
+    fs.access(options.destinationsFile, function (err) {
+      if (err) {
+        fs.mkdir("./data/", function () {
+          debug("created data directory"); // eslint-disable-line no-console
+          callback();
+        });
+      } else {
+        callback();
+      }
     });
+
   }
 
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
 
-    // Bermi: here we have a racing condition situation.
-    // for better understanding of the code, I would take it together with 
-    // fs.write, but it's not working properly if we do it that way.
-    // is it ok to keep it this way?
-    fs.access(destinationsFile, function (err) {
-      if (err) {
-        fs.mkdir("./data/", function () {
-          debug("created data directory");// eslint-disable-line no-console
-        });
-      }
-    });
     async.map(urls, function (options, callback) {
       getDestinations(options, callback);
     }, function (err, results) {
