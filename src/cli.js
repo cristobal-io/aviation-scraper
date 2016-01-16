@@ -23,11 +23,11 @@ getAllDestinations(options, function (err, airlines) {
   getScraperTypeForAll({"airlines": airlines}, function (err, airlineScrapers) {
     if (err) {throw err;}
 
-    console.log("scrapers finished");
+    console.log("scrapers finished");// eslint-disable-line no-console
 
     getAllRoutes(airlineScrapers, function (err) {
       if (err) {throw err;}
-      console.log("Routes Files Generated");
+      console.log("Routes Files Generated");// eslint-disable-line no-console
     });
 
   });

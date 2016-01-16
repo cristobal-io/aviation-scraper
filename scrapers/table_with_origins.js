@@ -14,11 +14,11 @@ module.exports = function ($) {
       var destinations = [];
       var $headers = $(this).find("th");
       var $tableContent = $(this).find("tr td");
-      var row = [];
+      var row = [], i, j ,k , textHeader, textTableContent;
 
-      for (var i = 0, j = 0, k = 0; i < $tableContent.length; i += 1, j += 1) {
-        var textHeader = $($headers[j]).text();
-        var textTableContent = $($tableContent[i]).text();
+      for (i = 0, j = 0, k = 0; i < $tableContent.length; i += 1, j += 1) {
+        textHeader = $($headers[j]).text();
+        textTableContent = $($tableContent[i]).text();
 
         if (row[k] === undefined) {
           row.push(k);

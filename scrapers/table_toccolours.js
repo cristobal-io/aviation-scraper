@@ -8,17 +8,19 @@ module.exports = function ($) {
 
     var $headers = $(this).find("th");
     var $rowtable = $(this).find("tr");
+    // bermi: is this the proper way of declaring variables?
+    var l, $rowTableContent, m, textHeader, textTableContent, linkTableContent, rowNumber;
 
-    for (var l = 1; l < $rowtable.length; l += 1) {
-      var $rowTableContent = $($rowtable[l]).find("td");
+    for (l = 1; l < $rowtable.length; l += 1) {
+      $rowTableContent = $($rowtable[l]).find("td");
 
-      for (var m = 0; m < $rowTableContent.length; m += 1) {
-        var textHeader = $($headers[m]).text().toLowerCase();
-        var textTableContent = $($rowTableContent[m]).text();
-        var linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href");
+      for (m = 0; m < $rowTableContent.length; m += 1) {
+        textHeader = $($headers[m]).text().toLowerCase();
+        textTableContent = $($rowTableContent[m]).text();
+        linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href");
 
         if (textHeader === "airport" || textHeader === "city") {
-          var rowNumber = l-1;
+          rowNumber = l-1;
 
           if (row[rowNumber] === undefined) {
             row.push(rowNumber);

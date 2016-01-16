@@ -33,19 +33,19 @@ module.exports = function ($) {
     }
     return destinations;
   }, []);
+  var i, city, cityName, cityLink, airport, airportName, airportLink;
 
-
-  for (var i = 0; i < destinationsMarkdown.length; i += 2) {
-    var city = destinationsMarkdown[i].split("\(");
-    var cityName = city[0].slice(1, city[0].length - 1);
-    var cityLink = city[1].split(",");
+  for (i = 0; i < destinationsMarkdown.length; i += 2) {
+    city = destinationsMarkdown[i].split("\(");
+    cityName = city[0].slice(1, city[0].length - 1);
+    cityLink = city[1].split(",");
 
     cityLink = cityLink[0].split(" ");
     cityLink = cityLink[0];
 
-    var airport = destinationsMarkdown[i+1].split("\(");
-    var airportName = airport[0].slice(1, airport[0].length - 1);
-    var airportLink = airport[1].split(",");
+    airport = destinationsMarkdown[i+1].split("\(");
+    airportName = airport[0].slice(1, airport[0].length - 1);
+    airportLink = airport[1].split(",");
 
     airportLink = airportLink[0].split(" ");
     airportLink = airportLink[0];

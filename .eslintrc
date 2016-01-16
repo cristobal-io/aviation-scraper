@@ -19,7 +19,7 @@
     "no-console": [1],
     "no-warning-comments": [1, { "terms": ["todo", "fixme", "bermi"]}],
     "no-debugger": [1],
-    "no-inner-declarations": [1, "both"]
+    "no-inner-declarations": [2, "both"]
   },
   "env": {
     "browser": true,

@@ -22,8 +22,6 @@ module.exports = function ($) {
     var $rowTableContent, l, m;
 
     for (l = 1; l < $rowtable.length; l += 1) {
-      // todo: no var inside for loop
-      // check eslint to capture this.
       $rowTableContent = $($rowtable[l]).find("td");
 
       options.lenghtRow = $rowTableContent.length;

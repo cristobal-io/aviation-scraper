@@ -16,15 +16,14 @@ module.exports = function ($) {
     if (/toclevel/.test($(this).attr("class"))) {
       return;
     }
-
-
     var cityName = links[0].attribs.title;
+    var cityUrl, airportName, airportUrl, i;
 
     if (links.length < 2) {
 
-      var cityUrl = links[0].attribs.href,
-        airportName = links[1].attribs.title,
-        airportUrl = links[1].attribs.href;
+      cityUrl = links[0].attribs.href;
+      airportName = links[1].attribs.title;
+      airportUrl = links[1].attribs.href;
 
       destinations[from][cityName] = {
         city: {
@@ -37,12 +36,12 @@ module.exports = function ($) {
         }
       };
     } else {
-      for (var i = 0; i < links.length; i+=2) {
+      for (i = 0; i < links.length; i += 2) {
         cityName = links[i].attribs.title;
         cityUrl = links[i].attribs.href;
 
-        airportName = links[i+1].attribs.title;
-        airportUrl = links[i+1].attribs.href;
+        airportName = links[i + 1].attribs.title;
+        airportUrl = links[i + 1].attribs.href;
 
         destinations[from][cityName] = {
           city: {
