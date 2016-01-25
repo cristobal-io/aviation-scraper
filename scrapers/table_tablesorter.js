@@ -33,7 +33,6 @@ module.exports = function ($) {
     }
     return destinations;
   }, []);
-  // bermi: is it the proper way of declaring variables?
   var i, city, cityName, cityLink, airport, airportName, airportLink;
 
   for (i = 0; i < destinationsMarkdown.length; i += 2) {

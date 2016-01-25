@@ -18,7 +18,6 @@ module.exports = function ($) {
       "rowSpanAttribute": 0,
       "lenghtRow": 0
     };
-    // bermi: is this the way of not having the var inside loops?
     var $rowTableContent, l, m;
 
     for (l = 1; l < $rowtable.length; l += 1) {

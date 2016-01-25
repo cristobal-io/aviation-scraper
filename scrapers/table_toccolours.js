@@ -8,7 +8,6 @@ module.exports = function ($) {
 
     var $headers = $(this).find("th");
     var $rowtable = $(this).find("tr");
-    // bermi: is this the proper way of declaring variables?
     var l, $rowTableContent, m, textHeader, textTableContent, linkTableContent, rowNumber;
 
     for (l = 1; l < $rowtable.length; l += 1) {
