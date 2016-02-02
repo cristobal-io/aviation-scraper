@@ -96,10 +96,11 @@ describe("Airline_routes.js: \n", function () {
         var errorMessage = _.get(airport, "errorMessage");
         
         if (errorMessage){
+          console.log(errorMessage);
           errorMessages.push(errorMessage);
         }
       });
-      expect(airportsResult.errors, errorMessages[0]).to.eql(0);
+      expect(airportsResult.errors, errorMessages).to.eql(0);
     });
 
   });
