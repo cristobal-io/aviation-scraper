@@ -5,6 +5,11 @@
 - The table_center and the table_toccolours have risk of letting city without link outside the results with the error.
 
 
+# ISSUES
+
+- the default scraper doesn't get the links of the cities if they don't have link.
+
+
 # WIP
 
 - make all the scrapers meet the default schema. (only 14 errors now)
