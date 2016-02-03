@@ -73,7 +73,7 @@ describe("Table Scraper: \n", function () {
     // todo: decode the uri name before saving
     var validateDefaultSchema = ajv.compile(defaultSchema);
 
-    sjs.StaticScraper.create(SERVER_LISTENING + "/Aeroperu_destinations.html")
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Aeroperú_destinations.html")
       .scrape(scrapers.table)
       .then(function (data) {
         var validDefaultSchema = validateDefaultSchema(data);
