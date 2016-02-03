@@ -36,7 +36,6 @@ function getRoutes(airline, callback) {
     });
 }
 
-// todo: test this function
 function getFilename(airline) {
   var defaultRoute = require("../schema/scraper.default.schema.json");
   var validateDefaultRoute = ajv.compile(defaultRoute);

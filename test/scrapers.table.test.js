@@ -18,7 +18,6 @@ var _ = require("lodash");
 
 var defaultSchema = require("../schema/scraper.default.schema.json");
 
-// chai.config.includeStack = true;
 
 describe("Table Scraper: \n", function () {
   var results, validateTableSchema;
@@ -71,8 +70,6 @@ describe("Table Scraper: \n", function () {
   });
 
   it("Should test Special case where the airport doesn't match exactly", function (done) {
-    // Bermi: the right link to include here it is Aeroper%C3%BA_destinations but I've seen it makes the test
-    // fail, I can fix it if I change the name, but it is going to fail again if we update the models.
     // todo: decode the uri name before saving
     var validateDefaultSchema = ajv.compile(defaultSchema);
 

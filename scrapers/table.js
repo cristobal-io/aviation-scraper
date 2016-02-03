@@ -1,4 +1,4 @@
-// todo: add big explanation with all the cases we are trying to solve due to
+// todo: add big explanation without all the cases we are trying to solve due to
 // inconsistencies of the data.
 "use strict";
 

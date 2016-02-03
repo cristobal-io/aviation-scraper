@@ -8,9 +8,6 @@ var _ = require("lodash");
 var destinationsFile = "./data/destination_pages.json";
 var BASE_URL = "https://en.wikipedia.org";
 var debug = require("debug")("airlineData:scrapers");
-// check for the file if it exist. 
-// try catch
-// bermi: do you remember the previous note why we used it?
 
 
 function getScraperType(options, callback) {
