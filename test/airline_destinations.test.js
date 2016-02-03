@@ -8,7 +8,6 @@ var _ = require("lodash");
 
 var airlinesIndex = require("../src/index.js");
 var getAllDestinations = airlinesIndex.getAllDestinations;
-var getDestinations = airlinesIndex.getDestinations;
 var getAllLinks = airlinesIndex.getAllLinks;
 
 // constants
@@ -33,18 +32,14 @@ describe("Airline_destinations.js: \n", function() {
   
     var url = SERVER_LISTENING + "/Lists_of_airline_destinations.html";
 
-    // console.log(url);
-
     destination_url = {
       urls: url,
       destinationsFile: __dirname + "/spec/models/destinations.json"
     };
-    // console.log(destination_url);
     getAllDestinations(destination_url,function (err, results) {
       destinations_results = results;
       done();
     });
-    // done();
   });
 
   describe("getAllDestinations", function() {
@@ -55,13 +50,6 @@ describe("Airline_destinations.js: \n", function() {
 
   });
 
-  describe("getDestinations", function() {
-    // todo: complete tests for this specific function
-    it("Should be a function 'getDestinations'", function () {
-      expect(getDestinations).to.be.a("function");
-    });
-
-  });
 
   it("Should meet the schema for airline destinations", function (done) {
 
