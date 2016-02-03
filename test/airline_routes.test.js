@@ -85,7 +85,6 @@ describe("Airline_routes.js: \n", function () {
           }
           callback();
         });
-        // callback();
       }, done);
     });
 
@@ -96,7 +95,7 @@ describe("Airline_routes.js: \n", function () {
         var errorMessage = _.get(airport, "errorMessage");
         
         if (errorMessage){
-          console.log(errorMessage);
+          console.log(errorMessage);//eslint-disable-line no-console
           errorMessages.push(errorMessage);
         }
       });

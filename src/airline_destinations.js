@@ -13,7 +13,7 @@ function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
 
 
-  debug("Getting scraper for %s from %s", letter, options); // eslint-disable-line no-console
+  debug("Getting scraper for %s from %s", letter, options);
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
     .then(function (destinations) {
