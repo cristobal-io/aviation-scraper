@@ -13,7 +13,6 @@
 # WIP
 
 - make all the scrapers meet the default schema. (only 14 errors now)
-- make the models to save the name decodeuri
 
 # TODO
 
