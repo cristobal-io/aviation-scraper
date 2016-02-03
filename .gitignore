@@ -2,5 +2,5 @@ node_modules
 data
 coverage
 .nyc_output
-test/spec/models/
+test/spec/local_pages/
 test/spec/data/

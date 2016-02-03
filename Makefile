@@ -17,12 +17,12 @@ lint:
 data:
 	DEBUG=airlineData* node src/cli.js
 
-# Models update needed at least once before runing tests.
-test/spec/models/:
-	mkdir test/spec/models/
+# local_pages update needed at least once before runing tests.
+test/spec/local_pages/:
+	mkdir test/spec/local_pages/
 	cp test/fixtures/index.html $@
 
-update-local-pages: test/spec/models/
+update-local-pages: test/spec/local_pages/
 	node test/spec/update_local_pages.js
 
 # test commands
@@ -30,16 +30,16 @@ update-local-pages: test/spec/models/
 # todo: create some sort of registry that advises when running our test that our files are too old
 # maybe we can use "tldr find"
 test: lint
-	test -f test/spec/models/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-local-pages' before tests"
+	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-local-pages' before tests"
 
 dev:
-	test -f test/spec/models/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-local-pages' before tests"
+	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha test -w || echo "Please run 'make update-local-pages' before tests"
 
 node-inspector:
 	node-inspector
 
 debug-test:
-	test -f test/spec/models/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-local-pages' before tests"
+	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-local-pages' before tests"
 # Coverage reporters
 
 test-coveralls:
@@ -82,6 +82,10 @@ release: lint
 
 clean:	clean-coverage
 	test -d data/ && rm -r data/ && echo "data content removed" || echo "no data folder found"
+	echo "finished."
+
+clean-local-pages:
+	test -d test/spec/local_pages/ && rm -r test/spec/local_pages/ && echo "local pages removed" || echo "no local pages folder found"
 	echo "finished."
 
 .PHONY: test scrapers

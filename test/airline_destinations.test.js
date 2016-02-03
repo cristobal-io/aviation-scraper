@@ -34,7 +34,7 @@ describe("Airline_destinations.js: \n", function() {
 
     destination_url = {
       urls: url,
-      destinationsFile: __dirname + "/spec/models/destinations.json"
+      destinationsFile: __dirname + "/spec/local_pages/destinations.json"
     };
     getAllDestinations(destination_url,function (err, results) {
       destinations_results = results;

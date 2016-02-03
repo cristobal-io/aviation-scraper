@@ -9,7 +9,7 @@ var https = require("https");
 // App variables
 var BASE_URL = "https://en.wikipedia.org/wiki/";
 
-var DOWNLOAD_DIR = "./test/spec/models/";
+var DOWNLOAD_DIR = "./test/spec/local_pages/";
 var fixtures = require("../fixtures/airline_routes.options.json");
 var file_url = [
   "Category:Lists_of_airline_destinations"
@@ -46,6 +46,6 @@ var download_file_httpsGet = function (file_url, callback) {
 
 async.map(file_url, download_file_httpsGet, function (err) {
   if (err) {throw err;}
-  console.log("\nModels updated."); //eslint-disable-line no-console
+  console.log("\nLocal Pages Updated."); //eslint-disable-line no-console
 });
 

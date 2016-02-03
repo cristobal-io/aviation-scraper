@@ -11,6 +11,6 @@ This is intended for use of an updated database of information for a map applica
 
 ## Testing
 
-Before testing this application you have to run `make update-models`
+Before testing this application you have to run `make update-local-pages`
 
 Then run tests with `make test`

@@ -11,11 +11,11 @@ var sjs = require("scraperjs");
 // constants
 var BASE_URL = "http://localhost";
 var PORT = 3000;
-var MODELS_DIR = "/spec/models/";
+var local_pages_DIR = "/spec/local_pages/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 
 before("start server", function (done) {
-  app.use(serveStatic(__dirname + MODELS_DIR));
+  app.use(serveStatic(__dirname + local_pages_DIR));
   isPortTaken(PORT, function (err, data) {
     if (!data) {
       app.listen(PORT);
@@ -37,7 +37,7 @@ describe("Server is on \n", function () {
         return $("h1").text();
       })
       .then(function (data) {
-        expect(data).to.eql("Models");
+        expect(data).to.eql("local_pages");
       });
   });
 
