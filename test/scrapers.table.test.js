@@ -70,7 +70,6 @@ describe("Table Scraper: \n", function () {
   });
 
   it("Should test Special case where the airport doesn't match exactly", function (done) {
-    // todo: decode the uri name before saving
     var validateDefaultSchema = ajv.compile(defaultSchema);
 
     sjs.StaticScraper.create(SERVER_LISTENING + "/Aeroperú_destinations.html")
