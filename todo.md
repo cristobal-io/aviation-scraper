@@ -9,10 +9,16 @@
 
 - the default scraper doesn't get the links of the cities if they don't have link.
 
+# Engineering Tasks
 
-# WIP
+* pass all the tests before moving to next task
+- Download airports data.
+- Downland all the destinations
+  + make all the scrapers meet the default schema. (only 14 errors now)
 
-- make all the scrapers meet the default schema. (only 14 errors now)
+# Current Taks
+
+* fixing Gorkha specific case
 
 # TODO
 
