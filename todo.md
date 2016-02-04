@@ -11,14 +11,12 @@
 
 # Engineering Tasks
 
-* pass all the tests before moving to next task
 - Download airports data.
 - Downland all the destinations
-  + make all the scrapers meet the default schema. (only 14 errors now)
+  + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
 
-* Fixing Air_Chathams special case
 
 # TODO
 

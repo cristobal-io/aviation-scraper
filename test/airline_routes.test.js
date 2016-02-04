@@ -31,8 +31,8 @@ describe("Airline_routes.js: \n", function () {
 
   describe("getRoutes function", function () {
 
-    it("Should return an array from default scraper model", function (done) {
-
+    it("Should return a validated schema from default scraper model", function (done) {
+      this.timeout(15000);
       getRoutes(airports[0], function (err, results) {
         var valid = validateDefaultSchema(results.routes);
 
@@ -41,7 +41,7 @@ describe("Airline_routes.js: \n", function () {
       });
     });
 
-    it("Should return an array from table scraper model", function (done) {
+    it("Should return a validated Schema from table scraper model", function (done) {
 
       getRoutes(airports[1], function (err, results) {
         var valid = validateScraperTableSchema(results.routes);
@@ -51,7 +51,7 @@ describe("Airline_routes.js: \n", function () {
       });
     });
 
-    it("Should return an array from table scraper model", function (done) {
+    it("Should return a validated Schema from table scraper model", function (done) {
 
       getRoutes(airports[2], function (err, results) {
         var valid = validateTableSchema(results.routes);

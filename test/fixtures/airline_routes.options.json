@@ -50,7 +50,8 @@
   "name": "Air_Chathams_destinations",
   "destinationsLink": "/Air_Chathams_destinations.html",
   "url": "http://localhost:3000/Air_Chathams_destinations.html",
-  "destinationsFile": "./test/spec/Air_Chathams_destinations.json"
+  "destinationsFile": "./test/spec/Air_Chathams_destinations.json",
+  "scraper": "table"
 }, {
   "name": "Aeroper%C3%BA_destinations",
   "destinationsLink": "/Aeroper%C3%BA_destinations.html",

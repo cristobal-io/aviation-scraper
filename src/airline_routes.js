@@ -99,9 +99,9 @@ module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
 
 // getAllRoutes([{
-//   "name": "Balkan Bulgarian Airlines",
-//   "destinationsLink": "/wiki/Balkan_Bulgarian_Airlines_destinations",
-//   "scraper": "default"
+//   "name": "Air Chathams",
+//   "destinationsLink": "/wiki/Air_Chathams_destinations",
+//   "scraper": "table"
 // }], function (err) {
 //   if (err) {
 //     throw err;

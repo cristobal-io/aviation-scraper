@@ -49,7 +49,7 @@ module.exports = function ($) {
 
 function getTextHeader(options, row) {
   if (/destination|location/.test(options.textHeader)) {
-    // check special case Gorkha_Airlines where origin and destination is included.
+    // check special case Gorkha_Airlines where origin and destination are included.
     if (_.get(row[options.l-1], "city")) {
       return;
     }
