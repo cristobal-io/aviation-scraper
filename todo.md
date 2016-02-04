@@ -11,11 +11,18 @@
 
 # Engineering Tasks
 
-- Download airports data.
+* Download airports data.
 - Downland all the destinations
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
+- Download all the airports, they have to include:
+  + ICAO
+  + IATA
+  + RWY 36/18
+  + RWY length.
+  + COORD
+  + freq if available?
 
 
 # TODO
@@ -42,11 +49,4 @@
 
 # Next Features
 
-- Download all the airports, they have to include:
-  + ICAO
-  + IATA
-  + RWY 36/18
-  + RWY length.
-  + COORD
-  + freq if available?
 
