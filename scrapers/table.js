@@ -1,6 +1,7 @@
 // todo: add big explanation without all the cases we are trying to solve due to
 // inconsistencies of the data.
 "use strict";
+var _ = require("lodash");
 
 module.exports = function ($) {
 
@@ -22,6 +23,7 @@ module.exports = function ($) {
 
     for (l = 1; l < $rowtable.length; l += 1) {
       $rowTableContent = $($rowtable[l]).find("td");
+      options.l = l;
 
       options.lenghtRow = $rowTableContent.length;
 
@@ -31,7 +33,7 @@ module.exports = function ($) {
         options.textTableContent = $($rowTableContent[m]).text() || options.defaultName;
         options.linkTableContent = $($rowTableContent[m]).find("a[href^='/']").attr("href") || options.defaultLink;
 
-        options.textHeader = getTextHeader(options);
+        options.textHeader = getTextHeader(options, row);
         options.rowSpanAttribute = $($rowTableContent[m]).attr("rowspan");
 
         options.rowPosition = row.length;
@@ -45,8 +47,12 @@ module.exports = function ($) {
   return row;
 };
 
-function getTextHeader(options) {
+function getTextHeader(options, row) {
   if (/destination|location/.test(options.textHeader)) {
+    // check special case Gorkha_Airlines where origin and destination is included.
+    if (_.get(row[options.l-1], "city")) {
+      return;
+    }
     return "city";
   } else if (/airport/.test(options.textHeader)) {
     return "airport";
@@ -94,7 +100,9 @@ function assignDefaultValues(options) {
 
 function assignRow(row, options) {
   if (options.textHeader === "airport") {
-    if (row[options.rowPosition-1] === undefined) {return;}
+    if (row[options.rowPosition - 1] === undefined) {
+      return;
+    }
     // we are in the same row
     row[options.rowPosition - 1][options.textHeader] = {
       "name": options.textTableContent,

@@ -18,7 +18,7 @@
 
 # Current Taks
 
-* fixing Gorkha specific case
+* Fixing Air_Chathams special case
 
 # TODO
 
