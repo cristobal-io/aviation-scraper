@@ -11,22 +11,29 @@
 
 # Engineering Tasks
 
-* Download airports data.
-- Downland all the destinations
-  + make all the scrapers meet the default schema. (only 13 errors now)
-
-# Current Taks
-- Download all the airports, they have to include:
+* Download all the airports, they have to include:
   + ICAO
   + IATA
   + RWY 36/18
   + RWY length.
   + COORD
   + freq if available?
+- Downland all the destinations
+  + make all the scrapers meet the default schema. (only 13 errors now)
 
+# Current Taks
+* saving airports name and links into a single file (from returned value)
+- save airports name and links from files into data folder
+  + we can use fs.readdir to get the names and then require them.
+  + ¿How can we combine into one var all the file content of routes?
+- scrape icao and iata codes of airports
+- scrape coordinates
+- scrape rwy number, lenght and type.
+- freq?
 
 # TODO
 
+- require all the files inside data that have the "routes" prefix 
 - add comments to all the code to explain why I am doing everything.
 - Uncomment type of scraper test
 - eliminate should be a function basic test
@@ -34,8 +41,6 @@
 - Add a check so the destinations on routes are not duplicated.
 - Eliminate Scraper fase and join it with the routes to avoid extra connections.
 - cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
-
-
 - incorporate again default variant if needed or erase the default variant scraper
   +  {
   "name": "default_variant",
