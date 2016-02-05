@@ -20,7 +20,7 @@ function getDestinations(options, callback) {
       callback(null, destinations);
     });
 }
-
+// bermi, the only way of testing this is exporting it?
 function getAllLinks(options, callback) {
   var url = options.urls;
 
@@ -32,11 +32,18 @@ function getAllLinks(options, callback) {
     });
 }
 
+function cleanDuplicates(objectWithDuplicates) {
+  return _.map(_.groupBy(objectWithDuplicates, function (value) {
+    return value.name;
+  }), function (grouped) {
+    return grouped[0];
+  });
+}
+
 function getAllDestinations(options, callback) {
   var urls;
 
   ensureDirectoryExist(function () {
-    // body...
     if (process.env.NODE_ENV === "test") {
       urls = [options.urls];
       mapUrl(urls);
@@ -47,7 +54,7 @@ function getAllDestinations(options, callback) {
     }
   });
 
-  function ensureDirectoryExist( callback) {
+  function ensureDirectoryExist(callback) {
     fs.access(options.destinationsFile, function (err) {
       if (err) {
         fs.mkdir("./data/", function () {
@@ -70,8 +77,9 @@ function getAllDestinations(options, callback) {
       if (err) {
         throw err;
       }
-      // todo this seems it's not cleaning the duplicates.
-      var airlines = _.uniq(_.flatten(results, true), "name");
+      // bermi, I am checking the function that clean the objects,
+      // but not the application itself inside this funciton.
+      var airlines = cleanDuplicates(_.flatten(results, true), "name");
 
 
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
@@ -90,3 +98,5 @@ function getAllDestinations(options, callback) {
 module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
 module.exports.getAllLinks = getAllLinks;
+module.exports.cleanDuplicates = cleanDuplicates;
+
