@@ -9,6 +9,9 @@ var airlineScrapers = require("./index.js");
 var getAllDestinations = airlineScrapers.getAllDestinations;
 var getScraperTypeForAll = airlineScrapers.getScraperTypeForAll;
 var getAllRoutes = airlineScrapers.getAllRoutes;
+var getAirports = airlineScrapers.getAirports;
+var writeJson = airlineScrapers.writeJson;
+
 
 var options = {
   "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
@@ -30,41 +33,10 @@ getAllDestinations(options, function (err, airlines) {
       console.log("Routes Files Generated");// eslint-disable-line no-console
 
       writeJson(airlines, "data/airlines_destinations.json");
-      getAirports(airlines);
+      getAirports(airlines, "data/airports.json");
 
     });
 
   });
 });
-
-var fs = require("fs");
-
-var writeJson = function (airlines, fileName) {
-  
-  
-  fs.writeFile(fileName,
-    JSON.stringify(airlines, null, 2),
-    function (err) {
-      if (err) {
-        throw err;
-      }
-      console.log("saved %s file", fileName);
-    }
-  );
-};
-
-
-var _ = require("lodash");
-var airports = [];
-// var jsonAirline = require("./airlines.json");
-
-function getAirports(airlines) {
-  _.map(airlines, function (value) {
-    _.forEach(value.routes, function (value) {
-      airports.push(value.airport);
-    });
-  });
-  // airports = _.orderBy(airports, "name");
-  writeJson(airports, "data/airports.json");
-}
 

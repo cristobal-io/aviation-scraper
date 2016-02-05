@@ -7,5 +7,8 @@ module.exports = {
   "getScraperTypeForAll" : require("./airline_scraper.js").getScraperTypeForAll,
   "getAllDestinations" : require("./airline_destinations.js").getAllDestinations,
   "getDestinations" : require("./airline_destinations.js").getDestinations,
-  "getAllLinks" : require("./airline_destinations.js").getAllLinks
+  "getAllLinks" : require("./airline_destinations.js").getAllLinks,
+  "getAirports" : require("./airports").getAirports,
+  "writeJson" : require("./airports").writeJson
+
 };
