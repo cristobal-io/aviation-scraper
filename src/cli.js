@@ -25,10 +25,28 @@ getAllDestinations(options, function (err, airlines) {
 
     console.log("scrapers finished");// eslint-disable-line no-console
 
-    getAllRoutes(airlineScrapers, function (err) {
+    getAllRoutes(airlineScrapers, function (err, airlines) {
       if (err) {throw err;}
       console.log("Routes Files Generated");// eslint-disable-line no-console
+      writeJson(airlines);
     });
 
   });
 });
+
+var fs = require("fs");
+
+var writeJson = function (airlines) {
+  var fileName = "airlines_destinations.json";
+  
+  fs.writeFile(fileName,
+    JSON.stringify(airlines, null, 2),
+    function (err) {
+      if (err) {
+        throw err;
+      }
+      console.log("saved airlines file");
+    }
+  );
+};
+
