@@ -21,11 +21,11 @@ var errors = 0,
 function getRoutes(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
-  debug("Getting routes for %s from %s", airline.name, url); // eslint-disable-line no-console
+  debug("Getting routes for %s from %s", airline.name, url);
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url); // eslint-disable-line no-console
+        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url);
         callback(err, utils);
       }
     })
@@ -45,10 +45,12 @@ function getFilename(airline) {
     routesSaved += 1;
     airline.fileName = "./data/routes_" + airline.name + ".json";
   } else {
-    debug("Airline %s got the error %s", airline.name, _.get(validateDefaultRoute, "errors[0].message"));
+    debug("Airline %s got the error %s", airline.name,
+      _.get(validateDefaultRoute, "errors[0].message"));
     errors += 1;
     airline.fileName = "./data/error_" + airline.name + ".json";
-    airline.errorMessage = "Airline " + airline.name + " got the error " + _.get(validateDefaultRoute, "errors[0].message");
+    airline.errorMessage = "Airline " + airline.name + " got the error " +
+      _.get(validateDefaultRoute, "errors[0].message");
   }
   return airline;
 }
@@ -67,9 +69,9 @@ var writeJson = function (err, airline, callback) {
         throw err;
       }
       if (errorRegEx.test(airline.fileName)) {
-        debug(chalk.red("Saved %s"), airline.fileName); // eslint-disable-line no-console
+        debug(chalk.red("Saved %s"), airline.fileName);
       } else {
-        debug(chalk.green("Saved %s"), airline.fileName); // eslint-disable-line no-console
+        debug(chalk.green("Saved %s"), airline.fileName);
       }
       callback(null, airline);
     }
