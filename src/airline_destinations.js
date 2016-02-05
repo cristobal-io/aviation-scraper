@@ -58,7 +58,7 @@ function getAllDestinations(options, callback) {
     fs.access(options.destinationsFile, function (err) {
       if (err) {
         fs.mkdir("./data/", function () {
-          debug("created data directory"); // eslint-disable-line no-console
+          debug("created data directory");
           callback();
         });
       } else {
