@@ -70,6 +70,7 @@ function getAllDestinations(options, callback) {
       if (err) {
         throw err;
       }
+      // todo this seems it's not cleaning the duplicates.
       var airlines = _.uniq(_.flatten(results, true), "name");
 
 
