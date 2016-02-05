@@ -64,6 +64,7 @@ function getAirports(airlines) {
       airports.push(value.airport);
     });
   });
+  // airports = _.orderBy(airports, "name");
   writeJson(airports, "data/airports.json");
 }
 
