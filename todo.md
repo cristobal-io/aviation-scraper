@@ -3,7 +3,7 @@
 - I am worried about the integrity of the default values returned. Example:
   + apply the default scraper to Air_Austral, the returned value is valid but it is not in reality.
 - The table_center and the table_toccolours have risk of letting city without link outside the results with the error.
-
+- updated to lodash v4 break the code and everything.
 
 # ISSUES
 
