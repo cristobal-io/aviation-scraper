@@ -3,12 +3,30 @@ var _ = require("lodash");
 var airports = [];
 var jsonAirline = require("./airlines.json");
 
-function getAirports() {
-  _.map(jsonAirline, function (value) {
+function getAirports(airlines) {
+  _.map(airlines, function (value) {
     _.forEach(value.routes, function (value) {
       airports.push(value.airport);
     });
   });
+  airports = _.orderBy(airports, "name");
+  writeJson(airports, "spikes/airports/airports.json");
 }
 
-getAirports();
+var fs = require("fs");
+
+var writeJson = function (airlines, fileName) {
+  
+  
+  fs.writeFile(fileName,
+    JSON.stringify(airlines, null, 2),
+    function (err) {
+      if (err) {
+        throw err;
+      }
+      console.log("saved %s file", fileName);
+    }
+  );
+};
+
+getAirports(jsonAirline);
