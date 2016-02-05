@@ -28,7 +28,10 @@ getAllDestinations(options, function (err, airlines) {
     getAllRoutes(airlineScrapers, function (err, airlines) {
       if (err) {throw err;}
       console.log("Routes Files Generated");// eslint-disable-line no-console
-      writeJson(airlines);
+
+      writeJson(airlines, "data/airlines_destinations.json");
+      getAirports(airlines);
+
     });
 
   });
@@ -36,8 +39,8 @@ getAllDestinations(options, function (err, airlines) {
 
 var fs = require("fs");
 
-var writeJson = function (airlines) {
-  var fileName = "data/airlines_destinations.json";
+var writeJson = function (airlines, fileName) {
+  
   
   fs.writeFile(fileName,
     JSON.stringify(airlines, null, 2),
@@ -45,8 +48,22 @@ var writeJson = function (airlines) {
       if (err) {
         throw err;
       }
-      console.log("saved airlines file");
+      console.log("saved %s file", fileName);
     }
   );
 };
+
+
+var _ = require("lodash");
+var airports = [];
+// var jsonAirline = require("./airlines.json");
+
+function getAirports(airlines) {
+  _.map(airlines, function (value) {
+    _.forEach(value.routes, function (value) {
+      airports.push(value.airport);
+    });
+  });
+  writeJson(airports, "data/airports.json");
+}
 
