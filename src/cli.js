@@ -37,7 +37,7 @@ getAllDestinations(options, function (err, airlines) {
 var fs = require("fs");
 
 var writeJson = function (airlines) {
-  var fileName = "airlines_destinations.json";
+  var fileName = "data/airlines_destinations.json";
   
   fs.writeFile(fileName,
     JSON.stringify(airlines, null, 2),
