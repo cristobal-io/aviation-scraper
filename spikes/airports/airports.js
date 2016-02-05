@@ -24,7 +24,7 @@ var writeJson = function (airlines, fileName) {
       if (err) {
         throw err;
       }
-      console.log("saved %s file", fileName);
+      console.log("saved %s file", fileName);//eslint-disable-line no-console
     }
   );
 };
