@@ -1,6 +1,8 @@
 "use strict";
 
 var airlineScrapers = require("./index.js");
+var debug = require("debug")("airlineData:cli");
+
 
 /**
  * airline destinations 
@@ -19,24 +21,31 @@ var options = {
 };
 
 getAllDestinations(options, function (err, airlines) {
-  if (err) {throw err;}
+  if (err) {
+    throw err;
+  }
 
   console.log("Destinations File Created"); // eslint-disable-line no-console
 
-  getScraperTypeForAll({"airlines": airlines}, function (err, airlineScrapers) {
-    if (err) {throw err;}
+  getScraperTypeForAll({
+    "airlines": airlines
+  }, function (err, airlineScrapers) {
+    if (err) {
+      throw err;
+    }
 
-    console.log("scrapers finished");// eslint-disable-line no-console
+    console.log("scrapers finished"); // eslint-disable-line no-console
 
     getAllRoutes(airlineScrapers, function (err, airlines) {
-      if (err) {throw err;}
-      console.log("Routes Files Generated");// eslint-disable-line no-console
+      if (err) {
+        throw err;
+      }
+      debug("Routes Files Generated");
 
-      writeJson(airlines, "data/airlines_destinations.json");
-      getAirports(airlines, "data/airports.json");
-
+      writeJson(airlines, "data/airlines_destinations.json", function () {
+        getAirports(airlines, "data/airports.json");
+      });
     });
 
   });
 });
-
