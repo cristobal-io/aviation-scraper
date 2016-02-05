@@ -32,7 +32,7 @@ function getRoutes(airline, callback) {
     .scrape(scrapers[airline.scraper] || scrapers["default"])
     .then(function (data) {
       airline.routes = data;
-      writeJson(null, airline, callback);
+      checkAndSaveRoute(null, airline, callback);
     });
 }
 
@@ -55,7 +55,7 @@ function getFilename(airline) {
   return airline;
 }
 
-var writeJson = function (err, airline, callback) {
+var checkAndSaveRoute = function (err, airline, callback) {
   if (err) {
     throw err;
   }
