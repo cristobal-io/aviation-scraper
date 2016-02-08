@@ -64,6 +64,7 @@ function getAirports(airlines, fileName) {
 }
 
 function getData(airportLink, callback) {
+  BASE_URL = airportLink.base_url || BASE_URL;
   var url = BASE_URL + airportLink.url;
 
   // console.log("Getting data for %s from %s", airportLink.name, url);
@@ -80,31 +81,15 @@ function getData(airportLink, callback) {
     });
 }
 
-function getAirportData(airportsLink) {
+function getAirportData(airportsLink, callback) {
   // var airportsData = [];
 
-  async.map(airportsLink, function (airportLink, callback) {
+  async.mapLimit(airportsLink,20 , function (airportLink, callback) {
     getData(airportLink, callback);
   }, function(err, airportsData) {
-    if (err) {
-      console.log(chalk.red.bgWhite("\ngetAirportData found an error %s"), err); // eslint-disable-line no-console
-    }
-    console.log("async map", airportsData);
-    return airportsData;
-    
+    callback(err, airportsData);
   });
 
-  // _.map(airportsLink, function (airportLink) {
-  //   getData(airportLink, function (err, airportData) {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     console.log("this is the %s data: ", airportLink.name, airportData);
-  //     airportsData.push(airportData);
-  //   });
-  // });
-
-  // console.log("final call" + airportsData);
 }
 
 module.exports.getAirports = getAirports;

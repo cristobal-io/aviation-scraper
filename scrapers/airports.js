@@ -2,25 +2,30 @@
 
 module.exports = function ($) {
   var airportData = {
-    "iata": "abj",
-    "icao": "diap",
-    "coordinates": {
-      "lat": "5º15'41.1\"N",
-      "lon": "003º55'32.8\"W"
-    },
+    "coordinates": {},
     "runway": {
-      "direction": "03/21",
-      "length": {
-        "ft": 9842,
-        "m": 3000
-      },
-      "surface": "macadam"
+      "length": {}
     }
   };
 
-  $(".vcard tr").map(function () {
+  airportData.iata = $(".vcard").find("[title='International Air Transport Association airport code']").next(".nickname").text();
+  airportData.icao = $(".vcard").find("[title='International Civil Aviation Organization airport code']").next(".nickname").text();
+  airportData.coordinates.latitude = $($(".vcard .geo-dms .latitude")[0]).text();
+  airportData.coordinates.longitude = $($(".vcard .geo-dms .longitude")[0]).text();
+
+  $(".vcard tr").find("table").map(function () {
     // console.log($(this).text());
   });
+
+  var $headers;
+  
+  $($(".vcard tr").find("table")[0]).find("tr").map(function () {
+    
+    $headers = $(this).find("th").map(function () {
+
+    });
+    // console.log($(this).text());
+  })
 
   return airportData;
 };

@@ -2,8 +2,8 @@
   "iata":"abj",
   "icao": "diap",
   "coordinates":{
-    "lat": "5º15'41.1\"N",
-    "lon": "003º55'32.8\"W"
+    "latitude": "5º15'41.1\"N",
+    "longitude": "003º55'32.8\"W"
   },
   "runway": {
     "direction": "03/21",
@@ -17,8 +17,8 @@
   "iata":"abj",
   "icao": "diap",
   "coordinates":{
-    "lat": "5º15'41.1\"N",
-    "lon": "003º55'32.8\"W"
+    "latitude": "5º15'41.1\"N",
+    "longitude": "003º55'32.8\"W"
   },
   "runway": {
     "direction": "03/21",

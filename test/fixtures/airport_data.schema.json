@@ -12,23 +12,33 @@
       },
       "coordinates": {
         "type": "object",
+        "required":[
+        "latitude",
+        "longitude"
+        ],
         "properties": {
-          "lat": {
+          "latitude": {
             "type": "string"
           },
-          "lon": {
+          "longitude": {
             "type": "string"
           }
         }
       },
       "runway": {
         "type": "object",
+        "required":[
+        "direction",
+        "length",
+        "surface"
+        ],
         "properties": {
           "direction": {
             "type": "string"
           },
           "length": {
             "type": "object",
+            "minproperties": 1,
             "properties": {
               "ft": {
                 "type": "integer"

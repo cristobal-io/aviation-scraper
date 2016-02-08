@@ -69,16 +69,21 @@ describe.only("airports.js\n", function () {
 
   describe("airports.js", function () {
 
-    it("should return the airport data with the proper schema", function () {
+    it("should return the airport data with the proper schema", function (done) {
+      this.timeout(15000);
 
       var airportDataSchema = require("./fixtures/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
       var airportLink = require("./fixtures/airport_links.json");
-      var airportData = getAirportData(airportLink);
-      var validAirportData = validateAirportDataSchema(airportData);
 
-      console.log(airportData);
-      expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
+      getAirportData(airportLink, function(err, airportsData) {
+        var validAirportData = validateAirportDataSchema(airportsData);
+        
+        console.log(airportsData);
+        expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
+        done();
+      });
+
     });
 
   });
