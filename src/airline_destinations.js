@@ -32,12 +32,16 @@ function getAllLinks(options, callback) {
     });
 }
 
-function cleanDuplicates(objectWithDuplicates) {
-  return _.map(_.groupBy(objectWithDuplicates, function (value) {
-    return value.name;
+function cleanDuplicates(objectWithDuplicates, groupKey) {
+  groupKey = groupKey || Object.keys(objectWithDuplicates[0])[0];
+
+  var cleanedObject = _.map(_.groupBy(objectWithDuplicates, function (value) {
+    return value[groupKey];
   }), function (grouped) {
     return grouped[0];
   });
+
+  return cleanedObject;
 }
 
 function getAllDestinations(options, callback) {
@@ -79,7 +83,7 @@ function getAllDestinations(options, callback) {
       }
       // bermi, I am checking the function that clean the objects,
       // but not the application itself inside this funciton.
-      var airlines = cleanDuplicates(_.flatten(results, true), "name");
+      var airlines = cleanDuplicates(_.flatten(results, true));
 
 
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
@@ -99,4 +103,3 @@ module.exports.getDestinations = getDestinations;
 module.exports.getAllDestinations = getAllDestinations;
 module.exports.getAllLinks = getAllLinks;
 module.exports.cleanDuplicates = cleanDuplicates;
-
