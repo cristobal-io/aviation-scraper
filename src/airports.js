@@ -37,6 +37,13 @@ function getAirports(airlines, fileName) {
   // Bermi I've added this "if" so if no filename is passed, doesn't cause
   // problems, I guess that is not the best way of doing it and I should
   // rewrite the getAirports function with a callback.
+  // 
+  // I think the right thing to do is to write it with a callback.
+  // 
+  // callback(err, airports);
+  // 
+  // And when using the callback, apply the writeJson function
+  // 
   if (fileName) {
     writeJson(airports, fileName, function() {
       debug("saved %s", fileName);
