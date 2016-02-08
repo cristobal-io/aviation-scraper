@@ -6,6 +6,7 @@ var expect = chai.expect;
 var source = require("../src/index.js");
 var getAirports = source.getAirports;
 var writeJson = source.writeJson;
+var getAirportData = source.getAirportData;
 
 var fs = require("fs");
 var Ajv = require("ajv");
@@ -15,7 +16,7 @@ var _ = require("lodash");
 
 var airlines = require("./fixtures/airlines.json");
 
-describe("airports.js\n", function () {
+describe.only("airports.js\n", function () {
   describe("getAirports", function () {
 
     it("should return only airports", function () {
@@ -54,7 +55,6 @@ describe("airports.js\n", function () {
       // bermi how do I test writeJson if there wasn't a callback?
       writeJson(sampleObject, fileName, function () {
         fileExists = fs.readFileSync(fileName, "utf8");
-
         expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
         fs.unlink(fileName, function (err) {
           if (err) {
@@ -66,4 +66,21 @@ describe("airports.js\n", function () {
     });
 
   });
+
+  describe("airports.js", function () {
+
+    it("should return the airport data with the proper schema", function () {
+
+      var airportDataSchema = require("./fixtures/airport_data.schema.json");
+      var validateAirportDataSchema = ajv.compile(airportDataSchema);
+      var airportLink = require("./fixtures/airport_links.json");
+      var airportData = getAirportData(airportLink);
+      var validAirportData = validateAirportDataSchema(airportData);
+
+      console.log(airportData);
+      expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
+    });
+
+  });
+
 });

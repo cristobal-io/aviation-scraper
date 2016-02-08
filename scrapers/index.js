@@ -10,5 +10,6 @@ module.exports = {
   "destinations_link": require("./destinations_link.js"),
   "table_toccolours": require("./table_toccolours.js"),
   "table_center": require("./table_center.js"),
-  "table_tablesorter": require("./table_tablesorter.js")
+  "table_tablesorter": require("./table_tablesorter.js"),
+  "airports": require("./airports.js")
 };

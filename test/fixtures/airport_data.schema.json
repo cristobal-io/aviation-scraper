@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "iata": {
+        "type": "string"
+      },
+      "icao": {
+        "type": "string"
+      },
+      "coordinates": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "string"
+          },
+          "lon": {
+            "type": "string"
+          }
+        }
+      },
+      "runway": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string"
+          },
+          "length": {
+            "type": "object",
+            "properties": {
+              "ft": {
+                "type": "integer"
+              },
+              "m": {
+                "type": "integer"
+              }
+            }
+          },
+          "surface": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "required": [
+      "iata",
+      "icao",
+      "coordinates",
+      "runway"
+    ]
+  },
+  "minItems": 1
+}
