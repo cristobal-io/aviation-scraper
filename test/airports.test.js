@@ -26,6 +26,20 @@ describe("airports.js\n", function () {
 
       expect(validAirports, _.get(validateAirportsSchema, "errors[0].message")).to.be.true;
     });
+
+    it("Should not have duplicated airports", function (done) {
+      var airlinesDestinations = require("./fixtures/airlines_destinations.json");
+      var airports = getAirports(airlinesDestinations);
+
+      _.map(_.groupBy(airports, function (airport) {
+        return airport.name;
+      }), function (grouped) {
+        expect(grouped).to.have.length(1);
+      });
+      done();
+    });
+
+
   });
 
   describe("writeJson", function () {
@@ -44,13 +58,11 @@ describe("airports.js\n", function () {
         expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
         fs.unlink(fileName, function (err) {
           if (err) {
-            console.log(err);//eslint-disable-line no-console
-          } 
+            console.log(err); //eslint-disable-line no-console
+          }
           done();
         });
       });
-
-
     });
 
   });

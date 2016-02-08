@@ -4,6 +4,7 @@ var fs = require("fs");
 var _ = require("lodash");
 
 var debug = require("debug")("airlineData:airports");
+var cleanDuplicates = require("../src/airline_destinations.js").cleanDuplicates;
 
 
 var writeJson = function (airlines, fileName, callback) {
@@ -20,12 +21,18 @@ var writeJson = function (airlines, fileName, callback) {
 
 function getAirports(airlines, fileName) {
   var airports = [];
-
-  _.map(airlines, function (value) {
-    _.forEach(value.routes, function (value) {
-      airports.push(value.airport);
+  
+  function insertAirports(airlineDestinations){
+    return _.map(airlineDestinations.routes, function (destination) {
+      airports.push(destination.airport);
     });
+  }
+  _.map(airlines, function (airlineDestinations) {
+    if(airlineDestinations.routes.length){
+      insertAirports(airlineDestinations);
+    }
   });
+  airports = cleanDuplicates(airports);
   // airports = _.orderBy(airports, "name");
   // Bermi I've added this "if" so if no filename is passed, doesn't cause
   // problems, I guess that is not the best way of doing it and I should

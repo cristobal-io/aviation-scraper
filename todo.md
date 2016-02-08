@@ -22,7 +22,6 @@
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
-* clean duplicates on objects like destination_pages.json
 - save airports name and links from files into data folder
   + we can use fs.readdir to get the names and then require them.
   + ¿How can we combine into one var all the file content of routes?

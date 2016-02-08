@@ -1,0 +1,1622 @@
+[
+  {
+    "name": "Brussels Airlines",
+    "destinationsLink": "/wiki/Brussels_Airlines_destinations",
+    "scraper": "table",
+    "routes": [
+      {
+        "city": {
+          "name": "Abidjan",
+          "url": "/wiki/Abidjan"
+        },
+        "airport": {
+          "name": "Port Bouet Airport",
+          "url": "/wiki/Port_Bouet_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Accra",
+          "url": "/wiki/Accra"
+        },
+        "airport": {
+          "name": "Kotoka International Airport",
+          "url": "/wiki/Kotoka_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Agadir",
+          "url": "/wiki/Agadir"
+        },
+        "airport": {
+          "name": "Agadir–Al Massira Airport [S]",
+          "url": "/wiki/Agadir%E2%80%93Al_Massira_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Ajaccio",
+          "url": "/wiki/Ajaccio"
+        },
+        "airport": {
+          "name": "Ajaccio Napoleon Bonaparte Airport [S]",
+          "url": "/wiki/Ajaccio_Napoleon_Bonaparte_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Alicante",
+          "url": "/wiki/Alicante"
+        },
+        "airport": {
+          "name": "Alicante Airport",
+          "url": "/wiki/Alicante_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Athens",
+          "url": "/wiki/Athens"
+        },
+        "airport": {
+          "name": "Athens International Airport",
+          "url": "/wiki/Athens_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bamako",
+          "url": "/wiki/Bamako"
+        },
+        "airport": {
+          "name": "Bamako-Sénou International Airport[T]",
+          "url": "/wiki/Bamako-S%C3%A9nou_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Banjul",
+          "url": "/wiki/Banjul"
+        },
+        "airport": {
+          "name": "Banjul International Airport",
+          "url": "/wiki/Banjul_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Barcelona",
+          "url": "/wiki/Barcelona"
+        },
+        "airport": {
+          "name": "Barcelona Airport",
+          "url": "/wiki/Barcelona_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bari",
+          "url": "/wiki/Bari"
+        },
+        "airport": {
+          "name": "Bari Karol Wojtyła Airport[S]",
+          "url": "/wiki/Bari_Karol_Wojty%C5%82a_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Basel/Mulhouse",
+          "url": "/wiki/Basel"
+        },
+        "airport": {
+          "name": "EuroAirport Basel-Mulhouse-Freiburg",
+          "url": "/wiki/EuroAirport_Basel-Mulhouse-Freiburg"
+        }
+      },
+      {
+        "city": {
+          "name": "Bastia",
+          "url": "/wiki/Bastia"
+        },
+        "airport": {
+          "name": "Bastia – Poretta Airport [S]",
+          "url": "/wiki/Bastia_%E2%80%93_Poretta_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Belfast [F]\nbegins 27 March 2016",
+          "url": "/wiki/Belfast"
+        },
+        "airport": {
+          "name": "George Best Belfast City Airport",
+          "url": "/wiki/George_Best_Belfast_City_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Berlin",
+          "url": "/wiki/Berlin"
+        },
+        "airport": {
+          "name": "Berlin Tegel Airport",
+          "url": "/wiki/Berlin_Tegel_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bilbao",
+          "url": "/wiki/Bilbao"
+        },
+        "airport": {
+          "name": "Bilbao Airport",
+          "url": "/wiki/Bilbao_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Billund",
+          "url": "/wiki/Billund,_Denmark"
+        },
+        "airport": {
+          "name": "Billund Airport",
+          "url": "/wiki/Billund_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Birmingham",
+          "url": "/wiki/Birmingham"
+        },
+        "airport": {
+          "name": "Birmingham Airport",
+          "url": "/wiki/Birmingham_Airport,_England"
+        }
+      },
+      {
+        "city": {
+          "name": "Bologna",
+          "url": "/wiki/Bologna"
+        },
+        "airport": {
+          "name": "Bologna Guglielmo Marconi Airport",
+          "url": "/wiki/Bologna_Guglielmo_Marconi_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bordeaux",
+          "url": "/wiki/Bordeaux"
+        },
+        "airport": {
+          "name": "Bordeaux–Mérignac Airport [S]",
+          "url": "/wiki/Bordeaux%E2%80%93M%C3%A9rignac_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bristol",
+          "url": "/wiki/Bristol"
+        },
+        "airport": {
+          "name": "Bristol Airport",
+          "url": "/wiki/Bristol_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Brussels",
+          "url": "/wiki/Brussels"
+        },
+        "airport": {
+          "name": "Brussels Airport [Hub]",
+          "url": "/wiki/Brussels_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Budapest",
+          "url": "/wiki/Budapest"
+        },
+        "airport": {
+          "name": "Budapest Ferenc Liszt International Airport",
+          "url": "/wiki/Budapest_Ferenc_Liszt_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bujumbura",
+          "url": "/wiki/Bujumbura"
+        },
+        "airport": {
+          "name": "Bujumbura International Airport",
+          "url": "/wiki/Bujumbura_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Cagliari",
+          "url": "/wiki/Cagliari"
+        },
+        "airport": {
+          "name": "Cagliari Elmas Airport [S]",
+          "url": "/wiki/Cagliari_Elmas_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Calvi",
+          "url": "/wiki/Calvi,_Haute-Corse"
+        },
+        "airport": {
+          "name": "Calvi – Sainte-Catherine Airport [S]",
+          "url": "/wiki/Calvi_%E2%80%93_Sainte-Catherine_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Catania",
+          "url": "/wiki/Catania"
+        },
+        "airport": {
+          "name": "Catania-Fontanarossa Airport [S]",
+          "url": "/wiki/Catania-Fontanarossa_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Conakry",
+          "url": "/wiki/Conakry"
+        },
+        "airport": {
+          "name": "Conakry International Airport",
+          "url": "/wiki/Conakry_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Copenhagen",
+          "url": "/wiki/Copenhagen"
+        },
+        "airport": {
+          "name": "Copenhagen Airport",
+          "url": "/wiki/Copenhagen_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Cotonou",
+          "url": "/wiki/Cotonou"
+        },
+        "airport": {
+          "name": "Cadjehoun Airport",
+          "url": "/wiki/Cadjehoun_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Dakar",
+          "url": "/wiki/Dakar"
+        },
+        "airport": {
+          "name": "Léopold Sédar Senghor International Airport",
+          "url": "/wiki/L%C3%A9opold_S%C3%A9dar_Senghor_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Douala",
+          "url": "/wiki/Douala"
+        },
+        "airport": {
+          "name": "Douala International Airport",
+          "url": "/wiki/Douala_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Dubrovnik",
+          "url": "/wiki/Dubrovnik"
+        },
+        "airport": {
+          "name": "Dubrovnik Airport [S]",
+          "url": "/wiki/Dubrovnik_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Edinburgh",
+          "url": "/wiki/Edinburgh"
+        },
+        "airport": {
+          "name": "Edinburgh Airport",
+          "url": "/wiki/Edinburgh_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Entebbe",
+          "url": "/wiki/Entebbe"
+        },
+        "airport": {
+          "name": "Entebbe International Airport",
+          "url": "/wiki/Entebbe_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Faro",
+          "url": "/wiki/Faro,_Portugal"
+        },
+        "airport": {
+          "name": "Faro Airport [S]",
+          "url": "/wiki/Faro_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Figari",
+          "url": "/wiki/Figari"
+        },
+        "airport": {
+          "name": "Figari Sud-Corse Airport [S]",
+          "url": "/wiki/Figari_Sud-Corse_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Florence",
+          "url": "/wiki/Florence"
+        },
+        "airport": {
+          "name": "Peretola Airport",
+          "url": "/wiki/Peretola_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Freetown",
+          "url": "/wiki/Freetown"
+        },
+        "airport": {
+          "name": "Lungi International Airport",
+          "url": "/wiki/Lungi_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Geneva",
+          "url": "/wiki/Geneva"
+        },
+        "airport": {
+          "name": "Geneva International Airport",
+          "url": "/wiki/Geneva_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Gothenburg",
+          "url": "/wiki/Gothenburg"
+        },
+        "airport": {
+          "name": "Gothenburg-Landvetter Airport",
+          "url": "/wiki/Gothenburg-Landvetter_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Hamburg",
+          "url": "/wiki/Hamburg"
+        },
+        "airport": {
+          "name": "Hamburg Airport",
+          "url": "/wiki/Hamburg_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Hanover",
+          "url": "/wiki/Hanover"
+        },
+        "airport": {
+          "name": "Hannover-Langenhagen Airport",
+          "url": "/wiki/Hannover_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Heraklion\nbegins 2 April 2016",
+          "url": "/wiki/Heraklion"
+        },
+        "airport": {
+          "name": "Heraklion International Airport",
+          "url": "/wiki/Heraklion_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Jerez de la Frontera\nbegins 4 May 2016",
+          "url": "/wiki/Jerez_de_la_Frontera"
+        },
+        "airport": {
+          "name": "Jerez Airport",
+          "url": "/wiki/Jerez_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Kigali",
+          "url": "/wiki/Kigali"
+        },
+        "airport": {
+          "name": "Kigali International Airport",
+          "url": "/wiki/Kigali_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Kinshasa",
+          "url": "/wiki/Kinshasa"
+        },
+        "airport": {
+          "name": "N'djili Airport",
+          "url": "/wiki/N%27djili_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Kraków",
+          "url": "/wiki/Krak%C3%B3w"
+        },
+        "airport": {
+          "name": "John Paul II International Airport Kraków-Balice",
+          "url": "/wiki/John_Paul_II_International_Airport_Krak%C3%B3w-Balice"
+        }
+      },
+      {
+        "city": {
+          "name": "Lamezia Terme",
+          "url": "/wiki/Lamezia_Terme"
+        },
+        "airport": {
+          "name": "Lamezia Terme Airport [T]",
+          "url": "/wiki/Lamezia_Terme_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Lisbon",
+          "url": "/wiki/Lisbon"
+        },
+        "airport": {
+          "name": "Lisbon Portela Airport",
+          "url": "/wiki/Lisbon_Portela_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Ljubljana",
+          "url": "/wiki/Ljubljana"
+        },
+        "airport": {
+          "name": "Ljubljana Jože Pučnik Airport[T]",
+          "url": "/wiki/Ljubljana_Jo%C5%BEe_Pu%C4%8Dnik_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Lomé",
+          "url": "/wiki/Lom%C3%A9"
+        },
+        "airport": {
+          "name": "Lomé-Tokoin Airport",
+          "url": "/wiki/Lom%C3%A9-Tokoin_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "London",
+          "url": "/wiki/London"
+        },
+        "airport": {
+          "name": "London Heathrow Airport",
+          "url": "/wiki/London_Heathrow_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Luanda",
+          "url": "/wiki/Luanda"
+        },
+        "airport": {
+          "name": "Quatro de Fevereiro Airport",
+          "url": "/wiki/Quatro_de_Fevereiro_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Lyon",
+          "url": "/wiki/Lyon"
+        },
+        "airport": {
+          "name": "Lyon-Saint Exupéry Airport",
+          "url": "/wiki/Lyon-Saint_Exup%C3%A9ry_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Madrid",
+          "url": "/wiki/Madrid"
+        },
+        "airport": {
+          "name": "Madrid-Barajas Airport",
+          "url": "/wiki/Madrid-Barajas_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Málaga",
+          "url": "/wiki/M%C3%A1laga"
+        },
+        "airport": {
+          "name": "Málaga Airport",
+          "url": "/wiki/M%C3%A1laga_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Malta",
+          "url": "/wiki/Malta"
+        },
+        "airport": {
+          "name": "Malta International Airport [S]",
+          "url": "/wiki/Malta_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Manchester",
+          "url": "/wiki/Manchester"
+        },
+        "airport": {
+          "name": "Manchester Airport",
+          "url": "/wiki/Manchester_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Marrakesh",
+          "url": "/wiki/Marrakesh"
+        },
+        "airport": {
+          "name": "Marrakesh-Menara Airport [S]",
+          "url": "/wiki/Marrakesh-Menara_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Marseille",
+          "url": "/wiki/Marseille"
+        },
+        "airport": {
+          "name": "Marseille Provence Airport",
+          "url": "/wiki/Marseille_Provence_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Milan",
+          "url": "/wiki/Milan"
+        },
+        "airport": {
+          "name": "Linate Airport",
+          "url": "/wiki/Linate_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Milan",
+          "url": "/wiki/Milan"
+        },
+        "airport": {
+          "name": "Malpensa Airport",
+          "url": "/wiki/Malpensa_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Montpellier",
+          "url": "/wiki/Montpellier"
+        },
+        "airport": {
+          "name": "Montpellier – Méditerranée Airport [S]",
+          "url": "/wiki/Montpellier_%E2%80%93_M%C3%A9diterran%C3%A9e_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Monrovia",
+          "url": "/wiki/Monrovia"
+        },
+        "airport": {
+          "name": "Roberts International Airport",
+          "url": "/wiki/Roberts_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Moscow",
+          "url": "/wiki/Moscow"
+        },
+        "airport": {
+          "name": "Domodedovo International Airport",
+          "url": "/wiki/Domodedovo_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Nairobi",
+          "url": "/wiki/Nairobi"
+        },
+        "airport": {
+          "name": "Jomo Kenyatta International Airport [T]",
+          "url": "/wiki/Jomo_Kenyatta_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Naples",
+          "url": "/wiki/Naples"
+        },
+        "airport": {
+          "name": "Naples Airport [S]",
+          "url": "/wiki/Naples_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "New York City",
+          "url": "/wiki/New_York_City"
+        },
+        "airport": {
+          "name": "John F. Kennedy International Airport",
+          "url": "/wiki/John_F._Kennedy_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Newcastle upon Tyne",
+          "url": "/wiki/Newcastle_upon_Tyne"
+        },
+        "airport": {
+          "name": "Newcastle International Airport [T]",
+          "url": "/wiki/Newcastle_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Nice",
+          "url": "/wiki/Nice"
+        },
+        "airport": {
+          "name": "Nice Côte d'Azur Airport",
+          "url": "/wiki/Nice_C%C3%B4te_d%27Azur_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Nuremberg\nbegins 15 February 2016",
+          "url": "/wiki/Nuremberg"
+        },
+        "airport": {
+          "name": "Nuremberg Airport",
+          "url": "/wiki/Nuremberg_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Oslo",
+          "url": "/wiki/Oslo"
+        },
+        "airport": {
+          "name": "Gardermoen Airport",
+          "url": "/wiki/Gardermoen_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Ouagadougou",
+          "url": "/wiki/Ouagadougou"
+        },
+        "airport": {
+          "name": "Ouagadougou Airport",
+          "url": "/wiki/Ouagadougou_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Palermo",
+          "url": "/wiki/Palermo"
+        },
+        "airport": {
+          "name": "Palermo Airport[S]",
+          "url": "/wiki/Palermo_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Paris",
+          "url": "/wiki/Paris"
+        },
+        "airport": {
+          "name": "Charles de Gaulle Airport",
+          "url": "/wiki/Charles_de_Gaulle_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Porto",
+          "url": "/wiki/Porto"
+        },
+        "airport": {
+          "name": "Francisco de Sá Carneiro Airport [S]",
+          "url": "/wiki/Francisco_de_S%C3%A1_Carneiro_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Prague",
+          "url": "/wiki/Prague"
+        },
+        "airport": {
+          "name": "Prague Ruzyně Airport",
+          "url": "/wiki/Prague_Ruzyn%C4%9B_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Riga",
+          "url": "/wiki/Riga"
+        },
+        "airport": {
+          "name": "Riga International Airport",
+          "url": "/wiki/Riga_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Rome",
+          "url": "/wiki/Rome"
+        },
+        "airport": {
+          "name": "Leonardo da Vinci-Fiumicino Airport",
+          "url": "/wiki/Leonardo_da_Vinci-Fiumicino_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Seville",
+          "url": "/wiki/Seville"
+        },
+        "airport": {
+          "name": "Seville Airport",
+          "url": "/wiki/Seville_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Stockholm",
+          "url": "/wiki/Stockholm"
+        },
+        "airport": {
+          "name": "Stockholm-Bromma Airport",
+          "url": "/wiki/Stockholm-Bromma_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Strasbourg",
+          "url": "/wiki/Strasbourg"
+        },
+        "airport": {
+          "name": "Strasbourg Airport",
+          "url": "/wiki/Strasbourg_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Tel Aviv",
+          "url": "/wiki/Tel_Aviv"
+        },
+        "airport": {
+          "name": "Ben Gurion International Airport",
+          "url": "/wiki/Ben_Gurion_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Thessaloniki\nbegins 1 May 2016",
+          "url": "/wiki/Thessaloniki"
+        },
+        "airport": {
+          "name": "Thessaloniki Airport",
+          "url": "/wiki/Thessaloniki_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Toronto\nbegins 27 March 2016",
+          "url": "/wiki/Toronto"
+        },
+        "airport": {
+          "name": "Toronto Pearson International Airport",
+          "url": "/wiki/Toronto_Pearson_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Toulouse",
+          "url": "/wiki/Toulouse"
+        },
+        "airport": {
+          "name": "Toulouse-Blagnac Airport",
+          "url": "/wiki/Toulouse-Blagnac_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Turin",
+          "url": "/wiki/Turin"
+        },
+        "airport": {
+          "name": "Turin Caselle Airport",
+          "url": "/wiki/Turin_Caselle_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Venice",
+          "url": "/wiki/Venice"
+        },
+        "airport": {
+          "name": "Venice Marco Polo Airport",
+          "url": "/wiki/Venice_Marco_Polo_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Vienna",
+          "url": "/wiki/Vienna"
+        },
+        "airport": {
+          "name": "Vienna International Airport",
+          "url": "/wiki/Vienna_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Vilnius",
+          "url": "/wiki/Vilnius"
+        },
+        "airport": {
+          "name": "Vilnius International Airport",
+          "url": "/wiki/Vilnius_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Warsaw",
+          "url": "/wiki/Warsaw"
+        },
+        "airport": {
+          "name": "Warsaw Chopin Airport",
+          "url": "/wiki/Warsaw_Chopin_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Washington",
+          "url": "/wiki/Washington,_D.C."
+        },
+        "airport": {
+          "name": "Washington Dulles International Airport [S]",
+          "url": "/wiki/Washington_Dulles_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Yaoundé",
+          "url": "/wiki/Yaound%C3%A9"
+        },
+        "airport": {
+          "name": "Yaoundé Nsimalen International Airport",
+          "url": "/wiki/Yaound%C3%A9_Nsimalen_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Zagreb",
+          "url": "/wiki/Zagreb"
+        },
+        "airport": {
+          "name": "Zagreb Airport[F]",
+          "url": "/wiki/Zagreb_Airport"
+        }
+      }
+    ],
+    "fileName": "./data/routes_Brussels Airlines.json"
+  },
+  {
+    "name": "Bulgaria Air charter",
+    "destinationsLink": "/wiki/Bulgaria_Air_charter_destinations",
+    "scraper": "default",
+    "routes": [],
+    "fileName": "./data/error_Bulgaria Air charter.json",
+    "errorMessage": "Airline Bulgaria Air charter got the error should NOT have less than 1 items"
+  },
+  {
+    "name": "Bulgaria Air",
+    "destinationsLink": "/wiki/Bulgaria_Air_destinations",
+    "scraper": "default",
+    "routes": [
+      {
+        "city": {
+          "name": "International Air Transport Association",
+          "url": "/wiki/International_Air_Transport_Association"
+        },
+        "airport": {
+          "name": "International Civil Aviation Organization",
+          "url": "/wiki/International_Civil_Aviation_Organization"
+        }
+      }
+    ],
+    "fileName": "./data/routes_Bulgaria Air.json"
+  },
+  {
+    "name": "Bulgarian Air Charter",
+    "destinationsLink": "/wiki/Bulgarian_Air_Charter_destinations",
+    "scraper": "default",
+    "routes": [
+      {
+        "city": {
+          "name": "Bulgarian Air Charter",
+          "url": "/wiki/Bulgarian_Air_Charter"
+        },
+        "airport": {
+          "name": "citation needed",
+          "url": "/wiki/Wikipedia:Citation_needed"
+        }
+      },
+      {
+        "city": {
+          "name": "Cologne",
+          "url": "/wiki/Cologne"
+        },
+        "airport": {
+          "name": "Bonn",
+          "url": "/wiki/Bonn"
+        }
+      }
+    ],
+    "fileName": "./data/routes_Bulgarian Air Charter.json"
+  },
+  {
+    "name": "Canadian Airlines",
+    "destinationsLink": "/wiki/Canadian_Airlines_destinations",
+    "scraper": "default",
+    "routes": [
+      {
+        "city": {
+          "name": "Nagoya",
+          "url": "/wiki/Nagoya"
+        },
+        "airport": {
+          "name": "Komaki Airport",
+          "url": "/wiki/Komaki_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Kuala Lumpur",
+          "url": "/wiki/Kuala_Lumpur"
+        },
+        "airport": {
+          "name": "Kuala Lumpur International Airport",
+          "url": "/wiki/Kuala_Lumpur_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Manila",
+          "url": "/wiki/Manila"
+        },
+        "airport": {
+          "name": "Ninoy Aquino International Airport",
+          "url": "/wiki/Ninoy_Aquino_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Taipei",
+          "url": "/wiki/Taipei"
+        },
+        "airport": {
+          "name": "Taiwan Taoyuan International Airport",
+          "url": "/wiki/Taiwan_Taoyuan_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Bangkok",
+          "url": "/wiki/Bangkok"
+        },
+        "airport": {
+          "name": "Don Mueang International Airport",
+          "url": "/wiki/Don_Mueang_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Paris",
+          "url": "/wiki/Paris"
+        },
+        "airport": {
+          "name": "Charles de Gaulle Airport",
+          "url": "/wiki/Charles_de_Gaulle_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Frankfurt am Main",
+          "url": "/wiki/Frankfurt_am_Main"
+        },
+        "airport": {
+          "name": "Frankfurt Airport",
+          "url": "/wiki/Frankfurt_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Munich",
+          "url": "/wiki/Munich"
+        },
+        "airport": {
+          "name": "Munich Airport",
+          "url": "/wiki/Munich_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Milan",
+          "url": "/wiki/Milan"
+        },
+        "airport": {
+          "name": "Malpensa Airport",
+          "url": "/wiki/Malpensa_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Rome",
+          "url": "/wiki/Rome"
+        },
+        "airport": {
+          "name": "Leonardo Da Vinci International Airport",
+          "url": "/wiki/Leonardo_Da_Vinci_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Amsterdam",
+          "url": "/wiki/Amsterdam"
+        },
+        "airport": {
+          "name": "Amsterdam Airport Schiphol",
+          "url": "/wiki/Amsterdam_Airport_Schiphol"
+        }
+      },
+      {
+        "city": {
+          "name": "Calgary",
+          "url": "/wiki/Calgary"
+        },
+        "airport": {
+          "name": "Calgary International Airport",
+          "url": "/wiki/Calgary_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Edmonton",
+          "url": "/wiki/Edmonton"
+        },
+        "airport": {
+          "name": "Edmonton International Airport",
+          "url": "/wiki/Edmonton_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Kelowna",
+          "url": "/wiki/Kelowna"
+        },
+        "airport": {
+          "name": "Kelowna International Airport",
+          "url": "/wiki/Kelowna_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Vancouver",
+          "url": "/wiki/Vancouver"
+        },
+        "airport": {
+          "name": "Vancouver International Airport",
+          "url": "/wiki/Vancouver_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Victoria",
+          "url": "/wiki/Victoria,_British_Columbia"
+        },
+        "airport": {
+          "name": "Victoria International Airport",
+          "url": "/wiki/Victoria_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Churchill",
+          "url": "/wiki/Churchill,_Manitoba"
+        },
+        "airport": {
+          "name": "Churchill Airport",
+          "url": "/wiki/Churchill_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Flin Flon",
+          "url": "/wiki/Flin_Flon"
+        },
+        "airport": {
+          "name": "Flin Flon Airport",
+          "url": "/wiki/Flin_Flon_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Gillam",
+          "url": "/wiki/Gillam,_Manitoba"
+        },
+        "airport": {
+          "name": "Gillam Airport",
+          "url": "/wiki/Gillam_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "The Pas",
+          "url": "/wiki/The_Pas"
+        },
+        "airport": {
+          "name": "The Pas Airport",
+          "url": "/wiki/The_Pas_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Thompson",
+          "url": "/wiki/Thompson,_Manitoba"
+        },
+        "airport": {
+          "name": "Thompson Airport",
+          "url": "/wiki/Thompson_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Winnipeg",
+          "url": "/wiki/Winnipeg"
+        },
+        "airport": {
+          "name": "Winnipeg James Armstrong Richardson International Airport",
+          "url": "/wiki/Winnipeg_James_Armstrong_Richardson_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Stephenville",
+          "url": "/wiki/Stephenville,_Newfoundland_and_Labrador"
+        },
+        "airport": {
+          "name": "Stephenville International Airport",
+          "url": "/wiki/Stephenville_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "St. John's",
+          "url": "/wiki/St._John%27s,_Newfoundland_and_Labrador"
+        },
+        "airport": {
+          "name": "St. John's International Airport",
+          "url": "/wiki/St._John%27s_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Gander",
+          "url": "/wiki/Gander,_Newfoundland_and_Labrador"
+        },
+        "airport": {
+          "name": "Gander International Airport",
+          "url": "/wiki/Gander_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Charlo",
+          "url": "/wiki/Charlo,_New_Brunswick"
+        },
+        "airport": {
+          "name": "Charlo Airport",
+          "url": "/wiki/Charlo_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Fredericton",
+          "url": "/wiki/Fredericton"
+        },
+        "airport": {
+          "name": "Greater Fredericton Airport",
+          "url": "/wiki/Greater_Fredericton_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Saint John",
+          "url": "/wiki/Saint_John,_New_Brunswick"
+        },
+        "airport": {
+          "name": "Saint John Airport",
+          "url": "/wiki/Saint_John_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Moncton",
+          "url": "/wiki/Moncton"
+        },
+        "airport": {
+          "name": "Greater Moncton International Airport",
+          "url": "/wiki/Greater_Moncton_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Yellowknife",
+          "url": "/wiki/Yellowknife"
+        },
+        "airport": {
+          "name": "Yellowknife Airport",
+          "url": "/wiki/Yellowknife_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Halifax",
+          "url": "/wiki/Halifax_Regional_Municipality"
+        },
+        "airport": {
+          "name": "Halifax International Airport",
+          "url": "/wiki/Halifax_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Iqaluit",
+          "url": "/wiki/Iqaluit"
+        },
+        "airport": {
+          "name": "Iqaluit Airport",
+          "url": "/wiki/Iqaluit_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Ottawa",
+          "url": "/wiki/Ottawa"
+        },
+        "airport": {
+          "name": "Ottawa International Airport",
+          "url": "/wiki/Ottawa_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Toronto",
+          "url": "/wiki/Toronto"
+        },
+        "airport": {
+          "name": "Toronto Pearson International Airport",
+          "url": "/wiki/Toronto_Pearson_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Thunder Bay",
+          "url": "/wiki/Thunder_Bay"
+        },
+        "airport": {
+          "name": "Thunder Bay International Airport",
+          "url": "/wiki/Thunder_Bay_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Windsor",
+          "url": "/wiki/Windsor,_Ontario"
+        },
+        "airport": {
+          "name": "Windsor Airport",
+          "url": "/wiki/Windsor_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Montreal",
+          "url": "/wiki/Montreal"
+        },
+        "airport": {
+          "name": "Pierre Elliott Trudeau International Airport",
+          "url": "/wiki/Pierre_Elliott_Trudeau_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Radisson",
+          "url": "/wiki/Radisson,_Quebec"
+        },
+        "airport": {
+          "name": "La Grande Rivière Airport",
+          "url": "/wiki/La_Grande_Rivi%C3%A8re_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Regina",
+          "url": "/wiki/Regina,_Saskatchewan"
+        },
+        "airport": {
+          "name": "Regina International Airport",
+          "url": "/wiki/Regina_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Saskatoon",
+          "url": "/wiki/Saskatoon"
+        },
+        "airport": {
+          "name": "John G. Diefenbaker International Airport",
+          "url": "/wiki/John_G._Diefenbaker_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Charlottetown",
+          "url": "/wiki/Charlottetown"
+        },
+        "airport": {
+          "name": "Charlottetown Airport",
+          "url": "/wiki/Charlottetown_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Whitehorse",
+          "url": "/wiki/Whitehorse,_Yukon"
+        },
+        "airport": {
+          "name": "Whitehorse International Airport",
+          "url": "/wiki/Whitehorse_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Monterrey",
+          "url": "/wiki/Monterrey"
+        },
+        "airport": {
+          "name": "General Mariano Escobedo International Airport",
+          "url": "/wiki/General_Mariano_Escobedo_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "San Francisco",
+          "url": "/wiki/San_Francisco,_California"
+        },
+        "airport": {
+          "name": "San Francisco International Airport",
+          "url": "/wiki/San_Francisco_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "San Diego",
+          "url": "/wiki/San_Diego,_California"
+        },
+        "airport": {
+          "name": "San Diego International Airport",
+          "url": "/wiki/San_Diego_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Fort Lauderdale",
+          "url": "/wiki/Fort_Lauderdale,_Florida"
+        },
+        "airport": {
+          "name": "Fort Lauderdale-Hollywood International Airport",
+          "url": "/wiki/Fort_Lauderdale-Hollywood_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Miami",
+          "url": "/wiki/Miami,_Florida"
+        },
+        "airport": {
+          "name": "Miami International Airport",
+          "url": "/wiki/Miami_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Orlando",
+          "url": "/wiki/Orlando,_Florida"
+        },
+        "airport": {
+          "name": "Orlando International Airport",
+          "url": "/wiki/Orlando_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Honolulu",
+          "url": "/wiki/Honolulu,_Hawaii"
+        },
+        "airport": {
+          "name": "Honolulu International Airport",
+          "url": "/wiki/Honolulu_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Chicago",
+          "url": "/wiki/Chicago,_Illinois"
+        },
+        "airport": {
+          "name": "O'Hare International Airport",
+          "url": "/wiki/O%27Hare_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Boston",
+          "url": "/wiki/Boston,_Massachusetts"
+        },
+        "airport": {
+          "name": "Logan International Airport",
+          "url": "/wiki/Logan_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Las Vegas",
+          "url": "/wiki/Las_Vegas,_Nevada"
+        },
+        "airport": {
+          "name": "McCarran International Airport",
+          "url": "/wiki/McCarran_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Erie",
+          "url": "/wiki/Erie,_Pennsylvania"
+        },
+        "airport": {
+          "name": "Erie International Airport",
+          "url": "/wiki/Erie_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Washington, D.C.",
+          "url": "/wiki/Washington,_D.C."
+        },
+        "airport": {
+          "name": "Washington Dulles International Airport",
+          "url": "/wiki/Washington_Dulles_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Nadi",
+          "url": "/wiki/Nadi"
+        },
+        "airport": {
+          "name": "Nadi International Airport",
+          "url": "/wiki/Nadi_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Auckland",
+          "url": "/wiki/Auckland"
+        },
+        "airport": {
+          "name": "Auckland Airport",
+          "url": "/wiki/Auckland_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Buenos Aires",
+          "url": "/wiki/Buenos_Aires"
+        },
+        "airport": {
+          "name": "Ministro Pistarini International Airport",
+          "url": "/wiki/Ministro_Pistarini_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Rio de Janeiro",
+          "url": "/wiki/Rio_de_Janeiro"
+        },
+        "airport": {
+          "name": "Galeão - Antônio Carlos Jobim International Airport",
+          "url": "/wiki/Gale%C3%A3o_-_Ant%C3%B4nio_Carlos_Jobim_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Sao Paulo",
+          "url": "/wiki/Sao_Paulo"
+        },
+        "airport": {
+          "name": "Guarulhos International Airport",
+          "url": "/wiki/Guarulhos_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Santiago",
+          "url": "/wiki/Santiago,_Chile"
+        },
+        "airport": {
+          "name": "Comodoro Arturo Merino Benítez International Airport",
+          "url": "/wiki/Comodoro_Arturo_Merino_Ben%C3%ADtez_International_Airport"
+        }
+      },
+      {
+        "city": {
+          "name": "Lima",
+          "url": "/wiki/Lima"
+        },
+        "airport": {
+          "name": "Jorge Chavez International Airport",
+          "url": "/wiki/Jorge_Chavez_International_Airport"
+        }
+      }
+    ],
+    "fileName": "./data/routes_Canadian Airlines.json"
+  }
+]
