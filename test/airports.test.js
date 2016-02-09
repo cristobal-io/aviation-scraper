@@ -79,7 +79,6 @@ describe.only("airports.js\n", function () {
       getAirportData(airportLink, function(err, airportsData) {
         var validAirportData = validateAirportDataSchema(airportsData);
         
-        console.log(airportsData);
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
         done();
       });
