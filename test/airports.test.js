@@ -6,7 +6,7 @@ var expect = chai.expect;
 var source = require("../src/index.js");
 var getAirports = source.getAirports;
 var writeJson = source.writeJson;
-var getAirportData = source.getAirportData;
+var getAirportsData = source.getAirportsData;
 
 var fs = require("fs");
 var Ajv = require("ajv");
@@ -67,7 +67,7 @@ describe("airports.js\n", function () {
 
   });
 
-  describe("getAirportData", function () {
+  describe("getAirportsData", function () {
 
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
@@ -76,7 +76,7 @@ describe("airports.js\n", function () {
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
       var airportLink = require("./fixtures/airport_links.json");
 
-      getAirportData(airportLink, function(err, airportsData) {
+      getAirportsData(airportLink, function(err, airportsData) {
         var validAirportData = validateAirportDataSchema(airportsData);
         
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;

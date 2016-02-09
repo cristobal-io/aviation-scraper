@@ -10,7 +10,7 @@ module.exports = {
   "getAllLinks": require("./airline_destinations.js").getAllLinks,
   "getAirports": require("./airports").getAirports,
   "writeJson": require("./airports").writeJson,
-  "getAirportData": require("./airports").getAirportData,
+  "getAirportsData": require("./airports").getAirportsData,
 
   "cleanDuplicates": require("./airline_destinations.js").cleanDuplicates
 

@@ -70,20 +70,20 @@ function getData(airportLink, callback) {
   scraperjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
-        console.log(chalk.red("\nerror from %s is %s, %s \n"), airportLink.name, err, url);
+        debug(chalk.red("\nerror from %s is %s, %s \n"), airportLink.name, err, url);
         callback(err, utils);
       }
     })
     .scrape(scrapers["airports"])
     .then(function (airportData) {
       airportData.url = url;
-      // bermi, shoul I add a call to writeJson 
+      // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
       callback(null, airportData);
     });
 }
 
-function getAirportData(airportsLink, callback) {
+function getAirportsData(airportsLink, callback) {
 
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
 
@@ -99,4 +99,4 @@ function getAirportData(airportsLink, callback) {
 
 module.exports.getAirports = getAirports;
 module.exports.writeJson = writeJson;
-module.exports.getAirportData = getAirportData;
+module.exports.getAirportsData = getAirportsData;
