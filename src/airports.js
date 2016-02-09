@@ -12,7 +12,7 @@ var debug = require("debug")("airlineData:airports");
 
 var cleanDuplicates = require("../src/airline_destinations.js").cleanDuplicates;
 
-var BASE_URL = "https://en.wikipedia.org";
+var BASE_URL = "https://en.wikipedia.org/wiki/";
 
 
 var writeJson = function (airlines, fileName, callback) {
