@@ -19,7 +19,6 @@
 - save airports name and links from files into data folder
   + we can use fs.readdir to get the names and then require them.
   + ¿How can we combine into one var all the file content of routes?
-- freq?
 
 # TODO
 
