@@ -1,64 +1,49 @@
 "use strict";
-// var sjs = require("scraperjs");
-// var fs = require("fs");
-// var async = require("async");
+var async = require("async");
+var _ = require("lodash");
+
 var scrapers = require("../scrapers/");
+var src = require("./index.js");
+var writeJson = src.writeJson;
 
-// var BASE_URL = "https://en.wikipedia.org";
+var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var iataList = [];
 
-// var airlines = require("../data/destination_pages.json");
-
-// var fs = require("fs");
+for (var i = 0; i < letters.length; i += 1) {
+  iataList.push("https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_" + letters[i]);
+}
 
 var scraperjs = require("scraperjs");
 
-scraperjs.StaticScraper.create("https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_A")
-  .scrape(scrapers["table"])// || scrapers["default"])
-  .then(function (airports) {
-    console.log(JSON.stringify(airports, null, 2));// eslint-disable-line no-console
 
+function getAirportsByIata(iataLink, callback) {
+  scraperjs.StaticScraper.create(iataLink)
+    .scrape(scrapers["airportsIata"])
+    .then(function (airports) {
+      console.log(JSON.stringify(airports, null, 2)); // eslint-disable-line no-console
+      callback(null, airports);
+    });
+}
+
+function getAllAirportsByIata(iataList, callback) {
+
+  async.mapLimit(iataList, 10, function (iataLink, callback) {
+
+    async.retry(5, function (callback) {
+      getAirportsByIata(iataLink, callback);
+    }, callback);
+
+  }, function (err, airportsData) {
+
+    callback(err, _.flatten(airportsData));
   });
 
-// function getRoutes(options, callback) {
-//   var url = BASE_URL + options.destinationsLink;
+}
 
+module.exports.getAllAirportsByIata = getAllAirportsByIata;
 
-//   console.log("Getting routes for %s from %s", options.name, url);
-//   sjs.StaticScraper.create(url)
-//     .scrape(scrapers[options.scraper] || scrapers["default"])
-//     .then(function (data) {
-//       // console.log("Results for %s", options.name);
-//       // console.log(JSON.stringify(data, null, 2));
-//       callback(null, data, options);
-//     });
-// }
-
-// var writeJson = function (err, routes, options) {
-//   if (err) {
-//     throw err;
-//   }
-//   var filename = "../data/routes_" + options.name + ".json";
-
-//   fs.writeFile(filename,
-//     JSON.stringify(routes, null, 2),
-//     function (err) {
-//       if (err) {
-//         throw err;
-//       }
-//       console.log("Saved %s", filename);
-//     }
-//   );
-// };
-
-// getRoutes(airlines[0], writeJson);
-
-// async.forEachOf(airlines, function (value) {
-//   getRoutes(value, writeJson);
-//   // console.log(value);
-//   // console.log(key);
-//   // console.log(callback);
-// }, function (err) {
-//   if (err) {
-//     throw err;
-//   }
-// });
+getAllAirportsByIata(iataList, function(err, airportsData) {
+  writeJson(airportsData, "./data/airports_list.json", function() {
+    console.log("airports_list saved");
+  });
+});

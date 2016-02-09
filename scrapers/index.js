@@ -11,5 +11,6 @@ module.exports = {
   "type_of_scrapper": require("./type_of_scrapper.js"),
   "destinations": require("./scraper.destinations.js"),
   "destinations_link": require("./scraper.destinations_link.js"),
-  "airports": require("./scraper.airports.js")
+  "airports": require("./scraper.airports.js"),
+  "airportsIata": require("./scraper.airports_iata.js")
 };
