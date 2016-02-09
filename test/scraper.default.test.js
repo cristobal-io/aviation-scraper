@@ -1,5 +1,6 @@
 "use strict";
-var defaultScraper = require("../scrapers/default.js");
+var scrapers = require("../scrapers/index.js");
+var defaultScraper = scrapers.default;
 var getDestination = defaultScraper.getDestination;
 var getDestinations = defaultScraper.getDestinations;
 var getLinkStrings = defaultScraper.getLinkStrings;
