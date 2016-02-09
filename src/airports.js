@@ -12,7 +12,7 @@ var debug = require("debug")("airlineData:airports");
 
 var cleanDuplicates = require("../src/airline_destinations.js").cleanDuplicates;
 
-var BASE_URL = "https://en.wikipedia.org/wiki/";
+var BASE_URL = "https://en.wikipedia.org";
 
 
 var writeJson = function (airlines, fileName, callback) {
@@ -79,7 +79,7 @@ function getData(airportLink, callback) {
       airportData.url = url;
       // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
-      var fileName = "./data/airport_" + airportData.icao+ ".json";
+      var fileName = "./data/airport_" + airportData.iata + ".json";
 
       // this way of calling writeJson has sideefects when testing that are
       // not taken care of, the files generated are not deleted.

@@ -16,7 +16,11 @@
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
-- scraping all the airports by IATA code.
+- test airports_iata (not tested) I should have done it TDD like airports.js
+- check the integrity AJV of the file saves, there are some empty values that give errors. I can add that at the scraper for the airports_iata.
+- give alternative to save the airport data with iata or icao code, some of them doesn't have available one of those indicators. Maybe we should save it with the name that is accesible and all of them have it.
+- check that all the IATA airports are saved into individual files.
+  + we can check the number of airports at the list and how many files meet the criteria.
 - save airports name and links from files into data folder
   + we can use fs.readdir to get the names and then require them.
   + ¿How can we combine into one var all the file content of routes?

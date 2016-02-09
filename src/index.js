@@ -11,7 +11,7 @@ module.exports = {
   "getAirports": require("./airports").getAirports,
   "writeJson": require("./airports").writeJson,
   "getAirportsData": require("./airports").getAirportsData,
-
+  "getAllAirportsByIata": require("./airports_iata.js").getAllAirportsByIata,
   "cleanDuplicates": require("./airline_destinations.js").cleanDuplicates
 
 };

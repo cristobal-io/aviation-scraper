@@ -3,8 +3,6 @@ var async = require("async");
 var _ = require("lodash");
 
 var scrapers = require("../scrapers/");
-var src = require("./index.js");
-var writeJson = src.writeJson;
 
 var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var iataList = [];
@@ -25,8 +23,8 @@ function getAirportsByIata(iataLink, callback) {
     });
 }
 
-function getAllAirportsByIata(iataList, callback) {
-
+function getAllAirportsByIata(options, callback) {
+  iataList = options.iataList || iataList;
   async.mapLimit(iataList, 10, function (iataLink, callback) {
 
     async.retry(5, function (callback) {
@@ -34,16 +32,12 @@ function getAllAirportsByIata(iataList, callback) {
     }, callback);
 
   }, function (err, airportsData) {
-
-    callback(err, _.flatten(airportsData));
+    airportsData = _.flatten(airportsData);
+    callback(err, airportsData);
   });
 
 }
 
 module.exports.getAllAirportsByIata = getAllAirportsByIata;
+module.exports.getAirportsByIata = getAirportsByIata;
 
-getAllAirportsByIata(iataList, function(err, airportsData) {
-  writeJson(airportsData, "./data/airports_list.json", function() {
-    console.log("airports_list saved");
-  });
-});

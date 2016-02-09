@@ -1,6 +1,6 @@
 "use strict";
 
-var airlineScrapers = require("./index.js");
+var source = require("./index.js");
 var debug = require("debug")("airlineData:cli");
 
 
@@ -8,11 +8,13 @@ var debug = require("debug")("airlineData:cli");
  * airline destinations 
  */
 
-var getAllDestinations = airlineScrapers.getAllDestinations;
-var getScraperTypeForAll = airlineScrapers.getScraperTypeForAll;
-var getAllRoutes = airlineScrapers.getAllRoutes;
-var getAirports = airlineScrapers.getAirports;
-var writeJson = airlineScrapers.writeJson;
+var getAllDestinations = source.getAllDestinations,
+  getScraperTypeForAll = source.getScraperTypeForAll,
+  getAllRoutes = source.getAllRoutes,
+  // getAirports = source.getAirports,
+  writeJson = source.writeJson,
+  getAllAirportsByIata = source.getAllAirportsByIata,
+  getAirportsData = source.getAirportsData;
 
 
 var options = {
@@ -25,7 +27,7 @@ getAllDestinations(options, function (err, airlines) {
     throw err;
   }
 
-  console.log("Destinations File Created"); // eslint-disable-line no-console
+  debug("Destinations File Created");
 
   getScraperTypeForAll({
     "airlines": airlines
@@ -34,7 +36,7 @@ getAllDestinations(options, function (err, airlines) {
       throw err;
     }
 
-    console.log("scrapers finished"); // eslint-disable-line no-console
+    debug("scrapers finished");
 
     getAllRoutes(airlineScrapers, function (err, airlines) {
       if (err) {
@@ -42,10 +44,25 @@ getAllDestinations(options, function (err, airlines) {
       }
       debug("Routes Files Generated");
 
-      writeJson(airlines, "data/airlines_destinations.json", function () {
-        getAirports(airlines, "data/airports.json");
+      /**
+       * getAirports links and data
+       */
+
+      getAllAirportsByIata("", function (err, airportsData) {
+        writeJson(airportsData, "./data/airports_list.json", function () {
+          debug("airports_list saved");
+        });
+        getAirportsData(airportsData, function () {
+          debug("Saved all the data airports");
+        });
       });
+
+      debug(airlines);
+      // writeJson(airlines, "data/airlines_destinations.json", function () {
+      //   getAirports(airlines, "data/airports.json");
+      // });
     });
 
   });
 });
+
