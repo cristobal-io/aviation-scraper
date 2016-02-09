@@ -31,7 +31,7 @@ describe("Airline_destinations.js: \n", function () {
 
     validateDestPagSchema = ajv.compile(destinationsPagesSchema);
 
-    var url = SERVER_LISTENING + "/Lists_of_airline_destinations.html";
+    var url = SERVER_LISTENING + "/Lists_of_airline_destinations";
 
     destination_url = {
       urls: url,

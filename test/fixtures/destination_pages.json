@@ -1,8 +1,8 @@
 [
   {
     "name": "table",
-    "destinationsLink": "/Aegean_Airlines_destinations.html",
-    "url": "http://localhost:3000/Aegean_Airlines_destinations.html",
-    "scraper": "table"
+    "destinationsLink": "/Aegean_Airlines_destinations",
+    "url": "http://localhost:3000/Aegean_Airlines_destinationsl",
+    "scraper": "default"
   }
 ]

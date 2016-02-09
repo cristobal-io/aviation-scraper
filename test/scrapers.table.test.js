@@ -24,7 +24,7 @@ describe("Table Scraper: \n", function () {
 
   before(function (done) {
 
-    sjs.StaticScraper.create(SERVER_LISTENING + "/Aegean_Airlines_destinations.html")
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Aegean_Airlines_destinations")
       .scrape(scrapers.table)
       .then(function (data) {
         results = data;
@@ -46,7 +46,7 @@ describe("Table Scraper: \n", function () {
   it("should check special case where an airport is shared between rows", function (done) {
     var validateDefaultSchema = ajv.compile(defaultSchema);
 
-    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Arabia_Maroc_destinations.html")
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Arabia_Maroc_destinations")
       .scrape(scrapers.table)
       .then(function (data) {
         var validDefaultSchema = validateDefaultSchema(data);
@@ -59,7 +59,7 @@ describe("Table Scraper: \n", function () {
   it("Should check special Case where there is no City and instead it says Destination", function (done) {
     var validateDefaultSchema = ajv.compile(defaultSchema);
 
-    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Chathams_destinations.html")
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Air_Chathams_destinations")
       .scrape(scrapers.table)
       .then(function (data) {
         var validDefaultSchema = validateDefaultSchema(data);
@@ -72,7 +72,7 @@ describe("Table Scraper: \n", function () {
   it("Should test Special case where the airport doesn't match exactly", function (done) {
     var validateDefaultSchema = ajv.compile(defaultSchema);
 
-    sjs.StaticScraper.create(SERVER_LISTENING + "/Aeroperú_destinations.html")
+    sjs.StaticScraper.create(SERVER_LISTENING + "/Aeroperú_destinations")
       .scrape(scrapers.table)
       .then(function (data) {
         var validDefaultSchema = validateDefaultSchema(data);

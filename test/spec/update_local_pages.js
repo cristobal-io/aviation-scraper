@@ -21,7 +21,7 @@ for (var i = 0; i < airlineFixtures.length; i += 1) {
 }
 
 for (var j = 0; j < airportFixtures.length; j += 1) {
-  file_url.push(airportFixtures[j].name);
+  file_url.push(airportFixtures[j].url);
 }
 
 var download_file_httpsGet = function (file_url, callback) {
@@ -29,7 +29,7 @@ var download_file_httpsGet = function (file_url, callback) {
     file_url = BASE_URL + file_url;
   }
 
-  var file_name = decodeURI(url.parse(file_url).pathname.split("/").pop() + ".html");
+  var file_name = decodeURI(url.parse(file_url).pathname.split("/").pop());
 
   file_name = file_name.split(":").pop();
   console.log("filename: " + file_name); //eslint-disable-line no-console
