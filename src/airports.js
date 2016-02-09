@@ -77,6 +77,7 @@ function getData(airportLink, callback) {
     })
     .scrape(scrapers["airports"])
     .then(function (airportData) {
+      airportData.url = url;
       callback(null, airportData);
     });
 }

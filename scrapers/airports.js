@@ -3,9 +3,7 @@
 module.exports = function ($) {
   var airportData = {
     "coordinates": {},
-    "runway": {
-      "length": {}
-    }
+    "runway": {}
   };
 
   airportData.iata = $(".vcard").find("[title='International Air Transport Association airport code']").next(".nickname").text();
@@ -17,15 +15,34 @@ module.exports = function ($) {
     // console.log($(this).text());
   });
 
-  var $headers;
-  
-  $($(".vcard tr").find("table")[0]).find("tr").map(function () {
-    
-    $headers = $(this).find("th").map(function () {
+  var $headers = [],
+    reduction = 0, j;
 
-    });
-    // console.log($(this).text());
-  })
+  $($(".vcard tr").find("table")[0]).find("th").map(function () {
+    if ($(this).attr("colspan")) {
+      reduction += 1;
+    }
+    $headers.push($(this).text());
+  });
+
+  var $content = [];
+
+  $($(".vcard tr").find("table")[0]).find("td").map(function () {
+    $content.push($(this).text());
+  });
+
+  var runwayContent = {}, runway = [];
+
+  for (j = 0; j < $content.length; j+=$headers.length - reduction) {
+    runwayContent = {};
+    runwayContent[$headers[0]] = $content[j + 0];
+    runwayContent[$headers[3]] = $content[j + 1];
+    runwayContent[$headers[4]] = $content[j + 2];
+    runwayContent[$headers[2]] = $content[j + 3];
+
+    runway.push(runwayContent);
+  }
+  airportData.runway = runway;
 
   return airportData;
 };

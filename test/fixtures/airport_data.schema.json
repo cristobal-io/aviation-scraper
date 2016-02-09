@@ -1,64 +1,70 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "/",
   "type": "array",
   "items": {
+    "id": "9",
     "type": "object",
     "properties": {
-      "iata": {
-        "type": "string"
-      },
-      "icao": {
-        "type": "string"
-      },
       "coordinates": {
+        "id": "coordinates",
         "type": "object",
-        "required":[
-        "latitude",
-        "longitude"
-        ],
         "properties": {
           "latitude": {
+            "id": "latitude",
             "type": "string"
           },
           "longitude": {
+            "id": "longitude",
             "type": "string"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ]
+      },
+      "runway": {
+        "id": "runway",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "id": "0",
+          "type": "object",
+          "properties": {
+            "Direction": {
+              "id": "Direction",
+              "type": "string"
+            },
+            "m": {
+              "id": "m",
+              "type": "string"
+            },
+            "ft": {
+              "id": "ft",
+              "type": "string"
+            },
+            "Surface": {
+              "id": "Surface",
+              "type": "string"
+            }
           }
         }
       },
-      "runway": {
-        "type": "object",
-        "required":[
-        "direction",
-        "length",
-        "surface"
-        ],
-        "properties": {
-          "direction": {
-            "type": "string"
-          },
-          "length": {
-            "type": "object",
-            "minproperties": 1,
-            "properties": {
-              "ft": {
-                "type": "integer"
-              },
-              "m": {
-                "type": "integer"
-              }
-            }
-          },
-          "surface": {
-            "type": "string"
-          }
-        }
+      "iata": {
+        "id": "iata",
+        "type": "string"
+      },
+      "icao": {
+        "id": "icao",
+        "type": "string"
       }
     },
     "required": [
-      "iata",
-      "icao",
       "coordinates",
-      "runway"
+      "runway",
+      "iata",
+      "icao"
     ]
   },
   "minItems": 1
