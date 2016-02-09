@@ -41,7 +41,6 @@ function getAirports(airlines, fileName) {
     }
   });
   airports = cleanDuplicates(airports);
-  // airports = _.orderBy(airports, "name");
   // Bermi I've added this "if" so if no filename is passed, doesn't cause
   // problems, I guess that is not the best way of doing it and I should
   // rewrite the getAirports function with a callback.
@@ -67,7 +66,7 @@ function getData(airportLink, callback) {
   BASE_URL = airportLink.base_url || BASE_URL;
   var url = BASE_URL + airportLink.url;
 
-  // console.log("Getting data for %s from %s", airportLink.name, url);
+  debug("Getting data for %s from %s", airportLink.name, url);
   scraperjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {

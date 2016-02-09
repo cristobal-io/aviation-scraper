@@ -16,7 +16,7 @@ var _ = require("lodash");
 
 var airlines = require("./fixtures/airlines.json");
 
-describe.only("airports.js\n", function () {
+describe("airports.js\n", function () {
   describe("getAirports", function () {
 
     it("should return only airports", function () {
@@ -67,7 +67,7 @@ describe.only("airports.js\n", function () {
 
   });
 
-  describe("airports.js", function () {
+  describe("getAirportData", function () {
 
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);

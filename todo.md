@@ -11,13 +11,7 @@
 
 # Engineering Tasks
 
-* Download all the airports, they have to include:
-  + ICAO
-  + IATA
-  + RWY 36/18
-  + RWY length.
-  + COORD
-  + freq if available?
+* Save all the airports in individual files.
 - Downland all the destinations
   + make all the scrapers meet the default schema. (only 13 errors now)
 
