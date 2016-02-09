@@ -77,6 +77,8 @@ function getData(airportLink, callback) {
     .scrape(scrapers["airports"])
     .then(function (airportData) {
       airportData.url = url;
+      // bermi, shoul I add a call to writeJson 
+      // so I save each airport into a file?
       callback(null, airportData);
     });
 }
