@@ -25,9 +25,6 @@
 - save airports name and links from files into data folder
   + we can use fs.readdir to get the names and then require them.
   + ¿How can we combine into one var all the file content of routes?
-- scrape icao and iata codes of airports
-- scrape coordinates
-- scrape rwy number, lenght and type.
 - freq?
 
 # TODO
