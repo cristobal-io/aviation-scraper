@@ -72,7 +72,7 @@ describe.only("airports.js\n", function () {
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
 
-      var airportDataSchema = require("./fixtures/airport_data.schema.json");
+      var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
       var airportLink = require("./fixtures/airport_links.json");
 

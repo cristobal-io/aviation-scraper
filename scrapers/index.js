@@ -11,5 +11,5 @@ module.exports = {
   "table_toccolours": require("./table_toccolours.js"),
   "table_center": require("./table_center.js"),
   "table_tablesorter": require("./table_tablesorter.js"),
-  "airports": require("./airports.js")
+  "airports": require("./airports.scraper.js")
 };
