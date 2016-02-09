@@ -86,10 +86,10 @@ function getData(airportLink, callback) {
 function getAirportData(airportsLink, callback) {
 
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
+
     async.retry(5, function (callback) {
       getData(airportLink, callback);
     }, callback);
-
 
   }, function (err, airportsData) {
     callback(err, airportsData);
