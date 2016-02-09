@@ -81,6 +81,7 @@ var checkAndSaveRoute = function (err, airline, callback) {
 function getAllRoutes(airlines, callback) {
 
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
+    
     async.retry(5, function (callback) {
       getRoutes(airline, callback);
     }, callback);
