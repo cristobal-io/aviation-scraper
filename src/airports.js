@@ -79,7 +79,14 @@ function getData(airportLink, callback) {
       airportData.url = url;
       // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
-      callback(null, airportData);
+      var fileName = "./data/airport_" + airportData.icao+ ".json";
+
+      // this way of calling writeJson has sideefects when testing that are
+      // not taken care of, the files generated are not deleted.
+      writeJson(airportData, fileName, function() {
+        debug("file %s saved", fileName);
+        callback(null, airportData);
+      });
     });
 }
 
