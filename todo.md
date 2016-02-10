@@ -28,6 +28,7 @@
 
 # TODO
 
+- incorporate the package [commander](https://github.com/tj/commander.js)
 - require all the files inside data that have the "routes" prefix 
 - add comments to all the code to explain why I am doing everything.
 - Uncomment type of scraper test
