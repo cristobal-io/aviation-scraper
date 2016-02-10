@@ -79,7 +79,9 @@ function getData(airportLink, callback) {
       airportData.url = url;
       // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
-      var fileName = "./data/airport_" + airportData.iata + ".json";
+      var decodedUrl = decodeURI(airportData.url);
+      var name = (decodedUrl).match(/\/wiki\/(\w*[A-zÀ-ú]*)/)[1];
+      var fileName = "./data/airport_" + name + ".json";
 
       // this way of calling writeJson has sideefects when testing that are
       // not taken care of, the files generated are not deleted.
