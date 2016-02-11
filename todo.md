@@ -16,6 +16,7 @@
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
+
 * fixing undefined link for airport.
 * test airports_iata (not tested) I should have done it TDD like airports.js
 - check the integrity AJV of the file saves, there are some empty values that give errors. I can add that at the scraper for the airports_iata.
@@ -49,6 +50,7 @@
 
 
 # TODO
+
 - unify get gefilename methods. 
 - incorporate the package [commander](https://github.com/tj/commander.js)
 - require all the files inside data that have the "routes" prefix 

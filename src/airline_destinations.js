@@ -31,7 +31,12 @@ function getAllLinks(options, callback) {
       callback(null, destinations);
     });
 }
-
+/**
+ * Cleaning object with duplicated values
+ * @param  {object} objectWithDuplicates is the object we need to clean
+ * @param  {string} groupKey             defines the key we want to compare(optional)
+ * @return {object}                      The object cleaned
+ */
 function cleanDuplicates(objectWithDuplicates, groupKey) {
   groupKey = groupKey || Object.keys(objectWithDuplicates[0])[0];
 
