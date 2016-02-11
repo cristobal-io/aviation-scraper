@@ -17,7 +17,7 @@
     "no-plusplus": [2],
     "strict": [2, "global"],
     "no-console": [1],
-    "no-warning-comments": [1, { "terms": ["todo", "fixme", "bermi"]}],
+    "no-warning-comments": [1, { "terms": ["todo", "fixme", "bermi"], "location": "anywhere"}],
     "no-debugger": [1],
     "no-inner-declarations": [2, "both"]
   },
