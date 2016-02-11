@@ -16,7 +16,7 @@
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
-- test airports_iata (not tested) I should have done it TDD like airports.js
+* test airports_iata (not tested) I should have done it TDD like airports.js
 - check the integrity AJV of the file saves, there are some empty values that give errors. I can add that at the scraper for the airports_iata.
 - give alternative to save the airport data with iata or icao code, some of them doesn't have available one of those indicators. Maybe we should save it with the name that is accesible and all of them have it.
 - check that all the IATA airports are saved into individual files.
