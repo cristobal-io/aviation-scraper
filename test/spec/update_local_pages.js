@@ -33,9 +33,11 @@ var download_file_httpsGet = function (file_url, callback) {
   if (file_url.indexOf("https") === -1) {
     file_url = BASE_URL + file_url;
   }
-
   var file_name = decodeURI(url.parse(file_url).pathname.split("/").pop());
 
+// bermi if I don't add the following line, I am having issues with the tests
+// I should be able to use naming like "Category:Lists_of_airline_destinations"
+  file_name = file_name.split(":").pop();
   console.log("filename: " + file_name); //eslint-disable-line no-console
   var file = fs.createWriteStream(DOWNLOAD_DIR + file_name);
 
