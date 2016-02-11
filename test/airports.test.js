@@ -7,6 +7,7 @@ var source = require("../src/index.js");
 var getAirports = source.getAirports;
 var writeJson = source.writeJson;
 var getAirportsData = source.getAirportsData;
+var getData = source.getData;
 
 var fs = require("fs");
 var Ajv = require("ajv");
@@ -15,12 +16,13 @@ var ajv = Ajv();
 var _ = require("lodash");
 
 var airlines = require("./fixtures/airlines.json");
+var airportsLink = require("./fixtures/airport_links.json");
 
 describe("airports.js\n", function () {
   describe("getAirports", function () {
 
     it("should return only airports", function () {
-      var airportsSchema = require("./fixtures/airport_schema.json");
+      var airportsSchema = require("../schema/airport_links.schema.json");
       var airports = getAirports(airlines);
       var validateAirportsSchema = ajv.compile(airportsSchema);
       var validAirports = validateAirportsSchema(airports);
@@ -40,6 +42,16 @@ describe("airports.js\n", function () {
       done();
     });
 
+
+  });
+
+  describe("getData", function() {
+
+    it("Should save the files with the proper name", function() {
+      getData(airportsLink[0], function(err, airportData) {
+        expect(airportData.fileName, airportData.errorMessage).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
+      });
+    });
 
   });
 
@@ -74,11 +86,10 @@ describe("airports.js\n", function () {
 
       var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
-      var airportLink = require("./fixtures/airport_links.json");
 
-      getAirportsData(airportLink, function(err, airportsData) {
+      getAirportsData(airportsLink, function(err, airportsData) {
         var validAirportData = validateAirportDataSchema(airportsData);
-        
+
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
         done();
       });

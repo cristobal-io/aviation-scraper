@@ -19,14 +19,16 @@ var writeJson = function (airlines, fileName, callback) {
   fs.writeFile(fileName,
     JSON.stringify(airlines, null, 2),
     function (err) {
-      if (err) {
-        throw err;
-      }
-      callback();
+      // if (err) {
+      //   throw err;
+      // }
+      callback(err);
     }
   );
 };
 
+// this method has the purpose to be used with the returned 
+// value with all the destinations of all the companies.
 function getAirports(airlines, fileName) {
   var airports = [];
 
@@ -52,7 +54,8 @@ function getAirports(airlines, fileName) {
   // And when using the callback, apply the writeJson function
   // 
   if (fileName) {
-    writeJson(airports, fileName, function () {
+    writeJson(airports, fileName, function (err) {
+      if (err) {console.log(err);}
       debug("saved %s", fileName);
     });
   }
@@ -79,17 +82,44 @@ function getData(airportLink, callback) {
       airportData.url = url;
       // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
-      var decodedUrl = decodeURI(airportData.url);
-      var name = decodedUrl.split("/").pop();
-      var fileName = "./data/airport_" + name + ".json";
+      // var decodedUrl = decodeURI(airportData.url);
+      // var name = decodedUrl.split("/").pop();
+      // var fileName = "./data/airport_" + name + ".json";
+      getAirportFileName(airportData);
 
       // this way of calling writeJson has sideefects when testing that are
       // not taken care of, the files generated are not deleted.
-      writeJson(airportData, fileName, function() {
-        debug("file %s saved", fileName);
-        callback(null, airportData);
+      writeJson(airportData, airportData.fileName, function(err) {
+        debug("file %s saved", airportData.fileName);
+        callback(err, airportData);
       });
     });
+}
+var airportsDataSaved = 0, airportsDataErrors = 0;
+var Ajv = require("ajv");
+var ajv = Ajv();
+
+function getAirportFileName(airportData) {
+  var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
+  var validateAirportData = ajv.compile(defaultDataAirportSchema);
+  var validDefaultRoute = validateAirportData([airportData]), decodedUrl, name;
+
+  if (validDefaultRoute) {
+    decodedUrl = decodeURI(airportData.url);
+    name = decodedUrl.split("/").pop();
+    airportData.fileName = "./data/airport_" + name + ".json";
+
+    airportsDataSaved += 1;
+  } else {
+    debug("Airline %s got the error %s", airportData.name,
+      _.get(validateAirportData, "errors[0].message"));
+    airportsDataErrors += 1;
+    airportData.fileName = "./data/error_" + airportData.name + ".json";
+    airportData.errorMessage = "airport " + airportData.name + " got the error " +
+      _.get(validateAirportData, "errors[0].message");
+  }
+  debug("%n airports Saved \n %n airports with errors.", airportsDataSaved, airportsDataErrors);
+  return airportData;
 }
 
 function getAirportsData(airportsLink, callback) {
@@ -97,7 +127,7 @@ function getAirportsData(airportsLink, callback) {
   // so I decided to switch the method to each. More than 6.500 airports
   // todo: fix the test since the callback doesn't return data, only err.
   // both methods give the same rror "process out of memory" 
-  // with around 5885 airports saved
+  // with around (5885 mapLimit) (5850 eachLimit) airports saved
 
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
 
@@ -114,3 +144,5 @@ function getAirportsData(airportsLink, callback) {
 module.exports.getAirports = getAirports;
 module.exports.writeJson = writeJson;
 module.exports.getAirportsData = getAirportsData;
+module.exports.getData = getData;
+
