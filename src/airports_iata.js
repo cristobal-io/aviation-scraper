@@ -18,13 +18,12 @@ function getAirportsByIata(iataLink, callback) {
   scraperjs.StaticScraper.create(iataLink)
     .scrape(scrapers["airportsIata"])
     .then(function (airports) {
-      console.log(JSON.stringify(airports, null, 2)); // eslint-disable-line no-console
       callback(null, airports);
     });
 }
 
-function getAllAirportsByIata(options, callback) {
-  iataList = options.iataList || iataList;
+function getAllAirportsByIata(list, callback) {
+  iataList = list || iataList;
   async.mapLimit(iataList, 10, function (iataLink, callback) {
 
     async.retry(5, function (callback) {
