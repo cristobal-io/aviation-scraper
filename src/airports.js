@@ -80,7 +80,7 @@ function getData(airportLink, callback) {
       // Bermi, should I add a call to writeJson 
       // so I save each airport into a file?
       var decodedUrl = decodeURI(airportData.url);
-      var name = (decodedUrl).match(/\/wiki\/(\w*[A-zÀ-ú]*)/)[1];
+      var name = decodedUrl.split("/").pop();
       var fileName = "./data/airport_" + name + ".json";
 
       // this way of calling writeJson has sideefects when testing that are
