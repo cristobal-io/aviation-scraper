@@ -8,19 +8,19 @@ var debug = require("debug")("airlineData:cli");
  * airline destinations 
  */
 
-var getAllDestinations = source.getAllDestinations,
-  getScraperTypeForAll = source.getScraperTypeForAll,
-  getAllRoutes = source.getAllRoutes,
+var writeJson = source.writeJson,
+  // getAllDestinations = source.getAllDestinations,
+  // getScraperTypeForAll = source.getScraperTypeForAll,
+  // getAllRoutes = source.getAllRoutes,
   // getAirports = source.getAirports,
-  writeJson = source.writeJson,
   getAllAirportsByIata = source.getAllAirportsByIata,
   getAirportsData = source.getAirportsData;
 
 
-var options = {
-  "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
-  "destinationsFile": "./data/destination_pages.json"
-};
+// var options = {
+//   "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
+//   "destinationsFile": "./data/destination_pages.json"
+// };
 
 // getAllDestinations(options, function (err, airlines) {
 //   if (err) {
