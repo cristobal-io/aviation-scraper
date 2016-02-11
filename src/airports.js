@@ -93,6 +93,11 @@ function getData(airportLink, callback) {
 }
 
 function getAirportsData(airportsLink, callback) {
+  // Bermi, I was having problem with "process out of memory"
+  // so I decided to switch the method to each. More than 6.500 airports
+  // todo: fix the test since the callback doesn't return data, only err.
+  // both methods give the same rror "process out of memory" 
+  // with around 5885 airports saved
 
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
 
