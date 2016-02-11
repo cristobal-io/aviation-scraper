@@ -22,55 +22,55 @@ var options = {
   "destinationsFile": "./data/destination_pages.json"
 };
 
-getAllDestinations(options, function (err, airlines) {
-  if (err) {
-    throw err;
-  }
+// getAllDestinations(options, function (err, airlines) {
+//   if (err) {
+//     throw err;
+//   }
 
-  debug("Destinations File Created");
+//   debug("Destinations File Created");
 
-  getScraperTypeForAll({
-    "airlines": airlines
-  }, function (err, airlineScrapers) {
-    if (err) {
-      throw err;
-    }
+//   getScraperTypeForAll({
+//     "airlines": airlines
+//   }, function (err, airlineScrapers) {
+//     if (err) {
+//       throw err;
+//     }
 
-    debug("scrapers finished");
+//     debug("scrapers finished");
 
-    getAllRoutes(airlineScrapers, function (err, airlines) {
-      if (err) {
-        throw err;
-      }
-      debug("Routes Files Generated");
+//     getAllRoutes(airlineScrapers, function (err, airlines) {
+//       if (err) {
+//         throw err;
+//       }
+//       debug("Routes Files Generated");
 
-      /**
-       * getAirports links and data
-       */
+//       /**
+//        * getAirports links and data
+//        */
 
-      getAllAirportsByIata("", function (err, airportsData) {
-        writeJson(airportsData, "./data/airports_list.json", function () {
-          debug("airports_list saved");
-        });
-        getAirportsData(airportsData, function () {
-          debug("Saved all the data airports");
-        });
-      });
+//       getAllAirportsByIata("", function (err, airportsData) {
+//         writeJson(airportsData, "./data/airports_list.json", function () {
+//           debug("airports_list saved");
+//         });
+//         getAirportsData(airportsData, function () {
+//           debug("Saved all the data airports");
+//         });
+//       });
 
-      debug(airlines);
-      // writeJson(airlines, "data/airlines_destinations.json", function () {
-      //   getAirports(airlines, "data/airports.json");
-      // });
-    });
+//       debug(airlines);
+//       // writeJson(airlines, "data/airlines_destinations.json", function () {
+//       //   getAirports(airlines, "data/airports.json");
+//       // });
+//     });
 
-  });
-});
-
-// getAllAirportsByIata("", function (err, airportsData) {
-//   writeJson(airportsData, "./data/airports_list.json", function () {
-//     debug("airports_list saved");
-//   });
-//   getAirportsData(airportsData, function () {
-//     debug("Saved all the data airports");
 //   });
 // });
+
+getAllAirportsByIata("", function (err, airportsData) {
+  writeJson(airportsData, "./data/airports_list.json", function () {
+    debug("airports_list saved");
+  });
+  getAirportsData(airportsData, function () {
+    debug("Saved all the data airports");
+  });
+});

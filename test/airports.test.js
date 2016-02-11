@@ -8,6 +8,7 @@ var getAirports = source.getAirports;
 var writeJson = source.writeJson;
 var getAirportsData = source.getAirportsData;
 var getData = source.getData;
+var getAirportFileName = source.getAirportFileName;
 
 var fs = require("fs");
 var Ajv = require("ajv");
@@ -46,11 +47,30 @@ describe("airports.js\n", function () {
   });
 
   describe("getData", function() {
+    it("Should return valid schema data", function() {
+      var airportsSchema = require("../schema/airport_data.schema.json");
+      var validateAirportsDataSchema = ajv.compile(airportsSchema);
+
+      getData(airportsLink[0], function(err, airportData) {
+        var validAirportsData = validateAirportsDataSchema([airportData]);
+
+        expect(validAirportsData, _.get(validateAirportsDataSchema, "errors[0].message")).to.be.true;
+      });
+    });
+
+  });
+  describe("getAirportFileName", function() {
 
     it("Should save the files with the proper name", function() {
       getData(airportsLink[0], function(err, airportData) {
         expect(airportData.fileName, airportData.errorMessage).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
       });
+    });
+
+    it("Should save the files with errors with a different message", function () {
+      var badAirportName = getAirportFileName({"url":"http://localhost:3000/bad_filename"});
+
+      expect(badAirportName.fileName).to.eql("./data/airport_error_bad_filename.json");
     });
 
   });
