@@ -55,7 +55,9 @@ function getAirports(airlines, fileName) {
   // 
   if (fileName) {
     writeJson(airports, fileName, function (err) {
-      if (err) {console.log(err);}
+      if (err) {
+        console.log(err);
+      }
       debug("saved %s", fileName);
     });
   }
@@ -89,20 +91,22 @@ function getData(airportLink, callback) {
 
       // this way of calling writeJson has sideefects when testing that are
       // not taken care of, the files generated are not deleted.
-      writeJson(airportData, airportData.fileName, function(err) {
+      writeJson(airportData, airportData.fileName, function (err) {
         debug("file %s saved", airportData.fileName);
         callback(err, airportData);
       });
     });
 }
-var airportsDataSaved = 0, airportsDataErrors = 0;
+var airportsDataSaved = 0,
+  airportsDataErrors = 0;
 var Ajv = require("ajv");
 var ajv = Ajv();
 
 function getAirportFileName(airportData) {
   var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
   var validateAirportData = ajv.compile(defaultDataAirportSchema);
-  var validDefaultRoute = validateAirportData([airportData]), decodedUrl, name;
+  var validDefaultRoute = validateAirportData([airportData]),
+    decodedUrl, name;
 
   if (validDefaultRoute) {
     decodedUrl = decodeURI(airportData.url);
@@ -111,14 +115,17 @@ function getAirportFileName(airportData) {
 
     airportsDataSaved += 1;
   } else {
-    debug("Airline %s got the error %s", airportData.name,
+    decodedUrl = decodeURI(airportData.url);
+    name = decodedUrl.split("/").pop();
+    airportData.fileName = "./data/airport_error_" + name + ".json";
+
+    debug(chalk.red("Airline %s got the error %s"), airportData.fileName,
       _.get(validateAirportData, "errors[0].message"));
     airportsDataErrors += 1;
-    airportData.fileName = "./data/error_" + airportData.name + ".json";
-    airportData.errorMessage = "airport " + airportData.name + " got the error " +
+    airportData.errorMessage = "airport " + airportData.fileName + " got the error " +
       _.get(validateAirportData, "errors[0].message");
   }
-  debug("%n airports Saved \n %n airports with errors.", airportsDataSaved, airportsDataErrors);
+  debug(chalk.green("%s airports Saved &") + chalk.red(" %s airports with errors."), airportsDataSaved, airportsDataErrors);
   return airportData;
 }
 
@@ -145,4 +152,3 @@ module.exports.getAirports = getAirports;
 module.exports.writeJson = writeJson;
 module.exports.getAirportsData = getAirportsData;
 module.exports.getData = getData;
-
