@@ -100,6 +100,7 @@ function getAllRoutes(airlines, callback) {
 
 module.exports.getRoutes = getRoutes;
 module.exports.getAllRoutes = getAllRoutes;
+module.exports.getFilename = getFilename;
 
 // getAllRoutes([{
 //   "name": "Air Chathams",

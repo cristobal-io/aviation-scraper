@@ -6,9 +6,10 @@ var expect = chai.expect;
 var _ = require("lodash");
 var async = require("async");
 
-var airlinesIndex = require("../src/index.js");
-var getRoutes = airlinesIndex.getRoutes;
-var getAllRoutes = airlinesIndex.getAllRoutes;
+var source = require("../src/index.js");
+var getRoutes = source.getRoutes;
+var getAllRoutes = source.getAllRoutes;
+var getFilename = source.getFilename;
 
 var Ajv = require("ajv");
 var ajv = Ajv();
@@ -27,6 +28,16 @@ describe("Airline_routes.js: \n", function () {
     validateDefaultSchema = ajv.compile(defaultSchema);
     validateTableSchema = ajv.compile(defaultSchema);
     done();
+  });
+
+  describe("getFilename", function () {
+    it("Should save the files with errors with a different message", function () {
+      var badRoute = getFilename({
+        "name": "bad_filename"
+      });
+
+      expect(badRoute.fileName).to.eql("./data/error_bad_filename.json");
+    });
   });
 
   describe("getRoutes function", function () {
@@ -74,6 +85,9 @@ describe("Airline_routes.js: \n", function () {
         done();
       });
     });
+    afterEach(function () {
+      airportsResult.errors = 0;
+    });
 
     it("Should return and save the file", function (done) {
       async.each(airportsResult, function (airport, callback) {
@@ -81,7 +95,7 @@ describe("Airline_routes.js: \n", function () {
         expect(_.has(airport, "routes")).to.be.true;
         fs.unlink(airport.fileName, function (err) {
           if (err) {
-            console.log(err);//eslint-disable-line no-console
+            console.log(err); //eslint-disable-line no-console
           }
           callback();
         });
@@ -91,11 +105,11 @@ describe("Airline_routes.js: \n", function () {
     it("should have 0 errors returning from getAllRoutes", function () {
       var errorMessages = [];
 
-      _.forEach(airportsResult,function (airport) {
+      _.forEach(airportsResult, function (airport) {
         var errorMessage = _.get(airport, "errorMessage");
-        
-        if (errorMessage){
-          console.log(errorMessage);//eslint-disable-line no-console
+
+        if (errorMessage) {
+          console.log(errorMessage); //eslint-disable-line no-console
           errorMessages.push(errorMessage);
         }
       });
