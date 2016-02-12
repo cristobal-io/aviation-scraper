@@ -68,8 +68,8 @@ function getAirports(airlines, fileName) {
 }
 
 function getData(airportLink, callback) {
-  BASE_URL = airportLink.base_url || BASE_URL;
-  var url = BASE_URL + airportLink.url;
+  var base = airportLink.base_url || BASE_URL;
+  var url = base + airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
   scraperjs.StaticScraper.create(url)
