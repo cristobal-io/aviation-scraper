@@ -67,6 +67,11 @@ function getAirports(airlines, fileName) {
   return airports;
 }
 
+function executeGetData(airportLink, callback) {
+  // need to use child_process.exec(command, /*, options, callback*/);
+  // json.parse
+}
+
 function getData(airportLink, callback) {
   var base = airportLink.base_url || BASE_URL;
   var url = base + airportLink.url;
@@ -89,7 +94,7 @@ function getData(airportLink, callback) {
       // var fileName = "./data/airport_" + name + ".json";
       getAirportFileName(airportData);
 
-      // this way of calling writeJson has side effects when testing that are
+      // this way of calling writeJson has sideefects when testing that are
       // not taken care of, the files generated are not deleted.
       writeJson(airportData, airportData.fileName, function (err) {
         debug("file %s saved", airportData.fileName);

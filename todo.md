@@ -74,4 +74,15 @@
 
 # Next Features
 
+# Publish
+
+- incorporate badges when publish
+- contribute guide
+- commands 
+
+# Naming
+
+- airlinedata.io
+- airdata.io
+- aviationdata.io
 
