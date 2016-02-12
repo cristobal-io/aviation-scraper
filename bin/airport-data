@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+var source = require("../src/");
+var getData = source.getData;
+
+
+var args = {
+  "name": "Amsterdam Airport Schiphol",
+  "url": "/wiki/Amsterdam_Airport_Schiphol"
+};
+
+getData(args, function(err, data) {
+  if (err) {throw err;}
+  console.log(data);
+});
