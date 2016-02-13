@@ -16,10 +16,15 @@ var ajv = Ajv();
 
 var _ = require("lodash");
 
-var airlines = require("./fixtures/airlines.json");
-var airportsLink = require("./fixtures/airport_links.json");
 
 describe("airports.js\n", function () {
+  var airlines, airportsLink, airportsSchema;
+  before(function () {
+    airlines = require("./fixtures/airlines.json");
+    airportsLink = require("./fixtures/airport_links.json");
+    airportsSchema = require("../schema/airport_data.schema.json");
+
+  });
   describe("getAirports", function () {
 
     it("should return only airports", function () {
@@ -46,12 +51,25 @@ describe("airports.js\n", function () {
 
   });
 
-  describe("getData", function() {
-    it("Should return valid schema data", function() {
-      var airportsSchema = require("../schema/airport_data.schema.json");
+  describe("getData", function () {
+    it("Should return valid schema data", function () {
+      // bermi I can see that I have side effects that are modifiing the object
+      // but it seems more like it has something to see with inheritance. 
+      // I thought that after asigning an object to a new 
+      // I was doing the following:
+      // var airportLocalLink = airportLink[0]
+      // airportLocalLink.url = airportLocalLink.base_url + airportLocalLink.url;
+      // So this was adding the base_url each time the test was passing. 
+      // But the most interesting thing I got was that it was modifiend each time 
+      // the airportsLink[0]. 
+      // My guess is that it has something to be with require, because a normal 
+      // object wouldn't have that behaviour. is it?
       var validateAirportsDataSchema = ajv.compile(airportsSchema);
-
-      getData(airportsLink[0], function(err, airportData) {
+      var airportLocalLink = {
+        name: 'Amsterdam Airport Schiphol',
+        url: 'http://localhost:3000/Amsterdam_Airport_Schiphol'
+      }
+      getData(airportLocalLink, function (err, airportData) {
         var validAirportsData = validateAirportsDataSchema([airportData]);
 
         expect(validAirportsData, _.get(validateAirportsDataSchema, "errors[0].message")).to.be.true;
@@ -59,16 +77,18 @@ describe("airports.js\n", function () {
     });
 
   });
-  describe("getAirportFileName", function() {
+  describe("getAirportFileName", function () {
 
-    it("Should save the files with the proper name", function() {
-      getData(airportsLink[0], function(err, airportData) {
-        expect(airportData.fileName, airportData.errorMessage).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
-      });
+    it("Should save the files with the proper name", function () {
+      var airportData = require("./fixtures/airport_data.json");
+      var godAirportName = getAirportFileName(airportData[0]);
+      expect(godAirportName.fileName).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
     });
 
     it("Should save the files with errors with a different message", function () {
-      var badAirportName = getAirportFileName({"url":"http://localhost:3000/bad_filename"});
+      var badAirportName = getAirportFileName({
+        "url": "http://localhost:3000/bad_filename"
+      });
 
       expect(badAirportName.fileName).to.eql("./data/airport_error_bad_filename.json");
     });
@@ -103,11 +123,12 @@ describe("airports.js\n", function () {
 
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
+      var airportsLocalLinks = airportsLink;
 
       var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
 
-      getAirportsData(airportsLink, function(err, airportsData) {
+      getAirportsData(airportsLocalLinks, function (err, airportsData) {
         var validAirportData = validateAirportDataSchema(airportsData);
 
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;

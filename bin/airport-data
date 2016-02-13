@@ -4,26 +4,16 @@
 var source = require("../src/");
 var getData = source.getData;
 
-// process.argv.forEach((val, index, array) => {
-//   console.log(`${index}: ${val}`);
-// });
-// var name = JSON.parse(process.argv[2]), JSON.parse(url = process.argv[3]);
 
 var args = {
   "name": process.argv[2],
-  "url": process.argv[3]};
-
-// if (process.argv[4] === "http://localhost:3000") {
-//   args["base_url"]: process.argv[4]
-
-// }
-
-// console.log(args);
+  "url": process.argv[3]
+};
 
 
 getData(args, function (err, data) {
   if (err) {
     throw err;
   }
-  console.log(JSON.stringify(data, null, 2));
+  // console.log(JSON.stringify(data,null, 2));
 });

@@ -1,32 +1,49 @@
-[{
-  "iata":"abj",
-  "icao": "diap",
-  "coordinates":{
-    "latitude": "5º15'41.1\"N",
-    "longitude": "003º55'32.8\"W"
+[
+{
+  "coordinates": {
+    "latitude": "52°18′29″N",
+    "longitude": "004°45′51″E"
   },
-  "runway": {
-    "direction": "03/21",
-    "length":{
-      "ft": 9842,
-      "m": 3000
+  "runway": [
+    {
+      "Direction": "18R/36L 'Polderbaan'",
+      "m": "3,800",
+      "ft": "12,467",
+      "Surface": "Asphalt"
     },
-    "surface": "macadam"
-  }
-}, {
-  "iata":"abj",
-  "icao": "diap",
-  "coordinates":{
-    "latitude": "5º15'41.1\"N",
-    "longitude": "003º55'32.8\"W"
-  },
-  "runway": {
-    "direction": "03/21",
-    "length":{
-      "ft": 9842,
-      "m": 3000
+    {
+      "Direction": "06/24 'Kaagbaan'",
+      "m": "3,500",
+      "ft": "11,483",
+      "Surface": "Asphalt"
     },
-    "surface": "macadam"
-  }
-}
-]
+    {
+      "Direction": "09/27 'Buitenveldertbaan'",
+      "m": "3,450",
+      "ft": "11,319",
+      "Surface": "Asphalt"
+    },
+    {
+      "Direction": "18L/36R 'Aalsmeerbaan'",
+      "m": "3,400",
+      "ft": "11,155",
+      "Surface": "Asphalt"
+    },
+    {
+      "Direction": "18C/36C 'Zwanenburgbaan'",
+      "m": "3,300",
+      "ft": "10,827",
+      "Surface": "Asphalt"
+    },
+    {
+      "Direction": "04/22 'Oostbaan'",
+      "m": "2,014",
+      "ft": "6,608",
+      "Surface": "Asphalt"
+    }
+  ],
+  "iata": "AMS",
+  "icao": "EHAM",
+  "url": "http://localhost:3000/Amsterdam_Airport_Schiphol",
+  "fileName": "./data/airport_Amsterdam_Airport_Schiphol.json"
+}]

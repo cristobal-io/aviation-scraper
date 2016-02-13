@@ -1,12 +1,12 @@
 "use strict";
+// export DEBUG=airlineData*
+
 // var executeGetData = require("../../src/airports.js").executeGetData;
 var child_process = require("child_process");
-var BASE_URL = "https://en.wikipedia.org";
-debugger;
+// var BASE_URL = "https://en.wikipedia.org";
 
 function executeGetData(airportLink, callback) {
-  var base = airportLink.base_url || BASE_URL;
-  var url = JSON.stringify(base + airportLink.url);
+  var url = JSON.stringify(airportLink.url);
   var name = JSON.stringify(airportLink.name);
   // var url = JSON.stringify(airportLink.url);
   // if (airportLink.base_url) {
@@ -15,8 +15,7 @@ function executeGetData(airportLink, callback) {
 
 
 
-  child_process.exec(["bin/airport-data " + name + " " + url],
-
+  child_process.exec(["DEBUG=airlineData* bin/airport-data " + name + " " + url],
     function (err, stdout) {
       if (err) {
         console.log("child processes failed with error code: " +
@@ -30,8 +29,7 @@ function executeGetData(airportLink, callback) {
 
 executeGetData({
   "name": "Amsterdam Airport Schiphol",
-  "base_url": "http://localhost:3000/",
-  "url": "Amsterdam_Airport_Schiphol"
+  "url": "/wiki/Amsterdam_Airport_Schiphol"
 }, function (data) {
   console.log(data.coordinates);
   console.log(typeof data);

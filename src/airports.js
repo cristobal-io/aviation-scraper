@@ -19,9 +19,6 @@ var writeJson = function (airlines, fileName, callback) {
   fs.writeFile(fileName,
     JSON.stringify(airlines, null, 2),
     function (err) {
-      // if (err) {
-      //   throw err;
-      // }
       callback(err);
     }
   );
@@ -73,24 +70,21 @@ function executeGetData(airportLink, callback) {
   var name = JSON.stringify(airportLink.name);
   var url = JSON.stringify(airportLink.url);
 
-
   child_process.exec(["bin/airport-data " + name + " " + url],
-
-    function (err, stdout) {
+    // {env: {"DEBUG":"airlineData*"}},
+    function (err, stdout, stderr) {
       if (err) {
         console.log("child processes failed with error code: " +
-          err.code);
+          err.code + err + "\n" + stderr);
       }
-      var result = JSON.parse(stdout);
-
-      callback(result);
+      callback(err, stdout);
     });
 }
 
 
 function getData(airportLink, callback) {
-  var base = airportLink.base_url || BASE_URL;
-  var url = base + airportLink.url;
+  // var base = airportLink.base_url || BASE_URL;
+  var url = airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
   scraperjs.StaticScraper.create(url)
@@ -103,11 +97,6 @@ function getData(airportLink, callback) {
     .scrape(scrapers["airports"])
     .then(function (airportData) {
       airportData.url = url;
-      // Bermi, should I add a call to writeJson 
-      // so I save each airport into a file?
-      // var decodedUrl = decodeURI(airportData.url);
-      // var name = decodedUrl.split("/").pop();
-      // var fileName = "./data/airport_" + name + ".json";
       getAirportFileName(airportData);
 
       // this way of calling writeJson has sideefects when testing that are
@@ -151,16 +140,16 @@ function getAirportFileName(airportData) {
 }
 
 function getAirportsData(airportsLink, callback) {
-  // Bermi, I was having problem with "process out of memory"
-  // so I decided to switch the method to each. More than 6.500 airports
-  // todo: fix the test since the callback doesn't return data, only err.
-  // both methods give the same rror "process out of memory" 
-  // with around (5885 mapLimit) (5850 eachLimit) airports saved
-
+  console.log( _.chunk(airportsLink, 10));
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
+    var base = airportLink.base_url || BASE_URL;
+    // airportLink.url = base + airportLink.url
 
     async.retry(5, function (callback) {
-      executeGetData(airportLink, callback);
+      executeGetData({
+        "name": airportLink.name,
+        "url": base + airportLink.url
+      }, callback);
     }, callback);
 
   }, function (err, airportsData) {
