@@ -70,20 +70,22 @@ var child_process = require("child_process");
 
 
 function executeGetData(airportLink, callback) {
+  var name = JSON.stringify(airportLink.name);
+  var url = JSON.stringify(airportLink.url);
 
-  child_process.exec("bin/airport-data", function (err, stdout) {
-    if (err) {
-      console.log("child processes failed with error code: " +
-        err.code);
-    }
-    console.log(stdout);
-    callback();
-  });
+
+  child_process.exec(["bin/airport-data " + name + " " + url],
+
+    function (err, stdout) {
+      if (err) {
+        console.log("child processes failed with error code: " +
+          err.code);
+      }
+      var result = JSON.parse(stdout);
+
+      callback(result);
+    });
 }
-module.exports.executeGetData = executeGetData;
-// executeGetData(null, function () {
-//   console.log("worked!");
-// });
 
 
 function getData(airportLink, callback) {
@@ -158,7 +160,7 @@ function getAirportsData(airportsLink, callback) {
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
 
     async.retry(5, function (callback) {
-      getData(airportLink, callback);
+      executeGetData(airportLink, callback);
     }, callback);
 
   }, function (err, airportsData) {

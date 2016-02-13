@@ -11,8 +11,12 @@ var getData = source.getData;
 
 var args = {
   "name": process.argv[2],
-  "url": process.argv[3]
-};
+  "url": process.argv[3]};
+
+// if (process.argv[4] === "http://localhost:3000") {
+//   args["base_url"]: process.argv[4]
+
+// }
 
 // console.log(args);
 
@@ -21,6 +25,5 @@ getData(args, function (err, data) {
   if (err) {
     throw err;
   }
-  console.log(typeof data);
   console.log(JSON.stringify(data, null, 2));
 });

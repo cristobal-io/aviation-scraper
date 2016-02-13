@@ -29,7 +29,7 @@ after(function () {
 
 });
 
-describe("Server is on \n", function () {
+describe.only("Server is on \n", function () {
 
   it("Confirm server & scraper are working with index.html", function () {
     sjs.StaticScraper.create(SERVER_LISTENING)
