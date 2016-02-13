@@ -139,8 +139,22 @@ function getAirportFileName(airportData) {
   return airportData;
 }
 
+function splitGetAirportsData(airportsLink, callback) {
+  var airportsLinkSplitted =  _.chunk(airportsLink, 10);
+
+  async.map(airportsLinkSplitted, function(airportLinks, callback) {
+
+    getAirportsData(airportLinks, function(err, airportsData) {
+      if (err) {console.log(err);}
+      callback(airportsData);
+    });
+
+  }, function(airportsData) {
+    callback(airportsData);
+  });
+}
+
 function getAirportsData(airportsLink, callback) {
-  console.log( _.chunk(airportsLink, 10));
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
     // airportLink.url = base + airportLink.url
