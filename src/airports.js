@@ -66,11 +66,25 @@ function getAirports(airlines, fileName) {
   // callback or returns something.
   return airports;
 }
+var child_process = require("child_process");
+
 
 function executeGetData(airportLink, callback) {
-  // need to use child_process.exec(command, /*, options, callback*/);
-  // json.parse
+
+  child_process.exec("bin/airport-data", function (err, stdout) {
+    if (err) {
+      console.log("child processes failed with error code: " +
+        err.code);
+    }
+    console.log(stdout);
+    callback();
+  });
 }
+module.exports.executeGetData = executeGetData;
+// executeGetData(null, function () {
+//   console.log("worked!");
+// });
+
 
 function getData(airportLink, callback) {
   var base = airportLink.base_url || BASE_URL;
@@ -152,6 +166,7 @@ function getAirportsData(airportsLink, callback) {
   });
 
 }
+
 
 module.exports.getAirports = getAirports;
 module.exports.writeJson = writeJson;

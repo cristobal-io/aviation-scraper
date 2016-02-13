@@ -79,6 +79,10 @@
 - incorporate badges when publish
 - contribute guide
 - commands 
+- instructions "how to run"
+- how to test
+- travis
+- 
 
 # Naming
 
