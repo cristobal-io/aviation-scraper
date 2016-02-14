@@ -140,11 +140,11 @@ function getAirportFileName(airportData) {
 }
 
 function splitGetAirportsData(airportsLink, callback) {
-  var airportsLinkSplitted =  _.chunk(airportsLink, 10);
+  var airportsLinkSplitted =  _.chunk(airportsLink, 5);
 
-  async.map(airportsLinkSplitted, function(airportLinks, callback) {
+  async.mapLimit(airportsLinkSplitted, 2, function(airportLinks, callback) {
 
-    getAirportsData(airportLinks, function(err, airportsData) {
+    executeGetAirportsData(airportLinks, function(err, airportsData) {
       if (err) {console.log(err);}
       callback(airportsData);
     });
@@ -153,6 +153,18 @@ function splitGetAirportsData(airportsLink, callback) {
     callback(airportsData);
   });
 }
+function executeGetAirportsData(airportsLink, callback) {
+  var links = JSON.stringify(airportsLink);
+
+  child_process.exec(["bin/airports-data " + links],
+    function (err, stdout, stderr) {
+      if (err) {
+        console.log("child processes failed with error code: " +
+          err.code + err + "\n" + stderr);
+      }
+      callback(err, stdout);
+    });
+}
 
 function getAirportsData(airportsLink, callback) {
   async.mapLimit(airportsLink, 10, function (airportLink, callback) {
@@ -160,7 +172,7 @@ function getAirportsData(airportsLink, callback) {
     // airportLink.url = base + airportLink.url
 
     async.retry(5, function (callback) {
-      executeGetData({
+      getData({
         "name": airportLink.name,
         "url": base + airportLink.url
       }, callback);
@@ -178,3 +190,4 @@ module.exports.writeJson = writeJson;
 module.exports.getAirportsData = getAirportsData;
 module.exports.getData = getData;
 module.exports.getAirportFileName = getAirportFileName;
+module.exports.splitGetAirportsData = splitGetAirportsData;

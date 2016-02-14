@@ -11,7 +11,7 @@ var args = {
 };
 
 
-getData(args, function (err, data) {
+getData(args, function (err) {
   if (err) {
     throw err;
   }
