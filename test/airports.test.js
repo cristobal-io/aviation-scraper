@@ -19,6 +19,7 @@ var _ = require("lodash");
 
 describe("airports.js\n", function () {
   var airlines, airportsLink, airportsSchema;
+
   before(function () {
     airlines = require("./fixtures/airlines.json");
     airportsLink = require("./fixtures/airport_links.json");
@@ -66,9 +67,10 @@ describe("airports.js\n", function () {
       // object wouldn't have that behaviour. is it?
       var validateAirportsDataSchema = ajv.compile(airportsSchema);
       var airportLocalLink = {
-        name: 'Amsterdam Airport Schiphol',
-        url: 'http://localhost:3000/Amsterdam_Airport_Schiphol'
-      }
+        name: "Amsterdam Airport Schiphol",
+        url: "http://localhost:3000/Amsterdam_Airport_Schiphol"
+      };
+
       getData(airportLocalLink, function (err, airportData) {
         var validAirportsData = validateAirportsDataSchema([airportData]);
 
@@ -82,6 +84,7 @@ describe("airports.js\n", function () {
     it("Should save the files with the proper name", function () {
       var airportData = require("./fixtures/airport_data.json");
       var godAirportName = getAirportFileName(airportData[0]);
+
       expect(godAirportName.fileName).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
     });
 

@@ -192,3 +192,5 @@ module.exports.getAirportsData = getAirportsData;
 module.exports.getData = getData;
 module.exports.getAirportFileName = getAirportFileName;
 module.exports.splitGetAirportsData = splitGetAirportsData;
+module.exports.executeGetData = executeGetData;
+module.exports.executeGetAirportsData = executeGetAirportsData;

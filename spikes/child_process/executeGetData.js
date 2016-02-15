@@ -1,3 +1,5 @@
+/*eslint-disable no-console*/
+
 "use strict";
 // export DEBUG=airlineData*
 
@@ -12,8 +14,6 @@ function executeGetData(airportLink, callback) {
   // if (airportLink.base_url) {
   //   url = url + " " + JSON.stringify(airportLink.base_url);
   // }
-
-
 
   child_process.exec(["DEBUG=airlineData* bin/airport-data " + name + " " + url],
     function (err, stdout) {

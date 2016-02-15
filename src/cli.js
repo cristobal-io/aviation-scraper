@@ -8,13 +8,14 @@ var debug = require("debug")("airlineData:cli");
  * airline destinations 
  */
 
-var writeJson = source.writeJson,
-  // getAllDestinations = source.getAllDestinations,
-  // getScraperTypeForAll = source.getScraperTypeForAll,
-  // getAllRoutes = source.getAllRoutes,
-  // getAirports = source.getAirports,
-  getAllAirportsByIata = source.getAllAirportsByIata,
-  getAirportsData = source.getAirportsData;
+var writeJson = source.writeJson;
+var getAllDestinations = source.getAllDestinations;
+var getScraperTypeForAll = source.getScraperTypeForAll;
+var getAllRoutes = source.getAllRoutes;
+// var getAirports = source.getAirports;
+var getAirportsData = source.getAirportsData;
+var getAllAirportsByIata = source.getAllAirportsByIata;
+var splitGetAirportsData = source.splitGetAirportsData;
 
 
 // var options = {
@@ -65,7 +66,6 @@ var writeJson = source.writeJson,
 
 //   });
 // });
-var splitGetAirportsData = source.splitGetAirportsData;
 
 getAllAirportsByIata("", function (err, airportsData) {
   writeJson(airportsData, "./data/airports_list.json", function () {
