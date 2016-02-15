@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-
 /*
 eslint-disable no-console
  */
 
 "use strict";
+process.env["DEBUG"] = "airlineData*";
 
 var program = require("commander");
 var source = require("./src/");

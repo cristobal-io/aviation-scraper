@@ -90,3 +90,7 @@
 - airdata.io
 - aviationdata.io
 
+# Notes:
+
+- A good way to set the defaults for test would be `var BASE_URL = process.env.NODE_ENV === "test" ? "local..." : "wikipedia";`
+
