@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+"use strict";
+
+var program = require("commander");
+
+program
+  .version("0.0.1")
+  .description("Retrieve airlines destinations and airports data.")
+  .option("-l, --list", "List of airports with the link to the wikipedia page. (Saved to a single file)")
+  .option("-d, --destinations", "Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)")
+  .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
+  .parse(process.argv);
+
+if (program.list) {
+  console.log("generating list of airports by iata");
+}
+if (program.destinations) {
+  console.log("Generating destination files");
+}
+if (program.airports) {
+  console.log("Generating all airport files");
+}
