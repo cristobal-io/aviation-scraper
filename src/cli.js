@@ -9,11 +9,11 @@ var debug = require("debug")("airlineData:cli");
  */
 
 var writeJson = source.writeJson;
-var getAllDestinations = source.getAllDestinations;
-var getScraperTypeForAll = source.getScraperTypeForAll;
-var getAllRoutes = source.getAllRoutes;
+// var getAllDestinations = source.getAllDestinations;
+// var getScraperTypeForAll = source.getScraperTypeForAll;
+// var getAllRoutes = source.getAllRoutes;
 // var getAirports = source.getAirports;
-var getAirportsData = source.getAirportsData;
+// var getAirportsData = source.getAirportsData;
 var getAllAirportsByIata = source.getAllAirportsByIata;
 var splitGetAirportsData = source.splitGetAirportsData;
 
