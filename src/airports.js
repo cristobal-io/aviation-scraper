@@ -140,23 +140,24 @@ function getAirportFileName(airportData) {
 }
 
 function splitGetAirportsData(airportsLink, callback) {
-  var airportsLinkSplitted =  _.chunk(airportsLink, 5);
+  var airportsLinkSplitted = _.chunk(airportsLink, 5);
 
-  async.mapLimit(airportsLinkSplitted, 2, function(airportLinks, callback) {
+  async.mapLimit(airportsLinkSplitted, 2, function (airportLinks, callback) {
 
-    executeGetAirportsData(airportLinks, function(err, airportsData) {
-      if (err) {console.log(err);}
-      callback(airportsData);
+    executeGetAirportsData(airportLinks,function(err, stdout) {
+      callback(err, stdout);
     });
 
-  }, function(airportsData) {
-    callback(airportsData);
+  }, function (err, airportsData) {
+    callback(err, airportsData);
   });
 }
+
 function executeGetAirportsData(airportsLink, callback) {
+
   var links = JSON.stringify(airportsLink);
 
-  child_process.exec(["bin/airports-data " + links],
+  child_process.exec(["bin/airports-data " + "'" +links + "'"],
     function (err, stdout, stderr) {
       if (err) {
         console.log("child processes failed with error code: " +

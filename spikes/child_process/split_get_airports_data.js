@@ -5,6 +5,7 @@ var airportLinks = require("../../test/fixtures/airport_links.json");
 
 splitGetAirportsData(airportLinks, function(err, stdout) {
   if (err) {console.log(err);}
-  console.log(stdout);
+  var result = stdout.toString();
+  console.log(result.split("\n"));
   console.log("completed process!!");
 });

@@ -3,9 +3,8 @@
 "use strict";
 var source = require("../src/");
 var getAirportsData = source.getAirportsData;
-console.log(process.argv[2]);
-
 var airportsLink = JSON.parse(process.argv[2]);
+
 
 getAirportsData(airportsLink, function (err, data) {
   if (err) {
