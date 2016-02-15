@@ -144,8 +144,8 @@ function splitGetAirportsData(airportsLink, callback) {
 
   async.mapLimit(airportsLinkSplitted, 2, function (airportLinks, callback) {
 
-    executeGetAirportsData(airportLinks,function(err, stdout) {
-      callback(err, stdout);
+    getAirportsData(airportLinks,function(err, data) {
+      callback(err, data);
     });
 
   }, function (err, airportsData) {

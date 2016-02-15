@@ -65,12 +65,13 @@ var writeJson = source.writeJson,
 
 //   });
 // });
+var splitGetAirportsData = source.splitGetAirportsData;
 
 getAllAirportsByIata("", function (err, airportsData) {
   writeJson(airportsData, "./data/airports_list.json", function () {
     debug("airports_list saved");
   });
-  getAirportsData(airportsData, function () {
+  splitGetAirportsData(airportsData, function () {
     debug("Saved all the data airports");
   });
 });
