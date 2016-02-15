@@ -3,13 +3,14 @@
 module.exports = function ($) {
   var scraper = "default";
   
-  debugger;
-  if ($(".toccolours").hasClass("jquery-tablesorter")) {
+  if ($(".sortable").hasClass("sortable")) {
     scraper = "table";
-    console.log("jquery tablesorter called");
-  }
-  if ($(".wikitable").hasClass("wikitable")) {
-    scraper = "table";
+  } else if ($("center .wikitable").length) {
+    scraper = "table_center";
+  } else if (($(".mw-content-ltr h3")).length) {
+    scraper = "default";
+  } else if (($(".toccolours")).length) {
+    scraper = "table_toccolours";
   }
 
   return scraper;

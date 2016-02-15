@@ -1,2 +1,6 @@
 node_modules
 data
+coverage
+.nyc_output
+test/spec/local_pages/
+test/spec/data/

@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+"use strict";
+var source = require("../src/");
+var getAirportsData = source.getAirportsData;
+var airportsLink = JSON.parse(process.argv[2]);
+
+
+getAirportsData(airportsLink, function (err) {
+  if (err) {
+    throw err;
+  }
+});

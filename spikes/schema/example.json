@@ -1,0 +1,13 @@
+[{
+  "name": "hello world",
+  "age": 12,
+  "weight": 70
+}, {
+  "name": "hello world",
+  "age":13,
+  "weight": 70
+}, {
+  "name": "hello world",
+  "age":10,
+  "weight": 70
+}]

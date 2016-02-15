@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "defaultSchema",
+  "type": "array",
+  "items": {
+    "id": "13",
+    "type": "object",
+    "properties": {
+      "city": {
+        "id": "city",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "url": {
+            "id": "url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "airport": {
+        "id": "airport",
+        "type": "object",
+        "properties": {
+          "name": {
+            "id": "name",
+            "type": "string"
+          },
+          "url": {
+            "id": "url",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "required": [
+      "city",
+      "airport"
+    ]
+  },
+  "minItems": 1
+}
