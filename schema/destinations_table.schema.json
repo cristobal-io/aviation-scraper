@@ -1,0 +1,26 @@
+{
+  "description": "Destination Table",
+  "items":{
+    "items": {
+      "type": "object",
+      "required": ["City", "Country", "IATA", "ICAO"],
+      "properties": {
+        "City": {
+          "type": "string",
+          "description": "City of the airline"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "IATA": {
+          "type": "string"
+        },
+        "ICAO": {
+          "type": "string"
+        }
+      }
+    },
+    "type": "array"
+  },
+  "type": "array"
+}

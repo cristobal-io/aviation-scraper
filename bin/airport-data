@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+"use strict";
+var source = require("../src/");
+var getData = source.getData;
+
+
+var args = {
+  "name": process.argv[2],
+  "url": process.argv[3]
+};
+
+
+getData(args, function (err) {
+  if (err) {
+    throw err;
+  }
+  // console.log(JSON.stringify(data,null, 2));
+});

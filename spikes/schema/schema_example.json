@@ -1,0 +1,21 @@
+{
+  "description": "A person",
+  "items": {
+    "type": "object",
+    "required": ["name", "age"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "name of the person"
+      },
+      "age": {
+        "type": "integer",
+        "description": "age of the person",
+        "maximum": 125
+      }
+    },
+    "maxProperties": 2
+  },
+  "type": "array",
+  "maxItems": 3
+}
