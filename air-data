@@ -1,8 +1,28 @@
 #!/usr/bin/env node
 
+/*
+eslint-disable no-console
+ */
+
 "use strict";
 
 var program = require("commander");
+var source = require("./src/");
+var debug = require("debug")("airlineData:cli");
+
+var writeJson = source.writeJson;
+var getAllDestinations = source.getAllDestinations;
+var getScraperTypeForAll = source.getScraperTypeForAll;
+var getAllRoutes = source.getAllRoutes;
+// var getAirports = source.getAirports;
+// var getAirportsData = source.getAirportsData;
+var getAllAirportsByIata = source.getAllAirportsByIata;
+var splitGetAirportsData = source.splitGetAirportsData;
+var options = {
+    "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
+    "destinationsFile": "./data/destination_pages.json"
+  },
+  airportsData;
 
 program
   .version("0.0.1")
@@ -12,12 +32,50 @@ program
   .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
   .parse(process.argv);
 
+
+// we retrieve the list of airports by IATA pages.
 if (program.list) {
   console.log("generating list of airports by iata");
+  getAllAirportsByIata("", function (err, airportsData) {
+    writeJson(airportsData, "./data/airports_list.json", function () {
+      debug("airports_list saved");
+    });
+  });
 }
+
 if (program.destinations) {
   console.log("Generating destination files");
+  getAllDestinations(options, function (err, airlines) {
+    if (err) {
+      throw err;
+    }
+
+    debug("Destinations File Created");
+
+    getScraperTypeForAll({
+      "airlines": airlines
+    }, function (err, airlineScrapers) {
+      if (err) {
+        throw err;
+      }
+
+      debug("scrapers finished");
+
+      getAllRoutes(airlineScrapers, function (err) {
+        if (err) {
+          throw err;
+        }
+        debug("Routes Files Generated");
+      });
+
+    });
+  });
 }
 if (program.airports) {
+  airportsData = require("./data/airports_list.json");
+
   console.log("Generating all airport files");
+  splitGetAirportsData(airportsData, function () {
+    debug("Saved all the data airports");
+  });
 }
