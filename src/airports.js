@@ -40,29 +40,28 @@ function getAirports(airlines, fileName) {
     }
   });
   airports = cleanDuplicates(airports);
-  // Bermi I've added this "if" so if no filename is passed, doesn't cause
-  // problems, I guess that is not the best way of doing it and I should
-  // rewrite the getAirports function with a callback.
-  // 
-  // I think the right thing to do is to write it with a callback.
-  // 
-  // callback(err, airports);
-  // 
-  // And when using the callback, apply the writeJson function
-  // 
-  if (fileName) {
-    writeJson(airports, fileName, function (err) {
-      if (err) {
-        console.log(err);
-      }
-      debug("saved %s", fileName);
-    });
-  }
-  // Bermi I've added return so I can test the function.
-  // I have some doubts about how to test a function if it doesn't have a 
-  // callback or returns something.
   return airports;
 }
+
+function saveAirports(airports, fileName, callback) {
+  writeJson(airports, fileName, function (err) {
+    if (err) {
+      console.log(err);
+    }
+    debug("saved %s", fileName);
+    callback(err);
+  });
+
+}
+
+function getAndSaveAirports(airlines, fileName, callback) {
+  var airports = getAirports(airlines);
+
+  saveAirports(airports, fileName, function (err) {
+    callback(err, airports);
+  });
+}
+
 var child_process = require("child_process");
 
 
@@ -70,8 +69,9 @@ function executeGetData(airportLink, callback) {
   var name = JSON.stringify(airportLink.name);
   var url = JSON.stringify(airportLink.url);
 
-  child_process.exec(["bin/airport-data " + name + " " + url],
-    // {env: {"DEBUG":"airlineData*"}},
+  child_process.exec(["bin/airport-data " + name + " " + url], {
+    env: process.env
+  },
     function (err, stdout, stderr) {
       if (err) {
         console.log("child processes failed with error code: " +
@@ -139,36 +139,8 @@ function getAirportFileName(airportData) {
   return airportData;
 }
 
-function splitGetAirportsData(airportsLink, callback) {
-  var airportsLinkSplitted = _.chunk(airportsLink, 5);
-
-  async.mapLimit(airportsLinkSplitted, 2, function (airportLinks, callback) {
-
-    getAirportsData(airportLinks,function(err, data) {
-      callback(err, data);
-    });
-
-  }, function (err, airportsData) {
-    callback(err, airportsData);
-  });
-}
-
-function executeGetAirportsData(airportsLink, callback) {
-
-  var links = JSON.stringify(airportsLink);
-
-  child_process.exec(["bin/airports-data " + "'" +links + "'"],
-    function (err, stdout, stderr) {
-      if (err) {
-        console.log("child processes failed with error code: " +
-          err.code + err + "\n" + stderr);
-      }
-      callback(err, stdout);
-    });
-}
-
 function getAirportsData(airportsLink, callback) {
-  async.mapLimit(airportsLink, 10, function (airportLink, callback) {
+  async.mapLimit(airportsLink, 1, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
     // airportLink.url = base + airportLink.url
 
@@ -191,6 +163,4 @@ module.exports.writeJson = writeJson;
 module.exports.getAirportsData = getAirportsData;
 module.exports.getData = getData;
 module.exports.getAirportFileName = getAirportFileName;
-module.exports.splitGetAirportsData = splitGetAirportsData;
 module.exports.executeGetData = executeGetData;
-module.exports.executeGetAirportsData = executeGetAirportsData;

@@ -20,7 +20,6 @@ function getDestinations(options, callback) {
       callback(null, destinations);
     });
 }
-// bermi, the only way of testing this is exporting it?
 function getAllLinks(options, callback) {
   var url = options.urls;
 
@@ -86,8 +85,7 @@ function getAllDestinations(options, callback) {
       if (err) {
         throw err;
       }
-      // bermi, I am checking the function that clean the objects,
-      // but not the application itself inside this funciton.
+      // todo: check the special case were this cleaning is needed.
       var airlines = cleanDuplicates(_.flatten(results, true));
 
 
