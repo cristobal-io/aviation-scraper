@@ -33,8 +33,10 @@ program
   .parse(process.argv);
 
 
-// we retrieve the list of airports by IATA pages.
 if (program.list) {
+  // we retrieve the list of airports by IATA pages.
+  // this file is going to be saved at the specified route.
+  // "./data/airports_list.json"
   console.log("generating list of airports by iata");
   getAllAirportsByIata("", function (err, airportsData) {
     writeJson(airportsData, "./data/airports_list.json", function () {
