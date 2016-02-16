@@ -15,7 +15,7 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 var fs = require("fs");
 
-var airports = require("./fixtures/airline_routes.options.json");
+var airports = require("./fixtures/airline_destinations.options.json");
 
 describe("airline_destinations.js: \n", function () {
   var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
