@@ -156,11 +156,11 @@ function getAirportsData(airportsLink, callback) {
   });
 
 }
-
-
-module.exports.getAirports = getAirports;
-module.exports.writeJson = writeJson;
-module.exports.getAirportsData = getAirportsData;
-module.exports.getData = getData;
-module.exports.getAirportFileName = getAirportFileName;
-module.exports.executeGetData = executeGetData;
+module.exports = {
+  getAirports: getAirports,
+  writeJson: writeJson,
+  getAirportsData: getAirportsData,
+  getData: getData,
+  getAirportFileName: getAirportFileName,
+  getAndSaveAirports: getAndSaveAirports
+};

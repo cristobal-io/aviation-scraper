@@ -81,7 +81,7 @@ var checkAndSaveRoute = function (err, airline, callback) {
 function getAllRoutes(airlines, callback) {
 
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
-    
+
     async.retry(5, function (callback) {
       getRoutes(airline, callback);
     }, callback);
@@ -98,17 +98,8 @@ function getAllRoutes(airlines, callback) {
   });
 }
 
-module.exports.getRoutes = getRoutes;
-module.exports.getAllRoutes = getAllRoutes;
-module.exports.getFilename = getFilename;
-
-// getAllRoutes([{
-//   "name": "Air Chathams",
-//   "destinationsLink": "/wiki/Air_Chathams_destinations",
-//   "scraper": "table"
-// }], function (err) {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log("files saved");
-// });
+module.exports = {
+  getRoutes: getRoutes,
+  getAllRoutes: getAllRoutes,
+  getFilename: getFilename
+};

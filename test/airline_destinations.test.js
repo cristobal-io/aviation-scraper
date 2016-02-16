@@ -6,10 +6,10 @@ var expect = chai.expect;
 
 var _ = require("lodash");
 
-var airlinesIndex = require("../src/index.js");
-var getAllDestinations = airlinesIndex.getAllDestinations;
-var getAllLinks = airlinesIndex.getAllLinks;
-var cleanDuplicates = airlinesIndex.cleanDuplicates;
+var airlineDestinations = require("../src/airline_destinations.js");
+var getAllDestinations = airlineDestinations.getAllDestinations;
+var getAllLinks = airlineDestinations.getAllLinks;
+var cleanDuplicates = airlineDestinations.cleanDuplicates;
 
 // constants
 var BASE_URL = "http://localhost";

@@ -6,10 +6,10 @@ var expect = chai.expect;
 var _ = require("lodash");
 var async = require("async");
 
-var source = require("../src/index.js");
-var getRoutes = source.getRoutes;
-var getAllRoutes = source.getAllRoutes;
-var getFilename = source.getFilename;
+var airlineRoutes = require("../src/airline_routes.js");
+var getRoutes = airlineRoutes.getRoutes;
+var getAllRoutes = airlineRoutes.getAllRoutes;
+var getFilename = airlineRoutes.getFilename;
 
 var Ajv = require("ajv");
 var ajv = Ajv();

@@ -12,7 +12,6 @@ var debug = require("debug")("airlineData:links");
 function getDestinations(options, callback) {
   var letter = options.charAt(options.length - 1);
 
-
   debug("Getting scraper for %s from %s", letter, options);
   scraperjs.StaticScraper.create(options)
     .scrape(scrapers["destinations"])
@@ -20,6 +19,7 @@ function getDestinations(options, callback) {
       callback(null, destinations);
     });
 }
+
 function getAllLinks(options, callback) {
   var url = options.urls;
 
@@ -101,8 +101,9 @@ function getAllDestinations(options, callback) {
 
 }
 
-
-module.exports.getDestinations = getDestinations;
-module.exports.getAllDestinations = getAllDestinations;
-module.exports.getAllLinks = getAllLinks;
-module.exports.cleanDuplicates = cleanDuplicates;
+module.exports = {
+  getDestinations: getDestinations,
+  getAllDestinations: getAllDestinations,
+  getAllLinks: getAllLinks,
+  cleanDuplicates: cleanDuplicates
+};

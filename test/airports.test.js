@@ -3,12 +3,12 @@
 var chai = require("chai");
 var expect = chai.expect;
 
-var source = require("../src/index.js");
-var getAirports = source.getAirports;
-var writeJson = source.writeJson;
-var getAirportsData = source.getAirportsData;
-var getData = source.getData;
-var getAirportFileName = source.getAirportFileName;
+var airportsJs = require("../src/airports.js");
+var getAirports = airportsJs.getAirports;
+var writeJson = airportsJs.writeJson;
+var getAirportsData = airportsJs.getAirportsData;
+var getData = airportsJs.getData;
+var getAirportFileName = airportsJs.getAirportFileName;
 
 var fs = require("fs");
 var Ajv = require("ajv");

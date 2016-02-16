@@ -3,15 +3,13 @@
 var chai = require("chai");
 var expect = chai.expect;
 
-chai.use(require("chai-json-schema"));
+var airlineScraper = require("../src/airline_scraper.js");
 
-var airlinesIndex = require("../src/index.js");
-
-var getScraperType = airlinesIndex.getScraperType;
-var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
+var getScraperType = airlineScraper.getScraperType;
+var getScraperTypeForAll = airlineScraper.getScraperTypeForAll;
 
 var options = require("./fixtures/scraper_options.json");
-
+// JSON schema validator.
 var Ajv = require("ajv");
 var ajv = Ajv();
 

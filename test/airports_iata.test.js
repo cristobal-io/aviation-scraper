@@ -1,6 +1,7 @@
 "use strict";
-var source = require("../src/index.js");
-var getAllAirportsByIata = source.getAllAirportsByIata;
+var airportsIata = require("../src/airports_iata.js");
+var getAllAirportsByIata = airportsIata.getAllAirportsByIata;
+var getAirportsByIata = airportsIata.getAirportsByIata;
 
 var chai = require("chai");
 var expect = chai.expect;
