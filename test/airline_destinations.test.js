@@ -6,7 +6,7 @@ var expect = chai.expect;
 
 var _ = require("lodash");
 
-var airlineDestinations = require("../src/airline_destinations.js");
+var airlineDestinations = require("../src/airline_destinations_pages.js");
 var getAllDestinationsPages = airlineDestinations.getAllDestinationsPages;
 var getAllLinks = airlineDestinations.getAllLinks;
 var cleanDuplicates = airlineDestinations.cleanDuplicates;
@@ -19,7 +19,7 @@ var SERVER_LISTENING = BASE_URL + ":" + PORT;
 var Ajv = require("ajv");
 var ajv = Ajv();
 
-describe("Airline_destinations.js: \n", function () {
+describe("airline_destinations_pages.js: \n", function () {
   var destinations_results, destination_url = {};
 
   var validateDestPagSchema;

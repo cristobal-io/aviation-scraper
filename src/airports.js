@@ -13,7 +13,7 @@ var debug = require("debug")("airlineData:airports");
 var chalk = require("chalk");
 
 
-var cleanDuplicates = require("../src/airline_destinations.js").cleanDuplicates;
+var cleanDuplicates = require("../src/airline_destinations_pages.js").cleanDuplicates;
 
 var BASE_URL = "https://en.wikipedia.org";
 
