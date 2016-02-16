@@ -80,3 +80,15 @@ if (program.airports) {
     debug("Saved all the data airports");
   });
 }
+// this is going to be the function to show the specific destinations of a specific airport.
+// getAllRoutes([{
+//   "name": "Air Chathams",
+//   "destinationsLink": "/wiki/Air_Chathams_destinations",
+//   "scraper": "table"
+// }], function (err) {
+//   if (err) {
+//     throw err;
+//   }
+//   console.log("files saved");
+// });
+
