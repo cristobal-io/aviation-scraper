@@ -7,16 +7,15 @@ eslint-disable no-console
 process.env["DEBUG"] = "airlineData*";
 
 var program = require("commander");
-var source = require("./src/");
 var debug = require("debug")("airlineData:cli");
 
-var writeJson = source.writeJson;
-var getAllDestinationsPages = source.getAllDestinationsPages;
-var getScraperTypeForAll = source.getScraperTypeForAll;
-var getAllDestinations = source.getAllDestinations;
-// var getAirports = source.getAirports;
-var getAirportsData = source.getAirportsData;
-var getAllAirportsByIata = source.getAllAirportsByIata;
+var airportsJs = require("./src/airports.js");
+var writeJson = airportsJs.writeJson;
+var getAllDestinationsPages = require("./src/airline_destinations_pages.js").getAllDestinationsPages;
+var getScraperTypeForAll = require("./src/airline_scraper.js").getScraperTypeForAll;
+var getAllDestinations = require("./src/airline_destinations.js").getAllDestinations;
+var getAirportsData = airportsJs.getAirportsData;
+var getAllAirportsByIata = require("./src/airports_iata.js").getAllAirportsByIata;
 var options = {
     "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
     "destinationsFile": "./data/destination_pages.json"
