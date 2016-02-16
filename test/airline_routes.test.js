@@ -6,7 +6,7 @@ var expect = chai.expect;
 var _ = require("lodash");
 var async = require("async");
 
-var airlineRoutes = require("../src/airline_routes.js");
+var airlineRoutes = require("../src/airline_destinations.js");
 var getDestinations = airlineRoutes.getDestinations;
 var getAllDestinations = airlineRoutes.getAllDestinations;
 var getFilename = airlineRoutes.getFilename;
@@ -17,7 +17,7 @@ var fs = require("fs");
 
 var airports = require("./fixtures/airline_routes.options.json");
 
-describe("Airline_routes.js: \n", function () {
+describe("airline_destinations.js: \n", function () {
   var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
