@@ -4,16 +4,21 @@ var scrapers = require("../scrapers/");
 
 var fs = require("fs");
 var _ = require("lodash");
-
-var chalk = require("chalk");
 var async = require("async");
-
+// json schema validation module
+var Ajv = require("ajv");
+var ajv = Ajv();
+// log tools
 var debug = require("debug")("airlineData:airports");
+var chalk = require("chalk");
+
 
 var cleanDuplicates = require("../src/airline_destinations.js").cleanDuplicates;
 
 var BASE_URL = "https://en.wikipedia.org";
 
+var airportsDataSaved = 0,
+  airportsDataErrors = 0;
 
 var writeJson = function (airlines, fileName, callback) {
   fs.writeFile(fileName,
@@ -26,7 +31,7 @@ var writeJson = function (airlines, fileName, callback) {
 
 // this method has the purpose to be used with the returned 
 // value with all the destinations of all the companies.
-function getAirports(airlines, fileName) {
+function getAirports(airlines) {
   var airports = [];
 
   function insertAirports(airlineDestinations) {
@@ -62,26 +67,6 @@ function getAndSaveAirports(airlines, fileName, callback) {
   });
 }
 
-var child_process = require("child_process");
-
-
-function executeGetData(airportLink, callback) {
-  var name = JSON.stringify(airportLink.name);
-  var url = JSON.stringify(airportLink.url);
-
-  child_process.exec(["bin/airport-data " + name + " " + url], {
-    env: process.env
-  },
-    function (err, stdout, stderr) {
-      if (err) {
-        console.log("child processes failed with error code: " +
-          err.code + err + "\n" + stderr);
-      }
-      callback(err, stdout);
-    });
-}
-
-
 function getData(airportLink, callback) {
   // var base = airportLink.base_url || BASE_URL;
   var url = airportLink.url;
@@ -107,10 +92,6 @@ function getData(airportLink, callback) {
       });
     });
 }
-var airportsDataSaved = 0,
-  airportsDataErrors = 0;
-var Ajv = require("ajv");
-var ajv = Ajv();
 
 function getAirportFileName(airportData) {
   var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
