@@ -15,7 +15,6 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var _ = require("lodash");
-var async = require("async");
 
 describe("airports.js\n", function () {
   var airlines, airportsLink, airportsSchema;
@@ -107,7 +106,6 @@ describe("airports.js\n", function () {
         "foo": "bar"
       };
 
-      // bermi how do I test writeJson if there wasn't a callback?
       writeJson(sampleObject, fileName, function () {
         fileExists = fs.readFileSync(fileName, "utf8");
         expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
