@@ -1,81 +1,119 @@
 "use strict";
-
 // Mocha
 var chai = require("chai");
 var expect = chai.expect;
-
+// dependencies
 var _ = require("lodash");
+var async = require("async");
 
-var airlineDestinations = require("../src/airline_destinations_pages.js");
-var getAllDestinationsPages = airlineDestinations.getAllDestinationsPages;
-var getAllLinks = airlineDestinations.getAllLinks;
-var cleanDuplicates = airlineDestinations.cleanDuplicates;
-
-// constants
-var BASE_URL = "http://localhost";
-var PORT = 3000;
-var SERVER_LISTENING = BASE_URL + ":" + PORT;
+var airlineRoutes = require("../src/airline_destinations.js");
+var getDestinations = airlineRoutes.getDestinations;
+var getAllDestinations = airlineRoutes.getAllDestinations;
+var getFilename = airlineRoutes.getFilename;
 
 var Ajv = require("ajv");
 var ajv = Ajv();
+var fs = require("fs");
 
-describe("airline_destinations_pages.js: \n", function () {
-  var destinations_results, destination_url = {};
+var airports = require("./fixtures/airline_destinations.options.json");
 
-  var validateDestPagSchema;
-
+describe("airline_destinations.js: \n", function () {
+  var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
+    var defaultSchema = require("../schema/scraper.default.schema.json");
 
-    var destinationsPagesSchema = require("../schema/airline_destinations.schema.json");
 
-    validateDestPagSchema = ajv.compile(destinationsPagesSchema);
+    validateScraperTableSchema = ajv.compile(defaultSchema);
+    validateDefaultSchema = ajv.compile(defaultSchema);
+    validateTableSchema = ajv.compile(defaultSchema);
+    done();
+  });
 
-    var url = SERVER_LISTENING + "/Category:Lists_of_airline_destinations";
+  describe("getFilename", function () {
+    it("Should save the files with errors with a different message", function () {
+      var badRoute = getFilename({
+        "name": "bad_filename"
+      });
 
-    destination_url = {
-      urls: url,
-      destinationsFile: __dirname + "/spec/local_pages/destinations.json"
-    };
-    getAllDestinationsPages(destination_url, function (err, results) {
-      destinations_results = results;
-      done();
+      expect(badRoute.fileName).to.eql("./data/error_bad_filename.json");
     });
   });
 
-  describe("getAllDestinationsPages", function () {
+  describe("getDestinations function", function () {
 
-    it("Should meet the schema for airline destinations", function (done) {
-      var validDestPagSchema = validateDestPagSchema(destinations_results);
+    it("Should return a validated schema from default scraper model", function (done) {
+      this.timeout(15000);
+      getDestinations(airports[0], function (err, results) {
+        var valid = validateDefaultSchema(results.routes);
 
-      if (!validDestPagSchema) {
-        console.log(validateDestPagSchema.errors); // eslint-disable-line no-console
-      }
-      expect(validDestPagSchema).to.be.true;
-      done();
-    });
-
-    it("Should return the list of links", function (done) {
-      getAllLinks(destination_url, function (err, data) {
-        var letters = _.reduce(data, function (letters, url) {
-          return letters + url.substr(url.length - 1);
-        }, "");
-
-        expect(letters).to.eql("0ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+        expect(valid, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
         done();
       });
     });
 
-    it("should not have duplicates on results", function (done) {
-      var duplicateObject = require("./fixtures/duplicateObject.json");
-      var objectClean = cleanDuplicates(duplicateObject);
+    it("Should return a validated Schema from table scraper model", function (done) {
 
-      _.map(_.groupBy(objectClean, function (value) {
-        return value.name;
-      }), function (grouped) {
-        expect(grouped).to.have.length(1);
+      getDestinations(airports[1], function (err, results) {
+        var valid = validateScraperTableSchema(results.routes);
+
+        expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
+        done();
       });
-      done();
+    });
+
+    it("Should return a validated Schema from table scraper model", function (done) {
+
+      getDestinations(airports[2], function (err, results) {
+        var valid = validateTableSchema(results.routes);
+
+        expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
+        done();
+      });
+    });
+
+  });
+
+
+  describe("getAllDestinations function", function () {
+    var airportsResult = {};
+
+    before(function (done) {
+      this.timeout(15000);
+      getAllDestinations(airports, function (err, airports) {
+        airportsResult = airports;
+        done();
+      });
+    });
+    afterEach(function () {
+      airportsResult.errors = 0;
+    });
+
+    it("Should return and save the file", function (done) {
+      async.each(airportsResult, function (airport, callback) {
+        // The structure of .routes is being validated in other test.
+        expect(_.has(airport, "routes")).to.be.true;
+        fs.unlink(airport.fileName, function (err) {
+          if (err) {
+            console.log(err); //eslint-disable-line no-console
+          }
+          callback();
+        });
+      }, done);
+    });
+
+    it("should have 0 errors returning from getAllDestinations", function () {
+      var errorMessages = [];
+
+      _.forEach(airportsResult, function (airport) {
+        var errorMessage = _.get(airport, "errorMessage");
+
+        if (errorMessage) {
+          console.log(errorMessage); //eslint-disable-line no-console
+          errorMessages.push(errorMessage);
+        }
+      });
+      expect(airportsResult.errors, errorMessages).to.eql(0);
     });
 
   });
