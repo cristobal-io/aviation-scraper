@@ -20,18 +20,18 @@
   + we can check the number of airports at the list and how many files meet the criteria.
 - save airports name and links from files into data folder
   + we can use fs.readdir to get the names and then require them.
-  + ¿How can we combine into one var all the file content of routes?
+  + ¿How can we combine into one var all the file content of destinations?
 
 
 # TODO
 
-- rename files, we are not getting routes, we are getting destinations
+- rename files, we are not getting destinations, we are getting destinations
 - unify get gefilename methods. 
-- require all the files inside data that have the "routes" prefix 
+- require all the files inside data that have the "destinations" prefix 
 - add comments to all the code to explain why I am doing everything.
 - eliminate should be a function basic test
-- Add a check so the destinations on routes are not duplicated.
-- Eliminate Scraper fase and join it with the routes to avoid extra connections.
+- Add a check so the destinations on destinations are not duplicated.
+- Eliminate Scraper fase and join it with the destinations to avoid extra connections.
 - cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
 
 # Next Features

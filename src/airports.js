@@ -35,12 +35,12 @@ function getAirports(airlines) {
   var airports = [];
 
   function insertAirports(airlineDestinations) {
-    return _.map(airlineDestinations.routes, function (destination) {
+    return _.map(airlineDestinations.destinations, function (destination) {
       airports.push(destination.airport);
     });
   }
   _.map(airlines, function (airlineDestinations) {
-    if (airlineDestinations.routes.length) {
+    if (airlineDestinations.destinations.length) {
       insertAirports(airlineDestinations);
     }
   });

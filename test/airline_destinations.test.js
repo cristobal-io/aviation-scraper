@@ -45,7 +45,7 @@ describe("airline_destinations.js: \n", function () {
     it("Should return a validated schema from default scraper model", function (done) {
       this.timeout(15000);
       getDestinations(airports[0], function (err, results) {
-        var valid = validateDefaultSchema(results.routes);
+        var valid = validateDefaultSchema(results.destinations);
 
         expect(valid, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
         done();
@@ -55,7 +55,7 @@ describe("airline_destinations.js: \n", function () {
     it("Should return a validated Schema from table scraper model", function (done) {
 
       getDestinations(airports[1], function (err, results) {
-        var valid = validateScraperTableSchema(results.routes);
+        var valid = validateScraperTableSchema(results.destinations);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
         done();
@@ -65,7 +65,7 @@ describe("airline_destinations.js: \n", function () {
     it("Should return a validated Schema from table scraper model", function (done) {
 
       getDestinations(airports[2], function (err, results) {
-        var valid = validateTableSchema(results.routes);
+        var valid = validateTableSchema(results.destinations);
 
         expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
         done();
@@ -91,8 +91,8 @@ describe("airline_destinations.js: \n", function () {
 
     it("Should return and save the file", function (done) {
       async.each(airportsResult, function (airport, callback) {
-        // The structure of .routes is being validated in other test.
-        expect(_.has(airport, "routes")).to.be.true;
+        // The structure of .destinations is being validated in other test.
+        expect(_.has(airport, "destinations")).to.be.true;
         fs.unlink(airport.fileName, function (err) {
           if (err) {
             console.log(err); //eslint-disable-line no-console

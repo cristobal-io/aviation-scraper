@@ -2,7 +2,7 @@
   "name": "Air One",
   "destinationsLink": "/wiki/Air_One_destinations",
   "scraper": "table",
-  "routes": [{
+  "destinations": [{
     "city": {
       "name": "Addis Ababa",
       "url": "/wiki/Addis_Ababa"
@@ -25,7 +25,7 @@
   "name": "Adria Airways",
   "destinationsLink": "/wiki/Adria_Airways_destinations",
   "scraper": "table",
-  "routes": [{
+  "destinations": [{
     "city": {
       "name": "Amsterdam",
       "url": "/wiki/Amsterdam"
