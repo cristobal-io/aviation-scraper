@@ -140,7 +140,7 @@ function getAirportFileName(airportData) {
 }
 
 function getAirportsData(airportsLink, callback) {
-  async.mapLimit(airportsLink, 1, function (airportLink, callback) {
+  async.mapLimit(airportsLink, 30, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
     // airportLink.url = base + airportLink.url
 
