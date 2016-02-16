@@ -18,7 +18,7 @@ var debug = require("debug")("airlineData:destinations");
 var errors = 0,
   routesSaved = 0;
 
-function getRoutes(airline, callback) {
+function getDestinations(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
   debug("Getting routes for %s from %s", airline.name, url);
@@ -32,7 +32,7 @@ function getRoutes(airline, callback) {
     .scrape(scrapers[airline.scraper] || scrapers["default"])
     .then(function (data) {
       airline.routes = data;
-      checkAndSaveRoute(null, airline, callback);
+      checkAndSaveDestinations(null, airline, callback);
     });
 }
 
@@ -55,7 +55,7 @@ function getFilename(airline) {
   return airline;
 }
 
-var checkAndSaveRoute = function (err, airline, callback) {
+var checkAndSaveDestinations = function (err, airline, callback) {
   if (err) {
     throw err;
   }
@@ -78,17 +78,17 @@ var checkAndSaveRoute = function (err, airline, callback) {
   );
 };
 
-function getAllRoutes(airlines, callback) {
+function getAllDestinations(airlines, callback) {
 
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
 
     async.retry(5, function (callback) {
-      getRoutes(airline, callback);
+      getDestinations(airline, callback);
     }, callback);
 
   }, function (err, airlines) {
     if (err) {
-      console.log(chalk.red.bgWhite("\ngetAllRoutes found an error %s"), err); // eslint-disable-line no-console
+      console.log(chalk.red.bgWhite("\ngetAllDestinations found an error %s"), err); // eslint-disable-line no-console
     }
     airlines.routesSaved = routesSaved;
     airlines.errors = errors;
@@ -99,7 +99,7 @@ function getAllRoutes(airlines, callback) {
 }
 
 module.exports = {
-  getRoutes: getRoutes,
-  getAllRoutes: getAllRoutes,
+  getDestinations: getDestinations,
+  getAllDestinations: getAllDestinations,
   getFilename: getFilename
 };

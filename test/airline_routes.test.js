@@ -7,8 +7,8 @@ var _ = require("lodash");
 var async = require("async");
 
 var airlineRoutes = require("../src/airline_routes.js");
-var getRoutes = airlineRoutes.getRoutes;
-var getAllRoutes = airlineRoutes.getAllRoutes;
+var getDestinations = airlineRoutes.getDestinations;
+var getAllDestinations = airlineRoutes.getAllDestinations;
 var getFilename = airlineRoutes.getFilename;
 
 var Ajv = require("ajv");
@@ -40,11 +40,11 @@ describe("Airline_routes.js: \n", function () {
     });
   });
 
-  describe("getRoutes function", function () {
+  describe("getDestinations function", function () {
 
     it("Should return a validated schema from default scraper model", function (done) {
       this.timeout(15000);
-      getRoutes(airports[0], function (err, results) {
+      getDestinations(airports[0], function (err, results) {
         var valid = validateDefaultSchema(results.routes);
 
         expect(valid, _.get(validateDefaultSchema, "errors[0].message")).to.be.true;
@@ -54,7 +54,7 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return a validated Schema from table scraper model", function (done) {
 
-      getRoutes(airports[1], function (err, results) {
+      getDestinations(airports[1], function (err, results) {
         var valid = validateScraperTableSchema(results.routes);
 
         expect(valid, _.get(validateScraperTableSchema, "errors[0].message")).to.be.true;
@@ -64,7 +64,7 @@ describe("Airline_routes.js: \n", function () {
 
     it("Should return a validated Schema from table scraper model", function (done) {
 
-      getRoutes(airports[2], function (err, results) {
+      getDestinations(airports[2], function (err, results) {
         var valid = validateTableSchema(results.routes);
 
         expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
@@ -75,12 +75,12 @@ describe("Airline_routes.js: \n", function () {
   });
 
 
-  describe("getAllRoutes function", function () {
+  describe("getAllDestinations function", function () {
     var airportsResult = {};
 
     before(function (done) {
       this.timeout(15000);
-      getAllRoutes(airports, function (err, airports) {
+      getAllDestinations(airports, function (err, airports) {
         airportsResult = airports;
         done();
       });
@@ -102,7 +102,7 @@ describe("Airline_routes.js: \n", function () {
       }, done);
     });
 
-    it("should have 0 errors returning from getAllRoutes", function () {
+    it("should have 0 errors returning from getAllDestinations", function () {
       var errorMessages = [];
 
       _.forEach(airportsResult, function (airport) {

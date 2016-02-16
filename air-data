@@ -13,7 +13,7 @@ var debug = require("debug")("airlineData:cli");
 var writeJson = source.writeJson;
 var getAllDestinationsPages = source.getAllDestinationsPages;
 var getScraperTypeForAll = source.getScraperTypeForAll;
-var getAllRoutes = source.getAllRoutes;
+var getAllDestinations = source.getAllDestinations;
 // var getAirports = source.getAirports;
 var getAirportsData = source.getAirportsData;
 var getAllAirportsByIata = source.getAllAirportsByIata;
@@ -62,7 +62,7 @@ if (program.destinations) {
 
       debug("scrapers finished");
 
-      getAllRoutes(airlineScrapers, function (err) {
+      getAllDestinations(airlineScrapers, function (err) {
         if (err) {
           throw err;
         }
@@ -81,7 +81,7 @@ if (program.airports) {
   });
 }
 // this is going to be the function to show the specific destinations of a specific airport.
-// getAllRoutes([{
+// getAllDestinations([{
 //   "name": "Air Chathams",
 //   "destinationsLink": "/wiki/Air_Chathams_destinations",
 //   "scraper": "table"
