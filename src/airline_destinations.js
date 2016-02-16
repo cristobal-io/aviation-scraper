@@ -51,7 +51,7 @@ function cleanDuplicates(objectWithDuplicates, groupKey) {
 function getAllDestinations(options, callback) {
   var urls;
 
-  ensureDirectoryExist(function () {
+  ensureDirectoryExist("./data/", function () {
     if (process.env.NODE_ENV === "test") {
       urls = [options.urls];
       mapUrl(urls);
@@ -62,19 +62,6 @@ function getAllDestinations(options, callback) {
     }
   });
 
-  function ensureDirectoryExist(callback) {
-    fs.access(options.destinationsFile, function (err) {
-      if (err) {
-        fs.mkdir("./data/", function () {
-          debug("created data directory");
-          callback();
-        });
-      } else {
-        callback();
-      }
-    });
-
-  }
 
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
@@ -88,18 +75,30 @@ function getAllDestinations(options, callback) {
       // todo: check the special case were this cleaning is needed.
       var airlines = cleanDuplicates(_.flatten(results, true));
 
-
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
         if (err) {
           throw (err);
         }
       });
-      debug("Saved %s", destinationsFile); // eslint-disable-line no-console
+      debug("Saved %s", destinationsFile);
       callback(null, airlines);
     });
   }
-
 }
+
+function ensureDirectoryExist(directory, callback) {
+  fs.readdir(directory, function (err) {
+    if (err) {
+      fs.mkdir(directory, function () {
+        debug("created data directory");
+        callback();
+      });
+    } else {
+      callback();
+    }
+  });
+}
+
 
 module.exports = {
   getDestinations: getDestinations,
