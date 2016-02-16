@@ -51,7 +51,7 @@ function getAirports(airlines) {
 function saveAirports(airports, fileName, callback) {
   writeJson(airports, fileName, function (err) {
     if (err) {
-      console.log(err);
+      console.log(err); //eslint-disable-line no-console
     }
     debug("saved %s", fileName);
     callback(err);
@@ -68,7 +68,6 @@ function getAndSaveAirports(airlines, fileName, callback) {
 }
 
 function getData(airportLink, callback) {
-  // var base = airportLink.base_url || BASE_URL;
   var url = airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
@@ -83,9 +82,6 @@ function getData(airportLink, callback) {
     .then(function (airportData) {
       airportData.url = url;
       getAirportFileName(airportData);
-
-      // this way of calling writeJson has sideefects when testing that are
-      // not taken care of, the files generated are not deleted.
       writeJson(airportData, airportData.fileName, function (err) {
         debug("file %s saved", airportData.fileName);
         callback(err, airportData);
@@ -123,7 +119,6 @@ function getAirportFileName(airportData) {
 function getAirportsData(airportsLink, callback) {
   async.mapLimit(airportsLink, 30, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
-    // airportLink.url = base + airportLink.url
 
     async.retry(5, function (callback) {
       getData({

@@ -2,16 +2,16 @@
 // Mocha
 var chai = require("chai");
 var expect = chai.expect;
+// JSON schema validator.
+var Ajv = require("ajv");
+var ajv = Ajv();
+
 
 var airlineScraper = require("../src/airline_scraper.js");
-
 var getScraperType = airlineScraper.getScraperType;
 var getScraperTypeForAll = airlineScraper.getScraperTypeForAll;
 
 var options = require("./fixtures/scraper_options.json");
-// JSON schema validator.
-var Ajv = require("ajv");
-var ajv = Ajv();
 
 describe("Type of Scraper\n", function () {
   var validateDestPagSchema;

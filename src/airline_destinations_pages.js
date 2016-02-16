@@ -26,7 +26,6 @@ function getAllLinks(options, callback) {
   scraperjs.StaticScraper.create(url)
     .scrape(scrapers["destinations_link"])
     .then(function (destinations) {
-      // console.log(destinations);
       callback(null, destinations);
     });
 }

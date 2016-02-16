@@ -51,8 +51,6 @@ function getScraperTypeForAll(options, callback) {
         name: result.name
       });
 
-      // console.log("airline %s found at position %d", result.name, index );
-
       airlines[index].scraper = result.type;
       return airlines;
     }, airlines);

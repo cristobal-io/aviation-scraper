@@ -20,7 +20,7 @@ var defaultSchema = require("../schema/scraper.default.schema.json");
 
 
 describe("Table Scraper: \n", function () {
-  var results, validateTableSchema;
+  var results ;
 
   before(function (done) {
 
@@ -35,9 +35,7 @@ describe("Table Scraper: \n", function () {
 
   it("Should return and Array that passes the table schema validation", function () {
     var tableDestSchema = require("../schema/scraper.default.schema.json");
-
-    validateTableSchema = ajv.compile(tableDestSchema);
-
+    var validateTableSchema = ajv.compile(tableDestSchema);
     var validTableSchema = validateTableSchema(results);
 
     expect(validTableSchema, _.get(validateTableSchema, "errors[0].message")).to.be.true;
