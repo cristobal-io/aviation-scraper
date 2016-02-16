@@ -15,7 +15,7 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var _ = require("lodash");
-
+var async = require("async");
 
 describe("airports.js\n", function () {
   var airlines, airportsLink, airportsSchema;
@@ -127,7 +127,6 @@ describe("airports.js\n", function () {
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
       var airportsLocalLinks = airportsLink;
-
       var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
 
@@ -135,9 +134,17 @@ describe("airports.js\n", function () {
         var validAirportData = validateAirportDataSchema(airportsData);
 
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
-        done();
-      });
+        _.map(airportsData, function (airportData) {
+          fs.unlink(airportData.fileName, function (err) {
+            if (err) {
+              console.log(err); //eslint-disable-line no-console
+            }
+          });
 
+        });
+        done();
+
+      });
     });
 
   });
