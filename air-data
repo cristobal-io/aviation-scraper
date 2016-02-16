@@ -11,7 +11,7 @@ var source = require("./src/");
 var debug = require("debug")("airlineData:cli");
 
 var writeJson = source.writeJson;
-var getAllDestinations = source.getAllDestinations;
+var getAllDestinationsPages = source.getAllDestinationsPages;
 var getScraperTypeForAll = source.getScraperTypeForAll;
 var getAllRoutes = source.getAllRoutes;
 // var getAirports = source.getAirports;
@@ -46,7 +46,7 @@ if (program.list) {
 
 if (program.destinations) {
   console.log("Generating destination files");
-  getAllDestinations(options, function (err, airlines) {
+  getAllDestinationsPages(options, function (err, airlines) {
     if (err) {
       throw err;
     }

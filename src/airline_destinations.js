@@ -9,7 +9,7 @@ var async = require("async");
 
 var debug = require("debug")("airlineData:links");
 
-function getDestinations(options, callback) {
+function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
   debug("Getting scraper for %s from %s", letter, options);
@@ -48,7 +48,7 @@ function cleanDuplicates(objectWithDuplicates, groupKey) {
   return cleanedObject;
 }
 
-function getAllDestinations(options, callback) {
+function getAllDestinationsPages(options, callback) {
   var urls;
 
   ensureDirectoryExist("./data/", function () {
@@ -67,7 +67,7 @@ function getAllDestinations(options, callback) {
     var destinationsFile = options.destinationsFile;
 
     async.map(urls, function (options, callback) {
-      getDestinations(options, callback);
+      getDestinationsPages(options, callback);
     }, function (err, results) {
       if (err) {
         throw err;
@@ -101,8 +101,8 @@ function ensureDirectoryExist(directory, callback) {
 
 
 module.exports = {
-  getDestinations: getDestinations,
-  getAllDestinations: getAllDestinations,
+  getDestinationsPages: getDestinationsPages,
+  getAllDestinationsPages: getAllDestinationsPages,
   getAllLinks: getAllLinks,
   cleanDuplicates: cleanDuplicates
 };

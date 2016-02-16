@@ -8,7 +8,7 @@ module.exports = function ($) {
     inline: true
   });
 
-  return getDestinations(makrdown);
+  return getDestinationsPages(makrdown);
 };
 
 var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
@@ -52,7 +52,7 @@ function getDestination(line) {
   }
 }
 
-function getDestinations(makrdown) {
+function getDestinationsPages(makrdown) {
   return _.reduce(makrdown.split("\n"), function (destinations, line) {
     var destination = getDestination(line);
 
@@ -64,7 +64,7 @@ function getDestinations(makrdown) {
 }
 
 module.exports.getDestination = getDestination;
-module.exports.getDestinations = getDestinations;
+module.exports.getDestinationsPages = getDestinationsPages;
 module.exports.hasValidLinks = hasValidLinks;
 module.exports.getLinkInfo = getLinkInfo;
 module.exports.getLinkStrings = getLinkStrings;

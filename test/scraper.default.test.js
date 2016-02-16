@@ -2,7 +2,7 @@
 var scrapers = require("../scrapers/");
 var defaultScraper = scrapers.default;
 var getDestination = defaultScraper.getDestination;
-var getDestinations = defaultScraper.getDestinations;
+var getDestinationsPages = defaultScraper.getDestinationsPages;
 var getLinkStrings = defaultScraper.getLinkStrings;
 var hasValidLinks = defaultScraper.hasValidLinks;
 var getLinkInfo = defaultScraper.getLinkInfo;
@@ -86,14 +86,14 @@ describe("Default Scraper: \n", function () {
     });
   });
 
-  describe("getDestinations function, it: ", function () {
+  describe("getDestinationsPages function, it: ", function () {
     var makrdown, makrdownResults;
 
     before(function () {
       makrdown = md(strings.markdown, {
         inline: true
       });
-      makrdownResults = getDestinations(makrdown);
+      makrdownResults = getDestinationsPages(makrdown);
     });
 
 

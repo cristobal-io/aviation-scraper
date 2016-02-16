@@ -7,7 +7,7 @@ var expect = chai.expect;
 var _ = require("lodash");
 
 var airlineDestinations = require("../src/airline_destinations.js");
-var getAllDestinations = airlineDestinations.getAllDestinations;
+var getAllDestinationsPages = airlineDestinations.getAllDestinationsPages;
 var getAllLinks = airlineDestinations.getAllLinks;
 var cleanDuplicates = airlineDestinations.cleanDuplicates;
 
@@ -37,13 +37,13 @@ describe("Airline_destinations.js: \n", function () {
       urls: url,
       destinationsFile: __dirname + "/spec/local_pages/destinations.json"
     };
-    getAllDestinations(destination_url, function (err, results) {
+    getAllDestinationsPages(destination_url, function (err, results) {
       destinations_results = results;
       done();
     });
   });
 
-  describe("getAllDestinations", function () {
+  describe("getAllDestinationsPages", function () {
 
     it("Should meet the schema for airline destinations", function (done) {
       var validDestPagSchema = validateDestPagSchema(destinations_results);
