@@ -25,6 +25,7 @@
 
 # TODO
 
+- add special case were the airports scraper were frozen because of no headers.
 - unify get gefilename methods. 
 - require all the files inside data that have the "destinations" prefix 
 - add comments to all the code to explain why I am doing everything.

@@ -5,11 +5,11 @@ var fs = require("fs");
 var async = require("async");
 var scrapers = require("../scrapers/");
 var _ = require("lodash");
-var destinationsFile = "./data/destination_pages.json";
-var BASE_URL = "https://en.wikipedia.org";
 var debug = require("debug")("airlineData:scrapers");
 
+var BASE_URL = "https://en.wikipedia.org";
 
+// connect to the airline page and check the scraper we are going to use.
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
@@ -31,11 +31,13 @@ function getScraperType(options, callback) {
     });
 }
 
+// receives an array with all the airlines and the destinations page link 
+// for each one of them, iterates for each one of them, calling getScraperType
+// and adding it to the proper airline.
 function getScraperTypeForAll(options, callback) {
 
-  // for modularity purposes
-  destinationsFile = options.destinationsFile || destinationsFile;
-  var airlines = options.airlines || airlines;
+  var destinationsFile = options.destinationsFile;
+  var airlines = options.airlines;
 
   async.mapLimit(airlines, 20, function (options, callback) {
     async.retry(3, function (callback) {
@@ -47,13 +49,16 @@ function getScraperTypeForAll(options, callback) {
     }
     debug("got %d results", results.length);
     airlines = _.reduce(results, function (airlines, result) {
+      // finds the position of the airline
       var index = _.findIndex(airlines, {
         name: result.name
       });
 
+      // adds the scraper to the exact position retrieved on the previous position.
       airlines[index].scraper = result.type;
       return airlines;
     }, airlines);
+    // saves the file with all the scrapers added.
     fs.writeFileSync(destinationsFile, JSON.stringify(airlines, null, 2));
 
     debug("Saved %s", destinationsFile);

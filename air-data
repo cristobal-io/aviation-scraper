@@ -62,7 +62,8 @@ if (program.destinations) {
     debug("Destinations File Created");
 
     getScraperTypeForAll({
-      "airlines": airlines
+      "airlines": airlines,
+      "destinationsFile": options.destinationsFile
     }, function (err, airlineScrapers) {
       if (err) {
         throw err;
