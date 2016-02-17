@@ -52,7 +52,7 @@ function getAllDestinationsPages(options, callback) {
 
   ensureDirectoryExist("./data/", function () {
     if (process.env.NODE_ENV === "test") {
-      urls = [options.urls];
+      urls = options.urls;
       mapUrl(urls);
     } else {
       urls = getAllLinks(options, function (err, urls) {
@@ -64,7 +64,7 @@ function getAllDestinationsPages(options, callback) {
 
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
-
+    console.log(urls);
     async.map(urls, function (options, callback) {
       getDestinationsPages(options, callback);
     }, function (err, results) {

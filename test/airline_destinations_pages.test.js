@@ -28,10 +28,13 @@ describe("airline_destinations_pages.js: \n", function () {
   before(function (done) {
 
     var destinationsPagesSchema = require("../schema/airline_destinations.schema.json");
+    var destinationsPages = require("../test/fixtures/airline_destination_pages_links.json"), i;
+    var url = [];
 
     validateDestPagSchema = ajv.compile(destinationsPagesSchema);
-
-    var url = SERVER_LISTENING + "/Category:Lists_of_airline_destinations";
+    for (i = 0; i < destinationsPages.length; i+=1) {
+      url.push(SERVER_LISTENING +"/" + destinationsPages[i]);
+    }
 
     destination_url = {
       urls: url,
