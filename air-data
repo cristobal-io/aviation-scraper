@@ -11,7 +11,9 @@ var debug = require("debug")("airlineData:cli");
 
 var airportsJs = require("./src/airports.js");
 var writeJson = airportsJs.writeJson;
-var getAllDestinationsPages = require("./src/airline_destinations_pages.js").getAllDestinationsPages;
+var airlineDestinationPagesJS = require("./src/airline_destinations_pages.js");
+var getAllDestinationsPages = airlineDestinationPagesJS.getAllDestinationsPages;
+var ensureDirectoryExist = airlineDestinationPagesJS.ensureDirectoryExist;
 var getScraperTypeForAll = require("./src/airline_scraper.js").getScraperTypeForAll;
 var getAllDestinations = require("./src/airline_destinations.js").getAllDestinations;
 var getAirportsData = airportsJs.getAirportsData;
@@ -32,19 +34,22 @@ program
 
 
 if (program.list) {
+  ensureDirectoryExist("./data/", function() {
   // we retrieve the list of airports by IATA pages.
   // this file is going to be saved at the specified route.
   // "./data/airports_list.json"
-  console.log("generating list of airports by iata");
-  getAllAirportsByIata("", function (err, airportsData) {
-    writeJson(airportsData, "./data/airports_list.json", function () {
-      debug("airports_list saved");
+    debug("generating list of airports by iata");
+    getAllAirportsByIata("", function (err, airportsData) {
+      if (err) {throw err;}
+      writeJson(airportsData, "./data/airports_list.json", function () {
+        debug("airports_list saved");
+      });
     });
   });
 }
 
 if (program.destinations) {
-  console.log("Generating destination files");
+  debug("Generating destination files");
   getAllDestinationsPages(options, function (err, airlines) {
     if (err) {
       throw err;
@@ -74,7 +79,7 @@ if (program.destinations) {
 if (program.airports) {
   airportsData = require("./data/airports_list.json");
 
-  console.log("Generating all airport files");
+  debug("Generating all airport files");
   getAirportsData(airportsData, function () {
     debug("Saved all the data airports");
   });
@@ -88,6 +93,6 @@ if (program.airports) {
 //   if (err) {
 //     throw err;
 //   }
-//   console.log("files saved");
+//   debug("files saved");
 // });
 
