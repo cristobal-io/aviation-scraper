@@ -36,7 +36,8 @@ function getAllAirportsByIata(list, callback) {
   });
 
 }
-
-module.exports.getAllAirportsByIata = getAllAirportsByIata;
-module.exports.getAirportsByIata = getAirportsByIata;
+module.exports = {
+  getAllAirportsByIata : getAllAirportsByIata,
+  getAirportsByIata : getAirportsByIata
+};
 

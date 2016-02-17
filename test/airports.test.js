@@ -3,19 +3,18 @@
 var chai = require("chai");
 var expect = chai.expect;
 
-var source = require("../src/index.js");
-var getAirports = source.getAirports;
-var writeJson = source.writeJson;
-var getAirportsData = source.getAirportsData;
-var getData = source.getData;
-var getAirportFileName = source.getAirportFileName;
+var airportsJs = require("../src/airports.js");
+var getAirports = airportsJs.getAirports;
+var writeJson = airportsJs.writeJson;
+var getAirportsData = airportsJs.getAirportsData;
+var getData = airportsJs.getData;
+var getAirportFileName = airportsJs.getAirportFileName;
 
 var fs = require("fs");
 var Ajv = require("ajv");
 var ajv = Ajv();
 
 var _ = require("lodash");
-
 
 describe("airports.js\n", function () {
   var airlines, airportsLink, airportsSchema;
@@ -107,7 +106,6 @@ describe("airports.js\n", function () {
         "foo": "bar"
       };
 
-      // bermi how do I test writeJson if there wasn't a callback?
       writeJson(sampleObject, fileName, function () {
         fileExists = fs.readFileSync(fileName, "utf8");
         expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
@@ -127,7 +125,6 @@ describe("airports.js\n", function () {
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
       var airportsLocalLinks = airportsLink;
-
       var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
 
@@ -135,9 +132,17 @@ describe("airports.js\n", function () {
         var validAirportData = validateAirportDataSchema(airportsData);
 
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
-        done();
-      });
+        _.map(airportsData, function (airportData) {
+          fs.unlink(airportData.fileName, function (err) {
+            if (err) {
+              console.log(err); //eslint-disable-line no-console
+            }
+          });
 
+        });
+        done();
+
+      });
     });
 
   });

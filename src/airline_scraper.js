@@ -13,7 +13,7 @@ var debug = require("debug")("airlineData:scrapers");
 function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
-  debug("Getting scraper for %s from %s", options.name, url); 
+  debug("Getting scraper for %s from %s", options.name, url);
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       if (err) {
@@ -23,7 +23,7 @@ function getScraperType(options, callback) {
     })
     .scrape(scrapers["type_of_scrapper"])
     .then(function (type) {
-      debug("found %s from %s",type, url);
+      debug("found %s from %s", type, url);
       callback(null, {
         type: type,
         name: options.name
@@ -51,8 +51,6 @@ function getScraperTypeForAll(options, callback) {
         name: result.name
       });
 
-      // console.log("airline %s found at position %d", result.name, index );
-
       airlines[index].scraper = result.type;
       return airlines;
     }, airlines);
@@ -62,7 +60,7 @@ function getScraperTypeForAll(options, callback) {
     callback(null, airlines);
   });
 }
-
-module.exports.getScraperType = getScraperType;
-module.exports.getScraperTypeForAll = getScraperTypeForAll;
-
+module.exports = {
+  getScraperType: getScraperType,
+  getScraperTypeForAll: getScraperTypeForAll
+};

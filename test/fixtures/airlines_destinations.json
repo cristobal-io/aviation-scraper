@@ -3,7 +3,7 @@
     "name": "Brussels Airlines",
     "destinationsLink": "/wiki/Brussels_Airlines_destinations",
     "scraper": "table",
-    "routes": [
+    "destinations": [
       {
         "city": {
           "name": "Abidjan",
@@ -945,13 +945,13 @@
         }
       }
     ],
-    "fileName": "./data/routes_Brussels Airlines.json"
+    "fileName": "./data/destinations_Brussels Airlines.json"
   },
   {
     "name": "Bulgaria Air charter",
     "destinationsLink": "/wiki/Bulgaria_Air_charter_destinations",
     "scraper": "default",
-    "routes": [],
+    "destinations": [],
     "fileName": "./data/error_Bulgaria Air charter.json",
     "errorMessage": "Airline Bulgaria Air charter got the error should NOT have less than 1 items"
   },
@@ -959,7 +959,7 @@
     "name": "Bulgaria Air",
     "destinationsLink": "/wiki/Bulgaria_Air_destinations",
     "scraper": "default",
-    "routes": [
+    "destinations": [
       {
         "city": {
           "name": "International Air Transport Association",
@@ -971,13 +971,13 @@
         }
       }
     ],
-    "fileName": "./data/routes_Bulgaria Air.json"
+    "fileName": "./data/destinations_Bulgaria Air.json"
   },
   {
     "name": "Bulgarian Air Charter",
     "destinationsLink": "/wiki/Bulgarian_Air_Charter_destinations",
     "scraper": "default",
-    "routes": [
+    "destinations": [
       {
         "city": {
           "name": "Bulgarian Air Charter",
@@ -999,13 +999,13 @@
         }
       }
     ],
-    "fileName": "./data/routes_Bulgarian Air Charter.json"
+    "fileName": "./data/destinations_Bulgarian Air Charter.json"
   },
   {
     "name": "Canadian Airlines",
     "destinationsLink": "/wiki/Canadian_Airlines_destinations",
     "scraper": "default",
-    "routes": [
+    "destinations": [
       {
         "city": {
           "name": "Nagoya",
@@ -1617,6 +1617,6 @@
         }
       }
     ],
-    "fileName": "./data/routes_Canadian Airlines.json"
+    "fileName": "./data/destinations_Canadian Airlines.json"
   }
 ]

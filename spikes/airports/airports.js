@@ -5,7 +5,7 @@ var jsonAirline = require("./airlines.json");
 
 function getAirports(airlines) {
   _.map(airlines, function (value) {
-    _.forEach(value.routes, function (value) {
+    _.forEach(value.destinations, function (value) {
       airports.push(value.airport);
     });
   });
