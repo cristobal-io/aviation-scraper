@@ -25,12 +25,9 @@
 
 # TODO
 
-- rename files, we are not getting destinations, we are getting destinations
 - unify get gefilename methods. 
 - require all the files inside data that have the "destinations" prefix 
 - add comments to all the code to explain why I am doing everything.
-- eliminate should be a function basic test
-- Add a check so the destinations on destinations are not duplicated.
 - Eliminate Scraper fase and join it with the destinations to avoid extra connections.
 - cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
 
