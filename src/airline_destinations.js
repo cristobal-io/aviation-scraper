@@ -18,6 +18,14 @@ var debug = require("debug")("airlineData:destinations");
 var errors = 0,
   destinationsSaved = 0;
 
+/**
+ * calls the scraper specified and retrieves the destinations for the airline.
+ * @param  {object}   airline  contains the information for the airline we 
+ * need to obtain the destinations.
+ * @param  {Function} callback the returning function that is going to be passed
+ * to the next function.
+ * @return {object}            all the destinations.
+ */
 function getDestinations(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
 
@@ -35,7 +43,13 @@ function getDestinations(airline, callback) {
       checkAndSaveDestinations(null, airline, callback);
     });
 }
-
+/**
+ * checks the schema integrity and returns the object airline with the fileName
+ * starting with destinations_ if the schema is valid or error_ if don't.
+ * @param  {object} airline contains all the relevant parameters to the airline 
+ * we are scraping at that moment.
+ * @return {object}         airline with the fileName path.
+ */
 function getFilename(airline) {
   var defaultRoute = require("../schema/scraper.default.schema.json");
   var validateDefaultRoute = ajv.compile(defaultRoute);
@@ -54,7 +68,12 @@ function getFilename(airline) {
   }
   return airline;
 }
-
+/**
+ * checks the schema and saves the JSON file 
+ * @param  {object}   airline  contains all the information to the unique airline 
+ * we are scrapping at the moment.
+ * @return {object}            airline with fileName added.
+ */
 var checkAndSaveDestinations = function (err, airline, callback) {
   if (err) {
     throw err;
@@ -78,8 +97,14 @@ var checkAndSaveDestinations = function (err, airline, callback) {
   );
 };
 
+/**
+ * scrapes one by one each airline link in batches specified by mapLimit
+ * @param  {array}   airlines contains all the airlines we are going to retrieve
+ *  the destinations.
+ * @param  {Function} callback returns with err and airlines data. 
+ * @return {array}            all the airlines requested with the destinations, errors log and count..
+ */
 function getAllDestinations(airlines, callback) {
-
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
 
     async.retry(5, function (callback) {
