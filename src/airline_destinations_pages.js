@@ -90,10 +90,10 @@ function ensureDirectoryExist(directory, callback) {
     if (err) {
       fs.mkdir(directory, function () {
         debug("created data directory");
-        callback();
+        callback(false);
       });
     } else {
-      callback();
+      callback(true);
     }
   });
 }

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /*
 eslint-disable no-console
  */
@@ -8,6 +9,7 @@ process.env["DEBUG"] = "airlineData*";
 
 var program = require("commander");
 var debug = require("debug")("airlineData:cli");
+var chalk = require("chalk");
 
 var airportsJs = require("./src/airports.js");
 var writeJson = airportsJs.writeJson;
@@ -37,10 +39,12 @@ if (program.list) {
   // we retrieve the list of airports by IATA pages.
   // this file is going to be saved at the specified route.
   // "./data/airports_list.json"
-  ensureDirectoryExist("./data/", function() {
+  ensureDirectoryExist("./data/", function () {
     debug("generating list of airports by iata");
     getAllAirportsByIata("", function (err, airportsData) {
-      if (err) {throw err;}
+      if (err) {
+        throw err;
+      }
       writeJson(airportsData, "./data/airports_list.json", function () {
         debug("airports_list saved");
       });
@@ -77,12 +81,19 @@ if (program.destinations) {
   });
 }
 if (program.airports) {
-  airportsData = require("./data/airports_list.json");
+  try {
+    airportsData = require("./data/airports_list.json");
+  } catch (err) {
+    if (err) {
+      debug(chalk.red("please generate first the list of airports."));
+    } else {
+      debug("Generating all airport files");
+      getAirportsData(airportsData, function () {
+        debug("Saved all the data airports");
+      });
+    }
+  }
 
-  debug("Generating all airport files");
-  getAirportsData(airportsData, function () {
-    debug("Saved all the data airports");
-  });
 }
 // this is going to be the function to show the specific destinations of a specific airport.
 // getAllDestinations([{
@@ -95,4 +106,3 @@ if (program.airports) {
 //   }
 //   debug("files saved");
 // });
-
