@@ -103,5 +103,6 @@ module.exports = {
   getDestinationsPages: getDestinationsPages,
   getAllDestinationsPages: getAllDestinationsPages,
   getAllLinks: getAllLinks,
-  cleanDuplicates: cleanDuplicates
+  cleanDuplicates: cleanDuplicates,
+  ensureDirectoryExist: ensureDirectoryExist
 };
