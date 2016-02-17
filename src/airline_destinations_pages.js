@@ -9,6 +9,8 @@ var async = require("async");
 
 var debug = require("debug")("airlineData:links");
 
+// scrape a single webpage for all the destinations links of all the
+// airlines at the site.
 function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
@@ -20,6 +22,9 @@ function getDestinationsPages(options, callback) {
     });
 }
 
+// connects to the main page and gets all the links for all the pages that 
+// we are going to need to scrape individually with getDestinationsPages.
+// Usually the links follow the alphabet.
 function getAllLinks(options, callback) {
   var url = options.urls;
 
@@ -47,10 +52,16 @@ function cleanDuplicates(objectWithDuplicates, groupKey) {
   return cleanedObject;
 }
 
+// we pass an array of getDestinationsPages links and the function manage
+// to call the function to scrape the links one by one.
 function getAllDestinationsPages(options, callback) {
   var urls;
 
+  // we need to check for the directory and create it in case doesn't exist,
+  // because we are going to save there our files.
   ensureDirectoryExist("./data/", function () {
+    // conditional to check if we are into a test process so we use the local
+    // pages instead of using the web.
     if (process.env.NODE_ENV === "test") {
       urls = options.urls;
       mapUrl(urls);
@@ -61,7 +72,8 @@ function getAllDestinationsPages(options, callback) {
     }
   });
 
-
+  // call getDestinationsPages with each link and save into a single file 
+  // specified at the options object passed.
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
     
@@ -84,6 +96,7 @@ function getAllDestinationsPages(options, callback) {
   }
 }
 
+// check if a directory exist and if don't, proceed to create it.
 function ensureDirectoryExist(directory, callback) {
   fs.readdir(directory, function (err) {
     if (err) {
