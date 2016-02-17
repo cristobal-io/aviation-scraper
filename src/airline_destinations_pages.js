@@ -71,7 +71,6 @@ function getAllDestinationsPages(options, callback) {
       if (err) {
         throw err;
       }
-      // todo: check the special case were this cleaning is needed.
       var airlines = cleanDuplicates(_.flatten(results, true));
 
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
