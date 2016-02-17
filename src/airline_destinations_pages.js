@@ -65,7 +65,6 @@ function getAllDestinationsPages(options, callback) {
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
     
-    console.log(urls);
     async.map(urls, function (options, callback) {
       getDestinationsPages(options, callback);
     }, function (err, results) {
