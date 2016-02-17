@@ -34,10 +34,10 @@ program
 
 
 if (program.list) {
-  ensureDirectoryExist("./data/", function() {
   // we retrieve the list of airports by IATA pages.
   // this file is going to be saved at the specified route.
   // "./data/airports_list.json"
+  ensureDirectoryExist("./data/", function() {
     debug("generating list of airports by iata");
     getAllAirportsByIata("", function (err, airportsData) {
       if (err) {throw err;}
