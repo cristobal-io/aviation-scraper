@@ -2,18 +2,16 @@
 // Mocha
 var chai = require("chai");
 var expect = chai.expect;
-
-chai.use(require("chai-json-schema"));
-
-var airlinesIndex = require("../src/index.js");
-
-var getScraperType = airlinesIndex.getScraperType;
-var getScraperTypeForAll = airlinesIndex.getScraperTypeForAll;
-
-var options = require("./fixtures/scraper_options.json");
-
+// JSON schema validator.
 var Ajv = require("ajv");
 var ajv = Ajv();
+
+
+var airlineScraper = require("../src/airline_scraper.js");
+var getScraperType = airlineScraper.getScraperType;
+var getScraperTypeForAll = airlineScraper.getScraperTypeForAll;
+
+var options = require("./fixtures/scraper_options.json");
 
 describe("Type of Scraper\n", function () {
   var validateDestPagSchema;
@@ -30,13 +28,6 @@ describe("Type of Scraper\n", function () {
       done();
     });
   });
-
-  // it("Should return default_variant scraper", function (done) {
-  //   getScraperType(options[4], function (err, results) {
-  //     expect(results.type).to.eql("default_variant");
-  //     done();
-  //   });
-  // });
 
   it("Should return table scraper", function (done) {
     getScraperType(options[2], function (err, results) {
@@ -79,9 +70,6 @@ describe("Type of Scraper\n", function () {
   it("Should return an array that passes the schema validation (TV4)", function (done) {
 
     var destinationsPagesSchema = require("../schema/destination_pages.schema.json");
-
-    // console.log("destinationsPagesSchema: \n", JSON.stringify(destinationsPagesSchema, null, 2));
-
 
     getScraperTypeForAll(options[2], function (err, results) {
       if (err) {throw err;}

@@ -10,7 +10,7 @@ var https = require("https");
 var BASE_URL = "https://en.wikipedia.org/wiki/";
 
 var DOWNLOAD_DIR = "./test/spec/local_pages/";
-var airlineFixtures = require("../fixtures/airline_routes.options.json");
+var airlineFixtures = require("../fixtures/airline_destinations.options.json");
 var airportFixtures = require("../fixtures/airport_links.json");
 var iataLocalList = require("../fixtures/airports_iata.data.json");
 var file_url = [

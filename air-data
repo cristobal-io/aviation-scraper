@@ -1,23 +1,21 @@
 #!/usr/bin/env node
-
 /*
 eslint-disable no-console
  */
 
 "use strict";
+process.env["DEBUG"] = "airlineData*";
 
 var program = require("commander");
-var source = require("./src/");
 var debug = require("debug")("airlineData:cli");
 
-var writeJson = source.writeJson;
-var getAllDestinations = source.getAllDestinations;
-var getScraperTypeForAll = source.getScraperTypeForAll;
-var getAllRoutes = source.getAllRoutes;
-// var getAirports = source.getAirports;
-// var getAirportsData = source.getAirportsData;
-var getAllAirportsByIata = source.getAllAirportsByIata;
-var splitGetAirportsData = source.splitGetAirportsData;
+var airportsJs = require("./src/airports.js");
+var writeJson = airportsJs.writeJson;
+var getAllDestinationsPages = require("./src/airline_destinations_pages.js").getAllDestinationsPages;
+var getScraperTypeForAll = require("./src/airline_scraper.js").getScraperTypeForAll;
+var getAllDestinations = require("./src/airline_destinations.js").getAllDestinations;
+var getAirportsData = airportsJs.getAirportsData;
+var getAllAirportsByIata = require("./src/airports_iata.js").getAllAirportsByIata;
 var options = {
     "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
     "destinationsFile": "./data/destination_pages.json"
@@ -33,8 +31,10 @@ program
   .parse(process.argv);
 
 
-// we retrieve the list of airports by IATA pages.
 if (program.list) {
+  // we retrieve the list of airports by IATA pages.
+  // this file is going to be saved at the specified route.
+  // "./data/airports_list.json"
   console.log("generating list of airports by iata");
   getAllAirportsByIata("", function (err, airportsData) {
     writeJson(airportsData, "./data/airports_list.json", function () {
@@ -45,7 +45,7 @@ if (program.list) {
 
 if (program.destinations) {
   console.log("Generating destination files");
-  getAllDestinations(options, function (err, airlines) {
+  getAllDestinationsPages(options, function (err, airlines) {
     if (err) {
       throw err;
     }
@@ -61,7 +61,7 @@ if (program.destinations) {
 
       debug("scrapers finished");
 
-      getAllRoutes(airlineScrapers, function (err) {
+      getAllDestinations(airlineScrapers, function (err) {
         if (err) {
           throw err;
         }
@@ -75,7 +75,19 @@ if (program.airports) {
   airportsData = require("./data/airports_list.json");
 
   console.log("Generating all airport files");
-  splitGetAirportsData(airportsData, function () {
+  getAirportsData(airportsData, function () {
     debug("Saved all the data airports");
   });
 }
+// this is going to be the function to show the specific destinations of a specific airport.
+// getAllDestinations([{
+//   "name": "Air Chathams",
+//   "destinationsLink": "/wiki/Air_Chathams_destinations",
+//   "scraper": "table"
+// }], function (err) {
+//   if (err) {
+//     throw err;
+//   }
+//   console.log("files saved");
+// });
+

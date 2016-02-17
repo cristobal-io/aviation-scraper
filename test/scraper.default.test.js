@@ -1,8 +1,8 @@
 "use strict";
-var scrapers = require("../scrapers/index.js");
+var scrapers = require("../scrapers/");
 var defaultScraper = scrapers.default;
 var getDestination = defaultScraper.getDestination;
-var getDestinations = defaultScraper.getDestinations;
+var getDestinationsPages = defaultScraper.getDestinationsPages;
 var getLinkStrings = defaultScraper.getLinkStrings;
 var hasValidLinks = defaultScraper.hasValidLinks;
 var getLinkInfo = defaultScraper.getLinkInfo;
@@ -13,8 +13,6 @@ var chai = require("chai");
 var expect = chai.expect;
 var strings = require("./fixtures/test_strings.json");
 
-// var tv4 = require(tv4);
-
 chai.use(require("chai-json-schema"));
 
 describe("Default Scraper: \n", function () {
@@ -24,10 +22,7 @@ describe("Default Scraper: \n", function () {
 
   before(function (done) {
     line = strings["line"];
-    // destinationSchema = chai.tv4.getSchema("./schema/destination_schema.json");
-
     result = getDestination(line);
-    // console.log(destinationSchema);
     done();
   });
 
@@ -74,7 +69,6 @@ describe("Default Scraper: \n", function () {
         }
       }
     };
-    // require("./schema/destination_schema.json");
 
 
     it("Should return an object", function () {
@@ -86,14 +80,14 @@ describe("Default Scraper: \n", function () {
     });
   });
 
-  describe("getDestinations function, it: ", function () {
+  describe("getDestinationsPages function, it: ", function () {
     var makrdown, makrdownResults;
 
     before(function () {
       makrdown = md(strings.markdown, {
         inline: true
       });
-      makrdownResults = getDestinations(makrdown);
+      makrdownResults = getDestinationsPages(makrdown);
     });
 
 

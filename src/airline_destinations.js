@@ -1,110 +1,105 @@
 "use strict";
 
+var sjs = require("scraperjs");
 var fs = require("fs");
-
-var scraperjs = require("scraperjs");
 var scrapers = require("../scrapers/");
-var _ = require("lodash");
 var async = require("async");
 
-var debug = require("debug")("airlineData:links");
+var BASE_URL = "https://en.wikipedia.org";
 
-function getDestinations(options, callback) {
-  var letter = options.charAt(options.length - 1);
+var _ = require("lodash");
 
+var Ajv = require("ajv");
+var ajv = Ajv();
 
-  debug("Getting scraper for %s from %s", letter, options);
-  scraperjs.StaticScraper.create(options)
-    .scrape(scrapers["destinations"])
-    .then(function (destinations) {
-      callback(null, destinations);
-    });
-}
-// bermi, the only way of testing this is exporting it?
-function getAllLinks(options, callback) {
-  var url = options.urls;
+var chalk = require("chalk");
+var debug = require("debug")("airlineData:destinations");
 
-  scraperjs.StaticScraper.create(url)
-    .scrape(scrapers["destinations_link"])
-    .then(function (destinations) {
-      // console.log(destinations);
-      callback(null, destinations);
-    });
-}
-/**
- * Cleaning object with duplicated values
- * @param  {object} objectWithDuplicates is the object we need to clean
- * @param  {string} groupKey             defines the key we want to compare(optional)
- * @return {object}                      The object cleaned
- */
-function cleanDuplicates(objectWithDuplicates, groupKey) {
-  groupKey = groupKey || Object.keys(objectWithDuplicates[0])[0];
+var errors = 0,
+  destinationsSaved = 0;
 
-  var cleanedObject = _.map(_.groupBy(objectWithDuplicates, function (value) {
-    return value[groupKey];
-  }), function (grouped) {
-    return grouped[0];
-  });
+function getDestinations(airline, callback) {
+  var url = airline.url || BASE_URL + airline.destinationsLink;
 
-  return cleanedObject;
-}
-
-function getAllDestinations(options, callback) {
-  var urls;
-
-  ensureDirectoryExist(function () {
-    if (process.env.NODE_ENV === "test") {
-      urls = [options.urls];
-      mapUrl(urls);
-    } else {
-      urls = getAllLinks(options, function (err, urls) {
-        mapUrl(urls);
-      });
-    }
-  });
-
-  function ensureDirectoryExist(callback) {
-    fs.access(options.destinationsFile, function (err) {
+  debug("Getting destinations for %s from %s", airline.name, url);
+  sjs.StaticScraper.create(url)
+    .catch(function (err, utils) {
       if (err) {
-        fs.mkdir("./data/", function () {
-          debug("created data directory");
-          callback();
-        });
-      } else {
-        callback();
+        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url);
+        callback(err, utils);
       }
+    })
+    .scrape(scrapers[airline.scraper] || scrapers["default"])
+    .then(function (data) {
+      airline.destinations = data;
+      checkAndSaveDestinations(null, airline, callback);
     });
+}
 
+function getFilename(airline) {
+  var defaultRoute = require("../schema/scraper.default.schema.json");
+  var validateDefaultRoute = ajv.compile(defaultRoute);
+  var validDefaultRoute = validateDefaultRoute(airline.destinations);
+
+  if (validDefaultRoute) {
+    destinationsSaved += 1;
+    airline.fileName = "./data/destinations_" + airline.name + ".json";
+  } else {
+    debug("Airline %s got the error %s", airline.name,
+      _.get(validateDefaultRoute, "errors[0].message"));
+    errors += 1;
+    airline.fileName = "./data/error_" + airline.name + ".json";
+    airline.errorMessage = "Airline " + airline.name + " got the error " +
+      _.get(validateDefaultRoute, "errors[0].message");
   }
+  return airline;
+}
 
-  function mapUrl(urls) {
-    var destinationsFile = options.destinationsFile;
+var checkAndSaveDestinations = function (err, airline, callback) {
+  if (err) {
+    throw err;
+  }
+  airline = getFilename(airline);
+  var errorRegEx = /error/;
 
-    async.map(urls, function (options, callback) {
-      getDestinations(options, callback);
-    }, function (err, results) {
+  fs.writeFile(airline.fileName,
+    JSON.stringify(airline.destinations, null, 2),
+    function (err) {
       if (err) {
         throw err;
       }
-      // bermi, I am checking the function that clean the objects,
-      // but not the application itself inside this funciton.
-      var airlines = cleanDuplicates(_.flatten(results, true));
+      if (errorRegEx.test(airline.fileName)) {
+        debug(chalk.red("Saved %s"), airline.fileName);
+      } else {
+        debug(chalk.green("Saved %s"), airline.fileName);
+      }
+      callback(null, airline);
+    }
+  );
+};
 
+function getAllDestinations(airlines, callback) {
 
-      fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
-        if (err) {
-          throw (err);
-        }
-      });
-      debug("Saved %s", destinationsFile); // eslint-disable-line no-console
-      callback(null, airlines);
-    });
-  }
+  async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
 
+    async.retry(5, function (callback) {
+      getDestinations(airline, callback);
+    }, callback);
+
+  }, function (err, airlines) {
+    if (err) {
+      console.log(chalk.red.bgWhite("\ngetAllDestinations found an error %s"), err); // eslint-disable-line no-console
+    }
+    airlines.destinationsSaved = destinationsSaved;
+    airlines.errors = errors;
+    debug("You got %s destinations and %s errors", destinationsSaved, errors);
+    callback(err, airlines);
+
+  });
 }
 
-
-module.exports.getDestinations = getDestinations;
-module.exports.getAllDestinations = getAllDestinations;
-module.exports.getAllLinks = getAllLinks;
-module.exports.cleanDuplicates = cleanDuplicates;
+module.exports = {
+  getDestinations: getDestinations,
+  getAllDestinations: getAllDestinations,
+  getFilename: getFilename
+};

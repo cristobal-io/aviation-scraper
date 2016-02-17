@@ -5,7 +5,7 @@ going to be scraping from wikipedia the following information:
 
 - World Airports
 - World Airlines
-- World routes
+- World destinations
 
 This is intended for use of an updated database of information for a map application.
 
