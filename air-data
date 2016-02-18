@@ -84,15 +84,12 @@ if (program.destinations) {
 if (program.airports) {
   try {
     airportsData = require("./data/airports_list.json");
+    debug("Generating all airport files \n this is going to take a while...");
+    getAirportsData(airportsData, function () {
+      debug("Saved all the data airports");
+    });
   } catch (err) {
-    if (err) {
-      debug(chalk.red("please generate first the list of airports."));
-    } else {
-      debug("Generating all airport files");
-      getAirportsData(airportsData, function () {
-        debug("Saved all the data airports");
-      });
-    }
+    debug(chalk.red("please generate first the list of airports."));
   }
 
 }
