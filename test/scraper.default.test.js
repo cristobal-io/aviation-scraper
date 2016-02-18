@@ -26,7 +26,13 @@ describe("Default Scraper: \n", function () {
     done();
   });
 
-// todo: modify the test so it uses AJV
+// Bermi, With this method we are using 3 methods to validate the JSON schema.
+// TV4 , AJV and chai-json-schema.
+// The difficulty of this chai-json-schema is that doesn't work if you 
+// require the json file to get the schema.
+// 
+// For consistency we should use only one method but for learning I am going
+// to leave the 3 methods.
   describe("getDestination function, it: ", function () {
     var destinationSchema = {
       "title": "destination schema v1",
@@ -132,7 +138,7 @@ describe("Default Scraper: \n", function () {
     });
 
     it("Should return the last right element", function () {
-      expect(hasValidLinksResult).to.match(/^\/wiki\//);
+      expect(hasValidLinksResult).to.be.true;
     });
     it("Should check for all the links", function () {
       var link_0_1_false = strings.link_0_1_false;

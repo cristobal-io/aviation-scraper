@@ -13,7 +13,7 @@ for (var i = 0; i < letters.length; i += 1) {
 
 var scraperjs = require("scraperjs");
 
-
+// scrapping each iata link page to get all the airports.
 function getAirportsByIata(iataLink, callback) {
   scraperjs.StaticScraper.create(iataLink)
     .scrape(scrapers["airportsIata"])
@@ -22,7 +22,9 @@ function getAirportsByIata(iataLink, callback) {
     });
 }
 
+// receives an array of links with the iata pages to scrape.
 function getAllAirportsByIata(list, callback) {
+  // if no list is provided, the default generated is used.
   iataList = list || iataList;
   async.mapLimit(iataList, 10, function (iataLink, callback) {
 

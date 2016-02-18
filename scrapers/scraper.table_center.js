@@ -3,8 +3,10 @@ var md = require("html-md");
 var _ = require("lodash");
 var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
 
+// todo: this scraper doesn't get all the rows.
+// Check example at the following url:
+// https://en.wikipedia.org/wiki/Air_Austral
 module.exports = function ($) {
-
   var options = {};
   var row = [];
   var markdown = md($("center .wikitable").html(), {
@@ -13,7 +15,6 @@ module.exports = function ($) {
   var markdownSplit = markdown.split("\n\n");
   var $headers = $("center .wikitable").find("tr").first().find("th");
 
-  markdownSplit.shift();
   options.rowHeaders = [];
   generateHeaders($headers, options, $);
 
@@ -33,6 +34,7 @@ module.exports = function ($) {
     }
     return destinations;
   }, []);
+
   var i, city, cityName, cityLink, airport, airportName, airportLink;
 
   for (i = 0; i < destinationsMarkdown.length; i += 2) {
@@ -43,20 +45,25 @@ module.exports = function ($) {
     cityLink = cityLink[0].split(" ");
     cityLink = cityLink[0];
 
-    airport = destinationsMarkdown[i+1].split("\(");
+    airport = destinationsMarkdown[i + 1].split("\(");
     airportName = airport[0].slice(1, airport[0].length - 1);
     airportLink = airport[1].split(",");
 
     airportLink = airportLink[0].split(" ");
     airportLink = airportLink[0];
-
-    row.push({
-      city: {name: cityName, url: cityLink},
-      airport: {name: airportName, url: airportLink}
-    });
-
+    if (/wiki\//.test(airportLink)) {
+      row.push({
+        city: {
+          name: cityName,
+          url: cityLink
+        },
+        airport: {
+          name: airportName,
+          url: airportLink
+        }
+      });
+    }
   }
-
   return row;
 };
 

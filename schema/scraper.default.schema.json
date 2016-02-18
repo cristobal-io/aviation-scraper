@@ -33,7 +33,9 @@
           },
           "url": {
             "id": "url",
-            "type": "string"
+            "type": "string",
+            "pattern": "^\/wiki\/[A-Za-z0-9-_.%(),\/]*$"
+
           }
         }
       }
