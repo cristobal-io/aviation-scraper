@@ -32,7 +32,7 @@ function getLinkInfo(linkString) {
 }
 
 function hasValidLinks(links) {
-  return links.length === 2 && links[0][1] && links[0][2] && links[1][1] && links[1][2];
+  return links.length === 2 && links[0][1] && links[0][2] && links[1][1] && /^\/wiki\/[A-Za-z0-9-_.%(),\/]*$/.test(links[1][2]);
 }
 
 function getDestination(line) {
