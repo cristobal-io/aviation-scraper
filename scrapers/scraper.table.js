@@ -1,5 +1,3 @@
-// todo: add big explanation without all the cases we are trying to solve due to
-// inconsistencies of the data.
 "use strict";
 var _ = require("lodash");
 
