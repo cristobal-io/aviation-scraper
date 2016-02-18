@@ -138,7 +138,7 @@ describe("Default Scraper: \n", function () {
     });
 
     it("Should return the last right element", function () {
-      expect(hasValidLinksResult).to.match(/^\/wiki\//);
+      expect(hasValidLinksResult).to.be.true;
     });
     it("Should check for all the links", function () {
       var link_0_1_false = strings.link_0_1_false;
