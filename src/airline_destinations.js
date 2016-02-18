@@ -70,8 +70,10 @@ function getFilename(airline) {
 }
 /**
  * checks the schema and saves the JSON file 
+ * @param {object} err passed
  * @param  {object}   airline  contains all the information to the unique airline 
  * we are scrapping at the moment.
+ * @param {Function} callback 
  * @return {object}            airline with fileName added.
  */
 var checkAndSaveDestinations = function (err, airline, callback) {
