@@ -85,7 +85,9 @@ if (program.airports) {
       debug("Saved all the data airports");
     });
   } catch (err) {
-    debug(chalk.red("please generate first the list of airports."));
+    debug(("please generate first the list of airports."));
+    debug(("Run:") + chalk.grey("'./air-data -l'"));
+
   }
 
 }
