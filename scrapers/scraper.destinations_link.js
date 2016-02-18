@@ -4,9 +4,7 @@ module.exports = function ($) {
   var destinations = [];
 
   $("#toc").find("a").map(function () {
-    var destinationLink = $(this).attr("href");
-
-    destinations.push("https:" + destinationLink);
+    destinations.push("https:" + $(this).attr("href"));
   });
   destinations.shift();
   return destinations;

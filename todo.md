@@ -16,6 +16,20 @@
 
 # Current Taks
 
+*  test the scraper "table_center"
+- check special cases:
+  + { 
+    "name": "Air Nippon",
+    "destinationsLink": "/wiki/Air_Nippon_destinations",
+    "scraper": "default"
+    }
+  + {
+    "name": "Air Chathams",
+    "destinationsLink": "/wiki/Air_Chathams_destinations",
+    "scraper": "table"
+    },
+
+
 - check that all the IATA airports are saved into individual files.
   + we can check the number of airports at the list and how many files meet the criteria.
 - save airports name and links from files into data folder
@@ -25,12 +39,10 @@
 
 # TODO
 
-- rename files, we are not getting destinations, we are getting destinations
+- add special case were the airports scraper were frozen because of no headers.
 - unify get gefilename methods. 
 - require all the files inside data that have the "destinations" prefix 
 - add comments to all the code to explain why I am doing everything.
-- eliminate should be a function basic test
-- Add a check so the destinations on destinations are not duplicated.
 - Eliminate Scraper fase and join it with the destinations to avoid extra connections.
 - cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
 

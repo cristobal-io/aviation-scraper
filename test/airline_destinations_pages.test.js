@@ -28,10 +28,14 @@ describe("airline_destinations_pages.js: \n", function () {
   before(function (done) {
 
     var destinationsPagesSchema = require("../schema/airline_destinations.schema.json");
+    var destinationsPages = require("../test/fixtures/airline_destination_pages_links.json"),
+      i;
+    var url = [];
 
     validateDestPagSchema = ajv.compile(destinationsPagesSchema);
-
-    var url = SERVER_LISTENING + "/Category:Lists_of_airline_destinations";
+    for (i = 0; i < destinationsPages.length; i += 1) {
+      url.push(SERVER_LISTENING + "/" + destinationsPages[i]);
+    }
 
     destination_url = {
       urls: url,
@@ -43,20 +47,13 @@ describe("airline_destinations_pages.js: \n", function () {
     });
   });
 
-  describe("getAllDestinationsPages", function () {
-
-    it("Should meet the schema for airline destinations", function (done) {
-      var validDestPagSchema = validateDestPagSchema(destinations_results);
-
-      if (!validDestPagSchema) {
-        console.log(validateDestPagSchema.errors); // eslint-disable-line no-console
-      }
-      expect(validDestPagSchema).to.be.true;
-      done();
-    });
+  describe("function getAllLinks ", function() {
 
     it("Should return the list of links", function (done) {
-      getAllLinks(destination_url, function (err, data) {
+      getAllLinks({
+        urls: destination_url.urls[0],
+        destinationsFile: destination_url.destinationsFile
+      }, function (err, data) {
         var letters = _.reduce(data, function (letters, url) {
           return letters + url.substr(url.length - 1);
         }, "");
@@ -65,6 +62,10 @@ describe("airline_destinations_pages.js: \n", function () {
         done();
       });
     });
+
+  });
+
+  describe("function cleanDuplicates ", function () {
 
     it("should not have duplicates on results", function (done) {
       var duplicateObject = require("./fixtures/duplicateObject.json");
@@ -78,6 +79,29 @@ describe("airline_destinations_pages.js: \n", function () {
       done();
     });
 
+  });
+
+  describe("function getAllDestinationsPages ", function () {
+
+    it("Should meet the schema for airline destinations", function (done) {
+      var validDestPagSchema = validateDestPagSchema(destinations_results);
+
+      if (!validDestPagSchema) {
+        console.log(validateDestPagSchema.errors); // eslint-disable-line no-console
+      }
+      expect(validDestPagSchema).to.be.true;
+      done();
+    });
+
+
+    it("should not have duplicates on results", function (done) {
+      _.map(_.groupBy(destinations_results, function (value) {
+        return value.name;
+      }), function (grouped) {
+        expect(grouped).to.have.length(1);
+      });
+      done();
+    });
   });
 
 });

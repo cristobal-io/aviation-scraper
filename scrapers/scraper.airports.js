@@ -15,6 +15,17 @@ module.exports = function ($) {
     reduction = 0, j;
 
   $($(".vcard tr").find("table")[0]).find("th").map(function () {
+      // add the reduction value so we have a headers with the proper length 
+      // the headers using this map function would be 5, later at the loop 
+      // we would use the reduction so it is only 4 like the values.
+      // +-------------+------------+-------------+
+      // |  Direction  |   Length   |   Surface   |
+      // |             +------+-----+             |
+      // |             | m    |  ft |             |
+      // +----------------------------------------+
+      // |   14L/32R   |1,502 |4,928|   Asphalt   |
+      // +----------------------------------------+
+
     if ($(this).attr("colspan")) {
       reduction += 1;
     }
@@ -29,6 +40,8 @@ module.exports = function ($) {
 
   var runwayContent = {}, runway = [];
 
+  // in case we don't have headers there is no need to enter the loop.
+  // if we enter without headers value, we would have an infinite loop.
   if (headers.length) {
     for (j = 0; j < content.length; j+=headers.length - reduction) {
       runwayContent = {};
