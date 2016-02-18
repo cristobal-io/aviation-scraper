@@ -15,7 +15,7 @@ var chalk = require("chalk");
 var cleanDuplicates = require("../src/airline_destinations_pages.js").cleanDuplicates;
 
 var BASE_URL = "https://en.wikipedia.org";
-// this vars are used to compute how many airports meet the airport schema and
+// this vars are used to log how many airports meet the airport schema and
 // how many don't.
 var airportsDataSaved = 0,
   airportsDataErrors = 0;
