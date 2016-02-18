@@ -16,6 +16,20 @@
 
 # Current Taks
 
+*  test the scraper "table_center"
+- check special cases:
+  + { 
+    "name": "Air Nippon",
+    "destinationsLink": "/wiki/Air_Nippon_destinations",
+    "scraper": "default"
+    }
+  + {
+    "name": "Air Chathams",
+    "destinationsLink": "/wiki/Air_Chathams_destinations",
+    "scraper": "table"
+    },
+
+
 - check that all the IATA airports are saved into individual files.
   + we can check the number of airports at the list and how many files meet the criteria.
 - save airports name and links from files into data folder
