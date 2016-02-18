@@ -14,8 +14,8 @@ var getFilename = airlineRoutes.getFilename;
 var Ajv = require("ajv");
 var ajv = Ajv();
 var fs = require("fs");
-
 var airports = require("./fixtures/airline_destinations.options.json");
+
 
 describe("airline_destinations.js: \n", function () {
   var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
@@ -23,11 +23,18 @@ describe("airline_destinations.js: \n", function () {
   before(function (done) {
     var defaultSchema = require("../schema/scraper.default.schema.json");
 
-
     validateScraperTableSchema = ajv.compile(defaultSchema);
     validateDefaultSchema = ajv.compile(defaultSchema);
     validateTableSchema = ajv.compile(defaultSchema);
     done();
+  });
+
+  after(function () {
+    // bermi when I am with dev mode, I have side effects and airports are getting
+    // all the returned values. How to avoid it?
+    // to recreate the error, comment line 72 on scraper.table_center.js
+    // I've found this solution.
+    delete require.cache[require.resolve("./fixtures/airline_destinations.options.json")];
   });
 
   describe("getFilename", function () {
@@ -72,6 +79,15 @@ describe("airline_destinations.js: \n", function () {
       });
     });
 
+    it("Should return a validated Schema from table_center scraper", function (done) {
+      getDestinations(airports[3], function (err, results) {
+        var valid = validateTableSchema(results.destinations);
+
+        expect(valid, _.get(validateTableSchema, "errors[0].message")).to.be.true;
+        done();
+      });
+    });
+
   });
 
 
@@ -80,8 +96,9 @@ describe("airline_destinations.js: \n", function () {
 
     before(function (done) {
       this.timeout(15000);
-      getAllDestinations(airports, function (err, airports) {
-        airportsResult = airports;
+
+      getAllDestinations(airports, function (err, result) {
+        airportsResult = result;
         done();
       });
     });
@@ -105,15 +122,17 @@ describe("airline_destinations.js: \n", function () {
     it("should have 0 errors returning from getAllDestinations", function () {
       var errorMessages = [];
 
+
       _.forEach(airportsResult, function (airport) {
         var errorMessage = _.get(airport, "errorMessage");
 
         if (errorMessage) {
           console.log(errorMessage); //eslint-disable-line no-console
           errorMessages.push(errorMessage);
+          delete airport.errorMessage;
         }
       });
-      expect(airportsResult.errors, errorMessages).to.eql(0);
+      expect(errorMessages.length, errorMessages).to.eql(0);
     });
 
   });
