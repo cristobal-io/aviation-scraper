@@ -53,17 +53,6 @@ describe("airports.js\n", function () {
 
   describe("getData", function () {
     it("Should return valid schema data", function () {
-      // bermi I can see that I have side effects that are modifiing the object
-      // but it seems more like it has something to see with inheritance. 
-      // I thought that after asigning an object to a new 
-      // I was doing the following:
-      // var airportLocalLink = airportLink[0]
-      // airportLocalLink.url = airportLocalLink.base_url + airportLocalLink.url;
-      // So this was adding the base_url each time the test was passing. 
-      // But the most interesting thing I got was that it was modifiend each time 
-      // the airportsLink[0]. 
-      // My guess is that it has something to be with require, because a normal 
-      // object wouldn't have that behaviour. is it?
       var validateAirportsDataSchema = ajv.compile(airportsSchema);
       var airportLocalLink = {
         name: "Amsterdam Airport Schiphol",

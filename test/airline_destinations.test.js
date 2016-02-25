@@ -30,10 +30,6 @@ describe("airline_destinations.js: \n", function () {
   });
 
   after(function () {
-    // bermi when I am with dev mode, I have side effects and airports are getting
-    // all the returned values. How to avoid it?
-    // to recreate the error, comment line 72 on scraper.table_center.js
-    // I've found this solution.
     delete require.cache[require.resolve("./fixtures/airline_destinations.options.json")];
   });
 
