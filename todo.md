@@ -16,7 +16,6 @@
 
 # Current Taks
 
-*  test the scraper "table_center"
 - check special cases:
   + { 
     "name": "Air Nippon",
