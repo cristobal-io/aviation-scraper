@@ -1,8 +1,8 @@
 {
-  "name": "air-data",
+  "name": "aviation-data",
   "version": "0.0.7",
   "description": "Scraper to get airline destinations and airport data",
-  "main": "air-data",
+  "main": "aviation-data",
   "scripts": {
     "test": "mocha test"
   },

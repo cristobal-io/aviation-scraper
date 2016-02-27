@@ -86,7 +86,7 @@ if (program.airports) {
     });
   } catch (err) {
     debug(("please generate first the list of airports."));
-    debug(("Run:") + chalk.grey("'./air-data -l'"));
+    debug(("Run:") + chalk.grey("'./aviation-data -l'"));
 
   }
 

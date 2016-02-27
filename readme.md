@@ -19,7 +19,7 @@ Then run tests with `make test`
 
 ### From the CLI
 
-`air-data -h`
+`aviation-data -h`
 
 displays this help:
 
@@ -35,7 +35,7 @@ Options:
 ## Roadmap
 - enable with the command to display the information for the desired airport
 ```
-$ air-data -s levc
+$ aviation-data -s levc
 
 {
   "coordinates": {
