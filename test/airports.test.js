@@ -17,10 +17,10 @@ var ajv = Ajv();
 var _ = require("lodash");
 
 describe("airports.js\n", function () {
-  var airlines, airportsLink, airportsSchema;
+  var airlinesDestinations, airportsLink, airportsSchema;
 
   before(function () {
-    airlines = require("./fixtures/airlines.json");
+    airlinesDestinations = require("./fixtures/airlinesDestinations.json");
     airportsLink = require("./fixtures/airport_links.json");
     airportsSchema = require("../schema/airport_data.schema.json");
 
@@ -29,7 +29,7 @@ describe("airports.js\n", function () {
 
     it("should return only airports", function () {
       var airportsSchema = require("../schema/airport_links.schema.json");
-      var airports = getAirports(airlines);
+      var airports = getAirports(airlinesDestinations);
       var validateAirportsSchema = ajv.compile(airportsSchema);
       var validAirports = validateAirportsSchema(airports);
 
