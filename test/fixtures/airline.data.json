@@ -1,0 +1,21 @@
+[{
+    "name": "Adria Airways",
+    "logoLink": "https://en.wikipedia.org/wiki/File:Adria_Airways_Logo_Star.svg",
+    "IATA": "JP",
+    "ICAO": "ADR",
+    "Callsign": "ADRIA",
+    "OperatingBases": [{
+      "name": "Pristina International Airport",
+      "link": "https://en.wikipedia.org/wiki/Pristina_International_Airport"
+    }, {
+      "name": "Tirana International Airport",
+      "link": "https://en.wikipedia.org/wiki/Tirana_International_Airport"
+    }],
+    "hubs": [{
+      "name": "Ljubljana Jože Pučnik Airport",
+      "link": "https://en.wikipedia.org/wiki/Ljubljana_Jo%C5%BEe_Pu%C4%8Dnik_Airport"
+    }],
+    "website":"http://www.adria.si/"
+  }
+
+]
