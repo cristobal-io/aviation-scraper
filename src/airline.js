@@ -10,6 +10,13 @@ function getAirlineData(airline, callback) {
   var url = airline;
 
   debug("Getting destinations from %s", url);
+  callScraper(url, scrapers.airline, function (err, data) {
+    callback(err, data);
+  });
+}
+
+
+function callScraper(url,scraper, callback) {
   sjs.StaticScraper.create(url)
     .catch(function (err, utils) {
       // Bermi, if I get an error because of a missing property, I get this catch called.
@@ -17,14 +24,16 @@ function getAirlineData(airline, callback) {
       // schema validation, this schema validation is being done at the test. It seems like 
       // this executes the callback at the same time it sends it back.
       if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url);
+        debug(chalk.red("\nerror %s, %s \n"), err, url);
         callback(err, utils);
       }
     })
-    .scrape(scrapers["airline"])
+    .scrape(scraper)
     .then(function (data) {
       callback(null, data);
     });
 }
 
+
 module.exports.getAirlineData = getAirlineData;
+module.exports.callScraper = callScraper;

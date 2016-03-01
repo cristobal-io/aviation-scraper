@@ -18,6 +18,7 @@
   + make all the scrapers meet the default schema. (only 13 errors now)
 
 # Current Taks
+
 * update the test so it uses the localhost page
 - create the automatic calling for all the airports passed that uses the previously created function.
 
@@ -27,7 +28,6 @@
 # TODO
 
 - refactor airline schema
-- refactor getxxxxdata functions to use a general function with a callback that subsitutes sjs.StaticScraper.create(url).
 - unify get gefilename methods. 
 - check that all the IATA airports are saved into individual files.
   + we can check the number of airports at the list and how many files meet the criteria.

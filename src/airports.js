@@ -1,6 +1,6 @@
 "use strict";
-var scraperjs = require("scraperjs");
 var scrapers = require("../scrapers/");
+var callScraper = require("./airline.js").callScraper;
 
 var fs = require("fs");
 var _ = require("lodash");
@@ -80,22 +80,15 @@ function getData(airportLink, callback) {
   var url = airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
-  scraperjs.StaticScraper.create(url)
-    .catch(function (err, utils) {
-      if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airportLink.name, err, url);
-        callback(err, utils);
-      }
-    })
-    .scrape(scrapers["airports"])
-    .then(function (airportData) {
-      airportData.url = url;
-      getAirportFileName(airportData);
-      writeJson(airportData, airportData.fileName, function (err) {
-        debug("file %s saved", airportData.fileName);
-        callback(err, airportData);
-      });
+  callScraper(url, scrapers["airports"], function(err, airportData) {
+    airportData.url = url;
+    getAirportFileName(airportData);
+    writeJson(airportData, airportData.fileName, function (err) {
+      debug("file %s saved", airportData.fileName);
+      callback(err, airportData);
     });
+    
+  });
 }
 
 // checks the JSON schema and returns the same object passed with the filename 

@@ -2,6 +2,7 @@
 var async = require("async");
 var _ = require("lodash");
 
+var callScraper = require("./airline.js").callScraper;
 var scrapers = require("../scrapers/");
 
 var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -11,17 +12,6 @@ for (var i = 0; i < letters.length; i += 1) {
   iataList.push("https://en.wikipedia.org/wiki/List_of_airports_by_IATA_code:_" + letters[i]);
 }
 
-var scraperjs = require("scraperjs");
-
-// scrapping each iata link page to get all the airports.
-function getAirportsByIata(iataLink, callback) {
-  scraperjs.StaticScraper.create(iataLink)
-    .scrape(scrapers["airportsIata"])
-    .then(function (airports) {
-      callback(null, airports);
-    });
-}
-
 // receives an array of links with the iata pages to scrape.
 function getAllAirportsByIata(list, callback) {
   // if no list is provided, the default generated is used.
@@ -29,7 +19,8 @@ function getAllAirportsByIata(list, callback) {
   async.mapLimit(iataList, 10, function (iataLink, callback) {
 
     async.retry(5, function (callback) {
-      getAirportsByIata(iataLink, callback);
+      // getAirportsByIata(iataLink, callback);
+      callScraper(iataLink, scrapers["airportsIata"], callback);
     }, callback);
 
   }, function (err, airportsData) {
@@ -39,7 +30,6 @@ function getAllAirportsByIata(list, callback) {
 
 }
 module.exports = {
-  getAllAirportsByIata : getAllAirportsByIata,
-  getAirportsByIata : getAirportsByIata
+  getAllAirportsByIata : getAllAirportsByIata
 };
 

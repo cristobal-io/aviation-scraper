@@ -1,6 +1,5 @@
 "use strict";
 
-var sjs = require("scraperjs");
 var fs = require("fs");
 var scrapers = require("../scrapers/");
 var async = require("async");
@@ -15,6 +14,8 @@ var ajv = Ajv();
 var chalk = require("chalk");
 var debug = require("debug")("airlineData:destinations");
 
+var callScraper = require("./airline.js").callScraper;
+
 var errors = 0,
   destinationsSaved = 0;
 
@@ -28,20 +29,13 @@ var errors = 0,
  */
 function getDestinations(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
+  var scraper = scrapers[airline.scraper] || scrapers["default"];
 
   debug("Getting destinations for %s from %s", airline.name, url);
-  sjs.StaticScraper.create(url)
-    .catch(function (err, utils) {
-      if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url);
-        callback(err, utils);
-      }
-    })
-    .scrape(scrapers[airline.scraper] || scrapers["default"])
-    .then(function (data) {
-      airline.destinations = data;
-      checkAndSaveDestinations(null, airline, callback);
-    });
+  callScraper(url, scraper, function (err, data) {
+    airline.destinations = data;
+    checkAndSaveDestinations(null, airline, callback);
+  });
 }
 /**
  * checks the schema integrity and returns the object airline with the fileName

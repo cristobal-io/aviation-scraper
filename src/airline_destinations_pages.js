@@ -7,6 +7,8 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
+var callScraper = require("./airline.js").callScraper;
+
 var debug = require("debug")("airlineData:links");
 
 // scrape a single webpage for all the destinations links of all the
@@ -15,11 +17,9 @@ function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
   debug("Getting scraper for %s from %s", letter, options);
-  scraperjs.StaticScraper.create(options)
-    .scrape(scrapers["destinations"])
-    .then(function (destinations) {
-      callback(null, destinations);
-    });
+  callScraper(options, scrapers["destinations"], function (err, destinations) {
+    callback(null, destinations);
+  });
 }
 
 // connects to the main page and gets all the links for all the pages that 
@@ -76,7 +76,7 @@ function getAllDestinationsPages(options, callback) {
   // specified at the options object passed.
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
-    
+
     async.map(urls, function (options, callback) {
       getDestinationsPages(options, callback);
     }, function (err, results) {

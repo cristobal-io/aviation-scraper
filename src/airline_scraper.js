@@ -1,11 +1,12 @@
 "use strict";
 
-var sjs = require("scraperjs");
 var fs = require("fs");
 var async = require("async");
 var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var debug = require("debug")("airlineData:scrapers");
+
+var callScraper = require("./airline.js").callScraper;
 
 var BASE_URL = "https://en.wikipedia.org";
 
@@ -14,22 +15,16 @@ function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
   debug("Getting scraper for %s from %s", options.name, url);
-  sjs.StaticScraper.create(url)
-    .catch(function (err, utils) {
-      if (err) {
-        debug("error from %s is %s, %s", options.name, err, url);
-        callback(err, utils);
-      }
-    })
-    .scrape(scrapers["type_of_scrapper"])
-    .then(function (type) {
-      debug("found %s from %s", type, url);
-      callback(null, {
-        type: type,
-        name: options.name
-      });
+  callScraper(url, scrapers["type_of_scrapper"], function (err, type) {
+    debug("found %s from %s", type, url);
+    callback(null, {
+      type: type,
+      name: options.name
     });
+
+  });
 }
+
 
 // receives an array with all the airlines and the destinations page link 
 // for each one of them, iterates for each one of them, calling getScraperType
