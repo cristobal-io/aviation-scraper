@@ -12,6 +12,7 @@ var _ = require("lodash");
 var airlines = require("./fixtures/airlines.json");
 var airlineJs = require("../src/airline.js");
 var getAirlineData = airlineJs.getAirlineData;
+var BASE_URL = "http://localhost:3000/";
 
 describe("airline.js\n", function() {
   
@@ -21,7 +22,7 @@ describe("airline.js\n", function() {
       var airlineDefaultSchema = require("../schema/airline.schema.json");
       var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
 
-      getAirlineData(airlines[0], function(err, data) {
+      getAirlineData(BASE_URL + airlines[0], function(err, data) {
         // Bermi, this is really extrange, it gets the error from what I am calling inside
         // the expect error.
         if (err) {console.log(err);}
