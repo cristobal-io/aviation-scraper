@@ -9,7 +9,7 @@ var scrapers = require("../scrapers/");
 function getAirlineData(airline, callback) {
   var url = airline;
 
-  debug("Getting destinations from %s", url);
+  debug("Getting airline data from %s", url);
   callScraper(url, scrapers.airline, function (err, data) {
     callback(err, data);
   });
