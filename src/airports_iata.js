@@ -3,7 +3,6 @@ var async = require("async");
 var _ = require("lodash");
 
 var callScraper = require("./airline.js").callScraper;
-var scrapers = require("../scrapers/");
 
 var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var iataList = [];
@@ -20,7 +19,7 @@ function getAllAirportsByIata(list, callback) {
 
     async.retry(5, function (callback) {
       // getAirportsByIata(iataLink, callback);
-      callScraper(iataLink, scrapers["airportsIata"], callback);
+      callScraper(iataLink, "airportsIata", callback);
     }, callback);
 
   }, function (err, airportsData) {

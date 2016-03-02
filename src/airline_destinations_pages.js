@@ -17,7 +17,7 @@ function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
   debug("Getting scraper for %s from %s", letter, options);
-  callScraper(options, scrapers["destinations"], function (err, destinations) {
+  callScraper(options, "destinations", function (err, destinations) {
     callback(null, destinations);
   });
 }

@@ -1,7 +1,6 @@
 "use strict";
 
 var fs = require("fs");
-var scrapers = require("../scrapers/");
 var async = require("async");
 
 var BASE_URL = "https://en.wikipedia.org";
@@ -29,7 +28,7 @@ var errors = 0,
  */
 function getDestinations(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
-  var scraper = scrapers[airline.scraper] || scrapers["default"];
+  var scraper =airline.scraper ||"default";
 
   debug("Getting destinations for %s from %s", airline.name, url);
   callScraper(url, scraper, function (err, data) {

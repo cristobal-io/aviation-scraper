@@ -2,7 +2,6 @@
 
 var fs = require("fs");
 var async = require("async");
-var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var debug = require("debug")("airlineData:scrapers");
 
@@ -15,7 +14,7 @@ function getScraperType(options, callback) {
   var url = options.url || BASE_URL + options.destinationsLink;
 
   debug("Getting scraper for %s from %s", options.name, url);
-  callScraper(url, scrapers["type_of_scrapper"], function (err, type) {
+  callScraper(url, "type_of_scrapper", function (err, type) {
     debug("found %s from %s", type, url);
     callback(null, {
       type: type,

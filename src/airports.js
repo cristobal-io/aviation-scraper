@@ -1,5 +1,4 @@
 "use strict";
-var scrapers = require("../scrapers/");
 var callScraper = require("./airline.js").callScraper;
 
 var fs = require("fs");
@@ -80,7 +79,7 @@ function getData(airportLink, callback) {
   var url = airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
-  callScraper(url, scrapers["airports"], function(err, airportData) {
+  callScraper(url, "airports", function(err, airportData) {
     airportData.url = url;
     getAirportFileName(airportData);
     writeJson(airportData, airportData.fileName, function (err) {
