@@ -1,8 +1,7 @@
 "use strict";
 
 // Mocha
-var chai = require("chai");
-var expect = chai.expect;
+var expect = require("expect.js");
 
 var Ajv = require("ajv");
 var ajv = Ajv();
