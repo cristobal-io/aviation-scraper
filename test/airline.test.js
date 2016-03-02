@@ -27,7 +27,7 @@ describe("airline.js\n", function () {
         // Bermi, this is really extrange, it gets the error from what I am calling inside
         // the expect error.
         if (err) {
-          console.log("err: %s", err);
+          console.log("err: %s", err); //eslint-disable-line no-console
         }
         // console.log(JSON.stringify(data,null,2));
         var validAirline = validateAirlineSchema([data]);
@@ -48,12 +48,14 @@ describe("airline.js\n", function () {
         var validateAirlineLinksSchema = ajv.compile(airlinesLinksSchema);
 
         if (err) {
-          console.log("err: %s", err);
+          console.log("err: %s", err); //eslint-disable-line no-console
         }
         var validAirlineLinks = validateAirlineLinksSchema(data);
 
         if (!validAirlineLinks) {
-          console.log("the schema is not valid,", _.get(validateAirlineLinksSchema, "errors[0].message"));
+          console.log("the schema is not valid,", //eslint-disable-line no-console
+            _.get(validateAirlineLinksSchema,
+              "errors[0].message"));
         }
         expect(validAirlineLinks).to.be(true);
         // the schema is not strict, so to validate that all the data is being

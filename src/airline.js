@@ -1,5 +1,5 @@
 "use strict";
-var chalk = require("chalk");
+// var chalk = require("chalk");
 var debug = require("debug")("airlineData:airline");
 var sjs = require("scraperjs");
 
