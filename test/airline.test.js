@@ -29,10 +29,8 @@ describe("airline.js\n", function () {
         if (err) {
           console.log("err: %s", err); //eslint-disable-line no-console
         }
-        // console.log(JSON.stringify(data,null,2));
         var validAirline = validateAirlineSchema([data]);
 
-        // console.log(JSON.stringify(validateAirlineSchema.errors,null,2));
         expect(validAirline, _.get(validateAirlineSchema, "errors[0].message")).to.be(true);
         done();
       });
