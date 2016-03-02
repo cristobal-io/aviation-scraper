@@ -15,10 +15,7 @@ var airportFixtures = require("../fixtures/airport_links.json");
 var iataLocalList = require("../fixtures/airports_iata.data.json");
 var destinationsPages = require("../fixtures/airline_destination_pages_links.json");
 var airlines = require("../fixtures/airlines.json");
-var file_url = [{
-  "fileName": "List_of_airline_codes",
-  "url": "https://en.wikipedia.org/wiki/List_of_airline_codes"
-}];
+var file_url = [];
 
 for (var m = 0; m < airlines.length; m += 1) {
   file_url.push({
