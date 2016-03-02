@@ -10,5 +10,6 @@ module.exports = {
   "destinations_link": require("./scraper.destinations_link.js"),
   "airports": require("./scraper.airports.js"),
   "airportsIata": require("./scraper.airports_iata.js"),
-  "airline": require("./scraper.airline.js")
+  "airline": require("./scraper.airline.js"),
+  "airlineLinks": require("./scraper.airline_links.js")
 };
