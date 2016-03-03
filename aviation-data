@@ -21,6 +21,8 @@ var options = {
     "destinationsFile": "./data/destination_pages.json"
   },
   airportsData;
+var airlinesLinksUrl = "https://en.wikipedia.org/wiki/List_of_airline_codes";
+var callScraper = require("./src/airline.js").callScraper;
 
 program
   .version("0.0.1")
@@ -28,6 +30,7 @@ program
   .option("-l, --list", "List of airports with the link to the wikipedia page. (Saved to a single file)")
   .option("-d, --destinations", "Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)")
   .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
+  .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
   .parse(process.argv);
 
 
@@ -90,6 +93,14 @@ if (program.airports) {
 
   }
 
+}
+
+if (program.companies) {
+  callScraper(airlinesLinksUrl, "airlineLinks", function(err, airlinesLinks) {
+    writeJson(airlinesLinks, "./data/airlines_links.json", function() {
+      debug("airline companies links saved.");
+    });
+  });
 }
 // this is going to be the function to show the specific destinations of a specific airport.
 // getAllDestinations([{
