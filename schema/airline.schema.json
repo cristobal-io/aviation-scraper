@@ -37,7 +37,6 @@
       "OperatingBases": {
         "id": "OperatingBases",
         "type": "array",
-        "minItems": 1,
         "uniqueItems": false,
         "additionalItems": true,
         "items": {

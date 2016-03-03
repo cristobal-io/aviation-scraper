@@ -9,13 +9,18 @@ var ajv = Ajv();
 var _ = require("lodash");
 
 var airlines = require("./fixtures/airlines.json");
+
 var airlineJs = require("../src/airline.js");
 var getAirlineData = airlineJs.getAirlineData;
 var callScraper = airlineJs.callScraper;
+var callScraperForEachLink = airlineJs.callScraperForEachLink;
+var getAllAirlinesLinks = airlineJs.getAllAirlinesLinks;
+var getAllAirlinesData = airlineJs.getAllAirlinesData;
+
 var BASE_URL = "http://localhost:3000/";
 var airlineDataExpected = require("./fixtures/airline.data.test.json");
 
-describe("airline.js\n", function () {
+describe.only("airline.js\n", function () {
 
   describe("getAirlineData", function () {
 
@@ -31,7 +36,8 @@ describe("airline.js\n", function () {
         }
         var validAirline = validateAirlineSchema([data]);
 
-        expect(validAirline, _.get(validateAirlineSchema, "errors[0].message")).to.be(true);
+        expect(validAirline,
+          _.get(validateAirlineSchema, "errors[0].message")).to.be(true);
         done();
       });
     });
@@ -64,6 +70,49 @@ describe("airline.js\n", function () {
       });
     });
 
+  });
+
+  describe("using callScraperForEachLink should", function () {
+
+    it("return data with the airports", function (done) {
+      var airlineDefaultSchema = require("../schema/airline.schema.json");
+      var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
+
+      callScraperForEachLink([
+        BASE_URL + airlines[0],
+        BASE_URL + airlines[1]
+      ], "airline", function (err, results) {
+        // console.log("this are the results: ",JSON.stringify(results,null,2));
+        var validAirline = validateAirlineSchema(results);
+
+        if (!validAirline) {
+          console.log("the schema is not valid,", //eslint-disable-line no-console
+            _.get(validateAirlineSchema,
+              "errors[0].message"));
+        }
+
+        expect(validAirline).to.be(true);
+
+        done();
+      });
+    });
+
+    it("should scrape all the airports with the info passed coming from airlineLinks scraper.", function (done) {
+      var airlineDefaultSchema = require("../schema/airline.schema.json");
+      var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
+      var url = BASE_URL + airlines[2];
+
+      getAllAirlinesLinks(url, function (err, links) {
+        getAllAirlinesData(links, function (err, airlines) {
+          console.log(airlines);
+          var validAirlines = validateAirlineSchema(airlines);
+
+          expect(validAirlines).to.be(true);
+          done();
+        });
+
+      });
+    });
   });
 
 });
