@@ -20,7 +20,7 @@ var getAllAirlinesData = airlineJs.getAllAirlinesData;
 var BASE_URL = "http://localhost:3000/";
 var airlineDataExpected = require("./fixtures/airline.data.test.json");
 
-describe.only("airline.js\n", function () {
+describe("airline.js\n", function () {
 
   describe("getAirlineData", function () {
 
