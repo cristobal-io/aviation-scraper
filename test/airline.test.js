@@ -104,7 +104,6 @@ describe("airline.js\n", function () {
 
       getAllAirlinesLinks(url, function (err, links) {
         getAllAirlinesData(links, function (err, airlines) {
-          console.log(airlines);
           var validAirlines = validateAirlineSchema(airlines);
 
           expect(validAirlines).to.be(true);

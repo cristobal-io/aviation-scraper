@@ -32,6 +32,7 @@ function getAllAirlinesData(airlines, callback) {
   }
 
   callScraperForEachLink(airlines, "airline", function (err, results) {
+    results = _.filter(results, "name");
     // bermi: can I put only callback? 
     // or I have to specify what is being returned?
     callback(err, results);

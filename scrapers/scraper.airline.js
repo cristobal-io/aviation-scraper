@@ -3,7 +3,9 @@
 module.exports = function ($) {
   var OperatingBases = getOperatingBases($, $(".infobox.vcard"));
   var hubs = getHubs($, $(".infobox.vcard"));
-
+  
+  // with this conditional, we only return results for the tipical box
+  // with the right information.
   if ($(".infobox.vcard").find(".org").text()) {
     return {
       "name": $(".infobox.vcard").find(".org").text(),
