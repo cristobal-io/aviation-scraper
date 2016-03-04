@@ -80,7 +80,7 @@ describe("airline.js\n", function () {
         BASE_URL + airlines[0],
         BASE_URL + airlines[1]
       ], "airline", function (err, results) {
-        // console.log("this are the results: ",JSON.stringify(results,null,2));
+        if (err) {throw err;}
         var validAirline = validateAirlineSchema(results);
 
         if (!validAirline) {

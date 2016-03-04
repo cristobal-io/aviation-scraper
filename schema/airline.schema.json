@@ -89,7 +89,7 @@
         "minLength": 1
       }
     },
-    "required": ["name", "logoLink", "IATA", "ICAO", "Callsign", "OperatingBases", "hubs", "website"]
+    "required": ["name", "logoLink", "IATA", "ICAO", "Callsign", "website"]
   },
   "required": ["0"]
 }
