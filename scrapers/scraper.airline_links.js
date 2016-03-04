@@ -1,30 +1,29 @@
 "use strict";
+var _ = require("lodash");
 
 module.exports = function ($) {
   var airline = [];
 
   $("table.sortable").find("tr").map(function () {
     var $airline = $(this).find("td"),
-      airlineData = {},
-      iata = $($airline[0]).text(),
-      icao = $($airline[1]).text(),
-      airlineName = $($airline[2]).text(),
-      airlineLink = $($airline[2]).find("a").attr("href"),
-      callSign = $($airline[3]).text(),
-      country = $($airline[4]).text();
+      airlineData = {
+        IATA : $($airline[0]).text(),
+        ICAO : $($airline[1]).text(),
+        airline:{
+          name : $($airline[2]).text(),
+          link : $($airline[2]).find("a").attr("href")
+        },
+        CallSign : $($airline[3]).text(),
+        Country : $($airline[4]).text()
+        
+      };
 
-    if (!/wiki/.test(airlineLink)) {
-      airlineLink = "";
+    if (!/wiki/.test(airlineData.airline.link)) {
+      airlineData.airline.link = "";
     }
-    if (airlineName || airlineLink) {
-      airlineData["airline"] = {};
-      addDatatoAirline(airlineName, "name", airlineData.airline);
-      addDatatoAirline(airlineLink, "link", airlineData.airline);
-    }
-    addDatatoAirline(iata, "IATA", airlineData);
-    addDatatoAirline(icao, "ICAO", airlineData);
-    addDatatoAirline(callSign, "CallSign", airlineData);
-    addDatatoAirline(country, "Country", airlineData);
+    airlineData.airline = dropFalseValues(airlineData.airline);
+    airlineData = dropFalseValues(airlineData);
+
     if (Object.keys(airlineData).length) {
       airline.push(airlineData);
     }
@@ -32,12 +31,13 @@ module.exports = function ($) {
   return airline;
 };
 
-// Bermi: how to improve this function. Do I need to pass the object to modify it?
-// I thought this could be done as a closure, I understand that in order to do it
-// this way, I have to return the function execution. Am I right?
-function addDatatoAirline(data, dataName, airlineObject) {
-  if (data) {
-    airlineObject[dataName] = data;
-  }
-  return airlineObject;
+function dropFalseValues (obj) {
+  var result = _.reduce(obj, function(result, value, key) {
+    if (value) {
+      result[key] = value;
+    }
+    return result;
+  }, {});
+
+  return _.size(result) ? result : false;
 }
