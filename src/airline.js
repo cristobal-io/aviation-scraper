@@ -1,5 +1,5 @@
 "use strict";
-// var chalk = require("chalk");
+var chalk = require("chalk");
 var debug = require("debug")("airlineData:airline");
 var sjs = require("scraperjs");
 
@@ -33,8 +33,6 @@ function getAllAirlinesData(airlines, callback) {
 
   callScraperForEachLink(airlines, "airline", function (err, results) {
     results = _.filter(results, "name");
-    // bermi: can I put only callback? 
-    // or I have to specify what is being returned?
     callback(err, results);
   });
 }
@@ -48,17 +46,12 @@ function getAllAirlinesLinks(url, callback) {
 
 function callScraper(url, scraper, callback) {
   sjs.StaticScraper.create(url)
-    // .catch(function (err) {
-    //   // Bermi, if I get an error because of a missing property, I get this catch called.
-    //   // I think it shouldn'be calling this callback, because the error is coming from
-    //   // schema validation, this schema validation is being done at the test. It seems like 
-    //   // this executes the callback at the same time it sends it back.
-    //   // Seems like the catch is calling the callback as well as the .then
-    //   if (err) {
-    //     debug(chalk.red("\nerror %s, %s \n"), err, url);
-    //     callback(err, url);
-    //   }
-    // })
+    .catch(function (err) {
+      if (err) {
+        debug(chalk.red("\nerror %s, %s \n"), err, url);
+        callback(err, url);
+      }
+    })
     .scrape(scrapers[scraper])
     .then(function (data, utils) {
       callback(utils.params, data);

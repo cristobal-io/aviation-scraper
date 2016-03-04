@@ -29,8 +29,6 @@ describe("airline.js\n", function () {
       var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
 
       getAirlineData(BASE_URL + airlines[0], function (err, data) {
-        // Bermi, this is really extrange, it gets the error from what I am calling inside
-        // the expect error.
         if (err) {
           console.log("err: %s", err); //eslint-disable-line no-console
         }
@@ -96,13 +94,14 @@ describe("airline.js\n", function () {
         done();
       });
     });
-
+    // todo: add throw err on all callback fn
     it("should scrape all the airports with the info passed coming from airlineLinks scraper.", function (done) {
       var airlineDefaultSchema = require("../schema/airline.schema.json");
       var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
       var url = BASE_URL + airlines[2];
 
       getAllAirlinesLinks(url, function (err, links) {
+        if (err) {throw err;}
         getAllAirlinesData(links, function (err, airlines) {
           var validAirlines = validateAirlineSchema(airlines);
 
