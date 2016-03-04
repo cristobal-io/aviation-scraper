@@ -14,8 +14,6 @@
   "fileName": "List_of_airline_codes",
   "url": "https://en.wikipedia.org/wiki/List_of_airline_codes"
 }
-- refactor callScraper fn to get only the name of the scraper, not the scraper itself.
-- create the automatic calling for all the airports passed that uses the previously created function.
 
 
 ---
