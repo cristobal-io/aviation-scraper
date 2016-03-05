@@ -8,10 +8,19 @@ var async = require("async");
 var _ = require("lodash");
 
 var BASE_URL = "http://localhost:3000/";
+var WIKI_URL = "https://en.wikipedia.org";
 
+function prepareUri(url) {
+  if (process.env.NODE_ENV === "test") {
+    url = BASE_URL + url.replace("/wiki/", "");
+  } else {
+    url = WIKI_URL + url;
+  }
+  return url;
+}
 
 function getAirlineData(airline, callback) {
-  var url = airline;
+  var url = prepareUri(airline);
 
   debug("Getting airline data from %s", url);
   callScraper(url, "airline", function (err, data) {
@@ -20,16 +29,10 @@ function getAirlineData(airline, callback) {
 }
 
 function getAllAirlinesData(airlines, callback) {
-
   airlines = _.map(_.filter(airlines, "airline.link"), function (airlineData) {
-    return airlineData.airline.link;
+    return prepareUri(airlineData.airline.link);
   });
 
-  if (process.env.NODE_ENV === "test") {
-    airlines = _.map(airlines, function (airlineLink) {
-      return BASE_URL + airlineLink.replace("/wiki/", "");
-    });
-  }
 
   callScraperForEachLink(airlines, "airline", function (err, results) {
     results = _.filter(results, "name");

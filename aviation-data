@@ -22,7 +22,9 @@ var options = {
   },
   airportsData;
 var airlinesLinksUrl = "https://en.wikipedia.org/wiki/List_of_airline_codes";
-var callScraper = require("./src/airline.js").callScraper;
+var airlineJs = require("./src/airline.js");
+var callScraper = airlineJs.callScraper;
+var getAllAirlinesData = airlineJs.getAllAirlinesData;
 
 program
   .version("0.0.1")
@@ -97,8 +99,13 @@ if (program.airports) {
 
 if (program.companies) {
   callScraper(airlinesLinksUrl, "airlineLinks", function(err, airlinesLinks) {
+    if (err) {throw err;}
     writeJson(airlinesLinks, "./data/airlines_links.json", function() {
       debug("airline companies links saved.");
+      getAllAirlinesData(airlinesLinks, function(err) {
+        if (err) {throw err;}
+        debug("airlines saved.");
+      });
     });
   });
 }

@@ -28,7 +28,7 @@ describe("airline.js\n", function () {
       var airlineDefaultSchema = require("../schema/airline.schema.json");
       var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
 
-      getAirlineData(BASE_URL + airlines[0], function (err, data) {
+      getAirlineData( airlines[0], function (err, data) {
         if (err) {
           console.log("err: %s", err); //eslint-disable-line no-console
         }
@@ -102,6 +102,7 @@ describe("airline.js\n", function () {
 
       getAllAirlinesLinks(url, function (err, links) {
         if (err) {throw err;}
+        // console.log(links);
         getAllAirlinesData(links, function (err, airlines) {
           var validAirlines = validateAirlineSchema(airlines);
 
