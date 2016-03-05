@@ -53,9 +53,7 @@
     },
 - add special case were the airports scraper were frozen because of no headers.
 - require all the files inside data that have the "destinations" prefix 
-- add comments to all the code to explain why I am doing everything.
 - Eliminate Scraper fase and join it with the destinations to avoid extra connections.
-- cleanup makefile for the NODE_ENV=test variable that thanks to debug package we are not using anymore.
 
 # Next Features
 
