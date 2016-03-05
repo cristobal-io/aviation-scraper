@@ -9,6 +9,7 @@
 
 # Current Taks
 
+- add verbose to callScraper fn.
 * download all the links for all the airports 
  {
   "fileName": "List_of_airline_codes",

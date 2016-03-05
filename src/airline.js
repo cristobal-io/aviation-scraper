@@ -19,6 +19,8 @@ function prepareUri(url) {
   return url;
 }
 
+// todo: I think I don't need this funtion. 
+// unless further uses for singles airport.
 function getAirlineData(airline, callback) {
   var url = prepareUri(airline);
 
