@@ -58,7 +58,7 @@ describe("airports.js\n", function () {
         if (err) {throw err;}
         // console.log(JSON.stringify(airportData,null,2));
         expect(airportData.name, "it doesn't include the name").to.eql("Amsterdam Airport Schiphol");
-        expect(airportData.nickname, "it doesn't include the nickname").to.eql("Luchthaven SchipholAMSEHAM");
+        expect(airportData.nickname, "it doesn't include the nickname").to.eql("Luchthaven Schiphol");
         expect(airportData.website, "it doesn't include the website").to.eql("http://www.schiphol.com/");
         done();
       });
