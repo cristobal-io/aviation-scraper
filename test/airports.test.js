@@ -48,6 +48,23 @@ describe("airports.js\n", function () {
       done();
     });
 
+    it("should include the name, nickname and website of the airport.", function(done) {
+      var airportLocalLink = {
+        name: "Amsterdam Airport Schiphol",
+        url: "http://localhost:3000/Amsterdam_Airport_Schiphol"
+      };
+
+      getData(airportLocalLink, function (err, airportData) {
+        if (err) {throw err;}
+        // console.log(JSON.stringify(airportData,null,2));
+        expect(airportData.name, "it doesn't include the name").to.eql("Amsterdam Airport Schiphol");
+        expect(airportData.nickname, "it doesn't include the nickname").to.eql("Luchthaven SchipholAMSEHAM");
+        expect(airportData.website, "it doesn't include the website").to.eql("http://www.schiphol.com/");
+        done();
+      });
+
+    });
+
 
   });
 
@@ -73,7 +90,7 @@ describe("airports.js\n", function () {
       var airportData = require("./fixtures/airport_data.json");
       var godAirportName = getAirportFileName(airportData[0]);
 
-      expect(godAirportName.fileName).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
+      expect(godAirportName).to.eql("./data/airport_Amsterdam_Airport_Schiphol.json");
     });
 
     it("Should save the files with errors with a different message", function () {
@@ -81,7 +98,7 @@ describe("airports.js\n", function () {
         "url": "http://localhost:3000/bad_filename"
       });
 
-      expect(badAirportName.fileName).to.eql("./data/airport_error_bad_filename.json");
+      expect(badAirportName).to.eql("./data/airport_error_bad_filename.json");
     });
 
   });
@@ -120,9 +137,13 @@ describe("airports.js\n", function () {
       getAirportsData(airportsLocalLinks, function (err, airportsData) {
         var validAirportData = validateAirportDataSchema(airportsData);
 
+
+        // console.log(JSON.stringify(airportsData,null,2));
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
         _.map(airportsData, function (airportData) {
-          fs.unlink(airportData.fileName, function (err) {
+          var fileName = getAirportFileName(airportData);
+
+          fs.unlink(fileName, function (err) {
             if (err) {
               console.log(err); //eslint-disable-line no-console
             }

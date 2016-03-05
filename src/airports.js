@@ -81,8 +81,9 @@ function getData(airportLink, callback) {
   debug("Getting data for %s from %s", airportLink.name, url);
   callScraper(url, "airports", function(err, airportData) {
     airportData.url = url;
-    getAirportFileName(airportData);
-    writeJson(airportData, airportData.fileName, function (err) {
+    var fileName = getAirportFileName(airportData);
+
+    writeJson(airportData, fileName, function (err) {
       debug("file %s saved", airportData.fileName);
       callback(err, airportData);
     });
@@ -96,33 +97,33 @@ function getAirportFileName(airportData) {
   var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
   var validateAirportData = ajv.compile(defaultDataAirportSchema);
   var validDefaultRoute = validateAirportData([airportData]),
-    decodedUrl, name;
+    decodedUrl, name, fileName;
 
   if (validDefaultRoute) {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    airportData.fileName = "./data/airport_" + name + ".json";
+    fileName = "./data/airport_" + name + ".json";
     airportsDataSaved += 1;
   } else {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    airportData.fileName = "./data/airport_error_" + name + ".json";
+    fileName = "./data/airport_error_" + name + ".json";
 
-    debug(chalk.red("Airline %s got the error %s"), airportData.fileName,
+    debug(chalk.red("Airline %s got the error %s"), fileName,
       _.get(validateAirportData, "errors[0].message"));
     airportsDataErrors += 1;
-    airportData.errorMessage = "airport " + airportData.fileName + " got the error " +
+    airportData.errorMessage = "airport " + fileName + " got the error " +
       _.get(validateAirportData, "errors[0].message");
   }
   debug(chalk.green("%s airports Saved &") + chalk.red(" %s airports with errors."), airportsDataSaved, airportsDataErrors);
-  return airportData;
+  return fileName;
 }
 
 // receives an array with all the airports to scrape and manages to call
 // getData with each one of the airports.
 // Returns an array with all the airports with all their data included.
 function getAirportsData(airportsLink, callback) {
-  async.mapLimit(airportsLink, 30, function (airportLink, callback) {
+  async.mapLimit(airportsLink, 10, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
 
     async.retry(5, function (callback) {
