@@ -11,7 +11,7 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var chalk = require("chalk");
-var debug = require("debug")("airlineData:destinations");
+var debug = require("debug")("aviation-data:destinations");
 
 var callScraper = require("./airline.js").callScraper;
 

@@ -15,7 +15,7 @@ lint:
 	echo "Linting finished without errors"
 
 data:
-	DEBUG=airlineData* node src/cli.js
+	DEBUG=aviation-data* node src/cli.js
 
 # local_pages update needed at least once before runing tests.
 test/spec/local_pages/:
@@ -23,7 +23,7 @@ test/spec/local_pages/:
 	cp test/fixtures/index.html $@
 
 update-local-pages: test/spec/local_pages/
-	DEBUG=airlineData* node test/spec/update_local_pages.js
+	DEBUG=aviation-data* node test/spec/update_local_pages.js
 
 # test commands
 

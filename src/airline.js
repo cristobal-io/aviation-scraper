@@ -1,6 +1,6 @@
 "use strict";
 var chalk = require("chalk");
-var debug = require("debug")("airlineData:airline");
+var debug = require("debug")("aviation-data:airline");
 var sjs = require("scraperjs");
 
 var scrapers = require("../scrapers/");
@@ -19,7 +19,7 @@ function prepareUri(url) {
   return url;
 }
 
-// todo: I think I don't need this funtion. 
+// todo: I think I don't need this function. 
 // unless further uses for singles airport.
 function getAirlineData(airline, callback) {
   var url = prepareUri(airline);
@@ -35,7 +35,6 @@ function getAllAirlinesData(airlines, callback) {
     return prepareUri(airlineData.airline.link);
   });
 
-
   callScraperForEachLink(airlines, "airline", function (err, results) {
     results = _.filter(results, "name");
     callback(err, results);
@@ -50,6 +49,7 @@ function getAllAirlinesLinks(url, callback) {
 
 
 function callScraper(url, scraper, callback) {
+  debug("scrapping: %s", url);
   sjs.StaticScraper.create(url)
     .catch(function (err) {
       if (err) {

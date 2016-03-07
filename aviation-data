@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 "use strict";
-process.env["DEBUG"] = "airlineData*";
+process.env["DEBUG"] = "aviation-data*";
 
 var program = require("commander");
-var debug = require("debug")("airlineData:cli");
+var debug = require("debug")("aviation-data:cli");
 var chalk = require("chalk");
 
 var airportsJs = require("./src/airports.js");

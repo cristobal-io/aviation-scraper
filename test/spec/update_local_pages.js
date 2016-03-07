@@ -4,7 +4,7 @@
 var async = require("async");
 var fs = require("fs");
 var https = require("https");
-var debug = require("debug")("airlineData:local_pages");
+var debug = require("debug")("aviation-data:local_pages");
 // App variables
 var BASE_URL = "https://en.wikipedia.org/wiki/";
 var BASE_URL_PAGES = "https://en.wikipedia.org/w/index.php?title=";

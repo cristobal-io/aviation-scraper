@@ -9,7 +9,7 @@ var async = require("async");
 
 var callScraper = require("./airline.js").callScraper;
 
-var debug = require("debug")("airlineData:links");
+var debug = require("debug")("aviation-data:links");
 
 // scrape a single webpage for all the destinations links of all the
 // airlines at the site.
