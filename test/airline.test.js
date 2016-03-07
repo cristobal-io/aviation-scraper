@@ -94,7 +94,7 @@ describe("airline.js\n", function () {
         done();
       });
     });
-    // todo: add throw err on all callback fn
+
     it("should scrape all the airports with the info passed coming from airlineLinks scraper.", function (done) {
       var airlineDefaultSchema = require("../schema/airline.schema.json");
       var validateAirlineSchema = ajv.compile(airlineDefaultSchema);
