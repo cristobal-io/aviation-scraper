@@ -2,6 +2,8 @@ SHELL = /bin/bash
 MAKEFLAGS += --no-print-directory --silent
 export PATH := ./node_modules/.bin:$(PATH):./bin
 LINT_DIR = $(wildcard *.js src/*.js test/*.js scrapers/*.js spikes/*.js test/*/*.js scrapers/*/*.js spikes/*/*.js)
+DIST_DIR= $(wildcard src/*.js)
+
 # export NODE_ENV=production
 
 default: setup test
@@ -9,6 +11,21 @@ default: setup test
 setup:
 	npm install
 
+# generate distribution file with browserify and uglifyjs
+dist: dist/aviation-data.min.js
+
+dist/aviation-data.browserify.js: clean
+	mkdir -p dist
+	echo "generating browserify file from lib/ ..."
+	browserify $(DIST_DIR) --standalone aviationData > $@
+	echo "browserify lib file generated"
+
+dist/aviation-data.min.js: dist/aviation-data.browserify.js
+	echo "generating min file with uglify..."
+	uglifyjs dist/aviation-data.browserify.js > $@
+	echo " uglify file generated."
+
+# lint
 lint:
 	echo "Linting started..."
 	eslint $(LINT_DIR)
