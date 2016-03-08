@@ -42,9 +42,7 @@ function getAllAirlinesData(airlines, callback) {
 }
 
 function getAllAirlinesLinks(url, callback) {
-  callScraper(url, "airlineLinks", function (err, results) {
-    callback(err, results);
-  });
+  callScraper(url, "airlineLinks", callback);
 }
 
 

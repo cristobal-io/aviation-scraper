@@ -14,9 +14,6 @@ lint:
 	eslint $(LINT_DIR)
 	echo "Linting finished without errors"
 
-data:
-	DEBUG=aviation-data* node src/cli.js
-
 # local_pages update needed at least once before runing tests.
 test/spec/local_pages/:
 	mkdir test/spec/local_pages/
