@@ -25,9 +25,7 @@ function getAirlineData(airline, callback) {
   var url = prepareUri(airline);
 
   debug("Getting airline data from %s", url);
-  callScraper(url, "airline", function (err, data) {
-    callback(err, data);
-  });
+  callScraper(url, "airline",callback);
 }
 
 function getAllAirlinesData(airlines, callback) {
@@ -68,9 +66,7 @@ function callScraperForEachLink(linksList, scraper, callback) {
       callScraper(link, scraper, callback);
     }, callback);
 
-  }, function (err, results) {
-    callback(err, results);
-  });
+  },callback);
 
 }
 

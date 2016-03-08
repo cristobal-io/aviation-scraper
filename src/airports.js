@@ -133,9 +133,7 @@ function getAirportsData(airportsLink, callback) {
       }, callback);
     }, callback);
 
-  }, function (err, airportsData) {
-    callback(err, airportsData);
-  });
+  }, callback);
 
 }
 module.exports = {

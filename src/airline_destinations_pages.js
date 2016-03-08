@@ -17,9 +17,7 @@ function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
   debug("Getting scraper for %s from %s", letter, options);
-  callScraper(options, "destinations", function (err, destinations) {
-    callback(null, destinations);
-  });
+  callScraper(options, "destinations", callback);
 }
 
 // connects to the main page and gets all the links for all the pages that 
