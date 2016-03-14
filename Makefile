@@ -16,9 +16,9 @@ dist: dist/aviation-data.min.js
 
 dist/aviation-data.browserify.js: clean
 	mkdir -p dist
-	echo "generating browserify file from lib/ ..."
+	echo "generating browserify file from src/ ..."
 	browserify $(DIST_DIR) --standalone aviationData > $@
-	echo "browserify lib file generated"
+	echo "browserify src file generated"
 
 dist/aviation-data.min.js: dist/aviation-data.browserify.js
 	echo "generating min file with uglify..."
