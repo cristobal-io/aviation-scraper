@@ -15,6 +15,8 @@ var cleanDuplicates = airlineDestinations.cleanDuplicates;
 var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
+var BASE_DIR = "./data";
+
 
 var Ajv = require("ajv");
 var ajv = Ajv();
@@ -39,7 +41,8 @@ describe("airline_destinations_pages.js: \n", function () {
 
     destination_url = {
       urls: url,
-      destinationsFile: __dirname + "/spec/local_pages/destinations.json"
+      destinationsFile: __dirname + "/spec/local_pages/destinations.json",
+      baseDir: BASE_DIR
     };
     getAllDestinationsPages(destination_url, function (err, results) {
       destinations_results = results;

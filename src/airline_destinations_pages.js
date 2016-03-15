@@ -57,7 +57,7 @@ function getAllDestinationsPages(options, callback) {
 
   // we need to check for the directory and create it in case doesn't exist,
   // because we are going to save there our files.
-  ensureDirectoryExist("./data/", function () {
+  ensureDirectoryExist(options.baseDir, function () {
     // conditional to check if we are into a test process so we use the local
     // pages instead of using the web.
     if (process.env.NODE_ENV === "test") {
@@ -82,7 +82,7 @@ function getAllDestinationsPages(options, callback) {
         throw err;
       }
       var airlines = cleanDuplicates(_.flatten(results, true));
-
+console.log(destinationsFile);
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
         if (err) {
           throw (err);
