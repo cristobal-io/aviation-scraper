@@ -9,7 +9,7 @@
   "author": "Cristóbal Gómez",
   "license": "MIT",
   "bin": {
-    "aviation-data": "./aviation-data"
+    "aviation-data-scrapper": "./aviation-data"
   },
   "dependencies": {
     "ajv": "2.5.0",
