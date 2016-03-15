@@ -107,7 +107,7 @@ function getAirportFileName(airportData, baseDir) {
   } else {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    fileName = "./data/airport_error_" + name + ".json";
+    fileName = baseDir + "/airport_error_" + name + ".json";
 
     debug(chalk.red("Airline %s got the error %s"), fileName,
       _.get(validateAirportData, "errors[0].message"));

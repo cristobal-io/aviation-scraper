@@ -100,9 +100,9 @@ describe("airports.js\n", function () {
     it("Should save the files with errors with a different message", function () {
       var badAirportName = getAirportFileName({
         "url": "http://localhost:3000/bad_filename"
-      });
+      }, BASE_DIR);
 
-      expect(badAirportName).to.eql("./data/airport_error_bad_filename.json");
+      expect(badAirportName).to.eql(BASE_DIR + "/airport_error_bad_filename.json");
     });
 
   });
