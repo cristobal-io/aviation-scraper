@@ -20,7 +20,7 @@ function getDestinationsPages(options, callback) {
   callScraper(options, "destinations", callback);
 }
 
-// connects to the main page and gets all the links for all the pages that 
+// connects to the main page and gets all the links for all the pages that
 // we are going to need to scrape individually with getDestinationsPages.
 // Usually the links follow the alphabet.
 function getAllLinks(options, callback) {
@@ -70,7 +70,7 @@ function getAllDestinationsPages(options, callback) {
     }
   });
 
-  // call getDestinationsPages with each link and save into a single file 
+  // call getDestinationsPages with each link and save into a single file
   // specified at the options object passed.
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
@@ -99,7 +99,7 @@ function ensureDirectoryExist(directory, callback) {
   fs.readdir(directory, function (err) {
     if (err) {
       fs.mkdir(directory, function () {
-        debug("created data directory");
+        debug("created " + directory + " directory");
         callback(false);
       });
     } else {
