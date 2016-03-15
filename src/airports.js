@@ -30,14 +30,14 @@ var writeJson = function (airlines, fileName, callback) {
   );
 };
 
-// this method has the purpose to be used with the returned 
+// this method has the purpose to be used with the returned
 // value with all the destinations of all the companies.
 // from all the destinations passed into a single file, gets all the airports
 // and return them without duplicates.
 function getAirports(airlines) {
   var airports = [];
 
-  // gets from the airline the destinations and add all the airports to the 
+  // gets from the airline the destinations and add all the airports to the
   // airports array.
   function insertAirports(airlineDestinations) {
     return _.map(airlineDestinations.destinations, function (destination) {
@@ -73,7 +73,7 @@ function getAndSaveAirports(airlines, fileName, callback) {
   });
 }
 
-// connect to the wikipage of the airport and gets the important data related to 
+// connect to the wikipage of the airport and gets the important data related to
 // coordinates and rwy
 function getData(airportLink, callback) {
   var url = airportLink.url;
@@ -81,19 +81,19 @@ function getData(airportLink, callback) {
   debug("Getting data for %s from %s", airportLink.name, url);
   callScraper(url, "airports", function(err, airportData) {
     airportData.url = url;
-    var fileName = getAirportFileName(airportData);
+    var fileName = getAirportFileName(airportData, airportLink.baseDir);
 
     writeJson(airportData, fileName, function (err) {
       debug("file %s saved", airportData.fileName);
       callback(err, airportData);
     });
-    
+
   });
 }
 
-// checks the JSON schema and returns the same object passed with the filename 
+// checks the JSON schema and returns the same object passed with the filename
 // with airport_ if the schema is valid and with airport_error_
-function getAirportFileName(airportData) {
+function getAirportFileName(airportData, baseDir) {
   var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
   var validateAirportData = ajv.compile(defaultDataAirportSchema);
   var validDefaultRoute = validateAirportData([airportData]),
@@ -102,7 +102,7 @@ function getAirportFileName(airportData) {
   if (validDefaultRoute) {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    fileName = "./data/airport_" + name + ".json";
+    fileName = baseDir + "/airport_" + name + ".json";
     airportsDataSaved += 1;
   } else {
     decodedUrl = decodeURI(airportData.url);
@@ -123,13 +123,14 @@ function getAirportFileName(airportData) {
 // getData with each one of the airports.
 // Returns an array with all the airports with all their data included.
 function getAirportsData(airportsLink, callback) {
-  async.mapLimit(airportsLink, 10, function (airportLink, callback) {
+  async.mapLimit(airportsLink.links, 10, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
 
     async.retry(5, function (callback) {
       getData({
         "name": airportLink.name,
-        "url": base + airportLink.url
+        "url": base + airportLink.url,
+        "baseDir": airportsLink.baseDir
       }, callback);
     }, callback);
 
