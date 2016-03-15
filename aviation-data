@@ -35,6 +35,10 @@ program
   .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
   .parse(process.argv);
 
+if (!program.args.length) {
+  program.help();
+}
+
 
 if (program.list) {
   // we retrieve the list of airports by IATA pages.
