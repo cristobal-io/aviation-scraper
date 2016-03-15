@@ -35,7 +35,7 @@ program
   .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
   .parse(process.argv);
 
-if (!program.args.length) {
+if (!program.list && !program.destinations && !program.airports && !program.companies) {
   program.help();
 }
 
