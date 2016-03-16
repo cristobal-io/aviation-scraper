@@ -16,6 +16,8 @@ var ajv = Ajv();
 var fs = require("fs");
 var airports = require("./fixtures/airline_destinations.options.json");
 
+var BASE_DIR = "./tmp";
+
 
 describe("airline_destinations.js: \n", function () {
   var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
@@ -36,10 +38,11 @@ describe("airline_destinations.js: \n", function () {
   describe("getFilename", function () {
     it("Should save the files with errors with a different message", function () {
       var badRoute = getFilename({
-        "name": "bad_filename"
+        "name": "bad_filename",
+        baseDir: BASE_DIR
       });
 
-      expect(badRoute.fileName).to.eql("./data/error_bad_filename.json");
+      expect(badRoute.fileName).to.eql(BASE_DIR + "/error_bad_filename.json");
     });
   });
 
@@ -47,6 +50,7 @@ describe("airline_destinations.js: \n", function () {
 
     it("Should return a validated schema from default scraper model", function (done) {
       this.timeout(15000);
+      airports[0].baseDir = BASE_DIR;
       getDestinations(airports[0], function (err, results) {
         var valid = validateDefaultSchema(results.destinations);
 
@@ -56,6 +60,7 @@ describe("airline_destinations.js: \n", function () {
     });
 
     it("Should return a validated Schema from table scraper model", function (done) {
+      airports[1].baseDir = BASE_DIR;
 
       getDestinations(airports[1], function (err, results) {
         var valid = validateScraperTableSchema(results.destinations);
@@ -66,6 +71,7 @@ describe("airline_destinations.js: \n", function () {
     });
 
     it("Should return a validated Schema from table scraper model", function (done) {
+      airports[2].baseDir = BASE_DIR;
 
       getDestinations(airports[2], function (err, results) {
         var valid = validateTableSchema(results.destinations);
@@ -76,6 +82,8 @@ describe("airline_destinations.js: \n", function () {
     });
 
     it("Should return a validated Schema from table_center scraper", function (done) {
+      airports[3].baseDir = BASE_DIR;
+
       getDestinations(airports[3], function (err, results) {
         var valid = validateTableSchema(results.destinations);
 
@@ -93,7 +101,11 @@ describe("airline_destinations.js: \n", function () {
     before(function (done) {
       this.timeout(15000);
 
-      getAllDestinations(airports, function (err, result) {
+      getAllDestinations({
+        airlines: airports,
+        baseDir: BASE_DIR,
+        save: true
+      }, function (err, result) {
         airportsResult = result;
         done();
       });

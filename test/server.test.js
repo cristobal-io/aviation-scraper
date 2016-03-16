@@ -14,6 +14,8 @@ var PORT = 3000;
 var local_pages_DIR = "/spec/local_pages/";
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
 var ensureDirectoryExist = require("../src/airline_destinations_pages.js").ensureDirectoryExist;
+var BASE_DIR = "./tmp";
+
 
 before("start server", function (done) {
   app.use(serveStatic(__dirname + local_pages_DIR));
@@ -21,7 +23,7 @@ before("start server", function (done) {
     if (!data) {
       app.listen(PORT);
     }
-    ensureDirectoryExist("./data/",function() {
+    ensureDirectoryExist(BASE_DIR,function() {
       done();
     });
   });

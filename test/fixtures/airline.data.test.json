@@ -1,0 +1,88 @@
+[{
+  "airline": {
+    "name": "34 Squadron, Royal Australian Air Force",
+    "link": "/wiki/No._34_Squadron_RAAF"
+  },
+  "ICAO": "EVY",
+  "Country": "Australia"
+}, {
+  "airline": {
+    "name": "135 Airways"
+  },
+  "ICAO": "GNL",
+  "CallSign": "GENERAL",
+  "Country": "United States"
+}, {
+  "airline": {
+    "name": "1Time Airline",
+    "link": "/wiki/1Time_Airline"
+  },
+  "IATA": "1T",
+  "ICAO": "RNX",
+  "CallSign": "NEXTIME",
+  "Country": "South Africa"
+}, {
+  "airline": {
+    "name": "2 Sqn No 1 Elementary Flying Training School"
+  },
+  "ICAO": "WYT",
+  "CallSign": "WYTON",
+  "Country": "United Kingdom"
+}, {
+  "airline": {
+    "name": "213 Flight Unit"
+  },
+  "ICAO": "TFU",
+  "CallSign": "\nThjy|Russia\n"
+}, {
+  "airline": {
+    "name": "223 Flight Unit State Airline"
+  },
+  "ICAO": "CHD",
+  "CallSign": "CHKALOVSK-AVIA",
+  "Country": "Russia"
+}, {
+  "airline": {
+    "name": "224th Flight Unit",
+    "link": "/wiki/224th_Flight_Unit"
+  },
+  "ICAO": "TTF",
+  "CallSign": "CARGO UNIT",
+  "Country": "Russia"
+}, {
+  "airline": {
+    "name": "247 Jet Ltd"
+  },
+  "ICAO": "TWF",
+  "CallSign": "CLOUD RUNNER",
+  "Country": "United Kingdom"
+}, {
+  "airline": {
+    "name": "3D Aviation"
+  },
+  "ICAO": "SEC",
+  "CallSign": "SECUREX",
+  "Country": "United States"
+}, {
+  "airline": {
+    "name": "40-Mile Air"
+  },
+  "IATA": "Q5",
+  "ICAO": "MLA",
+  "CallSign": "MILE-AIR",
+  "Country": "United States"
+}, {
+  "airline": {
+    "name": "4D Air"
+  },
+  "ICAO": "QRT",
+  "CallSign": "QUARTET",
+  "Country": "Thailand"
+}, {
+  "airline": {
+    "name": "43 Air School"
+  },
+  "ICAO": "PIU",
+  "CallSign": "PRIMA",
+  "Country": "South Africa"
+}]

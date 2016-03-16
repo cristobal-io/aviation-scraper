@@ -6,6 +6,9 @@ module.exports = function ($) {
     "runway": {}
   };
 
+  airportData.name = $(".infobox.vcard").find(".fn.org").text();
+  airportData.nickname = $($(".infobox.vcard").find("span")[1]).text();
+  airportData.website = $("th:contains('Website')").next("td").find("a").attr("href");
   airportData.iata = $(".vcard").find("[title='International Air Transport Association airport code']").next(".nickname").text();
   airportData.icao = $(".vcard").find("[title='International Civil Aviation Organization airport code']").next(".nickname").text();
   airportData.coordinates.latitude = $($(".vcard .geo-dms .latitude")[0]).text();

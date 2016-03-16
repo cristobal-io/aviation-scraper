@@ -6,6 +6,8 @@ var expect = chai.expect;
 
 var _ = require("lodash");
 
+var fs = require("fs");
+
 var airlineDestinations = require("../src/airline_destinations_pages.js");
 var getAllDestinationsPages = airlineDestinations.getAllDestinationsPages;
 var getAllLinks = airlineDestinations.getAllLinks;
@@ -15,6 +17,8 @@ var cleanDuplicates = airlineDestinations.cleanDuplicates;
 var BASE_URL = "http://localhost";
 var PORT = 3000;
 var SERVER_LISTENING = BASE_URL + ":" + PORT;
+var BASE_DIR = "./tmp";
+
 
 var Ajv = require("ajv");
 var ajv = Ajv();
@@ -39,7 +43,8 @@ describe("airline_destinations_pages.js: \n", function () {
 
     destination_url = {
       urls: url,
-      destinationsFile: __dirname + "/spec/local_pages/destinations.json"
+      destinationsFile: BASE_DIR + "/destinations.json",
+      baseDir: BASE_DIR
     };
     getAllDestinationsPages(destination_url, function (err, results) {
       destinations_results = results;
@@ -47,7 +52,17 @@ describe("airline_destinations_pages.js: \n", function () {
     });
   });
 
-  describe("function getAllLinks ", function() {
+  after(function (done) {
+    fs.unlink(destination_url.destinationsFile, function (err) {
+      if (err) {
+        console.log(err); //eslint-disable-line no-console
+      }
+      done();
+    });
+
+  });
+
+  describe("function getAllLinks ", function () {
 
     it("Should return the list of links", function (done) {
       getAllLinks({

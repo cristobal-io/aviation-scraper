@@ -3,9 +3,6 @@ var md = require("html-md");
 var _ = require("lodash");
 var re = "\\[([^\\[]+)\\]\\(([^\\)]+)\\)";
 
-// todo: this scraper doesn't get all the rows.
-// Check example at the following url:
-// https://en.wikipedia.org/wiki/Air_Austral
 module.exports = function ($) {
   var options = {};
   var row = [];

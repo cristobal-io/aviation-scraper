@@ -7,7 +7,9 @@ var scrapers = require("../scrapers/");
 var _ = require("lodash");
 var async = require("async");
 
-var debug = require("debug")("airlineData:links");
+var callScraper = require("./airline.js").callScraper;
+
+var debug = require("debug")("aviation-data:links");
 
 // scrape a single webpage for all the destinations links of all the
 // airlines at the site.
@@ -15,14 +17,10 @@ function getDestinationsPages(options, callback) {
   var letter = options.charAt(options.length - 1);
 
   debug("Getting scraper for %s from %s", letter, options);
-  scraperjs.StaticScraper.create(options)
-    .scrape(scrapers["destinations"])
-    .then(function (destinations) {
-      callback(null, destinations);
-    });
+  callScraper(options, "destinations", callback);
 }
 
-// connects to the main page and gets all the links for all the pages that 
+// connects to the main page and gets all the links for all the pages that
 // we are going to need to scrape individually with getDestinationsPages.
 // Usually the links follow the alphabet.
 function getAllLinks(options, callback) {
@@ -59,7 +57,7 @@ function getAllDestinationsPages(options, callback) {
 
   // we need to check for the directory and create it in case doesn't exist,
   // because we are going to save there our files.
-  ensureDirectoryExist("./data/", function () {
+  ensureDirectoryExist(options.baseDir, function () {
     // conditional to check if we are into a test process so we use the local
     // pages instead of using the web.
     if (process.env.NODE_ENV === "test") {
@@ -72,11 +70,11 @@ function getAllDestinationsPages(options, callback) {
     }
   });
 
-  // call getDestinationsPages with each link and save into a single file 
+  // call getDestinationsPages with each link and save into a single file
   // specified at the options object passed.
   function mapUrl(urls) {
     var destinationsFile = options.destinationsFile;
-    
+
     async.map(urls, function (options, callback) {
       getDestinationsPages(options, callback);
     }, function (err, results) {
@@ -101,7 +99,7 @@ function ensureDirectoryExist(directory, callback) {
   fs.readdir(directory, function (err) {
     if (err) {
       fs.mkdir(directory, function () {
-        debug("created data directory");
+        debug("created " + directory + " directory");
         callback(false);
       });
     } else {

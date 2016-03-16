@@ -1,49 +1,26 @@
 [
 {
-  "coordinates": {
-    "latitude": "52°18′29″N",
-    "longitude": "004°45′51″E"
+  "data": {
+    "coordinates": {
+      "latitude": "41°24′53″N",
+      "longitude": "019°43′14″E"
+    },
+    "runway": [
+      {
+        "Direction": "18/36",
+        "m": "2,734[1]",
+        "ft": "8,971[1]",
+        "Surface": "Asphalt"
+      }
+    ],
+    "name": "Tirana International Airport\nMother Teresa",
+    "nickname": "Aeroporti Ndërkombëtar i Tiranës\nNënë Tereza",
+    "website": "http://www.tirana-airport.com",
+    "iata": "TIA",
+    "icao": "LATI",
+    "errorMessage": "airport ./tmp/airport_error_undefined.json got the error should have required property 'data'"
   },
-  "runway": [
-    {
-      "Direction": "18R/36L 'Polderbaan'",
-      "m": "3,800",
-      "ft": "12,467",
-      "Surface": "Asphalt"
-    },
-    {
-      "Direction": "06/24 'Kaagbaan'",
-      "m": "3,500",
-      "ft": "11,483",
-      "Surface": "Asphalt"
-    },
-    {
-      "Direction": "09/27 'Buitenveldertbaan'",
-      "m": "3,450",
-      "ft": "11,319",
-      "Surface": "Asphalt"
-    },
-    {
-      "Direction": "18L/36R 'Aalsmeerbaan'",
-      "m": "3,400",
-      "ft": "11,155",
-      "Surface": "Asphalt"
-    },
-    {
-      "Direction": "18C/36C 'Zwanenburgbaan'",
-      "m": "3,300",
-      "ft": "10,827",
-      "Surface": "Asphalt"
-    },
-    {
-      "Direction": "04/22 'Oostbaan'",
-      "m": "2,014",
-      "ft": "6,608",
-      "Surface": "Asphalt"
-    }
-  ],
-  "iata": "AMS",
-  "icao": "EHAM",
-  "url": "http://localhost:3000/Amsterdam_Airport_Schiphol",
-  "fileName": "./data/airport_Amsterdam_Airport_Schiphol.json"
-}]
+  "url": "http://localhost:3000/Tirana_International_Airport_N%C3%ABn%C3%AB_Tereza",
+  "baseDir": "./tmp"
+}
+]

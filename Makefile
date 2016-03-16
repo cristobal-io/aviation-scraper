@@ -2,6 +2,8 @@ SHELL = /bin/bash
 MAKEFLAGS += --no-print-directory --silent
 export PATH := ./node_modules/.bin:$(PATH):./bin
 LINT_DIR = $(wildcard *.js src/*.js test/*.js scrapers/*.js spikes/*.js test/*/*.js scrapers/*/*.js spikes/*/*.js)
+DIST_DIR= $(wildcard src/*.js)
+
 # export NODE_ENV=production
 
 default: setup test
@@ -9,13 +11,11 @@ default: setup test
 setup:
 	npm install
 
+# lint
 lint:
 	echo "Linting started..."
 	eslint $(LINT_DIR)
 	echo "Linting finished without errors"
-
-data:
-	DEBUG=airlineData* node src/cli.js
 
 # local_pages update needed at least once before runing tests.
 test/spec/local_pages/:
@@ -23,7 +23,7 @@ test/spec/local_pages/:
 	cp test/fixtures/index.html $@
 
 update-local-pages: test/spec/local_pages/
-	DEBUG=airlineData* node test/spec/update_local_pages.js
+	DEBUG=aviation-data* node test/spec/update_local_pages.js
 
 # test commands
 
@@ -58,11 +58,6 @@ test-coverage-windows:
 	start coverage\lcov-report\index.html
 
 
-clean-coverage:
-	test -d coverage/ && rm -r coverage/ && echo "coverage content removed" || echo "no coverage folder found"
-	test -d .nyc_output && rm -r .nyc_output && echo "nyc_output content removed" || echo "no nyc_output folder found"
-
-
 # Continuous Integration Test Runner
 ci: lint test
 	echo "1. 'make clean'"
@@ -82,10 +77,15 @@ release: lint
 
 clean:	clean-coverage
 	test -d data/ && rm -r data/ && echo "data content removed" || echo "no data folder found"
+	test -d tmp/ && rm -r tmp/ && echo "tmp content removed" || echo "no tmp folder found"
 	echo "finished."
 
 clean-local-pages:
 	test -d test/spec/local_pages/ && rm -r test/spec/local_pages/ && echo "local pages removed" || echo "no local pages folder found"
 	echo "finished."
+
+clean-coverage:
+	test -d coverage/ && rm -r coverage/ && echo "coverage content removed" || echo "no coverage folder found"
+	test -d .nyc_output && rm -r .nyc_output && echo "nyc_output content removed" || echo "no nyc_output folder found"
 
 .PHONY: test scrapers

@@ -26,11 +26,6 @@ describe("Default Scraper: \n", function () {
     done();
   });
 
-// Bermi, With this method we are using 3 methods to validate the JSON schema.
-// TV4 , AJV and chai-json-schema.
-// The difficulty of this chai-json-schema is that doesn't work if you 
-// require the json file to get the schema.
-// 
 // For consistency we should use only one method but for learning I am going
 // to leave the 3 methods.
   describe("getDestination function, it: ", function () {
