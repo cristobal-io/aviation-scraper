@@ -1,6 +1,5 @@
 "use strict";
-var scraperjs = require("scraperjs");
-var scrapers = require("../scrapers/");
+var callScraper = require("./airline.js").callScraper;
 
 var fs = require("fs");
 var _ = require("lodash");
@@ -9,7 +8,7 @@ var async = require("async");
 var Ajv = require("ajv");
 var ajv = Ajv();
 // log tools
-var debug = require("debug")("airlineData:airports");
+var debug = require("debug")("aviation-data:airports");
 var chalk = require("chalk");
 
 var cleanDuplicates = require("../src/airline_destinations_pages.js").cleanDuplicates;
@@ -31,14 +30,14 @@ var writeJson = function (airlines, fileName, callback) {
   );
 };
 
-// this method has the purpose to be used with the returned 
+// this method has the purpose to be used with the returned
 // value with all the destinations of all the companies.
 // from all the destinations passed into a single file, gets all the airports
 // and return them without duplicates.
 function getAirports(airlines) {
   var airports = [];
 
-  // gets from the airline the destinations and add all the airports to the 
+  // gets from the airline the destinations and add all the airports to the
   // airports array.
   function insertAirports(airlineDestinations) {
     return _.map(airlineDestinations.destinations, function (destination) {
@@ -74,75 +73,85 @@ function getAndSaveAirports(airlines, fileName, callback) {
   });
 }
 
-// connect to the wikipage of the airport and gets the important data related to 
+// connect to the wikipage of the airport and gets the important data related to
 // coordinates and rwy
 function getData(airportLink, callback) {
   var url = airportLink.url;
+  var airport = {};
 
   debug("Getting data for %s from %s", airportLink.name, url);
-  scraperjs.StaticScraper.create(url)
-    .catch(function (err, utils) {
-      if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airportLink.name, err, url);
-        callback(err, utils);
-      }
-    })
-    .scrape(scrapers["airports"])
-    .then(function (airportData) {
-      airportData.url = url;
-      getAirportFileName(airportData);
-      writeJson(airportData, airportData.fileName, function (err) {
-        debug("file %s saved", airportData.fileName);
-        callback(err, airportData);
-      });
-    });
+  callScraper(url, "airports", function (err, airportData) {
+    if (err) {callback(err);}
+    airport.data = airportData;
+    airport.url = url;
+    // airportData.url = url;
+    airport.baseDir = airportLink.baseDir;
+    // airportData.baseDir = airportLink.baseDir;
+    if (airportLink.save) {
+      checkAndSaveAirport(err, airport, callback);
+    } else {
+      callback(null, airport);
+    }
+
+  });
 }
 
-// checks the JSON schema and returns the same object passed with the filename 
+function checkAndSaveAirport(err, airport, callback) {
+  var fileName = getAirportFileName(airport, airport.baseDir);
+
+  saveAirports(airport.data, fileName, function (err) {
+    debug("file %s saved", airport.data.fileName);
+    callback(err, airport);
+  });
+
+}
+
+// checks the JSON schema and returns the same object passed with the filename
 // with airport_ if the schema is valid and with airport_error_
-function getAirportFileName(airportData) {
+function getAirportFileName(airportData, baseDir) {
   var defaultDataAirportSchema = require("../schema/airport_data.schema.json");
   var validateAirportData = ajv.compile(defaultDataAirportSchema);
   var validDefaultRoute = validateAirportData([airportData]),
-    decodedUrl, name;
+    decodedUrl, name, fileName;
 
   if (validDefaultRoute) {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    airportData.fileName = "./data/airport_" + name + ".json";
+    fileName = baseDir + "/airport_" + name + ".json";
     airportsDataSaved += 1;
   } else {
     decodedUrl = decodeURI(airportData.url);
     name = decodedUrl.split("/").pop();
-    airportData.fileName = "./data/airport_error_" + name + ".json";
+    fileName = baseDir + "/airport_error_" + name + ".json";
 
-    debug(chalk.red("Airline %s got the error %s"), airportData.fileName,
+    debug(chalk.red("Airline %s got the error %s"), fileName,
       _.get(validateAirportData, "errors[0].message"));
     airportsDataErrors += 1;
-    airportData.errorMessage = "airport " + airportData.fileName + " got the error " +
+    airportData.errorMessage = "airport " + fileName + " got the error " +
       _.get(validateAirportData, "errors[0].message");
   }
   debug(chalk.green("%s airports Saved &") + chalk.red(" %s airports with errors."), airportsDataSaved, airportsDataErrors);
-  return airportData;
+  return fileName;
 }
 
 // receives an array with all the airports to scrape and manages to call
 // getData with each one of the airports.
 // Returns an array with all the airports with all their data included.
 function getAirportsData(airportsLink, callback) {
-  async.mapLimit(airportsLink, 30, function (airportLink, callback) {
+  async.mapLimit(airportsLink.links, 10, function (airportLink, callback) {
     var base = airportLink.base_url || BASE_URL;
 
     async.retry(5, function (callback) {
+
       getData({
         "name": airportLink.name,
-        "url": base + airportLink.url
+        "url": base + airportLink.url,
+        "baseDir": airportsLink.baseDir,
+        save: airportsLink.save
       }, callback);
     }, callback);
 
-  }, function (err, airportsData) {
-    callback(err, airportsData);
-  });
+  }, callback);
 
 }
 module.exports = {

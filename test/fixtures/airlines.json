@@ -1,56 +1,8 @@
-[{
-  "name": "Air One",
-  "destinationsLink": "/wiki/Air_One_destinations",
-  "scraper": "table",
-  "destinations": [{
-    "city": {
-      "name": "Addis Ababa",
-      "url": "/wiki/Addis_Ababa"
-    },
-    "airport": {
-      "name": "Bole International Airport [T]",
-      "url": "/wiki/Bole_International_Airport"
-    }
-  }, {
-    "city": {
-      "name": "Albenga",
-      "url": "/wiki/Albenga"
-    },
-    "airport": {
-      "name": "Albenga Airport [T]",
-      "url": "/wiki/Albenga_Airport"
-    }
-  }]
-}, {
-  "name": "Adria Airways",
-  "destinationsLink": "/wiki/Adria_Airways_destinations",
-  "scraper": "table",
-  "destinations": [{
-    "city": {
-      "name": "Amsterdam",
-      "url": "/wiki/Amsterdam"
-    },
-    "airport": {
-      "name": "Amsterdam Airport Schiphol",
-      "url": "/wiki/Amsterdam_Airport_Schiphol"
-    }
-  }, {
-    "city": {
-      "name": "Berlin",
-      "url": "/wiki/Berlin"
-    },
-    "airport": {
-      "name": "Berlin Tegel Airport",
-      "url": "/wiki/Berlin_Tegel_Airport"
-    }
-  }, {
-    "city": {
-      "name": "Brussels",
-      "url": "/wiki/Brussels"
-    },
-    "airport": {
-      "name": "Brussels Airport",
-      "url": "/wiki/Brussels_Airport"
-    }
-  }]
-}]
+[
+  "Adria_Airways",
+  "Eurolot",
+  "Airline_codes-0",
+  "No._34_Squadron_RAAF",
+  "1Time_Airline",
+  "224th_Flight_Unit"
+]

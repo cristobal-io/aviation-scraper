@@ -3,69 +3,104 @@
   "id": "/",
   "type": "array",
   "items": {
-    "id": "9",
+    "id": "1",
     "type": "object",
     "properties": {
-      "coordinates": {
-        "id": "coordinates",
+      "data": {
+        "id": "data",
         "type": "object",
         "properties": {
-          "latitude": {
-            "id": "latitude",
+          "coordinates": {
+            "id": "coordinates",
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "id": "latitude",
+                "type": "string"
+              },
+              "longitude": {
+                "id": "longitude",
+                "type": "string"
+              }
+            },
+            "required": [
+              "latitude",
+              "longitude"
+            ]
+          },
+          "runway": {
+            "id": "runway",
+            "type": "array",
+            "items": {
+              "id": "0",
+              "type": "object",
+              "properties": {
+                "Direction": {
+                  "id": "Direction",
+                  "type": "string"
+                },
+                "m": {
+                  "id": "m",
+                  "type": "string"
+                },
+                "ft": {
+                  "id": "ft",
+                  "type": "string"
+                },
+                "Surface": {
+                  "id": "Surface",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "name": {
+            "id": "name",
             "type": "string"
           },
-          "longitude": {
-            "id": "longitude",
+          "nickname": {
+            "id": "nickname",
+            "type": "string"
+          },
+          "website": {
+            "id": "website",
+            "type": "string"
+          },
+          "iata": {
+            "id": "iata",
+            "type": "string"
+          },
+          "icao": {
+            "id": "icao",
             "type": "string"
           }
         },
         "required": [
-          "latitude",
-          "longitude"
+          "coordinates",
+          "runway",
+          "name",
+          "nickname",
+          "website",
+          "iata",
+          "icao"
         ]
       },
-      "runway": {
-        "id": "runway",
-        "type": "array",
-        "minItems": 1,
-        "items": {
-          "id": "0",
-          "type": "object",
-          "properties": {
-            "Direction": {
-              "id": "Direction",
-              "type": "string"
-            },
-            "m": {
-              "id": "m",
-              "type": "string"
-            },
-            "ft": {
-              "id": "ft",
-              "type": "string"
-            },
-            "Surface": {
-              "id": "Surface",
-              "type": "string"
-            }
-          }
-        }
-      },
-      "iata": {
-        "id": "iata",
+      "url": {
+        "id": "url",
         "type": "string"
       },
-      "icao": {
-        "id": "icao",
+      "baseDir": {
+        "id": "baseDir",
         "type": "string"
       }
     },
     "required": [
-      "coordinates",
-      "runway",
-      "iata",
-      "icao"
+      "data",
+      "url",
+      "baseDir"
     ]
   },
-  "minItems": 1
+  "required": [
+    "1"
+  ]
 }

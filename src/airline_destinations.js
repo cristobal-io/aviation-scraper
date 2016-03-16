@@ -1,8 +1,6 @@
 "use strict";
 
-var sjs = require("scraperjs");
 var fs = require("fs");
-var scrapers = require("../scrapers/");
 var async = require("async");
 
 var BASE_URL = "https://en.wikipedia.org";
@@ -13,7 +11,9 @@ var Ajv = require("ajv");
 var ajv = Ajv();
 
 var chalk = require("chalk");
-var debug = require("debug")("airlineData:destinations");
+var debug = require("debug")("aviation-data:destinations");
+
+var callScraper = require("./airline.js").callScraper;
 
 var errors = 0,
   destinationsSaved = 0;
@@ -28,20 +28,17 @@ var errors = 0,
  */
 function getDestinations(airline, callback) {
   var url = airline.url || BASE_URL + airline.destinationsLink;
+  var scraper =airline.scraper ||"default";
 
   debug("Getting destinations for %s from %s", airline.name, url);
-  sjs.StaticScraper.create(url)
-    .catch(function (err, utils) {
-      if (err) {
-        debug(chalk.red("\nerror from %s is %s, %s \n"), airline.name, err, url);
-        callback(err, utils);
-      }
-    })
-    .scrape(scrapers[airline.scraper] || scrapers["default"])
-    .then(function (data) {
-      airline.destinations = data;
+  callScraper(url, scraper, function (err, data) {
+    airline.destinations = data;
+    if (airline.save) {
       checkAndSaveDestinations(null, airline, callback);
-    });
+    } else {
+      callback(err,airline);
+    }
+  });
 }
 /**
  * checks the schema integrity and returns the object airline with the fileName
@@ -57,12 +54,12 @@ function getFilename(airline) {
 
   if (validDefaultRoute) {
     destinationsSaved += 1;
-    airline.fileName = "./data/destinations_" + airline.name + ".json";
+    airline.fileName = airline.baseDir + "/destinations_" + airline.name + ".json";
   } else {
     debug("Airline %s got the error %s", airline.name,
       _.get(validateDefaultRoute, "errors[0].message"));
     errors += 1;
-    airline.fileName = "./data/error_" + airline.name + ".json";
+    airline.fileName = airline.baseDir + "/error_" + airline.name + ".json";
     airline.errorMessage = "Airline " + airline.name + " got the error " +
       _.get(validateDefaultRoute, "errors[0].message");
   }
@@ -106,9 +103,12 @@ var checkAndSaveDestinations = function (err, airline, callback) {
  * @param  {Function} callback returns with err and airlines data. 
  * @return {array}            all the airlines requested with the destinations, errors log and count..
  */
-function getAllDestinations(airlines, callback) {
-  async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
+function getAllDestinations(options, callback) {
+  
+  async.mapLimit(_.clone(options.airlines, true), 20, function (airline, callback) {
 
+    airline.baseDir = options.baseDir;
+    airline.save = options.save || false;
     async.retry(5, function (callback) {
       getDestinations(airline, callback);
     }, callback);

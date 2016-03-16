@@ -1,13 +1,16 @@
 {
-  "name": "air-data",
+  "name": "aviation-data-scrapper",
   "version": "0.0.7",
   "description": "Scraper to get airline destinations and airport data",
-  "main": "air-data",
+  "main": "aviation-data",
   "scripts": {
     "test": "mocha test"
   },
   "author": "Cristóbal Gómez",
   "license": "MIT",
+  "bin": {
+    "aviation-data-scrapper": "./aviation-data"
+  },
   "dependencies": {
     "ajv": "2.5.0",
     "async": "1.5.0",
@@ -21,6 +24,7 @@
   "devDependencies": {
     "chai": "3.4.1",
     "chai-json-schema": "1.2.0",
+    "expect.js": "^0.3.1",
     "express": "4.13.3",
     "mocha": "2.3.4",
     "send": "0.13.0",
