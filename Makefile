@@ -11,20 +11,6 @@ default: setup test
 setup:
 	npm install
 
-# generate distribution file with browserify and uglifyjs
-dist: dist/aviation-data.min.js
-
-dist/aviation-data.browserify.js: clean
-	mkdir -p dist
-	echo "generating browserify file from src/ ..."
-	browserify $(DIST_DIR) --standalone aviationData > $@
-	echo "browserify src file generated"
-
-dist/aviation-data.min.js: dist/aviation-data.browserify.js
-	echo "generating min file with uglify..."
-	uglifyjs dist/aviation-data.browserify.js > $@
-	echo " uglify file generated."
-
 # lint
 lint:
 	echo "Linting started..."
