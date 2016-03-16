@@ -33,8 +33,11 @@ function getDestinations(airline, callback) {
   debug("Getting destinations for %s from %s", airline.name, url);
   callScraper(url, scraper, function (err, data) {
     airline.destinations = data;
-    // console.log(airline);
-    checkAndSaveDestinations(null, airline, callback);
+    if (airline.save) {
+      checkAndSaveDestinations(null, airline, callback);
+    } else {
+      callback(err,airline);
+    }
   });
 }
 /**
@@ -100,10 +103,12 @@ var checkAndSaveDestinations = function (err, airline, callback) {
  * @param  {Function} callback returns with err and airlines data. 
  * @return {array}            all the airlines requested with the destinations, errors log and count..
  */
-function getAllDestinations(airlines, baseDir, callback) {
-  async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
+function getAllDestinations(options, callback) {
+  
+  async.mapLimit(_.clone(options.airlines, true), 20, function (airline, callback) {
 
-    airline.baseDir = baseDir;
+    airline.baseDir = options.baseDir;
+    airline.save = options.save || false;
     async.retry(5, function (callback) {
       getDestinations(airline, callback);
     }, callback);

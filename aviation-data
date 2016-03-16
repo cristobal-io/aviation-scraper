@@ -31,6 +31,7 @@ program
   .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
   .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
   .option("-b, --base <basedir>", "the base directory where to save the files generated (default: tmp)", "./tmp")
+  .option("-s, --save <save>", "this options allows you to save individual files for each airline, airport or destination (default:false)",false)
   .parse(process.argv);
 
 if (!program.list && !program.destinations && !program.airports && !program.companies) {
@@ -80,11 +81,15 @@ if (program.destinations) {
 
       debug("scrapers finished");
 
-      getAllDestinations(airlineScrapers, program.base, function (err, destinations) {
+      getAllDestinations({
+        airlines: airlineScrapers,
+        baseDir: program.base,
+        save: program.save
+      }, function (err, destinations) {
         if (err) {
           throw err;
         }
-        writeJson(destinations, program.base + "/airline_destinations.json", function() {
+        writeJson(destinations, program.base + "/airline_destinations.json", function () {
           debug("Routes Files Generated");
         });
       });

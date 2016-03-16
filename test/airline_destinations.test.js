@@ -101,7 +101,11 @@ describe("airline_destinations.js: \n", function () {
     before(function (done) {
       this.timeout(15000);
 
-      getAllDestinations(airports, BASE_DIR, function (err, result) {
+      getAllDestinations({
+        airlines: airports,
+        baseDir: BASE_DIR,
+        save: true
+      }, function (err, result) {
         airportsResult = result;
         done();
       });
