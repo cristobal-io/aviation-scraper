@@ -16,7 +16,7 @@ var ajv = Ajv();
 var fs = require("fs");
 var airports = require("./fixtures/airline_destinations.options.json");
 
-var BASE_DIR = "./data";
+var BASE_DIR = "./tmp";
 
 
 describe("airline_destinations.js: \n", function () {
@@ -42,7 +42,7 @@ describe("airline_destinations.js: \n", function () {
         baseDir: BASE_DIR
       });
 
-      expect(badRoute.fileName).to.eql("./data/error_bad_filename.json");
+      expect(badRoute.fileName).to.eql(BASE_DIR + "/error_bad_filename.json");
     });
   });
 

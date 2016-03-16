@@ -30,7 +30,7 @@ program
   .option("-d, --destinations", "Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)")
   .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
   .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
-  .option("-b, --base <basedir>", "the base directory where to save the files generated", "./tmp")
+  .option("-b, --base <basedir>", "the base directory where to save the files generated (default: tmp)", "./tmp")
   .parse(process.argv);
 
 if (!program.list && !program.destinations && !program.airports && !program.companies) {
@@ -94,7 +94,10 @@ if (program.airports) {
   try {
     airportsData = require(program.base + "/airports_list.json");
     debug("Generating all airport files \n this is going to take a while...");
-    getAirportsData(airportsData, function () {
+    getAirportsData({
+      links: airportsData,
+      baseDir: program.base
+    }, function () {
       debug("Saved all the data airports");
     });
   } catch (err) {

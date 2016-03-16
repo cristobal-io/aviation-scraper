@@ -16,7 +16,7 @@ var ajv = Ajv();
 
 var _ = require("lodash");
 
-var BASE_DIR = "./data";
+var BASE_DIR = "./tmp";
 
 
 describe("airports.js\n", function () {
@@ -110,7 +110,7 @@ describe("airports.js\n", function () {
   describe("writeJson", function () {
 
     it("Should save a file", function (done) {
-      var fileName = "./data/sampleObject.json",
+      var fileName = BASE_DIR + "/sampleObject.json",
         fileExists;
       var sampleObject = {
         "foo": "bar"
