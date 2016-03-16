@@ -51,6 +51,10 @@ function callScraper(url, scraper, callback) {
       if (err) {
         debug(chalk.red("\nerror %s, %s \n"), err, url);
         callback(err, url);
+        // bermi: this is giving problems, since it should stop once
+        // called the callback, but it doesn't.
+        // it seems like a bug.
+        return;
       }
     })
     .scrape(scrapers[scraper])

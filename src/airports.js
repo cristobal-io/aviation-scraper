@@ -77,27 +77,31 @@ function getAndSaveAirports(airlines, fileName, callback) {
 // coordinates and rwy
 function getData(airportLink, callback) {
   var url = airportLink.url;
+  var airport = {};
 
   debug("Getting data for %s from %s", airportLink.name, url);
   callScraper(url, "airports", function (err, airportData) {
     if (err) {callback(err);}
-    airportData.url = url;
-    airportData.baseDir = airportLink.baseDir;
+    airport.data = airportData;
+    airport.url = url;
+    // airportData.url = url;
+    airport.baseDir = airportLink.baseDir;
+    // airportData.baseDir = airportLink.baseDir;
     if (airportLink.save) {
-      checkAndSaveAirport(err, airportData, callback);
+      checkAndSaveAirport(err, airport, callback);
     } else {
-      callback(err,airportData);
+      callback(null, airport);
     }
 
   });
 }
 
-function checkAndSaveAirport(err, airportData, callback) {
-  var fileName = getAirportFileName(airportData, airportData.baseDir);
+function checkAndSaveAirport(err, airport, callback) {
+  var fileName = getAirportFileName(airport, airport.baseDir);
 
-  saveAirports(airportData, fileName, function (err) {
-    debug("file %s saved", airportData.fileName);
-    callback(err, airportData);
+  saveAirports(airport.data, fileName, function (err) {
+    debug("file %s saved", airport.data.fileName);
+    callback(err, airport);
   });
 
 }
@@ -138,7 +142,7 @@ function getAirportsData(airportsLink, callback) {
     var base = airportLink.base_url || BASE_URL;
 
     async.retry(5, function (callback) {
-      console.log("airportLink try: ", airportLink.url);
+
       getData({
         "name": airportLink.name,
         "url": base + airportLink.url,

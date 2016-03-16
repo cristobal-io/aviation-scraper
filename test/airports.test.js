@@ -59,14 +59,14 @@ describe("airports.js\n", function () {
         baseDir: BASE_DIR
       };
 
-      getData(airportLocalLink, function (err, airportData) {
+      getData(airportLocalLink, function (err, airport) {
         if (err) {
           throw err;
         }
         // console.log(JSON.stringify(airportData,null,2));
-        expect(airportData.name, "it doesn't include the name").to.eql("Amsterdam Airport Schiphol");
-        expect(airportData.nickname, "it doesn't include the nickname").to.eql("Luchthaven Schiphol");
-        expect(airportData.website, "it doesn't include the website").to.eql("http://www.schiphol.com/");
+        expect(airport.data.name, "it doesn't include the name").to.eql("Amsterdam Airport Schiphol");
+        expect(airport.data.nickname, "it doesn't include the nickname").to.eql("Luchthaven Schiphol");
+        expect(airport.data.website, "it doesn't include the website").to.eql("http://www.schiphol.com/");
         done();
       });
 
@@ -97,7 +97,7 @@ describe("airports.js\n", function () {
       var airportData = require("./fixtures/airport_data.json");
       var godAirportName = getAirportFileName(airportData[0], BASE_DIR);
 
-      expect(godAirportName).to.eql(BASE_DIR + "/airport_Amsterdam_Airport_Schiphol.json");
+      expect(godAirportName).to.eql(BASE_DIR + "/airport_Tirana_International_Airport_Nënë_Tereza.json");
     });
 
     it("Should save the files with errors with a different message", function () {
@@ -146,23 +146,24 @@ describe("airports.js\n", function () {
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
 
       getAirportsData(airportsLocalLinks, function (err, airportsData) {
+        // console.log(JSON.stringify(airportsData,null,2));
         var validAirportData = validateAirportDataSchema(airportsData);
 
 
         // console.log(JSON.stringify(airportsData,null,2));
         expect(validAirportData, _.get(validateAirportDataSchema, "errors[0].message")).to.be.true;
         _.map(airportsData, function (airportData) {
+          expect(airportData.data.errorMessage).to.not.exist;
           var fileName = getAirportFileName(airportData, BASE_DIR);
 
           fs.unlink(fileName, function (err) {
             if (err) {
-              console.log(err); //eslint-disable-line no-console
+              throw err;
             }
           });
 
         });
         done();
-
       });
     });
 
