@@ -5,7 +5,6 @@ process.env["DEBUG"] = "aviation-data*";
 
 var program = require("commander");
 var debug = require("debug")("aviation-data:cli");
-var chalk = require("chalk");
 
 var airportsJs = require("./src/airports.js");
 var writeJson = airportsJs.writeJson;
@@ -21,25 +20,49 @@ var airlinesLinksUrl = "https://en.wikipedia.org/wiki/List_of_airline_codes";
 var airlineJs = require("./src/airline.js");
 var callScraper = airlineJs.callScraper;
 var getAllAirlinesData = airlineJs.getAllAirlinesData;
-var airportsData, options;
+var options;
 
 program
   .version("0.0.1")
-  .description("Retrieve airlines destinations and airports data.")
+  .description("Retrieve airlines destinations and airports data.\n"  + 
+    "  Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.")
   .option("-l, --list", "List of airports with the link to the wikipedia page. (Saved to a single file)")
   .option("-d, --destinations", "Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)")
-  .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file for each airport)")
+  .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file and optional for each airport)")
   .option("-c, --companies", "Saves all the airline links and all the important information for each airline.")
   .option("-b, --base <basedir>", "the base directory where to save the files generated (default: tmp)", "./tmp")
-  .option("-s, --save <save>", "this options allows you to save individual files for each airline, airport or destination (default:false)",false)
+  .option("-s, --save <save>", "this options allows you to save individual files for each airline, airport or destination (default:false)", false)
   .parse(process.argv);
 
 if (!program.list && !program.destinations && !program.airports && !program.companies) {
   program.help();
 }
 
+if (program.destinations && !program.list && !program.airports && !program.companies) {
+  getAndSaveDestinations(null, function () {
+    debug("Done!");
+  });
+} else if (program.destinations) {
+  program.help();
+}
 
-if (program.list) {
+if (program.companies && !program.list && !program.destinations && !program.airports) {
+  getAndSaveCompanies(null, function () {
+    debug("Done!");
+  });
+} else if (program.companies) {
+  program.help();
+}
+
+if (program.airports && !program.list && !program.destinations && !program.companies) {
+  getAndSaveAirports(null, function () {
+    debug("Done!");
+  });
+} else if (program.airports) {
+  program.help();
+}
+
+if (program.list && !program.destinations && !program.airports && !program.companies) {
   // we retrieve the list of airports by IATA pages.
   // this file is going to be saved at the specified route.
   // "./data/airports_list.json"
@@ -54,9 +77,11 @@ if (program.list) {
       });
     });
   });
+} else if (program.list) {
+  program.help();
 }
 
-if (program.destinations) {
+function getAndSaveDestinations(err, callback) {
   options = {
     "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
     "destinationsFile": program.base + "/destination_pages.json",
@@ -91,35 +116,43 @@ if (program.destinations) {
         }
         writeJson(destinations, program.base + "/airline_destinations.json", function () {
           debug("Routes Files Generated");
+          callback();
         });
       });
 
     });
   });
 }
-if (program.airports) {
-  try {
-    airportsData = require(program.base + "/airports_list.json");
-    debug("Generating all airport files \n this is going to take a while...");
-    getAirportsData({
-      links: airportsData,
-      baseDir: program.base,
-      save: program.save
-    }, function (err, data) {
-      if (err) {throw err;}
-      writeJson(data, program.base + "/airports.json", function() {
-        debug("Saved all the data airports");
-      });
-    });
-  } catch (err) {
-    debug(("please generate first the list of airports."));
-    debug(("Run:") + chalk.grey("'./aviation-data -l'"));
 
-  }
+function getAndSaveAirports(err, callback) {
+  ensureDirectoryExist(program.base, function () {
+    debug("generating list of airports by iata");
+    getAllAirportsByIata("", function (err, airportsData) {
+      if (err) {
+        throw err;
+      }
+      debug("Generating all airport files \n this is going to take a while...");
+      getAirportsData({
+        links: airportsData,
+        baseDir: program.base,
+        save: program.save
+      }, function (err, data) {
+        if (err) {
+          throw err;
+        }
+        writeJson(data, program.base + "/airports.json", function () {
+          debug("Saved all the data airports");
+          callback();
+        });
+      });
+
+    });
+  });
 
 }
 
-if (program.companies) {
+
+function getAndSaveCompanies(err, callback) {
   callScraper(airlinesLinksUrl, "airlineLinks", function (err, airlinesLinks) {
     if (err) {
       throw err;
@@ -132,6 +165,7 @@ if (program.companies) {
         }
         writeJson(results, program.base + "/airlines_data.json", function () {
           debug("airlines saved.");
+          callback();
         });
       });
     });
