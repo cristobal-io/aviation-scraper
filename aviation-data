@@ -80,11 +80,13 @@ if (program.destinations) {
 
       debug("scrapers finished");
 
-      getAllDestinations(airlineScrapers, program.base, function (err) {
+      getAllDestinations(airlineScrapers, program.base, function (err, destinations) {
         if (err) {
           throw err;
         }
-        debug("Routes Files Generated");
+        writeJson(destinations, program.base + "/airline_destinations.json", function() {
+          debug("Routes Files Generated");
+        });
       });
 
     });
