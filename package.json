@@ -1,6 +1,6 @@
 {
   "name": "aviation-data-scrapper",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Scraper to get airline destinations and airport data",
   "main": "aviation-data",
   "scripts": {
