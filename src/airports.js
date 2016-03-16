@@ -79,16 +79,27 @@ function getData(airportLink, callback) {
   var url = airportLink.url;
 
   debug("Getting data for %s from %s", airportLink.name, url);
-  callScraper(url, "airports", function(err, airportData) {
+  callScraper(url, "airports", function (err, airportData) {
+    if (err) {callback(err);}
     airportData.url = url;
-    var fileName = getAirportFileName(airportData, airportLink.baseDir);
-
-    writeJson(airportData, fileName, function (err) {
-      debug("file %s saved", airportData.fileName);
-      callback(err, airportData);
-    });
+    airportData.baseDir = airportLink.baseDir;
+    if (airportLink.save) {
+      checkAndSaveAirport(err, airportData, callback);
+    } else {
+      callback(err,airportData);
+    }
 
   });
+}
+
+function checkAndSaveAirport(err, airportData, callback) {
+  var fileName = getAirportFileName(airportData, airportData.baseDir);
+
+  saveAirports(airportData, fileName, function (err) {
+    debug("file %s saved", airportData.fileName);
+    callback(err, airportData);
+  });
+
 }
 
 // checks the JSON schema and returns the same object passed with the filename
@@ -127,10 +138,12 @@ function getAirportsData(airportsLink, callback) {
     var base = airportLink.base_url || BASE_URL;
 
     async.retry(5, function (callback) {
+      console.log("airportLink try: ", airportLink.url);
       getData({
         "name": airportLink.name,
         "url": base + airportLink.url,
-        "baseDir": airportsLink.baseDir
+        "baseDir": airportsLink.baseDir,
+        save: airportsLink.save
       }, callback);
     }, callback);
 

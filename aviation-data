@@ -103,9 +103,13 @@ if (program.airports) {
     debug("Generating all airport files \n this is going to take a while...");
     getAirportsData({
       links: airportsData,
-      baseDir: program.base
-    }, function () {
-      debug("Saved all the data airports");
+      baseDir: program.base,
+      save: program.save
+    }, function (err, data) {
+      if (err) {throw err;}
+      writeJson(data, program.base + "/airports.json", function() {
+        debug("Saved all the data airports");
+      });
     });
   } catch (err) {
     debug(("please generate first the list of airports."));

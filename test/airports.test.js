@@ -26,6 +26,7 @@ describe("airports.js\n", function () {
     airlinesDestinations = require("./fixtures/airlinesDestinations.json");
     airportsLink = require("./fixtures/airport_links.json");
     airportsSchema = require("../schema/airport_data.schema.json");
+    airlinesDestinations.save = true;
 
   });
   describe("getAirports", function () {
@@ -51,7 +52,7 @@ describe("airports.js\n", function () {
       done();
     });
 
-    it("should include the name, nickname and website of the airport.", function(done) {
+    it("should include the name, nickname and website of the airport.", function (done) {
       var airportLocalLink = {
         name: "Amsterdam Airport Schiphol",
         url: "http://localhost:3000/Amsterdam_Airport_Schiphol",
@@ -59,7 +60,9 @@ describe("airports.js\n", function () {
       };
 
       getData(airportLocalLink, function (err, airportData) {
-        if (err) {throw err;}
+        if (err) {
+          throw err;
+        }
         // console.log(JSON.stringify(airportData,null,2));
         expect(airportData.name, "it doesn't include the name").to.eql("Amsterdam Airport Schiphol");
         expect(airportData.nickname, "it doesn't include the nickname").to.eql("Luchthaven Schiphol");
@@ -134,7 +137,11 @@ describe("airports.js\n", function () {
 
     it("should return the airport data with the proper schema", function (done) {
       this.timeout(15000);
-      var airportsLocalLinks = {"links": airportsLink, "baseDir": BASE_DIR};
+      var airportsLocalLinks = {
+        "links": airportsLink,
+        "baseDir": BASE_DIR,
+        "save": true
+      };
       var airportDataSchema = require("../schema/airport_data.schema.json");
       var validateAirportDataSchema = ajv.compile(airportDataSchema);
 
