@@ -33,6 +33,7 @@ function getDestinations(airline, callback) {
   debug("Getting destinations for %s from %s", airline.name, url);
   callScraper(url, scraper, function (err, data) {
     airline.destinations = data;
+    // console.log(airline);
     checkAndSaveDestinations(null, airline, callback);
   });
 }
@@ -50,12 +51,12 @@ function getFilename(airline) {
 
   if (validDefaultRoute) {
     destinationsSaved += 1;
-    airline.fileName = "./data/destinations_" + airline.name + ".json";
+    airline.fileName = airline.baseDir + "/destinations_" + airline.name + ".json";
   } else {
     debug("Airline %s got the error %s", airline.name,
       _.get(validateDefaultRoute, "errors[0].message"));
     errors += 1;
-    airline.fileName = "./data/error_" + airline.name + ".json";
+    airline.fileName = airline.baseDir + "/error_" + airline.name + ".json";
     airline.errorMessage = "Airline " + airline.name + " got the error " +
       _.get(validateDefaultRoute, "errors[0].message");
   }
@@ -99,9 +100,10 @@ var checkAndSaveDestinations = function (err, airline, callback) {
  * @param  {Function} callback returns with err and airlines data. 
  * @return {array}            all the airlines requested with the destinations, errors log and count..
  */
-function getAllDestinations(airlines, callback) {
+function getAllDestinations(airlines, baseDir, callback) {
   async.mapLimit(_.clone(airlines, true), 20, function (airline, callback) {
 
+    airline.baseDir = baseDir;
     async.retry(5, function (callback) {
       getDestinations(airline, callback);
     }, callback);

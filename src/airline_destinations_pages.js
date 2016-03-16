@@ -82,7 +82,7 @@ function getAllDestinationsPages(options, callback) {
         throw err;
       }
       var airlines = cleanDuplicates(_.flatten(results, true));
-console.log(destinationsFile);
+
       fs.writeFile(destinationsFile, JSON.stringify(airlines, null, 2), function (err) {
         if (err) {
           throw (err);

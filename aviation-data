@@ -16,15 +16,12 @@ var getScraperTypeForAll = require("./src/airline_scraper.js").getScraperTypeFor
 var getAllDestinations = require("./src/airline_destinations.js").getAllDestinations;
 var getAirportsData = airportsJs.getAirportsData;
 var getAllAirportsByIata = require("./src/airports_iata.js").getAllAirportsByIata;
-var options = {
-    "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
-    "destinationsFile": "./data/destination_pages.json"
-  },
-  airportsData;
+
 var airlinesLinksUrl = "https://en.wikipedia.org/wiki/List_of_airline_codes";
 var airlineJs = require("./src/airline.js");
 var callScraper = airlineJs.callScraper;
 var getAllAirlinesData = airlineJs.getAllAirlinesData;
+var airportsData, options;
 
 program
   .version("0.0.1")
@@ -51,7 +48,7 @@ if (program.list) {
       if (err) {
         throw err;
       }
-      writeJson(airportsData,program.base + "/airports_list.json", function () {
+      writeJson(airportsData, program.base + "/airports_list.json", function () {
         debug("airports_list saved");
       });
     });
@@ -59,6 +56,12 @@ if (program.list) {
 }
 
 if (program.destinations) {
+  options = {
+    "urls": "https://en.wikipedia.org/w/index.php?title=Category:Lists_of_airline_destinations",
+    "destinationsFile": program.base + "/destination_pages.json",
+    "baseDir": program.base
+  };
+
   debug("Generating destination files");
   getAllDestinationsPages(options, function (err, airlines) {
     if (err) {
@@ -77,7 +80,7 @@ if (program.destinations) {
 
       debug("scrapers finished");
 
-      getAllDestinations(airlineScrapers, function (err) {
+      getAllDestinations(airlineScrapers, program.base, function (err) {
         if (err) {
           throw err;
         }
