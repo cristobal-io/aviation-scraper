@@ -1,4 +1,4 @@
-# Aviation Scraper
+# Aviation Data Scraper
  
 This project is going to be composed of few packages that are
 going to be scraping from wikipedia the following information:
@@ -9,9 +9,10 @@ going to be scraping from wikipedia the following information:
 
 This is intended for use of an updated database of information for a map application.
 
+
 ## Testing
 
-Before testing this application you have to run `make update-local-pages`
+Before testing this application you have to run `make update-local-pages` to download a local copy of the html pages required for tests.
 
 Then run tests with `make test`
 
@@ -24,39 +25,24 @@ Then run tests with `make test`
 displays this help:
 
 ```
-Retrieve airlines destinations and airports data.
+  Usage: aviation-data-scrapper [options]
 
-Options:
-  -l List of airports with the link to the wikipedia page. (Saved to a single file)
-  -d Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)
-  -a Saves the important data for each airport (saved in a single JSON file for each airport)
+  Retrieve airlines destinations and airports data.
+  Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.
+
+  Options:
+
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -l, --list            List of airports with the link to the wikipedia page. (Saved to a single file)
+  -d, --destinations    Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)
+  -a, --airports        Saves the important data for each airport (saved in a single JSON file and optional for each airport)
+  -c, --companies       Saves all the airline links and all the important information for each airline.
+  -b, --base <basedir>  the base directory where to save the files generated (default: tmp)
+  -s, --save <save>     this options allows you to save individual files for each airline, airport or destination (default:false)
 ```
 
-## Roadmap
-- enable with the command to display the information for the desired airport
-```
-$ aviation-data -s levc
-
-{
-  "coordinates": {
-    "latitude": "39°29′22″N",
-    "longitude": "00°28′54″W"
-  },
-  "runway": [
-    {
-      "Direction": "12/30",
-      "m": "3,215",
-      "ft": "10,548",
-      "Surface": "Asphalt"
-    }
-  ],
-  "iata": "VLC",
-  "icao": "LEVC",
-  "url": "https://en.wikipedia.org/wiki/Valencia_Airport",
-  "fileName": "./data/airport_Valencia_Airport.json"
-}
-```
 
 ## Contribute
 
-if you wish to contibute create your branch and create a pull request or you can create an issue.
+if you wish to contibute create your branch and create a pull request on the dev branch or you can create an issue.
