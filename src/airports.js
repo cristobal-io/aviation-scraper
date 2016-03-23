@@ -8,7 +8,7 @@ var async = require("async");
 var Ajv = require("ajv");
 var ajv = Ajv();
 // log tools
-var debug = require("debug")("aviation-data:airports");
+var debug = require("debug")("aviation-scraper:airports");
 var chalk = require("chalk");
 
 var cleanDuplicates = require("../src/airline_destinations_pages.js").cleanDuplicates;

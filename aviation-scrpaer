@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 "use strict";
-process.env["DEBUG"] = "aviation-data*";
+process.env["DEBUG"] = "aviation-scraper*";
 
 var program = require("commander");
-var debug = require("debug")("aviation-data:cli");
+var debug = require("debug")("aviation-scraper:cli");
 
 var airportsJs = require("./src/airports.js");
 var writeJson = airportsJs.writeJson;

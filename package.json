@@ -1,15 +1,15 @@
 {
-  "name": "aviation-data-scrapper",
+  "name": "aviation-scrapper",
   "version": "0.0.9",
   "description": "Scraper to get airline destinations and airport data",
-  "main": "aviation-data",
+  "main": "aviation-scraper",
   "scripts": {
     "test": "mocha test"
   },
   "author": "Cristóbal Gómez",
   "license": "MIT",
   "bin": {
-    "aviation-data-scrapper": "./aviation-data"
+    "aviation-scrapper": "./aviation-scraper"
   },
   "dependencies": {
     "ajv": "2.5.0",

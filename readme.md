@@ -1,4 +1,4 @@
-# Aviation Data Scraper
+# Aviation Scraper
  
 This project is going to be composed of few packages that are
 going to be scraping from wikipedia the following information:
@@ -20,12 +20,12 @@ Then run tests with `make test`
 
 ### From the CLI
 
-`aviation-data -h`
+`aviation-scraper -h`
 
 displays this help:
 
 ```
-  Usage: aviation-data-scrapper [options]
+  Usage: aviation-scrapper [options]
 
   Retrieve airlines destinations and airports data.
   Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.

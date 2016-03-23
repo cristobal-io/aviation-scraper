@@ -1,6 +1,6 @@
 "use strict";
 var chalk = require("chalk");
-var debug = require("debug")("aviation-data:airline");
+var debug = require("debug")("aviation-scraper:airline");
 var sjs = require("scraperjs");
 
 var scrapers = require("../scrapers/");

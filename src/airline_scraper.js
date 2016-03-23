@@ -3,7 +3,7 @@
 var fs = require("fs");
 var async = require("async");
 var _ = require("lodash");
-var debug = require("debug")("aviation-data:scrapers");
+var debug = require("debug")("aviation-scraper:scrapers");
 
 var callScraper = require("./airline.js").callScraper;
 

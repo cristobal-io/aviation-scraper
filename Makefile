@@ -23,7 +23,7 @@ test/spec/local_pages/:
 	cp test/fixtures/index.html $@
 
 update-local-pages: test/spec/local_pages/
-	DEBUG=aviation-data* node test/spec/update_local_pages.js
+	DEBUG=aviation-scraper* node test/spec/update_local_pages.js
 
 # test commands
 
