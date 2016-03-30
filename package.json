@@ -1,12 +1,22 @@
 {
   "name": "aviation-scrapper",
   "version": "0.0.9",
-  "description": "Scraper to get airline destinations and airport data",
+  "description": "Scraper to get airlines and airport data",
   "main": "aviation-scraper",
+  "keywords": [ "aviation", "airline", "scrapper", "data" ],
   "scripts": {
     "test": "mocha test"
   },
   "author": "Cristóbal Gómez",
+  "homepage": "https://github.com/cristobal-io/aviation-scrapper",
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/cristobal-io/aviation-scrapper"
+    },
+  "bugs": {
+    "url": "http://github.com/cristobal-io/aviation-scrapper/issues",
+    "email": "me@cristobal.io"
+  },
   "license": "MIT",
   "bin": {
     "aviation-scrapper": "./aviation-scraper"
