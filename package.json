@@ -49,6 +49,7 @@
   "devDependencies": {
     "chai": "3.4.1",
     "chai-json-schema": "1.2.0",
+    "coveralls": "^2.11.9",
     "eslint": "^2.5.3",
     "expect.js": "0.3.1",
     "express": "4.13.3",
