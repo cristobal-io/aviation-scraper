@@ -9,7 +9,6 @@ going to be scraping from wikipedia the following information:
 
 This is intended for use of an updated database of information for a map application.
 
-
 ## Testing
 
 Before testing this application you have to run `make update-local-pages` to download a local copy of the html pages required for tests.
