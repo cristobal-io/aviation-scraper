@@ -46,7 +46,7 @@ debug-test:
 # For coveralls integration on Travis-ci
 test-coveralls:
 	test -d node_modules/nyc/ || npm install nyc
-	NODE_ENV=test nyc mocha && nyc report --reporter=text-lcov | coveralls
+	NODE_ENV=test nyc mocha && NODE_ENV=test nyc report --reporter=text-lcov | coveralls
 
 test-coverage-report:
 	echo "Generating coverage report, please stand by"
