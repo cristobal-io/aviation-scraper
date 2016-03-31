@@ -1,6 +1,4 @@
 language: node_js
-before_install:
-  - make update-local-pages
 node_js:
 - '5.0.0'
 - '5.6.0'
