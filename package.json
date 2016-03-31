@@ -3,8 +3,29 @@
   "version": "0.0.9",
   "description": "Scraper to get airline destinations and airport data",
   "main": "aviation-scraper",
+  "keywords": [
+    "aviation",
+    "air travel",
+    "airline",
+    "data",
+    "database",
+    "dataset",
+    "destinations",
+    "flight",
+    "scrapper"
+    "travel"
+  ],
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/cristobal-io/aviation-scrapper.git"
+  },
+  "bugs": {
+    "url": "http://github.com/cristobal-io/aviation-scrapper/issues",
+    "email": "me@cristobal.io"
   },
   "author": "Cristóbal Gómez",
   "license": "MIT",

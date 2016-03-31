@@ -42,6 +42,7 @@ debug-test:
 	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-local-pages' before tests"
 # Coverage reporters
 
+# For coveralls integration on Travis-ci
 test-coveralls:
 	test -d node_modules/nyc/ || npm install nyc
 	nyc mocha && nyc report --reporter=text-lcov | coveralls
