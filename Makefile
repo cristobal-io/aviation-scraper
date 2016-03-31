@@ -30,8 +30,6 @@ check-local-pages:
 
 # test commands
 
-# todo: create some sort of registry that advises when running our test that our files are too old
-# maybe we can use "tldr find"
 test: lint check-local-pages
 	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-local-pages' before tests"
 
