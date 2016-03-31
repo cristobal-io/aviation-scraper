@@ -54,7 +54,6 @@
     "expect.js": "0.3.1",
     "express": "4.13.3",
     "mocha": "2.3.4",
-    "mocha-lcov-reporter": "^1.2.0",
     "send": "0.13.0",
     "serve-static": "1.10.0"
   }
