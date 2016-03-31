@@ -12,11 +12,11 @@
     "dataset",
     "destinations",
     "flight",
-    "scrapper"
+    "scrapper",
     "travel"
   ],
   "scripts": {
-    "test": "mocha test",
+    "test": "make test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
