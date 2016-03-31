@@ -25,11 +25,14 @@ test/spec/local_pages/:
 update-local-pages: test/spec/local_pages/
 	DEBUG=aviation-scraper* node test/spec/update_local_pages.js
 
+check-local-pages:
+	test -d test/spec/local_pages/ && echo -e "\nLocal pages folder found, no need to update" || make update-local-pages
+
 # test commands
 
 # todo: create some sort of registry that advises when running our test that our files are too old
 # maybe we can use "tldr find"
-test: lint
+test: lint check-local-pages
 	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha test || echo "Please run 'make update-local-pages' before tests"
 
 dev:
@@ -42,6 +45,7 @@ debug-test:
 	test -f test/spec/local_pages/index.html && NODE_ENV=test mocha --debug-brk test || echo "Please run 'make update-local-pages' before tests"
 # Coverage reporters
 
+# For coveralls integration on Travis-ci
 test-coveralls:
 	test -d node_modules/nyc/ || npm install nyc
 	nyc mocha && nyc report --reporter=text-lcov | coveralls

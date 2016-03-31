@@ -5,12 +5,19 @@
   "main": "aviation-scraper",
   "keywords": [
     "aviation",
+    "air travel",
     "airline",
+    "data",
+    "database",
+    "dataset",
+    "destinations",
+    "flight",
     "scrapper",
-    "data"
+    "travel"
   ],
   "scripts": {
-    "test": "mocha test"
+    "test": "make test",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Cristóbal Gómez",
   "homepage": "https://github.com/cristobal-io/aviation-scrapper",
