@@ -3,6 +3,8 @@
 "use strict";
 process.env["DEBUG"] = "aviation-scraper*";
 
+var version = require("./package.json").version;
+
 var program = require("commander");
 var debug = require("debug")("aviation-scraper:cli");
 
@@ -23,7 +25,7 @@ var getAllAirlinesData = airlineJs.getAllAirlinesData;
 var options;
 
 program
-  .version("0.0.1")
+  .version(version)
   .description("Retrieve airlines destinations and airports data.\n"  + 
     "  Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.")
   .option("-l, --list", "List of airports with the link to the wikipedia page. (Saved to a single file)")
