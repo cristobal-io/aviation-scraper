@@ -1,4 +1,5 @@
 [ ![Codeship Status for cristobal-io/aviation-scrapper](https://codeship.com/projects/2a802d10-d959-0133-b1b8-56bde683aa9e/status?branch=master)](https://codeship.com/projects/143478)
+[![Coverage Status](https://coveralls.io/repos/github/cristobal-io/aviation-scrapper/badge.svg?branch=master)](https://coveralls.io/github/cristobal-io/aviation-scrapper?branch=master)
 
 # Aviation Scraper
  
