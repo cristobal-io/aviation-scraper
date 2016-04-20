@@ -99,7 +99,7 @@ describe("airline_destinations.js: \n", function () {
     var airportsResult = {};
 
     before(function (done) {
-      this.timeout(15000);
+      this.timeout(25 * 1000);
 
       getAllDestinations({
         airlines: airports,
