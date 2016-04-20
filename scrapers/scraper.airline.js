@@ -6,6 +6,7 @@ module.exports = function ($) {
   var hubs = getHubs($, $(".infobox.vcard"));
 
   var result = {
+    "url": $("#ca-nstab-main").find("a").attr("href"),
     "name": $(".infobox.vcard").find(".org").text(),
     "logoLink": $(".infobox.vcard").find("img").attr("src"),
     "IATA": $($(".infobox.vcard").find("tr").find("table").find("td")[0]).text(),
