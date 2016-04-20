@@ -73,7 +73,7 @@ release: lint
 	echo "2. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
 	echo "3. 'release-it'"
 	echo "4. 'git checkout dev'"
-	echo "5. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
+	echo "5. 'git merge master --no-ff --log'"
 	echo "6. 'git tag tag-feature-wxyz feature-wxyz'"
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
