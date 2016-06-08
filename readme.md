@@ -1,5 +1,5 @@
-[ ![Codeship Status for cristobal-io/aviation-scrapper](https://codeship.com/projects/2a802d10-d959-0133-b1b8-56bde683aa9e/status?branch=master)](https://codeship.com/projects/143478)
-[![Coverage Status](https://coveralls.io/repos/github/cristobal-io/aviation-scrapper/badge.svg?branch=master)](https://coveralls.io/github/cristobal-io/aviation-scrapper?branch=master)
+[ ![Codeship Status for cristobal-io/aviation-scraper](https://codeship.com/projects/2a802d10-d959-0133-b1b8-56bde683aa9e/status?branch=master)](https://codeship.com/projects/143478)
+[![Coverage Status](https://coveralls.io/repos/github/cristobal-io/aviation-scraper/badge.svg?branch=master)](https://coveralls.io/github/cristobal-io/aviation-scraper?branch=master)
 
 # Aviation Scraper
  
@@ -27,7 +27,7 @@ Then run tests with `make test`
 displays this help:
 
 ```
-  Usage: aviation-scrapper [options]
+  Usage: aviation-scraper [options]
 
   Retrieve airlines destinations and airports data.
   Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.
@@ -47,4 +47,4 @@ displays this help:
 
 ## Contribute
 
-if you wish to contibute create your branch and create a pull request on the dev branch or you can create an issue.
+if you wish to contribute create your branch and create a pull request on the dev branch or you can create an issue.
