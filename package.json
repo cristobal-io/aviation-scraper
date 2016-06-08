@@ -1,6 +1,6 @@
 {
   "name": "aviation-scraper",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Scraper to get airlines and airport data",
   "main": "aviation-scraper",
   "keywords": [
