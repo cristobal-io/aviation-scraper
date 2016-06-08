@@ -128,7 +128,7 @@ describe("airline_destinations.js: \n", function () {
       }, done);
     });
 
-    it("should have 0 errors returning from getAllDestinations", function () {
+    it("should have 0 errors returning from getAllDestinations", function (done) {
       var errorMessages = [];
 
 
@@ -142,6 +142,7 @@ describe("airline_destinations.js: \n", function () {
         }
       });
       expect(errorMessages.length, errorMessages).to.eql(0);
+      done();
     });
 
   });
