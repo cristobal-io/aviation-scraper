@@ -19,7 +19,7 @@
     "test": "make test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
-  "author": "Cristóbal Gómez",
+  "author": "Cristobal Gomez",
   "homepage": "https://github.com/cristobal-io/aviation-scraper",
   "repository": {
     "type": "git",
