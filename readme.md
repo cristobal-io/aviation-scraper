@@ -1,4 +1,4 @@
-[ ![Codeship Status for cristobal-io/aviation-scraper](https://codeship.com/projects/2a802d10-d959-0133-b1b8-56bde683aa9e/status?branch=master)](https://codeship.com/projects/143478)  [![Coverage Status](https://coveralls.io/repos/github/cristobal-io/aviation-scraper/badge.svg?branch=master)](https://coveralls.io/github/cristobal-io/aviation-scraper?branch=master)
+[ ![Codeship Status for cristobal-io/aviation-scraper](https://codeship.com/projects/9044a590-0f89-0134-5101-1e1c023ab022/status?branch=master)](https://codeship.com/projects/143478)  [![Coverage Status](https://coveralls.io/repos/github/cristobal-io/aviation-scraper/badge.svg?branch=master)](https://coveralls.io/github/cristobal-io/aviation-scraper?branch=master)
 
 # Aviation Scraper
  
