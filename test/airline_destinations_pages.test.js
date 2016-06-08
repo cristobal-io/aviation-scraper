@@ -30,6 +30,7 @@ describe("airline_destinations_pages.js: \n", function () {
 
 
   before(function (done) {
+    this.timeout(15000);
 
     var destinationsPagesSchema = require("../schema/airline_destinations.schema.json");
     var destinationsPages = require("../test/fixtures/airline_destination_pages_links.json"),
