@@ -1,6 +1,6 @@
 node_modules
 coverage
 .nyc_output
-
+test/spec/local_pages/
 test/spec/data/
 tmp
