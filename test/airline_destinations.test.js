@@ -23,7 +23,6 @@ describe("airline_destinations.js: \n", function () {
   var validateScraperTableSchema, validateDefaultSchema, validateTableSchema;
 
   before(function (done) {
-    this.timeout(15000);
     var defaultSchema = require("../schema/scraper.default.schema.json");
 
     validateScraperTableSchema = ajv.compile(defaultSchema);
@@ -32,8 +31,9 @@ describe("airline_destinations.js: \n", function () {
     done();
   });
 
-  after(function () {
+  after(function (done) {
     delete require.cache[require.resolve("./fixtures/airline_destinations.options.json")];
+    done();
   });
 
   describe("getFilename", function () {
@@ -83,7 +83,6 @@ describe("airline_destinations.js: \n", function () {
     });
 
     it("Should return a validated Schema from table_center scraper", function (done) {
-      this.timeout(15000);
       airports[3].baseDir = BASE_DIR;
 
       getDestinations(airports[3], function (err, results) {
@@ -98,7 +97,6 @@ describe("airline_destinations.js: \n", function () {
 
 
   describe("getAllDestinations function", function () {
-
     var airportsResult = {};
 
     before(function (done) {
@@ -118,7 +116,6 @@ describe("airline_destinations.js: \n", function () {
     });
 
     it("Should return and save the file", function (done) {
-      this.timeout(15000);
       async.each(airportsResult, function (airport, callback) {
         // The structure of .destinations is being validated in other test.
         expect(_.has(airport, "destinations")).to.be.true;
@@ -133,6 +130,7 @@ describe("airline_destinations.js: \n", function () {
 
     it("should have 0 errors returning from getAllDestinations", function () {
       var errorMessages = [];
+
 
       _.forEach(airportsResult, function (airport) {
         var errorMessage = _.get(airport, "errorMessage");
