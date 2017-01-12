@@ -59,6 +59,8 @@ test-coverage-windows:
 	NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha
 	start coverage\lcov-report\index.html
 
+find-missing-coords:
+	node utils/find_missing_coordinates.js
 
 # Continuous Integration Test Runner
 ci: lint test
@@ -104,4 +106,4 @@ companies:
 scraper: airports destinations companies
 
 
-.PHONY: test scrapers
+.PHONY: test scraper
