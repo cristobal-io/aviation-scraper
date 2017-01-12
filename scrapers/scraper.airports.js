@@ -11,9 +11,8 @@ module.exports = function ($) {
   airportData.website = $("th:contains('Website')").next("td").find("a").attr("href");
   airportData.iata = $(".vcard").find("[title='International Air Transport Association airport code']").next(".nickname").text();
   airportData.icao = $(".vcard").find("[title='International Civil Aviation Organization airport code']").next(".nickname").text();
-  airportData.coordinates.latitude = $($(".vcard .geo-dms .latitude")[0]).text();
-  airportData.coordinates.longitude = $($(".vcard .geo-dms .longitude")[0]).text();
-
+  airportData.coordinates.latitude = $($(".vcard .geo-dms .latitude")[0]).text() || $(".geo-dms").find(".latitude").text();
+  airportData.coordinates.longitude = $($(".vcard .geo-dms .longitude")[0]).text() || $(".geo-dms").find(".longitude").text();
   var headers = [],
     reduction = 0, j;
 
