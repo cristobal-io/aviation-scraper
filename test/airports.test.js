@@ -141,7 +141,7 @@ describe("airports.js\n", function () {
 
       writeJson(sampleObject, fileName, function () {
         fileExists = fs.readFileSync(fileName, "utf8");
-        expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
+        assert.deepEqual(JSON.parse(fileExists), sampleObject);
         fs.unlink(fileName, function (err) {
           if (err) {
             console.log(err); //eslint-disable-line no-console
@@ -156,7 +156,7 @@ describe("airports.js\n", function () {
   describe("getAirportsData", function () {
 
     it("should return the airport data with the proper schema", function (done) {
-      this.timeout(15000);
+      this.timeout(150000);
       var airportsLocalLinks = {
         "links": airportsLink,
         "baseDir": BASE_DIR,
