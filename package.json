@@ -1,6 +1,6 @@
 {
-  "name": "aviation-scrapper",
-  "version": "0.0.11",
+  "name": "aviation-scraper",
+  "version": "0.0.13",
   "description": "Scraper to get airlines and airport data",
   "main": "aviation-scraper",
   "keywords": [
@@ -12,26 +12,26 @@
     "dataset",
     "destinations",
     "flight",
-    "scrapper",
+    "scraper",
     "travel"
   ],
   "scripts": {
     "test": "make test",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
-  "author": "Cristóbal Gómez",
-  "homepage": "https://github.com/cristobal-io/aviation-scrapper",
+  "author": "Cristobal Gomez",
+  "homepage": "https://github.com/cristobal-io/aviation-scraper",
   "repository": {
     "type": "git",
-    "url": "git@github.com:cristobal-io/aviation-scrapper.git"
+    "url": "git@github.com:cristobal-io/aviation-scraper.git"
   },
   "bugs": {
-    "url": "http://github.com/cristobal-io/aviation-scrapper/issues",
+    "url": "http://github.com/cristobal-io/aviation-scraper/issues",
     "email": "me@cristobal.io"
   },
   "license": "MIT",
   "bin": {
-    "aviation-scrapper": "./aviation-scraper"
+    "aviation-scraper": "./aviation-scraper"
   },
   "engines": {
     "node": "5.6.0"

@@ -31,8 +31,9 @@ describe("airline_destinations.js: \n", function () {
     done();
   });
 
-  after(function () {
+  after(function (done) {
     delete require.cache[require.resolve("./fixtures/airline_destinations.options.json")];
+    done();
   });
 
   describe("getFilename", function () {
@@ -127,7 +128,7 @@ describe("airline_destinations.js: \n", function () {
       }, done);
     });
 
-    it("should have 0 errors returning from getAllDestinations", function () {
+    it("should have 0 errors returning from getAllDestinations", function (done) {
       var errorMessages = [];
 
 
@@ -141,6 +142,7 @@ describe("airline_destinations.js: \n", function () {
         }
       });
       expect(errorMessages.length, errorMessages).to.eql(0);
+      done();
     });
 
   });

@@ -90,4 +90,18 @@ clean-coverage:
 	test -d coverage/ && rm -r coverage/ && echo "coverage content removed" || echo "no coverage folder found"
 	test -d .nyc_output && rm -r .nyc_output && echo "nyc_output content removed" || echo "no nyc_output folder found"
 
+# use the app.
+airports:
+	./aviation-scraper -l
+	./aviation-scraper -a
+
+destinations:
+	./aviation-scraper -d
+
+companies:
+	./aviation-scraper -c
+
+scraper: airports destinations companies
+
+
 .PHONY: test scrapers
