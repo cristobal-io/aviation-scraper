@@ -1,5 +1,4 @@
 "use strict";
-
 // Mocha
 var expect = require("expect.js");
 
@@ -62,6 +61,8 @@ describe("airline.js\n", function () {
         expect(validAirlineLinks).to.be(true);
         // the schema is not strict, so to validate that all the data is being
         // saved, we have this second verification.
+        // if the test fails, we need to update airlineDataExpected
+        // wikipedia might have modified the number of airlines
         expect(data).to.eql(airlineDataExpected);
         done();
 
