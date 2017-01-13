@@ -32,12 +32,12 @@ describe("airports.js\n", function () {
         }
         return result;
       }, []);
-      it("all the airports should have coordinates", function() {
-        assert.equal(missingCoordinatesAirports.length, 0);
+      it("all the airports should have coordinates, only 1 which is under construction should be missing", function() {
+        assert.equal(missingCoordinatesAirports.length, 1);
       });
     } catch (e) {
       it.skip("should exist airports.json file", function() {
-        console.log(e);
+        console.log(e); //eslint-disable-line no-console
       });
     }
 
