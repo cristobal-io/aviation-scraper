@@ -59,6 +59,8 @@ test-coverage-windows:
 	NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha
 	start coverage\lcov-report\index.html
 
+find-missing-coords:
+	node utils/find_missing_coordinates.js
 
 # Continuous Integration Test Runner
 ci: lint test
@@ -73,7 +75,7 @@ release: lint
 	echo "2. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
 	echo "3. 'release-it'"
 	echo "4. 'git checkout dev'"
-	echo "5. 'git merge (release-x.x.x || hotfix-x.x.x) --no-ff --log'"
+	echo "5. 'git merge master --no-ff --log'"
 	echo "6. 'git tag tag-feature-wxyz feature-wxyz'"
 	echo "6. 'git branch -d (release-x.x.x || hotfix-x.x.x)'"
 
@@ -104,4 +106,4 @@ companies:
 scraper: airports destinations companies
 
 
-.PHONY: test scrapers
+.PHONY: test scraper
