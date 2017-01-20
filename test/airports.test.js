@@ -2,7 +2,7 @@
 // Mocha
 var chai = require("chai");
 var expect = chai.expect;
-
+var assert = require("assert");
 var airportsJs = require("../src/airports.js");
 var getAirports = airportsJs.getAirports;
 var writeJson = airportsJs.writeJson;
@@ -18,10 +18,30 @@ var _ = require("lodash");
 
 var BASE_DIR = "./tmp";
 
-
 describe("airports.js\n", function () {
-  var airlinesDestinations, airportsLink, airportsSchema;
+  var airlinesDestinations, airportsLink, airportsSchema, airports,
+    missingCoordinatesAirports;
 
+  describe("all airports should have coordinates", function() {
+    try {
+      airports = require("../tmp/airports.json");
+      missingCoordinatesAirports = airports.reduce(function(result, airport) {
+        if (!airport.data.coordinates.latitude || !airport.data.coordinates.longitude) {
+          // console.log(airport);
+          result.push(airport);
+        }
+        return result;
+      }, []);
+      it("all the airports should have coordinates, only 1 which is under construction should be missing", function() {
+        assert.equal(missingCoordinatesAirports.length, 1);
+      });
+    } catch (e) {
+      it.skip("should exist airports.json file", function() {
+        console.log(e); //eslint-disable-line no-console
+      });
+    }
+
+  });
   before(function () {
     airlinesDestinations = require("./fixtures/airlinesDestinations.json");
     airportsLink = require("./fixtures/airport_links.json");
@@ -121,7 +141,7 @@ describe("airports.js\n", function () {
 
       writeJson(sampleObject, fileName, function () {
         fileExists = fs.readFileSync(fileName, "utf8");
-        expect(fileExists).to.eql("{\n  \"foo\": \"bar\"\n}");
+        assert.deepEqual(JSON.parse(fileExists), sampleObject);
         fs.unlink(fileName, function (err) {
           if (err) {
             console.log(err); //eslint-disable-line no-console
@@ -136,7 +156,7 @@ describe("airports.js\n", function () {
   describe("getAirportsData", function () {
 
     it("should return the airport data with the proper schema", function (done) {
-      this.timeout(15000);
+      this.timeout(150000);
       var airportsLocalLinks = {
         "links": airportsLink,
         "baseDir": BASE_DIR,
