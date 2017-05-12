@@ -103,6 +103,7 @@ fs.writeFile(airlinesDataFile, JSON.stringify(airlinesDataStats,null, 2), functi
 });
 
 var airlinesDestinations = require("../tmp/airline_destinations.json");
+var destinationPages = require("../tmp/destination_pages.json");
 var airlinesDestinationsStats = airlinesDestinations.reduce(function(result, airline) { // eslint-disable-line complexity
   result.counter += 1;
   if (airline.name) {
@@ -123,6 +124,8 @@ var airlinesDestinationsStats = airlinesDestinations.reduce(function(result, air
   destinations: 0
 });
 var airlineDestinationsFile = "./tmp/airline_destinations_stats.json";
+
+airlinesDestinationsStats.destination_pages = destinationPages.length;
 
 fs.writeFile(airlineDestinationsFile, JSON.stringify(airlinesDestinationsStats,null, 2), function() {
   debug(chalk.green("------------------------------------------------------------------------------"));
