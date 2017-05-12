@@ -1,6 +1,8 @@
 "use strict";
-var airlinesLinks = require("../tmp/airlines_links.json");
 var fs = require("fs");
+var debug = require("debug")("aviation-scraper:stats");
+
+var airlinesLinks = require("../tmp/airlines_links.json");
 var airlinesLinksStats = airlinesLinks.reduce(function(result, airline) { // eslint-disable-line complexity
   result.counter += 1;
   if (airline.airline.link){
@@ -36,9 +38,9 @@ var airlinesLinksStats = airlinesLinks.reduce(function(result, airline) { // esl
 var airlinesLinksFile = "./tmp/airlines_links_stats.json";
 
 fs.writeFile(airlinesLinksFile, JSON.stringify(airlinesLinksStats,null, 2), function() {
-  console.log( "we have", airlinesLinksStats.counter, "airlines links listed");
-  console.log("Here the numbers", JSON.stringify(airlinesLinksStats, null, 2));
-  console.log("the file", airlinesLinksFile, "has been saved\n\n");
+  debug( "we have", airlinesLinksStats.counter, "airlines links listed");
+  debug("Here the numbers", JSON.stringify(airlinesLinksStats, null, 2));
+  debug("the file", airlinesLinksFile, "has been saved\n\n");
 });
 
 var airlinesData = require("../tmp/airlines_data.json");
@@ -88,7 +90,7 @@ var airlinesDataStats = airlinesData.reduce(function(result, airline) { // eslin
 var airlinesDataFile = "./tmp/airlines_data_stats.json";
 
 fs.writeFile(airlinesDataFile, JSON.stringify(airlinesDataStats,null, 2), function() {
-  console.log( "we have data for", airlinesDataStats.counter, "airlines, so we are missing detailed data from", airlinesLinksStats.counter - airlinesDataStats.counter);
-  console.log("Here the numbers", JSON.stringify(airlinesDataStats, null, 2));
-  console.log("the file", airlinesDataFile, "has been saved\n\n");
+  debug( "we have data for", airlinesDataStats.counter, "airlines, so we are missing detailed data from", airlinesLinksStats.counter - airlinesDataStats.counter);
+  debug("Here the numbers", JSON.stringify(airlinesDataStats, null, 2));
+  debug("the file", airlinesDataFile, "has been saved\n\n");
 });

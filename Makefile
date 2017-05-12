@@ -109,9 +109,9 @@ scraper: airports destinations companies
 stats: stats-airlines stats-airports
 
 stats-airlines:
-	node ./utils/get_airlines_stats.js
+	DEBUG=aviation-scraper* node ./utils/get_airlines_stats.js
 
 stats-airports:
-	node ./utils/get_airports_stats.js
+	DEBUG=aviation-scraper* node ./utils/get_airports_stats.js
 
 .PHONY: test scraper

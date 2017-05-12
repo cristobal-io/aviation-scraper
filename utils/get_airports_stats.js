@@ -1,5 +1,6 @@
 "use strict";
 var fs = require("fs");
+var debug = require("debug")("aviation-scraper:stats");
 
 var airportsList = require("../tmp/airports_list.json");
 var airports = require("../tmp/airports.json");
@@ -42,8 +43,8 @@ airportStats.airports_listed = airportsList.length;
 var fileName = "./tmp/airports_stats.json";
 
 fs.writeFile(fileName, JSON.stringify(airportStats, null, 2), function() {
-  console.log( "we have", airportsList.length, "airports, here is the data", JSON.stringify(airportStats, null, 2));
-  console.log("we are missing data from", airportStats.airports_listed - airportStats.counter);
-  console.log("we dont have coordinates for", airportStats.airports_listed - airportStats.coordinates);
-  console.log("the file", fileName, "has been saved\n\n");
+  debug( "we have", airportsList.length, "airports, here is the data", JSON.stringify(airportStats, null, 2));
+  debug("we are missing data from", airportStats.airports_listed - airportStats.counter);
+  debug("we dont have coordinates for", airportStats.airports_listed - airportStats.coordinates);
+  debug("the file", fileName, "has been saved\n\n");
 });
