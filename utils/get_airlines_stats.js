@@ -101,3 +101,35 @@ fs.writeFile(airlinesDataFile, JSON.stringify(airlinesDataStats,null, 2), functi
   debug(airlinesDataStats);
   debug("the file " + chalk.cyan(airlinesDataFile) + " has been saved");
 });
+
+var airlinesDestinations = require("../tmp/airline_destinations.json");
+var airlinesDestinationsStats = airlinesDestinations.reduce(function(result, airline) { // eslint-disable-line complexity
+  result.counter += 1;
+  if (airline.name) {
+    result.name += 1;
+  }
+  if (airline.destinationsLink) {
+    result.destinationsLink += 1;
+  }
+  if (airline.destinations && airline.destinations.length > 0) {
+    result.destinations += 1;
+  }
+
+  return result;
+}, {
+  counter: 0,
+  destinationsLink: 0,
+  name: 0,
+  destinations: 0
+});
+var airlineDestinationsFile = "./tmp/airline_destinations_stats.json";
+
+fs.writeFile(airlineDestinationsFile, JSON.stringify(airlinesDestinationsStats,null, 2), function() {
+  debug(chalk.green("------------------------------------------------------------------------------"));
+  debug(chalk.green("Airlines Destinations Stats:"));
+  debug( "we have data for " + chalk.yellow(airlinesDestinationsStats.counter) + " airlines");
+  debug("we don't have destinations for " + chalk.red(airlinesLinksStats.counter - airlinesDestinationsStats.counter) + " airlines");
+  debug("Here the numbers");
+  debug(airlinesDestinationsStats);
+  debug("the file " + chalk.cyan(airlineDestinationsFile) + " has been saved");
+});
