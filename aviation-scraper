@@ -27,7 +27,11 @@ var options;
 program
   .version(version)
   .description("Retrieve airlines destinations and airports data.\n"  + 
-    "  Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.")
+    "  Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.\n\n"  + 
+    "  Example for saving individual files to airports:\n"  + 
+    "  $ aviation-scraper -a -s true\n\n"  + 
+    "  Example for saving file to an specific directory:\n"  + 
+    "  $ ./aviation-scraper -a -b './my_new_directory'")
   .option("-l, --list", "List of airports with the link to the wikipedia page. (Saved to a single file)")
   .option("-d, --destinations", "Destinations of all the airlines listed on the wikipedia. (saved each airline with an individual JSON file)")
   .option("-a, --airports", "Saves the important data for each airport (saved in a single JSON file and optional for each airport)")

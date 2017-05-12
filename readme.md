@@ -31,6 +31,12 @@ displays this help:
   Retrieve airlines destinations and airports data.
   Multiple options are not allowed, only '-b' and '-s' options can be combined with the rest.
 
+  Example for saving individual files to airports:
+  $ aviation-scraper -a -s true
+
+  Example for saving file to an specific directory:
+  $./aviation-scraper -a -b './my_new_directory'
+
   Options:
 
   -h, --help            output usage information
