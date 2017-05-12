@@ -37,11 +37,13 @@ var airportStats = airports.reduce(function(result, airport) { // eslint-disable
   icao: 0
 });
 
-airportStats.links = airportsList.length;
+airportStats.airports_listed = airportsList.length;
 
-var fileName = "./tmp/airport_stats.json";
+var fileName = "./tmp/airports_stats.json";
 
 fs.writeFile(fileName, JSON.stringify(airportStats, null, 2), function() {
   console.log( "we have", airportsList.length, "airports, here is the data", JSON.stringify(airportStats, null, 2));
+  console.log("we are missing data from", airportStats.airports_listed - airportStats.counter);
+  console.log("we dont have coordinates for", airportStats.airports_listed - airportStats.coordinates);
   console.log("the file", fileName, "has been saved\n\n");
 });
