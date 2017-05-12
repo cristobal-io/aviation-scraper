@@ -39,6 +39,7 @@ var airlinesLinksStats = airlinesLinks.reduce(function(result, airline) { // esl
 var airlinesLinksFile = "./tmp/airlines_links_stats.json";
 
 fs.writeFile(airlinesLinksFile, JSON.stringify(airlinesLinksStats,null, 2), function() {
+  debug(chalk.green("------------------------------------------------------------------------------"));
   debug(chalk.green("Airlines Links Stats:"));
   debug( "we have " + chalk.yellow(airlinesLinksStats.counter) + " airlines links listed");
   debug("Here the numbers");
@@ -93,6 +94,7 @@ var airlinesDataStats = airlinesData.reduce(function(result, airline) { // eslin
 var airlinesDataFile = "./tmp/airlines_data_stats.json";
 
 fs.writeFile(airlinesDataFile, JSON.stringify(airlinesDataStats,null, 2), function() {
+  debug(chalk.green("------------------------------------------------------------------------------"));
   debug(chalk.green("Airlines Data Stats:"));
   debug( "we have data for " + chalk.yellow(airlinesDataStats.counter) + " airlines, so we are missing detailed data from " + chalk.red(airlinesLinksStats.counter - airlinesDataStats.counter));
   debug("Here the numbers");

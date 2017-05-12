@@ -44,6 +44,7 @@ airportStats.airports_listed = airportsList.length;
 var fileName = "./tmp/airports_stats.json";
 
 fs.writeFile(fileName, JSON.stringify(airportStats, null, 2), function() {
+  debug(chalk.green("------------------------------------------------------------------------------"));
   debug(chalk.green("Airports Stats:"));
   debug( "we have " + chalk.yellow(airportsList.length) + " airports, here is the data");
   debug(airportStats);
