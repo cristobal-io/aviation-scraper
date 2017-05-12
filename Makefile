@@ -106,7 +106,7 @@ companies:
 scraper: airports destinations companies
 
 # Stats section
-stats: stats-airlines
+stats: stats-airlines stats-airports
 
 stats-airlines:
 	node ./utils/get_airlines_stats.js

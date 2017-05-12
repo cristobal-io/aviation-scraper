@@ -43,5 +43,5 @@ var fileName = "./tmp/airport_stats.json";
 
 fs.writeFile(fileName, JSON.stringify(airportStats, null, 2), function() {
   console.log( "we have", airportsList.length, "airports, here is the data", JSON.stringify(airportStats, null, 2));
-  console.log("the file", fileName, "has been saved");
+  console.log("the file", fileName, "has been saved\n\n");
 });
